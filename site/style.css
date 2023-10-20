@@ -1,0 +1,103 @@
+/* ------------- page index --------------- */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Verdana';
+}
+
+body {
+    background-color: white;
+}
+
+
+nav {
+    width: 100Vw;
+    height: 40px;
+    display: flex;
+}
+
+#nav_GD{
+        background-color: 	hsl(240, 100%, 12%);
+        width: 15Vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+}
+
+#cote {
+    font-size:30px;
+    cursor:pointer;
+}
+
+#nav_M{
+        background-color: 	hsl(240, 100%, 12%);
+        width: 85Vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 20px;
+        color: white;
+}
+
+/* image de fond */
+
+#fond_image{
+    width: 100VW;
+    height: 400px;
+    background-image: url("img/fond.avif");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 8vW;
+}
+
+#fond_image span {
+    color: #4DC69A;
+}
+
+
+/* --------------- page calcul -------------*/
+
+#fond_blanc{
+    background-color: white;
+    width: 100vW;
+    height: calc(100Vh - 40px);
+}
+
+#barre_long{
+    display: flex;
+}
+
+#forme_rectangle {
+    margin-right: 6Vw;
+    width: 50px;
+    height: 65px;
+    background-color: #dbdbdb;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    font-size: 25px;  
+    color: #4DC69A;
+    border-radius: 10px;
+    border: dashed black;
+}
+
+#barre_long{
+    margin-top: 15px;
+    padding-left: 10Vw;
+    display: flex;
+    align-items: center;  
+    height: 100px;
+}
+
+#fond_blanc hr {
+    color: #333;
+    text-align: center;
+    margin-left: 10Vw;
+    margin-right: 10Vw;
+  }
+  
