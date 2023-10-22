@@ -1,5 +1,47 @@
+/* Side nav */
+
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block; 
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  color: white;
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+
+
 /* ------------- page index --------------- */
 
+/* header */
 
 * {
     margin: 0;
@@ -65,7 +107,6 @@ nav {
 #fond_blanc{
     background-color: white;
     width: 100vW;
-    height: calc(100Vh - 40px);
 }
 
 #barre_long{
@@ -101,3 +142,140 @@ nav {
     margin-right: 10Vw;
   }
   
+
+  /* page qui slide vers le haut */
+
+  #slide {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    border-radius: 20px;
+    background-color: red;
+    position: absolute;
+    bottom: -40px;
+    width: 100Vw;
+    height: 200px;
+  }
+
+
+  #slide hr {
+    width: 100px;
+    margin-bottom: 20px;
+  }
+
+  #slide a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    background-color: #4DC69A;
+    width: 80Vw;
+    height: 40px;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+  }
+
+
+  /* ---------------- page photo --------------- */
+
+  
+
+ #photo-haut{
+  width: 100Vw;
+  height: 10Vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+
+ #camera {
+  width: 100Vw;
+  height: 60Vh;
+ }
+
+ #detec { 
+  margin-left: 10px; 
+  font-size: 4Vw;
+ }
+
+ #photo-haut a {
+  text-decoration: none;
+ }
+
+
+
+
+
+
+
+
+ #div-bas {
+  width: 100Vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+ }
+
+ #div-bas p {
+  margin-top: 20px;
+  font-size: 3.5Vw;
+ }
+
+ #div-long {
+  width: 100Vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+
+
+#bouton {
+  width: 15Vh;
+  height: 13Vh;
+}
+
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+#file-bas {
+  position: absolute;
+  left: 30px;
+}
+
+
+#file-bas img {
+  width: 6Vh;
+  height: 5Vh;
+ }
+
+ /* video */
+
+ #camera{
+  overflow: hidden;
+  clip-path: 0 0;
+  transform: translatez(0);
+}
+
+#camera video{
+  transform: translatez(0);
+  position: absolute;
+  top: -100%;
+  bottom: -100%;
+  left: -100%;
+  right: -100%;    
+
+  margin: auto;
+
+  min-width: 100%;
+  min-height: 100%;
+}

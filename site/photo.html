@@ -12,7 +12,7 @@
     <nav>
 
         <div id="nav_GD">
-            <p id="cote" ><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776</span> </p>
+            <p id="cote" ><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776</span></p>
         </div>
 
         <div id="nav_M">
@@ -26,10 +26,6 @@
 
 <body>
 
-    <div id="fond_image">
-        <p>Calculez votre score <br> en toute <span>simplicité</span></p>
-    </div>
-
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -38,13 +34,30 @@
         <a href="photo.html">Photo</a>
       </div>
       
+      
+    <div id="photo-haut">
+        <a href="index.html">←</a><p id="detec">Détection automatique des tuiles </p>
+     </div>
+
+    <div id="camera">
+        <video autoplay muted playsinline id="videoLive"></video>
+    </div>
+
+    <div id="div-bas">
+        <p>Prenez une photo de votre jeu ou importez une image</p>
+        <input type="file" name="file" id="file" class="inputfile" />
+
+        <div id="div-long">
+            <label id="file-bas" for="file"><img src="img/document.png"></label>
+            <input type="image" id="bouton" alt="bouton pour prendre la photo" src="img/logo_photo.png" />
+        </div>
+        
+    </div>
+
     
-
-
-
-    <input type="text" id="message"></input>
-    <button id="send">Envoyer</button>
+  
 
 </body>
 <script type="text/javascript" src="js/script.js"></script>
+<script src="js/video.js"></script>
 </html>

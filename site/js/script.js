@@ -23,3 +23,16 @@ connection.onmessage = function (e) {
 sendButton.onclick=function (){
     connection.send(textBox.value);
 }
+
+
+
+
+// site web
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }

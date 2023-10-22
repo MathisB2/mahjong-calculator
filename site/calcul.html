@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link href="style.css" rel="stylesheet" />
-    <title>Title</title>
+    <link rel="icon" href="img/calculatrice.png" />
+    <title>Mahjong Calculator</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 
@@ -11,7 +12,7 @@
     <nav>
 
         <div id="nav_GD">
-            <p id="cote" >☰</p>
+            <p id="cote" ><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776</span></p>
         </div>
 
         <div id="nav_M">
@@ -24,6 +25,16 @@
 
 
 <body>
+
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html">Accueil</a>
+        <a href="calcul.html">Calcul</a>
+        <a href="photo.html">Photo</a>
+      </div>
+      
+      
 
     <div id="fond_blanc">
 
@@ -109,15 +120,16 @@
 
         <hr>
 
+    </div>
 
-
-
-
-
+    <div id="slide">
+        <hr>
+        <p>Ajouter ou modifier des tuiles</p>
+        <a href="#">Valider</a>
     </div>
 
   
 
 </body>
-<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 </html>
