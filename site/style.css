@@ -151,7 +151,7 @@ nav {
     flex-direction: column;
     align-items: center;  
     border-radius: 20px;
-    background-color: red;
+    background-color: #DCDCDC;
     position: absolute;
     bottom: -40px;
     width: 100Vw;
@@ -160,8 +160,9 @@ nav {
 
 
   #slide hr {
-    width: 100px;
+    width: 130px;
     margin-bottom: 20px;
+    background-color: black;
   }
 
   #slide a {
@@ -195,19 +196,23 @@ nav {
   height: 60Vh;
  }
 
- #detec { 
-  margin-left: 10px; 
-  font-size: 4Vw;
- }
 
  #photo-haut a {
   text-decoration: none;
+  color: black;
+  font-size: 4Vw;
+  margin-right: 10Vw;
+  margin-left: auto;
+  margin-right: auto;
  }
 
 
 
-
-
+ #photo-haut a hr{
+  margin-left: 6Vw;
+  background-color: #4DC69A;
+  height: 1.5px;
+ }
 
 
 
@@ -278,4 +283,62 @@ nav {
 
   min-width: 100%;
   min-height: 100%;
+}
+
+
+/* --------------- page score ----------------- */
+
+#score {
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  width: 50Vw;
+}
+
+#total {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50Vw;
+}
+
+#score-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5Vh;
+}
+
+#score-center hr {
+  position: absolute;
+  width: 75Vw;
+  height: 1px;
+  background-color: black;
+  margin-top: 8Vh;
+}
+
+#total p {
+  font-size: 7Vw;
+}
+
+#score p {
+  font-size: 11Vw;
+}
+
+#detail {
+  margin-top: 4Vh;
+  font-size: 4Vw;
+  padding-left: 10Vw;
+}
+
+#score span {
+  margin-top: 6Vw;
+  font-size: 4Vw;
+}
+
+#petit-score {
+  position: absolute;
+  right: 10Vw;
+  margin-bottom: 5Vh;
+  color: #4DC69A;
 }

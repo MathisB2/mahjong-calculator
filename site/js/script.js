@@ -1,7 +1,7 @@
 const textBox=document.getElementById("message")
 const sendButton=document.getElementById("send")
 
-var connection = new WebSocket('ws://localhost:4444');
+var connection = new WebSocket('ws://172.22.69.111:8080');
 
 
 connection.onopen = function () {
@@ -23,6 +23,8 @@ connection.onmessage = function (e) {
 sendButton.onclick=function (){
     connection.send(textBox.value);
 }
+
+
 
 
 

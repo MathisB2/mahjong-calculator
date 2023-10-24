@@ -14,10 +14,20 @@
 <body>
 
     <header>
+
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="index.html">Accueil</a>
+            <a href="calcul.html">Calcul</a>
+            <a href="photo.html">Photo</a>
+            <a href="resultat.html">Résultat</a>
+          </div>
+    
+    
         <nav>
     
             <div id="nav_GD">
-                <p id="cote" ><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776</span></p>
+                <p id="cote" ><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776</span> </p>
             </div>
     
             <div id="nav_M">
@@ -29,15 +39,29 @@
     </header>
 
 
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="index.html">Accueil</a>
-        <a href="calcul.html">Calcul</a>
-        <a href="photo.html">Photo</a>
-        <a href="resultat.html">Résultat</a>
-      </div>
-      
-      
+    <div id="photo-haut">
+        <a href="index.html">← Détails du score<hr></a>
+        <a href="index.html">Suggestions</a>
+     </div>
+
+
+     <div id="score-center">
+
+        <div id="total">
+            <p>Total :</p>
+        </div>
+
+        <div id="score">
+            <p>56</p><span>pts</span>
+        </div>
+
+        <hr>
+
+
+
+    </div>
+
+    <p id="detail">Détails du calcul :</p>
 
     <div id="fond_blanc">
 
@@ -47,7 +71,6 @@
 
         <div id="barre_long">
             <div id="forme_rectangle">
-                <p>+</p>
             </div>
 
             <div id="forme_rectangle">
@@ -55,6 +78,9 @@
 
             <div id="forme_rectangle">
             </div>
+
+                <p id="petit-score">4pts</p>
+                
         </div>
 
         <hr>
@@ -64,7 +90,6 @@
 
         <div id="barre_long">
             <div id="forme_rectangle">
-                <p>+</p>
             </div>
 
             <div id="forme_rectangle">
@@ -72,6 +97,9 @@
 
             <div id="forme_rectangle">
             </div>
+
+            <p id="petit-score">4pts</p>
+
         </div>
 
         <hr>
@@ -81,7 +109,6 @@
 
         <div id="barre_long">
             <div id="forme_rectangle">
-                <p>+</p>
             </div>
 
             <div id="forme_rectangle">
@@ -89,6 +116,9 @@
 
             <div id="forme_rectangle">
             </div>
+
+            <p id="petit-score">4pts</p>
+
         </div>
 
         <hr>
@@ -98,7 +128,6 @@
 
         <div id="barre_long">
             <div id="forme_rectangle">
-                <p>+</p>
             </div>
 
             <div id="forme_rectangle">
@@ -106,6 +135,9 @@
 
             <div id="forme_rectangle">
             </div>
+
+            <p id="petit-score">4pts</p>
+
         </div>
 
         <hr>
@@ -113,25 +145,22 @@
 
 
         <div id="barre_long">
-            <div id="forme_rectangle">
-                <p>+</p>
+            <div id="forme_rectangle">  
             </div>
 
             <div id="forme_rectangle">
             </div>
+
+            <p id="petit-score">4pts</p>
+
         </div>
 
         <hr>
 
     </div>
 
-    <div id="slide">
-        <hr>
-        <p>Ajouter ou modifier des tuiles</p>
-        <a href="#">Valider</a>
-    </div>
 
-  
+
 
 </body>
 <script type="text/javascript" src="js/script.js"></script>
