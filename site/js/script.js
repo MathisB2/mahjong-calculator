@@ -1,3 +1,4 @@
+
 // envoie img 
 
 
@@ -41,6 +42,32 @@ function readFile(evt) {
 document.getElementById('file').addEventListener('change', readFile, false);
 
 
+
+
+
+
+// vidéo
+
+async function main () {
+
+    
+	if ( document.URL.includes("photo.html") ) {
+
+	const videoLive = document.querySelector('#videoLive')
+	
+    const stream = await navigator.mediaDevices.getUserMedia({ // <1>
+      video: true,
+      audio: false,
+    })
+
+	videoLive.srcObject = stream
+
+}  
+}
+
+
+  
+  main()
 
 
 
