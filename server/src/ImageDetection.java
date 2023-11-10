@@ -90,16 +90,15 @@ public class ImageDetection {
             Mat perspectivetransform=Imgproc.getPerspectiveTransform(src,dst);
             Mat finalImage=new Mat();
             Imgproc.warpPerspective(uploadedImg,finalImage,perspectivetransform,new Size(width,height));
-            testTile(finalImage);
+            testTile2(
+                    finalImage);
             // ajout des images dans un tableau
             extractedTiles.add(finalImage);
         }
     }
 
-    /**
-     *
-     */
-    public String testTile(Mat tile){
+
+    public String testTile2(Mat tile){
         int maxMatch=0;
         String tileName="";
         float ratioThreshold = .6f;
@@ -162,6 +161,84 @@ public class ImageDetection {
         if(test) {
             HighGui.imshow("Matches", imgMatches);
             HighGui.waitKey();
+        }
+        return tileName;
+    }
+
+
+    public String testTile(Mat tile){
+        int maxMatch=0;
+        String tileName="";
+        boolean test=false;
+
+        Mat gray1 = new Mat();
+        Mat gray2 = new Mat();
+        Imgproc.cvtColor(tile, gray1, Imgproc.COLOR_BGR2GRAY);
+
+        SIFT sift = SIFT.create();
+        MatOfKeyPoint keypoints1 = new MatOfKeyPoint();
+
+        Mat descriptors1 = new Mat();
+
+        sift.detectAndCompute(gray1, new Mat(), keypoints1, descriptors1);
+
+        // Initialiser le FLANN Matcher
+        FlannBasedMatcher matcher = FlannBasedMatcher.create();
+
+        Mat imgMatches = new Mat();
+
+        for(Map.Entry<String,Mat> entry : dataSet.entrySet()) {
+            String key = entry.getKey();
+            Mat value = entry.getValue();
+            Imgproc.cvtColor(value, gray2, Imgproc.COLOR_BGR2GRAY);
+
+            MatOfKeyPoint keypoints2 = new MatOfKeyPoint();
+            Mat descriptors2 = new Mat();
+            sift.detectAndCompute(gray2, new Mat(), keypoints2, descriptors2);
+
+            MatOfDMatch matches = new MatOfDMatch();
+            matcher.match(descriptors1, descriptors2, matches);
+
+
+            double threshold = 0.7;
+            if (descriptors1.rows() > 100 || descriptors2.rows() > 100) {
+                threshold = 0.5; // Ajustez le seuil pour plus de correspondances
+            }
+
+            List<DMatch> goodMatchesList = new ArrayList<>();
+            for (DMatch match : matches.toList()) {
+                // Ne conserver que les correspondances suffisamment proches
+                if (match.distance < threshold * 100) {
+                    goodMatchesList.add(match);
+                }
+            }
+
+            MatOfDMatch goodMatches = new MatOfDMatch();
+            goodMatches.fromList(goodMatchesList);
+
+
+
+            System.out.println(key+"     Nombre de correspondances : " + goodMatches.rows());
+
+
+            if(maxMatch<goodMatches.rows()){
+                maxMatch=goodMatches.rows();
+                tileName=key;
+                test=true;
+
+                Features2d.drawMatches(tile, keypoints1, value, keypoints2, goodMatches, imgMatches);
+
+            }
+        }
+
+        System.out.println("la tuile trouvé est : "+tileName);;
+
+
+        // Afficher le résultat
+        if(test) {
+            HighGui.imshow("Matches", imgMatches);
+            HighGui.waitKey();
+
         }
         return tileName;
     }

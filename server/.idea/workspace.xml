@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43f76323-03ed-4a48-9093-7b06be31145d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ImageDetection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/server/AddingImagesTrackbar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/AddingImagesTrackbar.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/server/OpenCV.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/OpenCV.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AddingImagesTrackbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddingImagesTrackbar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageDetection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageDetection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OpenCV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OpenCV.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,7 +129,7 @@
       <workItem from="1698326419650" duration="1792000" />
       <workItem from="1699428938748" duration="1537000" />
       <workItem from="1699431468376" duration="10866000" />
-      <workItem from="1699621066902" duration="7290000" />
+      <workItem from="1699621066902" duration="10338000" />
     </task>
     <servers />
   </component>
