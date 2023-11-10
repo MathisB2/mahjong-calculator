@@ -29,7 +29,7 @@ public class AddingImagesTrackbar {
     private JLabel imgLabel;
 
     public AddingImagesTrackbar(String[] args) {
-        String imagePath1 = "src/img/render8.png";
+        String imagePath1 = "src/img/tg.jpg";
 
         matImgSrc1 = Imgcodecs.imread(imagePath1);
         if (matImgSrc1.empty()) {

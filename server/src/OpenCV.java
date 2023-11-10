@@ -20,7 +20,7 @@ public class OpenCV {
 
 
         // load image
-        Mat img = Imgcodecs.imread("src/img/render6.png");
+        Mat img = Imgcodecs.imread("src/img/tg.jpg");
 
         if(img.width()<img.height()){
             Core.rotate(img,img,Core.ROTATE_90_COUNTERCLOCKWISE);
@@ -56,7 +56,9 @@ public class OpenCV {
         List<MatOfPoint> contours = new ArrayList<>();
         Imgproc.findContours(gray, contours, gray, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
 
-        int nbContours=0;
+        ArrayList<Mat> extractedTiles=new ArrayList<Mat>();
+
+
         for (MatOfPoint cnt : contours) {
             //System.out.println("test");
             //Imgproc.drawContours(img, contours, contours.indexOf(cnt), new Scalar(0, 255, 255), 3);
@@ -74,6 +76,7 @@ public class OpenCV {
 
             int[] n=new int[(int)(approx.total()*approx.channels())];
             approx.get(0,0,n);
+            // ajouter le texte
             for(int j=0;j<n.length;j+=2){
                 int x = n[j];
                 int y = n[j+1];
@@ -83,20 +86,22 @@ public class OpenCV {
                 four.add(y);
             }
 
+            // taille cible
             int width=250;
             int height=350;
-            //Point[] inputPts=new Point[]{new Point(four.get(6),four.get(7)),new Point(four.get(0),four.get(1)),new Point(four.get(2),four.get(3)),new Point(four.get(4),four.get(5))};
+            //corriger distorsion de l'image
             Point[] inputPts=new Point[]{new Point(four.get(0),four.get(1)),new Point(four.get(6),four.get(7)),new Point(four.get(4),four.get(5)),new Point(four.get(2),four.get(3))};
             Point[] outputPts=new Point[]{new Point(0,0),new Point(width,0),new Point(width,height),new Point(0,height)};
             MatOfPoint2f src=new MatOfPoint2f(inputPts);
             MatOfPoint2f dst=new MatOfPoint2f(outputPts);
 
-
             Mat perspectivetransform=Imgproc.getPerspectiveTransform(src,dst);
             Mat finalImage=new Mat();
             Imgproc.warpPerspective(img,finalImage,perspectivetransform,new Size(250,350));
 
-            System.out.println(four);
+
+            // ajout des images dans un tableau
+            extractedTiles.add(finalImage);
 
 
             HighGui.imshow("Shapes", finalImage);
@@ -105,10 +110,15 @@ public class OpenCV {
 
         }
 
+        //
+
+
         // show
         HighGui.imshow("Shapes", img);
         HighGui.waitKey();
         HighGui.destroyAllWindows();
 
     }
+
+
 }
