@@ -1,114 +1,79 @@
-
-// envoie img 
-
-
-
-function convertDataURIToBinary(dataURI) {
-	var BASE64_MARKER = ';base64,';
-	var base64Index = dataURI.indexOf(BASE64_MARKER) + BASE64_MARKER.length;
-	var base64 = dataURI.substring(base64Index);
-	var raw = window.atob(base64);
-	var rawLength = raw.length;
-	var array = new Uint8Array(new ArrayBuffer(rawLength));
-
-	for(i = 0; i < rawLength; i++) {
-		array[i] = raw.charCodeAt(i);
-	}
-	return array;
+if ( document.URL.includes("photo.html") ) {
+    const input = document.getElementById("file");
 }
 
 
 
-function readFile(evt) {
-    var f = evt.target.files[0]; 
-
-    if (f) {
-		if ( /(jpe?g|png|gif)$/i.test(f.type) ) {
-			var r = new FileReader();
-			r.onload = function(e) { 
-				var base64Img = e.target.result;
-                connection.send(base64Img);
-			}
-			r.readAsDataURL(f);
-		} else { 
-			alert("Failed file type");
-		}
-    } else { 
-		alert("Failed to load file");
-    }
-}
-
-
-document.getElementById('file').addEventListener('change', readFile, false);
-
-
-
-
-
-
-// vidéo
 
 async function main () {
 
-    
-	if ( document.URL.includes("photo.html") ) {
+    let network = NetworkController.getController("localhost", 8080);
+    let image = network.getNetNamespace("image");
 
-	const videoLive = document.querySelector('#videoLive')
-	
-    const stream = await navigator.mediaDevices.getUserMedia({ // <1>
-      video: true,
-      audio: false,
+	image.connect(function (message) {
+        console.log(message);
     })
 
-	videoLive.srcObject = stream
+    if ( document.URL.includes("photo.html") ) {
+        const videoLive = document.querySelector('#videoLive')
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+          audio: false,
+        })
+        videoLive.srcObject = stream
+    }
 
-}  
+
+
+	if ( document.URL.includes("index.html") ) {
+        const textBox = document.getElementById("message")
+        const sendButton = document.getElementById("send")
+
+        sendButton.onclick=function (){
+            image.send(textBox.value);
+    }
+	}
+
+	
 }
 
 
-  
-  main()
+// function
 
+if ( document.URL.includes("photo.html") ) {
+const input = document.getElementById("file");
+const textArea = document.getElementById("textArea");
 
+const convertBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
 
-// envoie message
-
-
-
-
-
-const textBox=document.getElementById("message")
-const sendButton=document.getElementById("send")
-
-var connection = new WebSocket('ws://172.22.69.111:8080');
-
-
-connection.onopen = function () {
-    console.log('Connected!');
-    connection.send('Ping'); // Send the message 'Ping' to the server
-};
-
-// Log errors
-connection.onerror = function (error) {
-    console.log('WebSocket Error ' + error);
-};
-
-// Log messages from the server
-connection.onmessage = function (e) {
-    console.log('Server: ' + e.data);
+    fileReader.onload = () => {
+      resolve(fileReader.result);
+    };
+    fileReader.onerror = (error) => {
+      reject(error);
+    };
+  });
 };
 
 
-sendButton.onclick=function (){
-    connection.send(textBox.value);
+const uploadImage = async (event) => {
+	let network = NetworkController.getController("localhost", 8080);
+    let image = network.getNetNamespace("image");
+
+    const file = event.target.files[0];
+    var base64 = await convertBase64(file);
+    textArea.innerText = base64;
+    image.send(message);
+};
+
+
+input.addEventListener("change", (e) => {
+  uploadImage(e);
+});
 }
-
-
-
-
-// site web
-
-
 
 
 
@@ -116,13 +81,119 @@ function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
   }
   
-  function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-  }
+function closeNav() {
+	document.getElementById("mySidenav").style.width = "0";
+}
 
 
+// connection bien chiante
+let NetworkController = function() {
+    let networks = {};
+    function createInstance(name) {
+        let newNetwork = new Network(name);
+        return newNetwork;
+    }
+    function isNetworkExist(name) {
+        let network = networks[name];
+        return network != null;
+    }
 
+    return {
+        getController: function (ip, port) {
+            let name = "ws://".concat(ip, ":", port.toString())
+            if (!isNetworkExist(name)) {
+                let network = createInstance(name);
+                networks[name] = network;
+            }
+            return networks[name];
+        }
+    };
 
+}();
+function _getMessageFrom(strings){
+    let message = strings[1];
 
+    for(let i = 2; i < strings.length; ++i){
+        message += "/"+strings[i];
+    }
 
+    return message;
+}
+class Network {
+    namespaces = {};
+    socket;
+    constructor(name) {
+        this.socket = new WebSocket(name);
+        this._loadConnections();
+        this._setErrorNamespace();
+    }
 
+    _loadConnections(){
+        const socket = this.socket;
+        const namespaces = this.namespaces;
+        socket.onopen = function () {
+            console.log('Connected!');
+        };
+
+        socket.onerror = function (error) {
+            console.log('WebSocket Error ' + error);
+        };
+
+        socket.onmessage = function (e) {
+            let messageInfo = e.data;
+            let strings = messageInfo.split('/');
+            let nameNet = strings[0];
+            if (namespaces[nameNet] == null){console.error(nameNet + " is not defined"); return;}
+            namespaces[nameNet]._fireConnections(_getMessageFrom(strings));
+        };
+    }
+
+    _setErrorNamespace(){
+        const namespace = this.getNetNamespace("error");
+        namespace.connect(function (message){
+            console.error(message);
+        })
+    }
+
+    getNetNamespace(name){
+        if (this.namespaces[name] == null) {
+            let network = new NetNameSpace(name, this);
+            this.namespaces[name] = network;
+        }
+        return this.namespaces[name];
+    }
+    _send(message){
+        this.socket.send(message);
+    }
+}
+
+class NetNameSpace {
+    name;
+    connectedFunctions = new Array();
+    network;
+    constructor(name, network) {
+        this.name = name;
+        this.network = network;
+    }
+
+    _fireConnections(message){
+        for (let foo of this.connectedFunctions) {
+            foo(message);
+        }
+    }
+
+    send(message){
+        this.network._send(this.name+"/"+message)
+    }
+
+    connect(foo){
+        this.connectedFunctions.push(foo);
+        return this.connectedFunctions.length - 1;
+    }
+
+    disconnect(index){
+        this.connectedFunctions.slice(index, 1)
+    }
+}
+  
+  main()
