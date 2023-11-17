@@ -67,16 +67,44 @@ public class TileDetector {
      */
     public void findContours(boolean simplify, int minArea){
         // convert to gray
-        Mat gray = new Mat();
-        Imgproc.cvtColor(uploadedImg, gray, Imgproc.COLOR_BGR2GRAY);
+        Mat clone = new Mat();
+        Imgproc.cvtColor(uploadedImg, clone, Imgproc.COLOR_BGR2GRAY);
         //blur
-        Imgproc.blur(gray,gray,new Size(blurRadius,blurRadius));
+        Imgproc.blur(clone,clone,new Size(blurRadius,blurRadius));
 
-        Imgproc.threshold(gray,gray,0,255,Imgproc.THRESH_BINARY+Imgproc.THRESH_OTSU);
+        Imgproc.threshold(clone, clone, 0, 1, Imgproc.THRESH_OTSU);
+
+        int dilateSize = 10;
+        Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, new Size(dilateSize, dilateSize));
+        //Applying erosion on the Image
+        Mat tilesMask = new Mat();
+        Imgproc.dilate(clone, tilesMask, kernel);
+
+        //convert tileMask to BGR
+        Mat maskBGR = new Mat();
+        List<Mat> listMat = Arrays.asList(tilesMask, tilesMask, tilesMask);
+        Core.merge(listMat, maskBGR);
+
+        //remove pixels out of the mask
+        Core.multiply(uploadedImg, maskBGR, clone);
+        Imgproc.cvtColor(clone, clone, Imgproc.COLOR_BGR2GRAY);
+
+        //apply adaptative treshold
+        Imgproc.adaptiveThreshold(clone, clone, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C, Imgproc.THRESH_BINARY, 7, 4);
+
+        //Apply erosion on the Image
+        dilateSize = 4;
+        kernel = Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, new Size(dilateSize, dilateSize));
+
+        Imgproc.erode(clone, clone, kernel);
+//        Imgproc.medianBlur(img,img,3);
+
+        Core.multiply(clone, tilesMask, clone);
+
 
         // find contours
         ArrayList<MatOfPoint> tmp=new ArrayList<>();
-        Imgproc.findContours(gray, tmp, gray, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
+        Imgproc.findContours(clone, tmp, clone, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
 
 
         for(MatOfPoint cnt:tmp){
@@ -151,9 +179,17 @@ public class TileDetector {
     }
 
     public void matchAllTiles(){
-        for(Tile t:extractedTiles){
+        for(int i=0;i<extractedTiles.size();i++){
+            Tile t=extractedTiles.get(i);
 //            dataSet.findMatchingTile(t.getImg());
-            t.setName(dataSet.findMatchingTile(t.getImg()).getName());
+            Tile result=dataSet.findMatchingTile(t.getImg());
+            if(result.getName()!=""){
+                t.setName(result.getName());
+            }else{
+                extractedTiles.remove(i);
+                i--;
+            }
+
         }
     }
     public List<List<Tile>> findCluster(){
@@ -165,9 +201,7 @@ public class TileDetector {
         int i1=0;
         int i2=0;
         double dist=-1;
-        System.out.println("find cluster");
         while(clusters.size()>5){
-            System.out.println("size :"+clusters.size());
             dist=-1;
             i1=0;
             i2=0;

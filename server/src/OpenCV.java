@@ -7,16 +7,19 @@ import java.util.List;
 
 public class OpenCV {
     public static void main(String[] args) {
-        System.out.println("test");
+
             System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
             TileDetector detector=new TileDetector(1600);
 
 
-            detector.loadDataSet("data0");
+            detector.loadDataSet("data1");
             detector.loadImage("src/img/render10.png");
+
             detector.findContours();
             detector.showContours();
             detector.extractTiles();
+
+            System.out.println("debut");
             detector.matchAllTiles();
 
             List<List<Tile>> clusters=detector.findCluster();
@@ -30,7 +33,7 @@ public class OpenCV {
                 }
             }
 
-        System.out.println("test");
+        System.out.println("fin");
         }
 
 

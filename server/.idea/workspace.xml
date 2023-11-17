@@ -5,28 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43f76323-03ed-4a48-9093-7b06be31145d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/lib.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../merge.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/AddingImagesTrackbar$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/AddingImagesTrackbar$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/AddingImagesTrackbar$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/AddingImagesTrackbar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/ImageDetection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/Main$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/Main$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/OpenCV.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/OpenCV.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/OpenCVTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/OpenCVTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/tg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddingImagesTrackbar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageDetection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageMatching/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageMatching/DataSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageMatching/TileDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageMatching/TileDetector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OpenCV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OpenCV.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OpenCVTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OpenCVTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/tg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +144,7 @@
       <workItem from="1700226720100" duration="1625000" />
       <workItem from="1700228377247" duration="287000" />
       <workItem from="1700228682375" duration="259000" />
+      <workItem from="1700229543633" duration="2829000" />
     </task>
     <servers />
   </component>

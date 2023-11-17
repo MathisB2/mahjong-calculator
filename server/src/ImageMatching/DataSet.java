@@ -106,7 +106,6 @@ public class DataSet {
                     goodMatchesList.addLast(matches[0]);
                 }
             }
-            System.out.println(currentTile.getName()+"  "+goodMatchesList.size());
 
             if(maxMatch<goodMatchesList.size()){
                 maxMatch=goodMatchesList.size();
@@ -118,16 +117,16 @@ public class DataSet {
             }
         }
 
-        System.out.println("la tuile trouvé est : "+matchedTile.getName());;
+//        System.out.println("la tuile trouvé est : "+matchedTile.getName());;
 
 
         if(!imgMatches.empty()) {
-            // Afficher le résultat
-            //HighGui.imshow("Matches", imgMatches);
-            //HighGui.waitKey();
-            return matchedTile;
+//             Afficher le résultat
+//            HighGui.imshow("Matches", imgMatches);
+//            HighGui.waitKey();
+//            return matchedTile;
         }
 
-        return null;
+        return new Tile("",img);
     }
 }
