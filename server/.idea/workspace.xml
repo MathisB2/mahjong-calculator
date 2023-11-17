@@ -5,12 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43f76323-03ed-4a48-9093-7b06be31145d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/lib.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/AddingImagesTrackbar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/AddingImagesTrackbar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/AddingImagesTrackbar$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/AddingImagesTrackbar$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/AddingImagesTrackbar$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/AddingImagesTrackbar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/ImageDetection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/Main$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/Main$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/server/OpenCV.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/OpenCV.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddingImagesTrackbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddingImagesTrackbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageDetection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageDetection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/OpenCVTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/OpenCVTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/tg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddingImagesTrackbar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageDetection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OpenCV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OpenCV.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OpenCVTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OpenCVTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/tg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +60,8 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;merge&quot;,
-    &quot;last_opened_file_path&quot;: &quot;Z:/Documents/2A/S3/SAE/code/mergedMain/server&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Mathis&quot;,
+    &quot;last_opened_file_path&quot;: &quot;Z:/Documents/2A/S3/SAE/code/Mathis/server&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -59,15 +75,19 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="Z:\Documents\2A\S3\SAE\code\Mathis\server\src\img" />
       <recent name="C:\Users\Mathis\Desktop\sae\merge\mahjong-calculator\server\src\img" />
       <recent name="C:\Users\Mathis\Desktop\sae\merge\mahjong-calculator\server\lib\windows" />
       <recent name="$PROJECT_DIR$/lib/linux" />
       <recent name="Z:\Documents\2A\S3\SAE\code\mergedMain\server\lib" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Mathis\Desktop\sae\mathis\server\src\img" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.test">
-    <configuration name="AddingImagesTrackbar" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AddingImagesTrackbar" />
+  <component name="RunManager" selected="Application.OpenCV">
+    <configuration name="FeatureMatching" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FeatureMatching" />
       <module name="server" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -75,6 +95,13 @@
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="server" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MorphologyDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MorphologyDemo1" />
       <module name="server" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -94,27 +121,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test" />
-      <module name="server" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="Application.test" />
-      <item itemvalue="Application.AddingImagesTrackbar" />
+      <item itemvalue="Application.FeatureMatching" />
+      <item itemvalue="Application.MorphologyDemo1" />
       <item itemvalue="Application.OpenCVTest" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.OpenCV" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.test" />
-        <item itemvalue="Application.AddingImagesTrackbar" />
         <item itemvalue="Application.OpenCV" />
-        <item itemvalue="Application.OpenCVTest" />
+        <item itemvalue="Application.FeatureMatching" />
+        <item itemvalue="Application.MorphologyDemo1" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.OpenCVTest" />
       </list>
     </recent_temporary>
   </component>
@@ -128,8 +148,14 @@
       <updated>1698326418991</updated>
       <workItem from="1698326419650" duration="1792000" />
       <workItem from="1699428938748" duration="1537000" />
-      <workItem from="1699431468376" duration="10866000" />
-      <workItem from="1699621066902" duration="10338000" />
+      <workItem from="1699620699440" duration="9702000" />
+      <workItem from="1700061608614" duration="2182000" />
+      <workItem from="1700215445482" duration="2550000" />
+      <workItem from="1700218167255" duration="629000" />
+      <workItem from="1700221374146" duration="4875000" />
+      <workItem from="1700226720100" duration="1625000" />
+      <workItem from="1700228377247" duration="287000" />
+      <workItem from="1700228682375" duration="259000" />
     </task>
     <servers />
   </component>
