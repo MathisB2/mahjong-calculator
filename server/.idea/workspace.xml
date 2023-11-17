@@ -5,14 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43f76323-03ed-4a48-9093-7b06be31145d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../merge.iml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Score/AbstractTile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Score/Bamboo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Score/BasicTile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Score/Character.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Score/Dot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Score/Dragon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Score/ExtraTile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Score/Flower.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Score/Honnor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Score/Season.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Score/Wind.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/Hand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/ImageMatching/DataSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/ImageMatching/DataSet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/ImageMatching/Tile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/ImageMatching/TileDetector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/ImageMatching/TileDetector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/OpenCV.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/OpenCV.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Score/Hand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageMatching/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageMatching/DataSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageMatching/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageMatching/InputTile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageMatching/TileDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageMatching/TileDetector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OpenCV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OpenCV.java" afterDir="false" />
     </list>
@@ -49,7 +61,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Mathis&quot;,
-    &quot;last_opened_file_path&quot;: &quot;Z:/Documents/2A/S3/SAE/code/Mathis/server&quot;,
+    &quot;last_opened_file_path&quot;: &quot;Z:/Documents/2A/S3/SAE/code/main/server&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -57,7 +69,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -144,7 +156,9 @@
       <workItem from="1700226720100" duration="1625000" />
       <workItem from="1700228377247" duration="287000" />
       <workItem from="1700228682375" duration="259000" />
-      <workItem from="1700229543633" duration="2829000" />
+      <workItem from="1700229543633" duration="6141000" />
+      <workItem from="1700237622949" duration="344000" />
+      <workItem from="1700237979397" duration="706000" />
     </task>
     <servers />
   </component>

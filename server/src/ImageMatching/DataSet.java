@@ -15,7 +15,7 @@ import static org.opencv.features2d.Features2d.DrawMatchesFlags_NOT_DRAW_SINGLE_
 
 public class DataSet {
     private String name;
-    private ArrayList<Tile> dataSet;
+    private ArrayList<InputTile> dataSet;
 
     public DataSet() {
         dataSet=new ArrayList<>();
@@ -35,11 +35,11 @@ public class DataSet {
         return dataSet.size();
     }
 
-    public Tile getTile(int i){
+    public InputTile getTile(int i){
         return dataSet.get(i);
     }
 
-    public ArrayList<Tile> toArray(){
+    public ArrayList<InputTile> toArray(){
         return dataSet;
     }
 
@@ -56,7 +56,7 @@ public class DataSet {
                 name=file.getName();
                 pos=name.lastIndexOf(".");
                 name=name.substring(0,pos);
-                dataSet.add(new Tile(name,file.toString()));
+                dataSet.add(new InputTile(name,file.toString()));
             }
         }else{
             System.out.println("dataSet "+folderName+" already loaded");
@@ -64,10 +64,10 @@ public class DataSet {
     }
 
 
-    public Tile findMatchingTile(Mat img){
+    public InputTile findMatchingTile(Mat img){
 
         int maxMatch=0;
-        Tile matchedTile=dataSet.get(0);
+        InputTile matchedTile=dataSet.get(0);
         float ratioThreshold = .6f;
 
         //HighGui.imshow("Image", img);
@@ -87,7 +87,7 @@ public class DataSet {
 
         Mat imgMatches = new Mat();
 
-        for(Tile currentTile:dataSet) {
+        for(InputTile currentTile:dataSet) {
 
             MatOfKeyPoint kp2 = new MatOfKeyPoint();
             Mat des2 = new Mat();
@@ -117,16 +117,16 @@ public class DataSet {
             }
         }
 
-//        System.out.println("la tuile trouvé est : "+matchedTile.getName());;
+        System.out.println("la tuile trouvé est : "+matchedTile.getName());;
 
 
         if(!imgMatches.empty()) {
 //             Afficher le résultat
-//            HighGui.imshow("Matches", imgMatches);
-//            HighGui.waitKey();
-//            return matchedTile;
+            HighGui.imshow("Matches", imgMatches);
+            HighGui.waitKey();
+            return matchedTile;
         }
 
-        return new Tile("",img);
+        return new InputTile("",img);
     }
 }

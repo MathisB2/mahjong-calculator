@@ -1,19 +1,16 @@
 package ImageMatching;
 
 import org.opencv.core.*;
-import org.opencv.features2d.*;
 import org.opencv.highgui.HighGui;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
 import java.util.*;
 
-import static org.opencv.features2d.Features2d.*;
-
 public class TileDetector {
 
 
-    private ArrayList<Tile> extractedTiles=new ArrayList<Tile>();
+    private ArrayList<InputTile> extractedTiles=new ArrayList<InputTile>();
 
     private ArrayList<MatOfPoint> contours=new ArrayList<>();
     private DataSet dataSet;
@@ -158,7 +155,7 @@ public class TileDetector {
             int width=280;
             int height=370;
 
-            Point[] inputPts = sortContourPoints(cnt.toArray());;
+            Point[] inputPts = sortContourPoints(cnt.toArray());
             Point[] outputPts = new Point[]{new Point(0, 0), new Point(width, 0), new Point(width, height), new Point(0, height)};
             MatOfPoint2f src = new MatOfPoint2f(inputPts);
             MatOfPoint2f dst = new MatOfPoint2f(outputPts);
@@ -169,7 +166,7 @@ public class TileDetector {
             //testTile2(finalImage);
             // ajout des images dans un tableau
 
-            Tile t=new Tile("",finalImage);
+            InputTile t=new InputTile("",finalImage);
 
             Point center=getCenterPoint(inputPts);
             t.setCoor(center.x,center.y);
@@ -180,20 +177,20 @@ public class TileDetector {
 
     public void matchAllTiles(){
         for(int i=0;i<extractedTiles.size();i++){
-            Tile t=extractedTiles.get(i);
+            InputTile t=extractedTiles.get(i);
 //            dataSet.findMatchingTile(t.getImg());
-            Tile result=dataSet.findMatchingTile(t.getImg());
-            if(result.getName()!=""){
-                t.setName(result.getName());
-            }else{
+            InputTile result=dataSet.findMatchingTile(t.getImg());
+            if(result.getName()==""){
                 extractedTiles.remove(i);
                 i--;
+            }else{
+                extractedTiles.get(i).setName(result.getName());
             }
 
         }
     }
-    public List<List<Tile>> findCluster(){
-        List<List<Tile>> clusters=new ArrayList<>();
+    public List<List<InputTile>> findCluster(){
+        List<List<InputTile>> clusters=new ArrayList<>();
         for(int i=0;i<extractedTiles.size();i++){
             clusters.add(new ArrayList<>());
             clusters.get(i).add(extractedTiles.get(i));
@@ -223,14 +220,14 @@ public class TileDetector {
         return clusters;
     }
 
-    public List<List<Tile>> concatList(List<List<Tile>> liste, int i1, int i2){
-        for(Tile t:liste.get(i2)){
+    public List<List<InputTile>> concatList(List<List<InputTile>> liste, int i1, int i2){
+        for(InputTile t:liste.get(i2)){
             liste.get(i1).add(t);
         }
         liste.remove(i2);
         return liste;
     }
-    public double dMin(List<Tile> l1,List<Tile>l2){
+    public double dMin(List<InputTile> l1, List<InputTile>l2){
         double minDist=-1;
         for(int i=0;i<l1.size();i++){
             for(int y=0;y<l2.size();y++){

@@ -1,8 +1,7 @@
-import ImageMatching.Tile;
+import ImageMatching.InputTile;
 import ImageMatching.TileDetector;
 import org.opencv.core.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OpenCV {
@@ -12,24 +11,23 @@ public class OpenCV {
             TileDetector detector=new TileDetector(1600);
 
 
-            detector.loadDataSet("data1");
-            detector.loadImage("src/img/render10.png");
+            detector.loadDataSet("data0");
+            detector.loadImage("src/img/render6.png");
 
             detector.findContours();
-            detector.showContours();
+//            detector.showContours();
             detector.extractTiles();
 
             System.out.println("debut");
             detector.matchAllTiles();
 
-            List<List<Tile>> clusters=detector.findCluster();
+            List<List<InputTile>> clusters=detector.findCluster();
+        System.out.println(clusters.size());
 
             for (int i = 0; i < clusters.size(); i++) {
 
                 for (int y=0;y<clusters.get(i).size();y++){
-                    System.out.println("Cluster " + (i + 1) + ": " + clusters.get(i).get(y).getName()
-
-                    );
+                    System.out.println("Cluster " + (i + 1) + ": " + clusters.get(i).get(y).getName());
                 }
             }
 
