@@ -188,11 +188,11 @@ nav{
 .lineHand div.tile{
     background-size: cover;
     background-position: center;
-    background-image: url("img/tiles/bamboo_7.png");
+    background-image: url('img/tiles/bamboo_7.png');
 
 }
 
-.lineHand div.emtpyTile{
+.lineHand div.emptyTile{
     background-color: var(--darkerBackground);
     border: dashed var(--secondColor) 2px;
 }
