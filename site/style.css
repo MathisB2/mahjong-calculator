@@ -1,3 +1,35 @@
+@font-face {
+    font-family: figtree;
+    src: url(fonts/Figtree[wght].woff2);
+}
+
+@font-face {
+    font-family: figtree-italic;
+    src: url(fonts/Figtree-Italic[wght].woff2);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'figtree';
+    --mainColor:#17C979;
+    --secondColor:#2B3144;
+    --backgound:#FFFFFF;
+    --darkerBackground:#F4F5F9;
+    --textColor:#7B8190;
+    --drawerDefaultHeight:50vh;
+    --headerDefaultHeight:48px;
+    /*--tileShadow:*/
+}
+
+body {
+    background-color: var(--backgound);
+}
+
+
+
 /* Side nav */
 
 
@@ -43,25 +75,12 @@
 
 /* header */
 
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Verdana';
-}
-
-body {
-    background-color: white;
-}
 
 
-nav {
-    width: 100Vw;
-    height: 40px;
-    display: flex;
-}
+
 
 #nav_GD{
-        background-color: 	hsl(240, 100%, 12%);
+        background-color:var(--secondColor);
         width: 15Vw;
         display: flex;
         justify-content: center;
@@ -75,7 +94,7 @@ nav {
 }
 
 #nav_M{
-        background-color: 	hsl(240, 100%, 12%);
+        background-color:var(--secondColor);
         width: 85Vw;
         display: flex;
         flex-direction: column;
@@ -93,27 +112,213 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: var(--backgound);
     font-size: 8vW;
 }
 
 #fond_image span {
-    color: #4DC69A;
+    color: var(--mainColor);
 }
 
 
 /* --------------- page calcul -------------*/
+
+nav{
+    width: 100%;
+    background-color: var(--secondColor);
+    display: flex;
+    line-height: var(--headerDefaultHeight);
+}
+
+#openBurger{
+    font-size: 32px;
+    cursor: pointer;
+    color: var(--backgound);
+    margin-left: 8px;
+}
+
+.textLogo{
+    font-size: 18pt;
+    margin-left: 16px;
+}
+
+.textLogo span:first-child
+{
+    color: var(--backgound);
+    font-weight: 300;
+}
+
+.textLogo span:last-child{
+    color:var(--mainColor);
+    font-weight: 700;
+}
+
+
+#hand{
+    width: 100%;
+    height: calc(100vh - var(--headerDefaultHeight) - var(--drawerDefaultHeight));
+    overflow-y: scroll;
+    --tileWidth: 64px;
+}
+
+
+.lineHand{
+    display: flex;
+    margin: 32px;
+
+}
+
+
+.lineHand div{
+    max-width: 280px;
+    max-height: 370px;
+    border-radius: calc(.16 * var(--tileWidth));
+    width: var(--tileWidth);
+    line-height: calc(37 / 28 * var(--tileWidth));
+    font-size: 64px;
+    color: var(--mainColor);
+
+    margin-right: 16px;
+    box-shadow: 0 0 5px rgba(0,0,0,.4);
+    text-align: center;
+    cursor: pointer;
+
+}
+
+.lineHand div.tile{
+    background-size: cover;
+    background-position: center;
+    background-image: url("img/tiles/bamboo_7.png");
+
+}
+
+.lineHand div.emtpyTile{
+    background-color: var(--darkerBackground);
+    border: dashed var(--secondColor) 2px;
+}
+
+
+#drawer{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: var(--darkerBackground);
+    height: var(--drawerDefaultHeight);
+    box-shadow: 0 -2px 8px rgba(0,0,0,.4);
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
+}
+
+
+#drawer div{
+    width: 100%;
+    padding: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    /*border: solid red 1px;*/
+}
+
+
+#drawerHandle{
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#drawerHandle div{
+    padding: 0;
+    margin:4px;
+
+    width: 80px;
+    height: 4px;
+    background-color: var(--secondColor);
+    border-radius:4px;
+
+}
+
+
+#drawerHeader{
+    display: flex;
+    justify-content: space-between;
+    font-size: 16pt;
+    font-weight: 400;
+}
+
+
+#drawerHeader #drawerActionIcons{
+    width: fit-content;
+    margin: 0;
+    padding: 0;
+    justify-content: right;
+}
+
+#drawerHeader #drawerActionIcons a{
+    width: fit-content;
+    margin-left: 16px;
+
+}
+
+#drawerHeader #drawerActionIcons a img{
+    height: 24px;
+    margin: 0;
+
+}
+
+
+#drawerTileList{
+    overflow-y: scroll;
+    padding: 16px;
+}
+
+
+#drawerValidateButton{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: var(--darkerBackground);
+
+}
+
+#drawerValidateButton div{
+    text-align: center;
+    background-color: var(--mainColor);
+    width: 100%;
+    border-radius: 4px;
+}
+
+#drawerValidateButton div a{
+    text-decoration: none;
+    font-size: 16pt;
+    font-weight: 500;
+    color: var(--backgound);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #fond_blanc{
     background-color: white;
     width: 100vW;
 }
 
-#barre_long{
+.barre_long{
     display: flex;
 }
 
-#forme_rectangle {
+.forme_rectangle {
     margin-right: 6Vw;
     width: 50px;
     height: 65px;
@@ -154,7 +359,7 @@ nav {
     background-color: #DCDCDC;
     position: absolute;
     bottom: -40px;
-    width: 100Vw;
+    width: 100%;
     height: 200px;
   }
 

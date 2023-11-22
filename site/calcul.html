@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <link href="style.css" rel="stylesheet" />
@@ -8,131 +8,93 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 
-
-
-
 <body>
-
     <header>
+
+
         <nav>
-    
-            <div id="nav_GD">
-                <p id="cote" ><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776</span></p>
+            <span id="openBurger" onclick="openNav()">&#9776</span>
+            <div class="textLogo">
+                <span>
+                    Mahjong
+                </span>
+                <span>
+                    Calculator
+                </span>
             </div>
-    
-            <div id="nav_M">
-                <p>Mahjong Calculator</p>
-            </div>
-    
-    
         </nav>
+
+
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="index.html">Accueil</a>
+            <a href="calcul.html">Calcul</a>
+            <a href="photo.html">Photo</a>
+            <a href="resultat.html">Résultat</a>
+        </div>
     </header>
 
 
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="index.html">Accueil</a>
-        <a href="calcul.html">Calcul</a>
-        <a href="photo.html">Photo</a>
-        <a href="resultat.html">Résultat</a>
-      </div>
-      
-      
+    <main>
+        <section id="hand">
+            <section class="lineHand">
+                <div class="emtpyTile">+</div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            </section>
+            <section class="lineHand">
+                <div class="emtpyTile">+</div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            </section>
+            <section class="lineHand">
+                <div class="emtpyTile">+</div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            </section>
+            <section class="lineHand">
+                <div class="emtpyTile">+</div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            </section>
+            <section class="lineHand">
+                <div class="emtpyTile">+</div>
+                <div class="tile"></div>
+            </section>
+        </section>
 
-    <div id="fond_blanc">
 
 
-
-
-
-        <div id="barre_long">
-            <div id="forme_rectangle">
-                <p>+</p>
+        <section id="drawer">
+            <div id="drawerHandle">
+                <div></div>
+            </div>
+            <div id="drawerHeader">
+                Ajoutez ou modifiez des tuiles
+                <div id="drawerActionIcons">
+                    <a href="photo.html"><img src="img/icons/photoIcon.svg" alt="icon"></a>
+                </div>
+            </div>
+            <div id="drawerTileList">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi culpa cupiditate dolore eaque eos fuga fugiat illum, ipsum magni minus numquam recusandae, sapiente temporibus tenetur, ut? A, alias corporis dicta distinctio eos error et explicabo illum ipsam iusto laudantium magnam mollitia nemo non quia quis quod, reiciendis reprehenderit temporibus voluptatum.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi culpa cupiditate dolore eaque eos fuga fugiat illum, ipsum magni minus numquam recusandae, sapiente temporibus tenetur, ut? A, alias corporis dicta distinctio eos error et explicabo illum ipsam iusto laudantium magnam mollitia nemo non quia quis quod, reiciendis reprehenderit temporibus voluptatum.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi culpa cupiditate dolore eaque eos fuga fugiat illum, ipsum magni minus numquam recusandae, sapiente temporibus tenetur, ut? A, alias corporis dicta distinctio eos error et explicabo illum ipsam iusto laudantium magnam mollitia nemo non quia quis quod, reiciendis reprehenderit temporibus voluptatum.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi culpa cupiditate dolore eaque eos fuga fugiat illum, ipsum magni minus numquam recusandae, sapiente temporibus tenetur, ut? A, alias corporis dicta distinctio eos error et explicabo illum ipsam iusto laudantium magnam mollitia nemo non quia quis quod, reiciendis reprehenderit temporibus voluptatum.
+            </div>
+            <div id="drawerValidateButton">
+                <div>
+                    <a href="resultat.html">Valider</a>
+                </div>
             </div>
 
-            <div id="forme_rectangle">
-            </div>
 
-            <div id="forme_rectangle">
-            </div>
-        </div>
-
-        <hr>
+        </section>
+    </main>
 
 
 
-
-        <div id="barre_long">
-            <div id="forme_rectangle">
-                <p>+</p>
-            </div>
-
-            <div id="forme_rectangle">
-            </div>
-
-            <div id="forme_rectangle">
-            </div>
-        </div>
-
-        <hr>
-
-
-
-
-        <div id="barre_long">
-            <div id="forme_rectangle">
-                <p>+</p>
-            </div>
-
-            <div id="forme_rectangle">
-            </div>
-
-            <div id="forme_rectangle">
-            </div>
-        </div>
-
-        <hr>
-
-
-
-
-        <div id="barre_long">
-            <div id="forme_rectangle">
-                <p>+</p>
-            </div>
-
-            <div id="forme_rectangle">
-            </div>
-
-            <div id="forme_rectangle">
-            </div>
-        </div>
-
-        <hr>
-
-
-
-        <div id="barre_long">
-            <div id="forme_rectangle">
-                <p>+</p>
-            </div>
-
-            <div id="forme_rectangle">
-            </div>
-        </div>
-
-        <hr>
-
-    </div>
-
-    <div id="slide">
-        <hr>
-        <p>Ajouter ou modifier des tuiles</p>
-        <a href="#">Valider</a>
-    </div>
-
-  
-
+    <script type="text/javascript" src="js/drawer.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 </body>
-<script type="text/javascript" src="js/script.js"></script>
+
 </html>
