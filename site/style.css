@@ -175,6 +175,7 @@ nav{
     border-radius: calc(.16 * var(--tileWidth));
     width: var(--tileWidth);
     line-height: calc(37 / 28 * var(--tileWidth));
+    height: calc(37 / 28 * var(--tileWidth));
     font-size: 64px;
     color: var(--mainColor);
 
@@ -188,8 +189,6 @@ nav{
 .lineHand div.tile{
     background-size: cover;
     background-position: center;
-    background-image: url('img/tiles/bamboo_7.png');
-
 }
 
 .lineHand div.emptyTile{
@@ -472,7 +471,6 @@ nav{
 
  #camera{
   overflow: hidden;
-  clip-path: 0 0;
   transform: translatez(0);
 }
 
