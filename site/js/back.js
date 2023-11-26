@@ -12,16 +12,7 @@ class Tile {
     }
 
 
-    drawTile(){
-        if(this.name=="empty"){
-            this.drawEmpty()
-        }else{
-            this.drawBasic()
-        }
-
-    }
-    drawBasic(){
-
+    draw(){
         let tmp = "<div class=\"tile\" id=\""+this.id+"\" ";
         tmp += " style=\"background-image:url('";
         tmp += this.img;
@@ -29,86 +20,110 @@ class Tile {
 
         return tmp;
     }
-    drawEmpty(){
-        return "<div class=\"emptyTile\" id=\""+this.id+"\">+</div>";
-    }
 
 }
 
 class Slot{
     tileList;
-    constructor() {
+    slotId;
+    constructor(id) {
         this.tileList = [];
+        this.slotId=id;
     }
 
-    drawTiles(){
-        //crée une section
-        let tmp="<section class=\"lineHand\">";
-        let i=0;
-        let y=true;
+    drawSlot(){
+        let tmp="<section class='lineHand' id='slot"+this.slotId+"'>";
+
         for(let element of this.tileList) {
-            if(element.name!="empty"){
-                tmp+=element.drawBasic();
-                i++;
-                y=true;
-            }else if (i<3 || y==true && i<4){
-                tmp+=element.drawEmpty();
-                y=false
-                i++;
-            }
-
+          tmp+=element.draw();
         }
-
+        if(this.tileList.length<3 || (this.tileList.length==3 && this._isTriple())) {
+            tmp += this._drawAddButton();
+        }
         tmp+="</section>";
-        h.innerHTML +=tmp;
+        return tmp;
 
 
     }
     addTile(tile){
         this.tileList.push(tile);
     }
-    updateTile(index)
-    {
 
+    _drawAddButton(){
+        return "<div class=\"emptyTile\" id=\""+this.id+"\" onclick=\"test('test')\">+</div>";
     }
+
+    _isTriple(){
+        let name=this.tileList[0].name;
+        if(this.tileList.length!=3){
+            return false;
+        }
+        console.log("lenght "+this.tileList.length);
+        for(let element of this.tileList) {
+            console.log(element);
+            if(element.name!=name){
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 }
 
+
 class Hand{
     slotList;
+    activeSlot;
+    currentId;
 
     constructor() {
         this.slotList = [];
         for(let i=0;i<5;i++){
-            this.slotList[i]=new Slot();
+            this.slotList[i]=new Slot(i);
         }
-        this.initHand();
+
+        this.activeSlot=-1;
+        this.currentId=0;
     }
+
+
     drawHand(){
+        h.innerHTML="";
         for (let element of this.slotList){
-            element.drawTiles();
+            element.drawSlot();
+            h.innerHTML+=element.drawSlot()
         }
     }
 
-    initHand(){
-        for(let i=0;i<50;i++){
+    addTile(name){
+        this.slotList[this.activeSlot].addTile(new Tile(name,this.currentId));
+        this.currentId++;
+    }
 
-            let tile=new Tile("empty",i);
-            console.log(Math.floor(i/3));
-            let index=Math.floor(i/10);
-            this.slotList[index].addTile(tile);
-        }
+    setActive(i){
+        this.activeSlot=i;
     }
 
 
 }
 
+
+
+function test(name){
+    // main.addTile(name);
+    main.drawHand();
+    openDrawer();
+}
+
 const main = new Hand();
-main.slotList[0].tileList[0].name="test";
-main.slotList[0].tileList[1].name="test";
-// main.slotList[0].tileList[2].name="test";
-// main.slotList[0].tileList[3].name="test";
+main.setActive(0);
+
 main.drawHand();
+
+
+
+
 
 
 

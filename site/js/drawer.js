@@ -16,24 +16,27 @@ let startY;
 console.log(getTileListHeight());
 
 
-setDrawerHeight(getMinDrawerHeight());
+closeDrawer()
 
 
-function sleep(milliseconds) {
-    const date = Date.now();
-    let currentDate = null;
-    do {
-        currentDate = Date.now();
-    } while (currentDate - date < milliseconds);
+function openDrawer(){
+    drawer.style.transition=".2s ease-out"
+    setDrawerHeight(.5*window.innerHeight);
+}
+
+function closeDrawer(){
+    drawer.style.transition=".2s ease-out"
+    setDrawerHeight(getMinDrawerHeight());
 }
 
 
-function getTileListHeight(){
-    return drawer.offsetHeight-(drawerHandle.offsetHeight+drawerHeader.offsetHeight+drawerButton.offsetHeight)
+
+function getTileListHeight(currentDrawerHeight=drawer.offsetHeight){
+    return currentDrawerHeight-(drawerHandle.offsetHeight+drawerHeader.offsetHeight+drawerButton.offsetHeight)
 }
 
-function getHandHeight(){
-    return window.innerHeight-(nav.offsetHeight+drawer.offsetHeight);
+function getHandHeight(currentDrawerHeight=drawer.offsetHeight){
+    return window.innerHeight-(nav.offsetHeight+currentDrawerHeight);
 }
 
 
@@ -44,9 +47,14 @@ function getMinDrawerHeight(){
 
 
 function setDrawerHeight(h){
+    drawer.style.removeProperty("transition")
+    hand.style.height=`${getHandHeight(h)}px`;
+    drawerTileList.style.height=`${getTileListHeight(h)}px`;
+    if(!isDragging){
+        drawer.style.transition=".2s ease-out"
+    }
     drawer.style.height = `${h}px`;
-    hand.style.height=`${getHandHeight()}px`
-    drawerTileList.style.height=`${getTileListHeight()}px`
+
 }
 
 
@@ -59,7 +67,7 @@ function roundDrawerHeight(h){
         }else{
             setDrawerHeight(maxDrawerHeight/100*window.innerHeight);
 
-    }
+        }
 
     }
 
@@ -67,7 +75,7 @@ function roundDrawerHeight(h){
 
 
 function dragStart(e){
-    drawer.style.removeProperty("transition")
+
     isDragging=true;
 }
 
@@ -82,7 +90,7 @@ function dragging(e){
 
         if(newRelativeHeight<maxDrawerHeight && newHeight>getMinDrawerHeight()){
             setDrawerHeight(newHeight);
-            console.log(window.innerHeight-startY);
+            // console.log(window.innerHeight-startY);
         }
 
 
@@ -91,12 +99,8 @@ function dragging(e){
 }
 
 
-
-
-
 function dragStop(e){
     isDragging=false
-    drawer.style.transition=".2s ease-out"
     roundDrawerHeight(drawer.offsetHeight);
 }
 
