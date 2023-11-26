@@ -117,13 +117,13 @@ public class DataSet {
             }
         }
 
-        System.out.println("la tuile trouvé est : "+matchedTile.getName());;
+        System.out.println("la tuile trouvée est : "+matchedTile.getName());;
 
 
         if(!imgMatches.empty()) {
 //             Afficher le résultat
-            HighGui.imshow("Matches", imgMatches);
-            HighGui.waitKey();
+//            HighGui.imshow("Matches", imgMatches);
+//            HighGui.waitKey();
             return matchedTile;
         }
 

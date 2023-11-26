@@ -10,7 +10,8 @@ import java.util.*;
 public class TileDetector {
 
 
-    private ArrayList<InputTile> extractedTiles=new ArrayList<InputTile>();
+    private ArrayList<InputTile> extractedTiles=new ArrayList<>();
+    private ArrayList<InputTile> matchedTiles=new ArrayList<>();
 
     private ArrayList<MatOfPoint> contours=new ArrayList<>();
     private DataSet dataSet;
@@ -19,6 +20,8 @@ public class TileDetector {
     private static int targetX;
     private static int blurRadius;
     private Mat uploadedImg;
+
+
 
 
 
@@ -175,25 +178,129 @@ public class TileDetector {
 
     }
 
-    public void matchAllTiles(){
+    public void matchAllTiles0(){
         for(int i=0;i<extractedTiles.size();i++){
             InputTile t=extractedTiles.get(i);
+
+            HighGui.imshow("t", t.getImg());
+            HighGui.waitKey();
+            InputTile result=dataSet.findMatchingTile(t.getImg());
+
+//
+//            if(!result.getName().equals("")){
+//                result.setCoor(t.getCoor());
+//                System.out.println(result.getCoor());
+//                matchedTiles.add(result);
+//            }
+            result.setCoor(t.getCoor());
+            System.out.println(result.getCoor());
+            matchedTiles.add(result);
+            extractedTiles.get(i).setName(result.getName());
+
+
+        }
+    }
+
+    public void matchAllTiles(){
+        matchedTiles= (ArrayList<InputTile>) extractedTiles.clone();
+        for(int i=0;i<matchedTiles.size();i++){
+            InputTile t=matchedTiles.get(i);
+            System.out.println(t.getCoor());
+            HighGui.imshow("t", t.getImg());
+            HighGui.waitKey();
 //            dataSet.findMatchingTile(t.getImg());
             InputTile result=dataSet.findMatchingTile(t.getImg());
             if(result.getName()==""){
-                extractedTiles.remove(i);
+                matchedTiles.remove(i);
                 i--;
             }else{
-                extractedTiles.get(i).setName(result.getName());
+                matchedTiles.get(i).setName(result.getName());
             }
 
         }
     }
+
+
+
+
+    public void showMatches(int width){
+        int borderWidth=10;
+        int s=extractedTiles.size();
+        Mat[][] binds=new Mat[2][s];
+        Mat tmp;
+
+        int j=0;
+        for (int i = 0; i < s; i++) {
+            tmp=extractedTiles.get(i).getImg();
+            Imgproc.putText(tmp, extractedTiles.get(i).getName(), new Point(10,40), Core.SORT_DESCENDING, 1.2, new Scalar(0, 0, 255), 2);
+            binds[0][i]=addRightBorder(tmp,borderWidth);
+            if(extractedTiles.get(i).getName().equals("")){
+                binds[1][i]= addRightBorder(Mat.zeros(new Size(280, 370), CvType.CV_8UC3),borderWidth);
+            }else{
+                binds[1][i]=addRightBorder(matchedTiles.get(j).getImg(),borderWidth);
+                j++;
+            }
+        }
+
+        Mat result=stackImages(binds);
+        HighGui.imshow("Tiles binds", rescaleImg(result,width));
+        HighGui.waitKey();
+
+    }
+
+    private Mat stackImages(Mat[][] images) {
+        if (images.length == 0 || images[0].length == 0) {
+            throw new IllegalArgumentException("Input array must not be empty.");
+        }
+
+        // Vérifier que toutes les images ont la même taille
+        int rows = images.length;
+        int cols = images[0].length;
+        int imgRows = images[0][0].rows();
+        int imgCols = images[0][0].cols();
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (images[i][j].rows() != imgRows || images[i][j].cols() != imgCols) {
+                    throw new IllegalArgumentException("All images must have the same size.");
+                }
+            }
+        }
+
+        // Créer une liste pour stocker les images concaténées
+        List<Mat> concatenatedImages = new ArrayList<>();
+
+        // Concaténer les images horizontalement
+        for (int i = 0; i < rows; i++) {
+            Mat rowConcatenated = new Mat();
+            Core.hconcat(new ArrayList<>(Arrays.asList(images[i])), rowConcatenated);
+            concatenatedImages.add(rowConcatenated);
+        }
+
+        // Concaténer les images verticalement
+        Mat stackedImage = new Mat();
+        Core.vconcat(concatenatedImages, stackedImage);
+
+        return stackedImage;
+    }
+
+
+    private Mat addRightBorder(Mat img, int borderWidth){
+
+        Mat blackBorder = Mat.zeros(img.rows(), borderWidth, CvType.CV_8UC3);
+        Mat extendedImage = new Mat();
+        Core.hconcat(List.of(new Mat[]{img, blackBorder}), extendedImage);
+
+        return extendedImage;
+    }
+
+
+
     public List<List<InputTile>> findCluster(){
         List<List<InputTile>> clusters=new ArrayList<>();
-        for(int i=0;i<extractedTiles.size();i++){
+        for(int i=0;i<matchedTiles.size();i++){
             clusters.add(new ArrayList<>());
-            clusters.get(i).add(extractedTiles.get(i));
+            clusters.get(i).add(matchedTiles.get(i));
         }
         int i1=0;
         int i2=0;
@@ -227,7 +334,7 @@ public class TileDetector {
         liste.remove(i2);
         return liste;
     }
-    public double dMin(List<InputTile> l1, List<InputTile>l2){
+    private double dMin(List<InputTile> l1, List<InputTile>l2){
         double minDist=-1;
         for(int i=0;i<l1.size();i++){
             for(int y=0;y<l2.size();y++){
@@ -254,10 +361,21 @@ public class TileDetector {
             Core.rotate(uploadedImg,uploadedImg,Core.ROTATE_90_COUNTERCLOCKWISE);
         }
 
-        // rescale image
-        float scale=(float)targetX/uploadedImg.width();
-        Size scaleSize=new Size(targetX, uploadedImg.height()*scale);
-        Imgproc.resize(uploadedImg,uploadedImg,scaleSize);
+        uploadedImg=rescaleImg(uploadedImg,targetX);
+    }
+
+
+    /**
+     * Rescale an image to the given width, without changing the aspect ratio
+     * @param newWidth the width of the new image
+     * @return the resized image
+     */
+    private Mat rescaleImg(Mat img, int newWidth){
+        Mat resized = new Mat();
+        float scale=(float)newWidth/img.width();
+        Size scaleSize=new Size(newWidth, img.height()*scale);
+        Imgproc.resize(img,resized,scaleSize);
+        return resized;
     }
 
 

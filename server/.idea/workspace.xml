@@ -5,26 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43f76323-03ed-4a48-9093-7b06be31145d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Score/AbstractTile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Score/Bamboo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Score/BasicTile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Score/Character.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Score/Dot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Score/Dragon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Score/ExtraTile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Score/Flower.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Score/Honnor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Score/Season.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Score/Wind.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/Hand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/ImageMatching/DataSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/ImageMatching/DataSet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/ImageMatching/Tile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/ImageMatching/TileDetector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/ImageMatching/TileDetector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/OpenCV.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/OpenCV.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Score/Hand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageMatching/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageMatching/DataSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageMatching/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageMatching/InputTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageMatching/InputTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageMatching/InputTile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageMatching/TileDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageMatching/TileDetector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OpenCV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OpenCV.java" afterDir="false" />
     </list>
@@ -60,7 +43,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Mathis&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;Z:/Documents/2A/S3/SAE/code/main/server&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,

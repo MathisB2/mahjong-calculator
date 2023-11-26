@@ -15,11 +15,13 @@ public class OpenCV {
             detector.loadImage("src/img/render6.png");
 
             detector.findContours();
-//            detector.showContours();
+            detector.showContours();
             detector.extractTiles();
 
             System.out.println("debut");
             detector.matchAllTiles();
+
+            detector.showMatches(1800);
 
             List<List<InputTile>> clusters=detector.findCluster();
         System.out.println(clusters.size());

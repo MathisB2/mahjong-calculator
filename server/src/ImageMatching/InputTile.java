@@ -41,6 +41,10 @@ public class InputTile {
         this.coor=new Point(x,y);
     }
 
+    public void setCoor(Point p){
+        this.coor=p;
+    }
+
 
     public Point getCoor(){
         return this.coor;
