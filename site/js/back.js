@@ -9,11 +9,20 @@ class Tile {
         this.name=name;
         this.id=id;
         this.img="img/tiles/dot_4.png";
+        if(id==0){
+            this.img="img/tiles/dot_3.png";
+        }
+        if(id==1){
+            this.img="img/tiles/dot_4.png";
+        }
+        if(id==2){
+            this.img="img/tiles/dot_2.png";
+        }
     }
 
 
     draw(){
-        let tmp = "<div class=\"tile\" id=\""+this.id+"\" ";
+        let tmp = "<div class=\"tile\" id=\""+this.id+"\" draggable=\"true\" ";
         tmp += " style=\"background-image:url('";
         tmp += this.img;
         tmp += "')\"> </div>";
@@ -50,7 +59,7 @@ class Slot{
     }
 
     _drawAddButton(){
-        return "<div class=\"emptyTile\" id=\""+this.id+"\" onclick=\"test('test')\">+</div>";
+        return "<div class=\"emptyTile\" id=\""+this.slotId+"\"  onclick=\"test('test')\">+</div>";
     }
 
     _isTriple(){
@@ -66,6 +75,14 @@ class Slot{
             }
         }
         return true;
+    }
+    deleteTile(id){
+        for(let element of this.tileList) {
+            console.log(element);
+            if(element.id==id){
+                this.tileList.splice(id,1);
+            }
+        }
     }
 
 
@@ -89,36 +106,129 @@ class Hand{
 
 
     drawHand(){
+
         h.innerHTML="";
         for (let element of this.slotList){
             element.drawSlot();
             h.innerHTML+=element.drawSlot()
+
         }
+        for (let element of this.slotList){
+            for (let ele of element.tileList){
+                let e=document.getElementById(ele.id);
+
+                e.addEventListener("dragstart",drag);
+                e.addEventListener("dragover",allowDrop);
+                e.addEventListener("drop",drop);
+
+            }
+        }
+
     }
 
     addTile(name){
         this.slotList[this.activeSlot].addTile(new Tile(name,this.currentId));
-        this.currentId++;
+        ++this.currentId;
     }
 
-    setActive(i){
-        this.activeSlot=i;
+    setActive(id){
+        this.activeSlot=id;
     }
-
+    removeTile(id){
+        this.slotList[this.activeSlot].deleteTile(id);
+    }
+    getTile(id){
+        for (let element of this.slotList){
+            for (let ele of element.tileList){
+                if(ele.id==id){
+                    return ele;
+                }
+            }
+        }
+        return null;
+    }
 
 }
 
+function drag(event){
+    console.log("Drag Start - Element ID:", event.target.id);
+    event.dataTransfer.setData("id",event.target.id);
+}
+function allowDrop(event) {
+    event.preventDefault();
+}
+function drop(event){
+    event.preventDefault();
 
+    let id=event.dataTransfer.getData("id")
+    let dropZone = event.target;
 
-function test(name){
-    // main.addTile(name);
+    if(dropZone.className=="tile"){
+        let id2 = dropZone.id;
+        console.log("drag :" + id + " and drop :" + id2);
+        swapTiles(id,id2);
+    }else{
+        let slot = dropZone.id;
+        console.log("drag :"+id+" and drop on slot :"+slot);
+        insertTile(id,slot)
+    }
+
+}
+function insertTile(id1,slotId){
+    let tile = main.getTile(id1);
+
+    main.setActive(slotId);
+
+    main.removeTile(main.getTile(id1))
+    main.addTile(tile);
+}
+function swapTiles(id1, id2){
+    let tile = main.getTile(id1);
+    let tile2 = main.getTile(id2);
+
+    let info;
+
+    info = tile.name;
+    tile.name = tile2.name;
+    tile2.name = info;
+
+    info = tile.type;
+    tile.type = tile2.type;
+    tile2.type = info;
+
+    info = tile.img;
+    tile.img = tile2.img;
+    tile2.img = info;
+
     main.drawHand();
-    openDrawer();
 }
 
 const main = new Hand();
 main.setActive(0);
-
+main.addTile("feaff");
+main.addTile("feaff");
+main.setActive(1);
+main.addTile("feaff");
+main.addTile("feaff");
+main.addTile("feaff");
+main.addTile("feaff");
+main.setActive(2);
+main.addTile("feaff");
+main.addTile("feaff");
+main.addTile("feaff");
+main.addTile("feaff");
+main.setActive(3);
+main.addTile("feaff");
+main.addTile("feaff");
+main.addTile("feaff");
+main.addTile("feaff");
+main.setActive(4);
+main.addTile("feaff");
+main.addTile("feaff");
+main.addTile("feaff");
+main.addTile("feaff");
+main.drawHand();
+//main.removeTile(0);
 main.drawHand();
 
 
