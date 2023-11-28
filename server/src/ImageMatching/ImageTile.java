@@ -4,7 +4,7 @@ import org.opencv.core.Mat;
 import org.opencv.core.Point;
 import org.opencv.imgcodecs.Imgcodecs;
 
-public class InputTile {
+public class ImageTile {
     private String name;
     private Mat Img;
 
@@ -15,12 +15,12 @@ public class InputTile {
      * @param name name of the tile
      * @param path path of the tile image file (ex: scr/img/dataSet/data1/bamboo_1.png)
      */
-    public InputTile(String name, String path){
+    public ImageTile(String name, String path){
         this.name=name;
         this.Img= Imgcodecs.imread(path);
     }
 
-    public InputTile(String name, Mat img){
+    public ImageTile(String name, Mat img){
         this.name=name;
         this.Img=img;
     }

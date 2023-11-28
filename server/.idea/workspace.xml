@@ -6,10 +6,52 @@
   <component name="ChangeListManager">
     <list default="true" id="43f76323-03ed-4a48-9093-7b06be31145d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/ImageMatching/DataSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/ImageMatching/DataSet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/ImageMatching/InputTile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/ImageMatching/TileDetector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/ImageMatching/TileDetector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/OpenCV.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/OpenCV.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/images.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/img0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/img1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/img2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/img3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/render10.avif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/render10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/render3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/render5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/render5_vertical.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/render6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/render7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/render8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/render9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/t.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/tuile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/tuile.webp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageMatching/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageMatching/DataSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageMatching/InputTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageMatching/InputTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageMatching/InputTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageMatching/ImageTile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageMatching/TileDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageMatching/TileDetector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OpenCV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OpenCV.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/images.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/img0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/img1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/img2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/img3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/render10.avif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/render10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/render3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/render5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/render5_vertical.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/render6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/render7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/render8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/render9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/t.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/tuile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/tuile.webp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,9 +156,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.OpenCV" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.FeatureMatching" />
         <item itemvalue="Application.MorphologyDemo1" />
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.OpenCVTest" />
       </list>
     </recent_temporary>

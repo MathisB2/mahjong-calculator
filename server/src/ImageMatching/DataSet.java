@@ -4,7 +4,6 @@ import org.opencv.core.*;
 import org.opencv.features2d.BFMatcher;
 import org.opencv.features2d.Features2d;
 import org.opencv.features2d.SIFT;
-import org.opencv.highgui.HighGui;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ import static org.opencv.features2d.Features2d.DrawMatchesFlags_NOT_DRAW_SINGLE_
 
 public class DataSet {
     private String name;
-    private ArrayList<InputTile> dataSet;
+    private ArrayList<ImageTile> dataSet;
 
     public DataSet() {
         dataSet=new ArrayList<>();
@@ -35,11 +34,11 @@ public class DataSet {
         return dataSet.size();
     }
 
-    public InputTile getTile(int i){
+    public ImageTile getTile(int i){
         return dataSet.get(i);
     }
 
-    public ArrayList<InputTile> toArray(){
+    public ArrayList<ImageTile> toArray(){
         return dataSet;
     }
 
@@ -56,7 +55,7 @@ public class DataSet {
                 name=file.getName();
                 pos=name.lastIndexOf(".");
                 name=name.substring(0,pos);
-                dataSet.add(new InputTile(name,file.toString()));
+                dataSet.add(new ImageTile(name,file.toString()));
             }
         }else{
             System.out.println("dataSet "+folderName+" already loaded");
@@ -64,10 +63,10 @@ public class DataSet {
     }
 
 
-    public InputTile findMatchingTile(Mat img){
+    public ImageTile findMatchingTile(Mat img){
 
         int maxMatch=0;
-        InputTile matchedTile=dataSet.get(0);
+        ImageTile matchedTile=dataSet.get(0);
         float ratioThreshold = .6f;
 
         //HighGui.imshow("Image", img);
@@ -87,7 +86,7 @@ public class DataSet {
 
         Mat imgMatches = new Mat();
 
-        for(InputTile currentTile:dataSet) {
+        for(ImageTile currentTile:dataSet) {
 
             MatOfKeyPoint kp2 = new MatOfKeyPoint();
             Mat des2 = new Mat();
@@ -127,6 +126,6 @@ public class DataSet {
             return matchedTile;
         }
 
-        return new InputTile("",img);
+        return new ImageTile("",img);
     }
 }
