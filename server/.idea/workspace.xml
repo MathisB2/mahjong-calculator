@@ -6,52 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="43f76323-03ed-4a48-9093-7b06be31145d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/ImageMatching/DataSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/ImageMatching/DataSet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/ImageMatching/InputTile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/ImageMatching/TileDetector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/ImageMatching/TileDetector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/OpenCV.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/OpenCV.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/b.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/images.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/img0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/img1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/img2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/img3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/render10.avif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/render10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/render3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/render5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/render5_vertical.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/render6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/render7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/render8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/render9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/t.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/tuile.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/tuile.webp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageMatching/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageMatching/DataSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageMatching/InputTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageMatching/ImageTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageMatching/ImageTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageMatching/ImageTile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageMatching/TileDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageMatching/TileDetector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OpenCV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OpenCV.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/b.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/images.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/img0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/img1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/img2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/img3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/render10.avif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/render10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/render3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/render5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/render5_vertical.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/render6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/render7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/render8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/render9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/t.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/tuile.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/tuile.webp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,25 +37,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;Z:/Documents/2A/S3/SAE/code/main/server&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/Mathis/Desktop/sae/main2/server",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="Z:\Documents\2A\S3\SAE\code\Mathis\server\src\img" />

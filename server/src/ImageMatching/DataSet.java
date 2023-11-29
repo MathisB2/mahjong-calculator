@@ -4,6 +4,7 @@ import org.opencv.core.*;
 import org.opencv.features2d.BFMatcher;
 import org.opencv.features2d.Features2d;
 import org.opencv.features2d.SIFT;
+import org.opencv.imgproc.Imgproc;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -14,6 +15,8 @@ import static org.opencv.features2d.Features2d.DrawMatchesFlags_NOT_DRAW_SINGLE_
 
 public class DataSet {
     private String name;
+    private int width;
+    private int height;
     private ArrayList<ImageTile> dataSet;
 
     public DataSet() {
@@ -116,16 +119,42 @@ public class DataSet {
             }
         }
 
-        System.out.println("la tuile trouvée est : "+matchedTile.getName());;
+
 
 
         if(!imgMatches.empty()) {
+            System.out.println("la tuile trouvée est : "+matchedTile.getName());;
 //             Afficher le résultat
 //            HighGui.imshow("Matches", imgMatches);
 //            HighGui.waitKey();
             return matchedTile;
         }
+        System.out.println("tuile ingnorée");
+        return new ImageTile("",getEmptyImg());
+    }
 
-        return new ImageTile("",img);
+
+
+    private Mat rescaleImg(Mat img, int newWidth, int newHeight){
+        Mat resized = new Mat();
+        Size scaleSize=new Size(newWidth, newHeight);
+        Imgproc.resize(img,resized,scaleSize);
+        return resized;
+    }
+
+
+    public void setSize(int width, int height){
+        if(this.dataSet.size()>0){
+            for(ImageTile img:dataSet){
+                if(img.getImg().cols()!=width || img.getImg().rows()!=height){
+                    img.setImg(rescaleImg(img.getImg(),width,height));
+                }
+            }
+        }
+
+    }
+
+    private Mat getEmptyImg(){
+        return Mat.zeros(height, width, CvType.CV_8UC3);
     }
 }

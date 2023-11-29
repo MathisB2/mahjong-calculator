@@ -35,6 +35,9 @@ public class ImageTile {
     public Mat getImg() {
         return Img;
     }
+    public void setImg(Mat img){
+        this.Img=img;
+    }
 
 
     public void setCoor(double x, double y){

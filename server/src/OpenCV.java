@@ -7,35 +7,27 @@ import java.util.List;
 public class OpenCV {
     public static void main(String[] args) {
 
-            System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-            TileDetector detector=new TileDetector(1600);
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        TileDetector detector=new TileDetector(1600);
+
+        detector.runOn("src/img/photos/img48.jpg","data2",false);
 
 
-            detector.loadDataSet("data2");
-            detector.loadImage("src/img/photos/img48.jpg");
-//            detector.loadImage("src/img/photos/img41.jpg");
-
-            detector.findContours();
-            detector.showContours();
-            detector.extractTiles();
-
-            System.out.println("debut");
-            detector.matchAllTiles();
-
-            detector.showMatches(1800);
-
-            List<List<ImageTile>> clusters=detector.findCluster();
+        List<List<ImageTile>> clusters=detector.findCluster();
         System.out.println(clusters.size());
 
-            for (int i = 0; i < clusters.size(); i++) {
+        for (int i = 0; i < clusters.size(); i++) {
 
-                for (int y=0;y<clusters.get(i).size();y++){
-                    System.out.println("Cluster " + (i + 1) + ": " + clusters.get(i).get(y).getName());
-                }
+            for (int y=0;y<clusters.get(i).size();y++){
+                System.out.println("Cluster " + (i + 1) + ": " + clusters.get(i).get(y).getName());
             }
+        }
+
 
         System.out.println("fin");
-        }
+    }
+
+
 
 
 

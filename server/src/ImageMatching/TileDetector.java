@@ -21,6 +21,9 @@ public class TileDetector {
     private static int blurRadius;
     private Mat uploadedImg;
 
+    private int tileWidth;
+    private int tileHeight;
+
 
 
 
@@ -33,6 +36,51 @@ public class TileDetector {
         targetX=resolution;
         blurRadius=5;
         dataSet=new DataSet();
+        tileWidth=280;
+        tileHeight=370;
+    }
+
+    /**
+     * Global function to perform full image detection process
+     * @param imagePath the path to the input image containing the tiles
+     * @param dataSet the name of the dataSet to use
+     * @param preview true means results will be displayed as images
+     */
+    public void runOn(String imagePath, String dataSet,boolean preview){
+        runOn(Imgcodecs.imread(imagePath),dataSet,preview);
+    }
+
+    /**
+     * Global function to perform full image detection process
+     * @param image the input image containing the tiles
+     * @param dataSet the name of the dataSet to use
+     * @param preview true means results will be displayed as images
+     */
+    public void runOn(Mat image, String dataSet,boolean preview){
+        loadDataSet(dataSet);
+        loadImage(image);
+        findContours();
+        if(preview){
+            showContours();
+        }
+        extractTiles();
+        matchAllTiles();
+        if(preview){
+            showMatches(1800);
+        }
+
+        //find clusters
+        clearData();
+    }
+
+    /**
+     * reset all values to default in order to run detector again on other images
+     */
+    public void clearData(){
+        extractedTiles=new ArrayList<>();
+        matchedTiles=new ArrayList<>();
+        contours=new ArrayList<>();
+        uploadedImg=new Mat();
     }
 
     /**
@@ -41,6 +89,7 @@ public class TileDetector {
      */
     public void loadDataSet(String folderName){
         dataSet.loadFolder(folderName);
+        dataSet.setSize(tileWidth,tileHeight);
     }
 
 
@@ -155,17 +204,15 @@ public class TileDetector {
     public void extractTiles(){
         for (MatOfPoint cnt : contours) {
             //perspective transform
-            int width=280;
-            int height=370;
 
             Point[] inputPts = sortContourPoints(cnt.toArray());
-            Point[] outputPts = new Point[]{new Point(0, 0), new Point(width, 0), new Point(width, height), new Point(0, height)};
+            Point[] outputPts = new Point[]{new Point(0, 0), new Point(tileWidth, 0), new Point(tileWidth, tileHeight), new Point(0, tileHeight)};
             MatOfPoint2f src = new MatOfPoint2f(inputPts);
             MatOfPoint2f dst = new MatOfPoint2f(outputPts);
 
             Mat perspectivetransform=Imgproc.getPerspectiveTransform(src,dst);
             Mat finalImage=new Mat();
-            Imgproc.warpPerspective(uploadedImg,finalImage,perspectivetransform,new Size(width,height));
+            Imgproc.warpPerspective(uploadedImg,finalImage,perspectivetransform,new Size(tileWidth,tileHeight));
             //testTile2(finalImage);
             // ajout des images dans un tableau
 
@@ -209,9 +256,13 @@ public class TileDetector {
             Thread th = new Thread(() ->  {
                 ImageTile result=dataSet.findMatchingTile(t.getImg());
                 t.setName(result.getName());
-
+                result.setCoor(t.getCoor());
                 extractedTiles.add(t);
-                matchedTiles.add(result);
+
+                if(!t.getName().equals("")){
+                    matchedTiles.add(result);
+                }
+
 
                 System.out.println(t.getCoor());
             });
@@ -243,7 +294,7 @@ public class TileDetector {
             Imgproc.putText(tmp, extractedTiles.get(i).getName(), new Point(10,40), Core.SORT_DESCENDING, 1.2, new Scalar(0, 0, 255), 2);
             binds[0][i]=addRightBorder(tmp,borderWidth);
             if(extractedTiles.get(i).getName().equals("")){
-                binds[1][i]= addRightBorder(Mat.zeros(new Size(280, 370), CvType.CV_8UC3),borderWidth);
+                binds[1][i]= addRightBorder(Mat.zeros(new Size(tileWidth, tileHeight), CvType.CV_8UC3),borderWidth);
             }else{
                 binds[1][i]=addRightBorder(matchedTiles.get(j).getImg(),borderWidth);
                 j++;
