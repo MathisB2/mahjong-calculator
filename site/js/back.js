@@ -408,7 +408,8 @@ function addAvailableTile(tile,name){
 
 
             // availableTiles[i].push(tile);
-            availableTiles[i].splice(pos, 0, tile);
+            console.log("tableau : "+availableTiles);
+            availableTiles[i].splice(pos, 0, tile); //add the tile at index pos
             //console.log(availableTiles[i]);
         }
     }
@@ -423,16 +424,6 @@ main.setActive(0);
 // main.addTile("bamboo_2");
 importTiles();
 main.drawHand();
-
-
-
-
-let test=[0,1,2,"fin"];
-pos=test.length-1
-test.splice(pos, 0, 3);
-console.log('position '+test)
-
-
 
 
 
