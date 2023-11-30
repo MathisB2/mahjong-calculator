@@ -8,36 +8,26 @@ import org.opencv.imgproc.Imgproc;
 import java.util.*;
 
 public class TileDetector {
-
-
-    private ArrayList<ImageTile> extractedTiles=new ArrayList<>();
-    private ArrayList<ImageTile> matchedTiles=new ArrayList<>();
-
-    private ArrayList<MatOfPoint> contours=new ArrayList<>();
+    private ArrayList<ImageTile> extractedTiles = new ArrayList<>();
+    private ArrayList<ImageTile> matchedTiles = new ArrayList<>();
+    private ArrayList<MatOfPoint> contours = new ArrayList<>();
     private DataSet dataSet;
-
-
     private static int targetX;
     private static int blurRadius;
     private Mat uploadedImg;
-
     private int tileWidth;
     private int tileHeight;
-
-
-
-
-
     /**
      * constructor of ImageDetector
      * @param resolution max width of image used for detection
      */
     public TileDetector(int resolution) {
-        targetX=resolution;
-        blurRadius=5;
-        dataSet=new DataSet();
-        tileWidth=280;
-        tileHeight=370;
+        targetX = resolution;
+        dataSet = new DataSet();
+
+        blurRadius = 5;
+        tileWidth = 280;
+        tileHeight = 370;
     }
 
     /**
@@ -46,7 +36,7 @@ public class TileDetector {
      * @param dataSet the name of the dataSet to use
      * @param preview true means results will be displayed as images
      */
-    public void runOn(String imagePath, String dataSet,boolean preview){
+    public void runOn(String imagePath, String dataSet, boolean preview){
         runOn(Imgcodecs.imread(imagePath),dataSet,preview);
     }
 
@@ -56,20 +46,21 @@ public class TileDetector {
      * @param dataSet the name of the dataSet to use
      * @param preview true means results will be displayed as images
      */
-    public void runOn(Mat image, String dataSet,boolean preview){
+    public void runOn(Mat image, String dataSet, boolean preview){
         loadDataSet(dataSet);
         loadImage(image);
         findContours();
+
         if(preview){
             showContours();
         }
         extractTiles();
         matchAllTiles();
+
         if(preview){
             showMatches(1800);
         }
 
-        //find clusters
         clearData();
     }
 
@@ -77,10 +68,10 @@ public class TileDetector {
      * reset all values to default in order to run detector again on other images
      */
     public void clearData(){
-        extractedTiles=new ArrayList<>();
-        matchedTiles=new ArrayList<>();
-        contours=new ArrayList<>();
-        uploadedImg=new Mat();
+        extractedTiles = new ArrayList<>();
+        matchedTiles = new ArrayList<>();
+        contours = new ArrayList<>();
+        uploadedImg = new Mat();
     }
 
     /**
@@ -91,8 +82,6 @@ public class TileDetector {
         dataSet.loadFolder(folderName);
         dataSet.setSize(tileWidth,tileHeight);
     }
-
-
     /**
      * load the image that will be used for extracting tiles
      * @param filePath path of the image
@@ -106,61 +95,50 @@ public class TileDetector {
      * @param img Mat image
      */
     public void loadImage(Mat img){
-        uploadedImg= img;
+        uploadedImg = img;
         rescaleUploaded();
     }
-
-
     /**
      * compute contours of the loaded image. This step is necessary before extracting tiles
      */
     public void findContours(boolean simplify, int minArea){
-        // convert to gray
         Mat clone = new Mat();
         Imgproc.cvtColor(uploadedImg, clone, Imgproc.COLOR_BGR2GRAY);
-        //blur
+
         Imgproc.blur(clone,clone,new Size(blurRadius,blurRadius));
 
         Imgproc.threshold(clone, clone, 0, 1, Imgproc.THRESH_OTSU);
 
         int dilateSize = 10;
         Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, new Size(dilateSize, dilateSize));
-        //Applying erosion on the Image
+
         Mat tilesMask = new Mat();
         Imgproc.dilate(clone, tilesMask, kernel);
 
-        //convert tileMask to BGR
         Mat maskBGR = new Mat();
         List<Mat> listMat = Arrays.asList(tilesMask, tilesMask, tilesMask);
         Core.merge(listMat, maskBGR);
 
-        //remove pixels out of the mask
         Core.multiply(uploadedImg, maskBGR, clone);
         Imgproc.cvtColor(clone, clone, Imgproc.COLOR_BGR2GRAY);
 
-        //apply adaptative treshold
         Imgproc.adaptiveThreshold(clone, clone, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C, Imgproc.THRESH_BINARY, 7, 4);
 
-        //Apply erosion on the Image
         dilateSize = 4;
         kernel = Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, new Size(dilateSize, dilateSize));
 
         Imgproc.erode(clone, clone, kernel);
-//        Imgproc.medianBlur(img,img,3);
 
         Core.multiply(clone, tilesMask, clone);
 
 
-        // find contours
         ArrayList<MatOfPoint> tmp=new ArrayList<>();
         Imgproc.findContours(clone, tmp, clone, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
 
 
         for(MatOfPoint cnt:tmp){
-            //ignore too small contours
             if (Imgproc.contourArea(cnt) >= minArea) {
                 if(simplify){
-                    //force contours to be quads
                     MatOfPoint quad=simplifyContour(cnt, 4);
                     if(quad.toArray().length==4) {
                         contours.add(quad);
@@ -203,8 +181,6 @@ public class TileDetector {
 
     public void extractTiles(){
         for (MatOfPoint cnt : contours) {
-            //perspective transform
-
             Point[] inputPts = sortContourPoints(cnt.toArray());
             Point[] outputPts = new Point[]{new Point(0, 0), new Point(tileWidth, 0), new Point(tileWidth, tileHeight), new Point(0, tileHeight)};
             MatOfPoint2f src = new MatOfPoint2f(inputPts);
@@ -213,8 +189,6 @@ public class TileDetector {
             Mat perspectivetransform=Imgproc.getPerspectiveTransform(src,dst);
             Mat finalImage=new Mat();
             Imgproc.warpPerspective(uploadedImg,finalImage,perspectivetransform,new Size(tileWidth,tileHeight));
-            //testTile2(finalImage);
-            // ajout des images dans un tableau
 
             ImageTile t=new ImageTile("",finalImage);
 
@@ -225,36 +199,14 @@ public class TileDetector {
 
     }
 
-    public void matchAllTiles0(){
-        for(int i=0;i<extractedTiles.size();i++){
-            ImageTile t=extractedTiles.get(i);
-
-            HighGui.imshow("t", t.getImg());
-            HighGui.waitKey();
-            ImageTile result=dataSet.findMatchingTile(t.getImg());
-
-//
-//            if(!result.getName().equals("")){
-//                result.setCoor(t.getCoor());
-//                System.out.println(result.getCoor());
-//                matchedTiles.add(result);
-//            }
-            result.setCoor(t.getCoor());
-            System.out.println(result.getCoor());
-            matchedTiles.add(result);
-            extractedTiles.get(i).setName(result.getName());
-
-
-        }
-    }
-
     public void matchAllTiles(){
         ArrayList<Thread> ths = new ArrayList<>();
+
         for(int i=0;i<extractedTiles.size();i++){
             ImageTile t = extractedTiles.get(i);
 
             Thread th = new Thread(() ->  {
-                ImageTile result=dataSet.findMatchingTile(t.getImg());
+                ImageTile result = dataSet.findMatchingTile(t.getImg());
                 t.setName(result.getName());
                 result.setCoor(t.getCoor());
                 extractedTiles.add(t);
@@ -270,17 +222,14 @@ public class TileDetector {
             ths.add(th);
         }
         extractedTiles.clear();
+
         try{
             for(Thread th : ths){
                 th.join();
             }
         }catch(Exception e){}
 
-        System.out.println(matchedTiles.size());
     }
-
-
-
 
     public void showMatches(int width){
         int borderWidth=10;
@@ -308,35 +257,26 @@ public class TileDetector {
     }
 
     private Mat stackImages(Mat[][] images) {
-        if (images.length == 0 || images[0].length == 0) {
-            throw new IllegalArgumentException("Input array must not be empty.");
-        }
+        if (images.length == 0 || images[0].length == 0) throw new IllegalArgumentException("Input array must not be empty.");
 
-        // Vérifier que toutes les images ont la même taille
-        int rows = images.length;
-        int cols = images[0].length;
         int imgRows = images[0][0].rows();
         int imgCols = images[0][0].cols();
 
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
+        for (int i = 0; i < images.length; i++) {
+            for (int j = 0; j < images[0].length; j++) {
                 if (images[i][j].rows() != imgRows || images[i][j].cols() != imgCols) {
                     throw new IllegalArgumentException("All images must have the same size.");
                 }
             }
         }
 
-        // Créer une liste pour stocker les images concaténées
         List<Mat> concatenatedImages = new ArrayList<>();
 
-        // Concaténer les images horizontalement
         for (int i = 0; i < rows; i++) {
             Mat rowConcatenated = new Mat();
             Core.hconcat(new ArrayList<>(Arrays.asList(images[i])), rowConcatenated);
             concatenatedImages.add(rowConcatenated);
         }
-
-        // Concaténer les images verticalement
         Mat stackedImage = new Mat();
         Core.vconcat(concatenatedImages, stackedImage);
 
@@ -345,7 +285,6 @@ public class TileDetector {
 
 
     private Mat addRightBorder(Mat img, int borderWidth){
-
         Mat blackBorder = Mat.zeros(img.rows(), borderWidth, CvType.CV_8UC3);
         Mat extendedImage = new Mat();
         Core.hconcat(List.of(new Mat[]{img, blackBorder}), extendedImage);
@@ -356,31 +295,30 @@ public class TileDetector {
 
 
     public List<List<ImageTile>> findCluster(){
-        List<List<ImageTile>> clusters=new ArrayList<>();
-        for(int i=0;i<matchedTiles.size();i++){
+        List<List<ImageTile>> clusters = new ArrayList<>();
+        for(int i = 0; i < matchedTiles.size(); i++){
             clusters.add(new ArrayList<>());
             clusters.get(i).add(matchedTiles.get(i));
         }
-        int i1=0;
-        int i2=0;
-        double dist=-1;
-        while(clusters.size()>5){
-            dist=-1;
-            i1=0;
-            i2=0;
-            for(int i=0;i<clusters.size();i++){
-                for(int y=i+1;y<clusters.size();y++){
-                    double d=dMin(clusters.get(i),clusters.get(y));
-                    if(dist==-1 || dist>d){
-                        dist=d;
-                        i1=i;
-                        i2=y;
-                    }
+        int i1, i2;
+        double dist;
 
+        while(clusters.size() > 5){
+            dist = -1;
+            i1 = 0;
+            i2 = 0;
+            for(int i = 0; i < clusters.size(); i++){
+                for(int y = i + 1; y < clusters.size(); y++){
+                    double d = dMin(clusters.get(i), clusters.get(y));
+                    if(dist == -1 || dist > d){
+                        dist = d;
+                        i1 = i;
+                        i2 = y;
+                    }
                 }
             }
-            clusters=concatList(clusters,i1,i2);
 
+            clusters = concatList(clusters, i1, i2);
         }
 
         return clusters;
@@ -395,13 +333,13 @@ public class TileDetector {
     }
     private double dMin(List<ImageTile> l1, List<ImageTile>l2){
         double minDist=-1;
+
         for(int i=0;i<l1.size();i++){
             for(int y=0;y<l2.size();y++){
                 double dist=calculateDistance(l1.get(i).getCoor(),l2.get(y).getCoor());
                 if(minDist==-1 || dist<minDist){
                     minDist=dist;
                 }
-
             }
         }
         return minDist;
@@ -415,12 +353,11 @@ public class TileDetector {
      * Then rescale to set width=targetX
      */
     private void rescaleUploaded(){
-        // rotate if needed
         if(uploadedImg.width()<uploadedImg.height()){
             Core.rotate(uploadedImg,uploadedImg,Core.ROTATE_90_COUNTERCLOCKWISE);
         }
 
-        uploadedImg=rescaleImg(uploadedImg,targetX);
+        uploadedImg = rescaleImg(uploadedImg,targetX);
     }
 
 
@@ -482,7 +419,6 @@ public class TileDetector {
      * @return sorted points
      */
     private Point[] sortContourPoints(Point[] points, boolean clockwise) {
-
         Point pointA = findClosestPoint(points, new Point(0, 0));
 
         points = removePoint(points, pointA);
@@ -495,16 +431,14 @@ public class TileDetector {
         Point pointD = findClosestPoint(points, pointC);
 
         Point[] ret=new Point[]{pointA, pointB, pointC, pointD};
+
         if(!isClockwise(ret)){
-            ret= invertPoints(ret,0,1);
-            ret= invertPoints(ret,2,3);
+            ret = invertPoints(ret,0,1);
+            ret = invertPoints(ret,2,3);
         }
 
-        if(clockwise){
-            return ret;
-        }else{
-            return invertPoints(ret,1,3);
-        }
+        if(clockwise) return ret;
+        return invertPoints(ret,1,3);
     }
 
 
@@ -529,10 +463,7 @@ public class TileDetector {
      */
     private boolean isClockwise(Point[] points) {
         int numPoints = points.length;
-
-        if (numPoints < 3) {
-            return false;
-        }
+        if (numPoints < 3) return false;
 
         double sum = 0;
         for (int i = 0; i < numPoints; i++) {
@@ -543,10 +474,9 @@ public class TileDetector {
         return sum < 0;
     }
 
-
-
     private Point findClosestPoint(Point[] points, Point reference) {
         double minDistance = calculateDistance(points[0], reference);
+
         Point closest = points[0];
         for (Point point : points) {
             double distance = calculateDistance(point, reference);
@@ -557,8 +487,6 @@ public class TileDetector {
         }
         return closest;
     }
-
-
     private Point[] removePoint(Point[] points, Point remove) {
         ArrayList<Point> removed = new ArrayList<>();
         for (Point point : points) {
@@ -572,12 +500,9 @@ public class TileDetector {
         }
         return ret;
     }
-
-
     private double calculateDistance(Point point1, Point point2) {
         return Math.sqrt(Math.pow(point1.x - point2.x, 2) + Math.pow(point1.y - point2.y, 2));
     }
-
 
     /**
      * calculates the center of mass of the given points
@@ -586,10 +511,7 @@ public class TileDetector {
      */
     private Point getCenterPoint(Point[] points) {
         int numPoints = points.length;
-
-        if (numPoints == 0) {
-            return new Point(0, 0);
-        }
+        if(numPoints == 0) return new Point(0,0);
 
         double sumX = 0;
         double sumY = 0;
@@ -599,10 +521,7 @@ public class TileDetector {
             sumY += point.y;
         }
 
-        double meanX = sumX / numPoints;
-        double meanY = sumY / numPoints;
-
-        return new Point(meanX, meanY);
+        return new Point(sumX / numPoints, sumY / numPoints);
     }
 
 }

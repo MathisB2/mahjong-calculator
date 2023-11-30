@@ -1,5 +1,6 @@
 package ImageMatching;
 
+import org.opencv.calib3d.Calib3d;
 import org.opencv.core.*;
 import org.opencv.features2d.BFMatcher;
 import org.opencv.features2d.Features2d;
@@ -15,8 +16,6 @@ import static org.opencv.features2d.Features2d.DrawMatchesFlags_NOT_DRAW_SINGLE_
 
 public class DataSet {
     private String name;
-    private int width;
-    private int height;
     private ArrayList<ImageTile> dataSet;
 
     public DataSet() {
@@ -55,9 +54,9 @@ public class DataSet {
             int pos;
 
             for(File file : listOfFiles){
-                name=file.getName();
-                pos=name.lastIndexOf(".");
-                name=name.substring(0,pos);
+                name = file.getName();
+                pos = name.lastIndexOf(".");
+                name = name.substring(0,pos);
                 dataSet.add(new ImageTile(name,file.toString()));
             }
         }else{
@@ -67,69 +66,48 @@ public class DataSet {
 
 
     public ImageTile findMatchingTile(Mat img){
-
-        int maxMatch=0;
-        ImageTile matchedTile=dataSet.get(0);
+        ImageTile matchedTile = null;
         float ratioThreshold = .6f;
+        double bestScore = 0;
 
-        //HighGui.imshow("Image", img);
-        //HighGui.waitKey();
-
-
-        // Create SIFT detector
         SIFT sift = SIFT.create();
 
-        //Compute keypoints and desciptors of given image
         MatOfKeyPoint kp1 = new MatOfKeyPoint();
         Mat des1 = new Mat();
-        sift.detectAndCompute(img, new Mat(), kp1, des1);
+        Mat des2 = new Mat();
 
-        //Create a BFMatcher object
+        sift.detect(img, kp1);
+        sift.compute(img, kp1, des1);
+
         BFMatcher matcher = BFMatcher.create();
+        MatOfKeyPoint kp2 = new MatOfKeyPoint();
 
-        Mat imgMatches = new Mat();
+        List<MatOfDMatch> knnMatches = new ArrayList<>();
 
-        for(ImageTile currentTile:dataSet) {
-
-            MatOfKeyPoint kp2 = new MatOfKeyPoint();
-            Mat des2 = new Mat();
-            sift.detectAndCompute(currentTile.getImg(), new Mat(), kp2, des2);
-
-            // Effectuer la correspondance
-            List<MatOfDMatch> knnMatches = new ArrayList<>();
+        for(ImageTile currentTile : dataSet) {
+            sift.detect(currentTile.getImg(), kp2);
+            sift.compute(currentTile.getImg(), kp2, des2);
             matcher.knnMatch(des1, des2, knnMatches, 2);
 
-            // Appliquer le test de rapport
-            LinkedList<DMatch> goodMatchesList = new LinkedList<>();
-
+            double score = 0;
             for (MatOfDMatch knnMatch : knnMatches) {
                 DMatch[] matches = knnMatch.toArray();
                 if (matches[0].distance < ratioThreshold * matches[1].distance) {
-                    goodMatchesList.addLast(matches[0]);
+                    score += ratioThreshold *matches[1].distance - matches[0].distance;
                 }
             }
 
-            if(maxMatch<goodMatchesList.size()){
-                maxMatch=goodMatchesList.size();
-                matchedTile= currentTile;
-                MatOfDMatch goodMatches = new MatOfDMatch();
-                goodMatches.fromList(goodMatchesList);
-                Features2d.drawMatches(img, kp1, currentTile.getImg(), kp2, goodMatches, imgMatches, new Scalar(255, 0, 0),
-                        new Scalar(0, 0, 255), new MatOfByte(), DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS);
+            if(bestScore < score){
+                bestScore = score;
+                matchedTile = currentTile;
             }
         }
 
-
-
-
-        if(!imgMatches.empty()) {
-            System.out.println("la tuile trouvée est : "+matchedTile.getName());;
-//             Afficher le résultat
-//            HighGui.imshow("Matches", imgMatches);
-//            HighGui.waitKey();
+        if(matchedTile != null) {
+            System.out.println("la tuile trouvée est : "+matchedTile.getName());
             return matchedTile;
         }
-        System.out.println("tuile ingnorée");
+
         return new ImageTile("",getEmptyImg());
     }
 
@@ -151,10 +129,9 @@ public class DataSet {
                 }
             }
         }
-
     }
 
     private Mat getEmptyImg(){
-        return Mat.zeros(height, width, CvType.CV_8UC3);
+        return Mat.zeros(0, 0, CvType.CV_8UC3);
     }
 }
