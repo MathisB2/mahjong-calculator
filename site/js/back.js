@@ -14,6 +14,7 @@ class Tile {
 
 
 
+
     draw(){
         let tmp = "<div class=\"tile\" id=\""+this.id+"\" draggable=\"true\" ";
         tmp += " style=\"background-image:url('";
@@ -28,6 +29,14 @@ class Tile {
         tmp += this.img;
         tmp += "')\"> </div>";
         return tmp;
+    }
+
+
+    copy(){
+        let t=new Tile(this.name, this.id);
+        t.type=this.type;
+        t.img=this.img;
+        return t;
     }
 
 
@@ -245,7 +254,7 @@ function drop(event){
 function insertFromDrawer(id,slotId){
 
     let tile=getAvailableTile(id);
-    removeAvailableTile(id);
+    removeTileFromDrawer(id);
     console.log("infos:")
     console.log(tile.name);
     console.log(tile.id);
@@ -298,18 +307,17 @@ function swapTiles(id1, id2){
 function swapDrawerToHand(id1,id2){
     let tile = getAvailableTile(id1);
     let tile2 = main.getTile(id2);
-    console.log(tile);
+    let tile3=tile2.copy();
 
-    addAvailableTile(tile2,tile2.name);
+    addTileToDrawer(tile3);
 
+    tile2.id=tile.id;
     tile2.name = tile.name;
     tile2.type = tile.type;
     tile2.img = tile.img;
-    tile2.id=tile.id;
 
-    removeAvailableTile(tile.id);
+    removeTileFromDrawer(tile.id);
 
-    console.log(tile2.name);
     main.drawHand();
 }
 
@@ -384,7 +392,7 @@ function getAvailableTile(id){
 }
 
 
-function removeAvailableTile(id){
+function removeTileFromDrawer(id){
     for(let i=0; i<availableTiles.length;i++){
         if(availableTiles[i].length>1){
             for(let j=0; j<availableTiles[i].length;j++){
@@ -397,20 +405,20 @@ function removeAvailableTile(id){
     }
 }
 
-function addAvailableTile(tile,name){
+function addTileToDrawer(tile){
     for(let i=0; i<availableTiles.length;i++){
-        if(availableTiles[i].length>1){
-            let pos=availableTiles[i].length-1
-        }else{
+        console.log(tile.name+"   "+availableTiles[i][0].name);
+        if(availableTiles[i][0].name==tile.name){
+            console.log(availableTiles[i])
             let pos=0;
-        }
-        if(availableTiles[i][0].name==name){
-
-
+            if(availableTiles[i].length>1){
+                pos=availableTiles[i].length-1
+            }
             // availableTiles[i].push(tile);
-            console.log("tableau : "+availableTiles);
+            // console.log("tableau : "+availableTiles);
             availableTiles[i].splice(pos, 0, tile); //add the tile at index pos
             //console.log(availableTiles[i]);
+            console.log(availableTiles[i])
         }
     }
 }
