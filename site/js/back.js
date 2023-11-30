@@ -59,7 +59,7 @@ class Slot{
     }
 
     _drawAddButton(){
-        return "<div class=\"emptyTile\" id=\""+this.slotId+"\"  onclick=\"test('test')\">+</div>";
+        return "<div class=\"emptyTile\" id=\"bouton"+this.slotId+"\"  onclick=\"test('test')\">+</div>";
     }
 
     _isTriple(){
@@ -67,9 +67,9 @@ class Slot{
         if(this.tileList.length!=3){
             return false;
         }
-        console.log("lenght "+this.tileList.length);
+        //console.log("lenght "+this.tileList.length);
         for(let element of this.tileList) {
-            console.log(element);
+            //console.log(element);
             if(element.name!=name){
                 return false;
             }
@@ -77,11 +77,16 @@ class Slot{
         return true;
     }
     deleteTile(id){
+        let i=0;
         for(let element of this.tileList) {
-            console.log(element);
+            //console.log(element);
             if(element.id==id){
-                this.tileList.splice(id,1);
+                console.log("test"+this.tileList);
+                this.tileList.splice(i,1);
+
+                console.log("test2"+this.tileList);
             }
+            i++;
         }
     }
 
@@ -123,6 +128,14 @@ class Hand{
 
             }
         }
+        for (let i=0;i<5;i++){
+            let e=document.getElementById("bouton"+i);
+            if(e){
+                e.addEventListener("dragover",allowDrop);
+                e.addEventListener("drop",drop);
+            }
+
+        }
 
     }
 
@@ -130,12 +143,18 @@ class Hand{
         this.slotList[this.activeSlot].addTile(new Tile(name,this.currentId));
         ++this.currentId;
     }
+    addTileByTile(tile){
+        this.slotList[this.activeSlot].addTile(tile);
+    }
 
     setActive(id){
         this.activeSlot=id;
     }
     removeTile(id){
-        this.slotList[this.activeSlot].deleteTile(id);
+        for (let element of this.slotList){
+            element.deleteTile(id);
+        }
+
     }
     getTile(id){
         for (let element of this.slotList){
@@ -177,10 +196,16 @@ function drop(event){
 function insertTile(id1,slotId){
     let tile = main.getTile(id1);
 
-    main.setActive(slotId);
 
-    main.removeTile(main.getTile(id1))
-    main.addTile(tile);
+    console.log(id1);
+    main.removeTile(id1);
+
+    main.setActive(slotId.slice(-1));
+
+    main.addTileByTile(tile);
+
+    main.drawHand();
+
 }
 function swapTiles(id1, id2){
     let tile = main.getTile(id1);
@@ -210,13 +235,13 @@ main.addTile("feaff");
 main.setActive(1);
 main.addTile("feaff");
 main.addTile("feaff");
-main.addTile("feaff");
-main.addTile("feaff");
+
+
 main.setActive(2);
 main.addTile("feaff");
 main.addTile("feaff");
 main.addTile("feaff");
-main.addTile("feaff");
+
 main.setActive(3);
 main.addTile("feaff");
 main.addTile("feaff");
