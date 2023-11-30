@@ -111,15 +111,12 @@ public class DataSet {
         return new ImageTile("",getEmptyImg());
     }
 
-
-
     private Mat rescaleImg(Mat img, int newWidth, int newHeight){
         Mat resized = new Mat();
         Size scaleSize=new Size(newWidth, newHeight);
         Imgproc.resize(img,resized,scaleSize);
         return resized;
     }
-
 
     public void setSize(int width, int height){
         if(this.dataSet.size()>0){

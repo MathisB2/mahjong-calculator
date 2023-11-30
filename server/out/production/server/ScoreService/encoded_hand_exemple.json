@@ -1,0 +1,17 @@
+{
+  "Sets":[
+    {
+      "Tiles": [
+        "WhiteDragon",
+        "tuile2"
+      ]
+    },
+
+    {
+      "Tiles": [
+        "tuile3",
+        "tuile4"
+      ]
+    }
+  ]
+}

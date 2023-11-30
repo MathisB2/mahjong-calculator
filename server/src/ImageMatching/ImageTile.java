@@ -17,8 +17,8 @@ public class ImageTile {
      * @param path path of the tile image file (ex: scr/img/dataSet/data1/bamboo_1.png)
      */
     public ImageTile(String name, String path){
-        this.name=name;
-        this.img= Imgcodecs.imread(path);
+        this.name = name;
+        this.img = Imgcodecs.imread(path);
     }
 
     public ImageTile(String name, Mat img){

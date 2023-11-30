@@ -272,7 +272,7 @@ public class TileDetector {
 
         List<Mat> concatenatedImages = new ArrayList<>();
 
-        for (int i = 0; i < rows; i++) {
+        for (int i = 0; i < images.length; i++) {
             Mat rowConcatenated = new Mat();
             Core.hconcat(new ArrayList<>(Arrays.asList(images[i])), rowConcatenated);
             concatenatedImages.add(rowConcatenated);

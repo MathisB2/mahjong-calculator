@@ -1,11 +1,12 @@
 package Signal;
 
 public class Connection {
-
-    Connection(){
+    private Runnable disconnectFoo;
+    Connection(Runnable disconnectFoo){
+        this.disconnectFoo = disconnectFoo;
     }
 
-    void disconnect(){
-
+    public void disconnect(){
+        this.disconnectFoo.run();
     }
 }
