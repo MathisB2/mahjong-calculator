@@ -74,13 +74,14 @@ class Slot{
 
 
     _isTriple(){
-        let name=this.tileList[0].name;
+
         if(this.tileList.length!=3){
             return false;
         }
-        console.log("lenght "+this.tileList.length);
+        let name=this.tileList[0].name;
+        //console.log("lenght "+this.tileList.length);
         for(let element of this.tileList) {
-            console.log(element);
+            //console.log(element);
             if(element.name!=name){
                 return false;
             }
@@ -93,10 +94,10 @@ class Slot{
         for(let element of this.tileList) {
             //console.log(element);
             if(element.id==id){
-                console.log("test"+this.tileList);
+                //console.log("test"+this.tileList);
                 this.tileList.splice(i,1);
 
-                console.log("test2"+this.tileList);
+                //console.log("test2"+this.tileList);
             }
             i++;
         }
@@ -112,7 +113,26 @@ class Slot{
         return false;
     }
 
+    canAdd(name){
 
+        if(this._isTriple() && this.tileList[0].name==name){
+            return true;
+        }
+        if(this.tileList.length<3){
+            return true;
+        }
+        return false;
+    }
+
+    copy(){
+        let s=new Slot(this.slotId);
+        //s.tileList=this.tileList;
+        for(let tile of this.tileList){
+            s.tileList.push(tile.copy());
+        }
+
+        return s;
+    }
 
 }
 
@@ -147,6 +167,7 @@ class Hand{
                 e.addEventListener("dragstart", drag);
                 e.addEventListener("dragover", allowDrop);
                 e.addEventListener("drop", drop);
+                e.addEventListener("click", onTileClick)
 
             }
         }
@@ -191,6 +212,10 @@ class Hand{
         return null;
     }
 
+    getActiveSlot(){
+        return this.slotList[this.activeSlot];
+    }
+
 
 
     setActive(i){
@@ -206,11 +231,20 @@ class Hand{
 
 
 
-function onSlotClick(id){
-    main.setActive(id);
+function onSlotClick(event){
+    main.setActive(event.target.id.slice(-1));
     openDrawer();
 }
+function onTileClick(event){
 
+    let id=event.target.id;
+    let tile=main.getTile(id);
+
+    addTileToDrawer(tile);
+    main.removeTile(id);
+    main.drawHand();
+
+}
 
 
 function drag(event){
@@ -227,7 +261,7 @@ function drop(event){
     let dropZone = event.target;
     console.log("classe "+dropZone.className);
     if(dropZone.className=="tile"){
-        console.log("ok");
+        //console.log("ok");
         let id2 = dropZone.id;
         if(getAvailableTile(id)==null){
             console.log("drag :" + id + " and drop :" + id2);
@@ -237,7 +271,7 @@ function drop(event){
         }
 
     }else{
-        console.log("id "+id);
+        //console.log("id "+id);
         let slot = dropZone.id;
         if(getAvailableTile(id)==null){
             // console.log("drag :"+id+" and drop on slot :"+slot);
@@ -254,14 +288,17 @@ function drop(event){
 function insertFromDrawer(id,slotId){
 
     let tile=getAvailableTile(id);
-    removeTileFromDrawer(id);
-    console.log("infos:")
-    console.log(tile.name);
-    console.log(tile.id);
-    main.setActive(slotId.slice(-1));
 
-    console.log(tile);
-    main.addTileByTile(tile);
+    if(main.slotList[slotId.slice(-1)].canAdd(tile.name)){
+        removeTileFromDrawer(id);
+
+        main.setActive(slotId.slice(-1));
+
+
+        main.addTileByTile(tile);
+    }
+
+
     // main.addTile("bamboo_1");
     main.drawHand();
 
@@ -269,35 +306,55 @@ function insertFromDrawer(id,slotId){
 
 function insertTile(id1,slotId){
     let tile = main.getTile(id1);
-    console.log("tile "+tile);
-    // console.log(id1);
-    main.removeTile(id1);
-    main.setActive(slotId.slice(-1));
-    main.addTileByTile(tile);
+
+
+    if(main.slotList[slotId.slice(-1)].canAdd(tile.name)) {
+        main.removeTile(id1);
+        main.setActive(slotId.slice(-1));
+        main.addTileByTile(tile);
+    }
     main.drawHand();
 
+
 }
+
+function canSwap(tile1,tile2){
+    let copie=main.getActiveSlot().copy();
+
+    copie.deleteTile(tile1.id);
+
+
+
+    let resultat=copie.canAdd(tile2.name);
+    return resultat;
+
+}
+
 function swapTiles(id1, id2){
     let tile = main.getTile(id1);
     let tile2 = main.getTile(id2);
 
-    let info;
+    console.log("can swap"+canSwap(tile,tile2));
+    if(canSwap(tile,tile2)){
+        let info;
 
-    info = tile.name;
-    tile.name = tile2.name;
-    tile2.name = info;
+        info = tile.name;
+        tile.name = tile2.name;
+        tile2.name = info;
 
-    info = tile.type;
-    tile.type = tile2.type;
-    tile2.type = info;
+        info = tile.type;
+        tile.type = tile2.type;
+        tile2.type = info;
 
-    info = tile.img;
-    tile.img = tile2.img;
-    tile2.img = info;
+        info = tile.img;
+        tile.img = tile2.img;
+        tile2.img = info;
 
-    info = tile.id;
-    tile.id = tile2.id;
-    tile2.id = info;
+        info = tile.id;
+        tile.id = tile2.id;
+        tile2.id = info;
+    }
+
 
     main.drawHand();
 }
@@ -309,20 +366,39 @@ function swapDrawerToHand(id1,id2){
     let tile2 = main.getTile(id2);
     let tile3=tile2.copy();
 
-    addTileToDrawer(tile3);
+    if(canSwap(tile,tile2)){
+        addTileToDrawer(tile3);
 
-    tile2.id=tile.id;
-    tile2.name = tile.name;
-    tile2.type = tile.type;
-    tile2.img = tile.img;
+        tile2.id=tile.id;
+        tile2.name = tile.name;
+        tile2.type = tile.type;
+        tile2.img = tile.img;
 
-    removeTileFromDrawer(tile.id);
+        removeTileFromDrawer(tile.id);
+    }
+
+
 
     main.drawHand();
 }
 
-function onDrawerTileClick(){
-    // main.addTile();
+function onDrawerTileClick(event){
+
+    let id=event.target.id;
+
+    let name=getAvailableTile(id,true).name;
+
+
+    //console.log("slot full :"+main.getActiveSlot().canAdd(name));
+
+
+    if(getSizeByName(name)>1 && main.getActiveSlot().canAdd(name)){
+        let tile=getAvailableTile(id);
+        main.addTileByTile(tile);
+        removeTileFromDrawer(id);
+        main.drawHand();
+    }
+
 }
 
 
@@ -370,6 +446,8 @@ function drawDrawerTiles(){
             let e = document.getElementById(availableTiles[tileIndex][0].id);
             if(e){
                 e.addEventListener("dragstart", drag);
+                e.addEventListener("click", onDrawerTileClick);
+
             }
         }
 
@@ -380,14 +458,24 @@ function drawDrawerTiles(){
 let availableTiles=[];
 
 
+function getSizeByName(name){
+    for(let i=0; i<availableTiles.length;i++){
+        if(availableTiles[i][0].name==name){
+            return availableTiles[i].length;
+        }
 
+    }
+    return ""
+}
 
-function getAvailableTile(id){
+function getAvailableTile(id,test){
     for(let machin of availableTiles){
-        if(machin[0].id==id && machin.length>1){
+        if(machin[0].id==id){
+            if(test || machin.length>1)
             return machin[0];
         }
     }
+
     return null;
 }
 
@@ -407,9 +495,9 @@ function removeTileFromDrawer(id){
 
 function addTileToDrawer(tile){
     for(let i=0; i<availableTiles.length;i++){
-        console.log(tile.name+"   "+availableTiles[i][0].name);
+        //console.log(tile.name+"   "+availableTiles[i][0].name);
         if(availableTiles[i][0].name==tile.name){
-            console.log(availableTiles[i])
+            //console.log(availableTiles[i])
             let pos=0;
             if(availableTiles[i].length>1){
                 pos=availableTiles[i].length-1
@@ -418,7 +506,6 @@ function addTileToDrawer(tile){
             // console.log("tableau : "+availableTiles);
             availableTiles[i].splice(pos, 0, tile); //add the tile at index pos
             //console.log(availableTiles[i]);
-            console.log(availableTiles[i])
         }
     }
 }
