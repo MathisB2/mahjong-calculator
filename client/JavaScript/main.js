@@ -1,24 +1,30 @@
-import {NetworkController} from "./NetworkController.js";
+const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
 
+        fileReader.onload = () => {
+            resolve(fileReader.result);
+        };
+        fileReader.onerror = (error) => {
+            reject(error);
+        };
+    });
+};
 async function main(){
-    const textBox=document.getElementById("message")
-    const sendButton=document.getElementById("send")
+    let network = NetworkController.getController("localhost", 8080);
+    let image = network.getNetNamespace("ImageNet");
 
+    const fileBTN=document.getElementById("file")
 
-    let network = NetworkController.getController("localhost", 4444);
-    let addition = network.getNetNamespace("addition");
-    let multi = network.getNetNamespace("multi");
+    fileBTN.addEventListener("change", async (e) => {
+        const file = e.target.files[0];
+        let base64 = await convertBase64(file);
 
-    addition.connect(function (message) {
-        console.log("addition: "+message);
-    })
-    multi.connect(function (message){
-        console.log("multi: "+message);
-    })
-    sendButton.onclick=function (){
-        addition.send(textBox.value);
-        multi.send(textBox.value);
-    }
+        image.call(base64).then(function (callback) {
+            console.log(callback+" "+i);
+        });
+    });
 }
 
 

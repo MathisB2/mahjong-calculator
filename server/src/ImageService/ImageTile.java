@@ -1,9 +1,7 @@
-package ImageMatching;
+package ImageService;
 
 import org.opencv.core.Mat;
-import org.opencv.core.MatOfKeyPoint;
 import org.opencv.core.Point;
-import org.opencv.features2d.SIFT;
 import org.opencv.imgcodecs.Imgcodecs;
 
 public class ImageTile {

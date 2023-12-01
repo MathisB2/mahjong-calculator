@@ -103,17 +103,14 @@ public class TileDetector {
      */
     public void findContours(boolean simplify, int minArea){
         Mat clone = new Mat();
+        int dilateSize = 10;
+
         Imgproc.cvtColor(uploadedImg, clone, Imgproc.COLOR_BGR2GRAY);
-
         Imgproc.blur(clone,clone,new Size(blurRadius,blurRadius));
-
         Imgproc.threshold(clone, clone, 0, 1, Imgproc.THRESH_OTSU);
 
-        int dilateSize = 10;
-        Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, new Size(dilateSize, dilateSize));
-
         Mat tilesMask = new Mat();
-        Imgproc.dilate(clone, tilesMask, kernel);
+        Imgproc.dilate(clone, tilesMask, Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, new Size(dilateSize, dilateSize)));
 
         Mat maskBGR = new Mat();
         List<Mat> listMat = Arrays.asList(tilesMask, tilesMask, tilesMask);
@@ -125,31 +122,26 @@ public class TileDetector {
         Imgproc.adaptiveThreshold(clone, clone, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C, Imgproc.THRESH_BINARY, 7, 4);
 
         dilateSize = 4;
-        kernel = Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, new Size(dilateSize, dilateSize));
-
-        Imgproc.erode(clone, clone, kernel);
+        Imgproc.erode(clone, clone, Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, new Size(dilateSize, dilateSize)));
 
         Core.multiply(clone, tilesMask, clone);
 
 
-        ArrayList<MatOfPoint> tmp=new ArrayList<>();
+        ArrayList<MatOfPoint> tmp = new ArrayList<>();
         Imgproc.findContours(clone, tmp, clone, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
 
 
         for(MatOfPoint cnt:tmp){
-            if (Imgproc.contourArea(cnt) >= minArea) {
-                if(simplify){
-                    MatOfPoint quad=simplifyContour(cnt, 4);
-                    if(quad.toArray().length==4) {
-                        contours.add(quad);
-                    }
-                }else{
-                    contours.add(cnt);
-                }
+            if (Imgproc.contourArea(cnt) < minArea) continue;
+            if(!simplify){
+                contours.add(cnt);
+            }else{
+                MatOfPoint quad = simplifyContour(cnt, 4);
+                if(quad.toArray().length != 4) continue;
 
+                contours.add(quad);
             }
         }
-
     }
 
     public void findContours(){
@@ -171,7 +163,6 @@ public class TileDetector {
         }
         HighGui.imshow("Contours", clone);
         HighGui.waitKey();
-        System.out.println(i + " tiles detected");
     }
 
 
@@ -182,21 +173,19 @@ public class TileDetector {
     public void extractTiles(){
         for (MatOfPoint cnt : contours) {
             Point[] inputPts = sortContourPoints(cnt.toArray());
-            Point[] outputPts = new Point[]{new Point(0, 0), new Point(tileWidth, 0), new Point(tileWidth, tileHeight), new Point(0, tileHeight)};
             MatOfPoint2f src = new MatOfPoint2f(inputPts);
-            MatOfPoint2f dst = new MatOfPoint2f(outputPts);
+            MatOfPoint2f dst = new MatOfPoint2f(new Point[]{new Point(0, 0), new Point(tileWidth, 0), new Point(tileWidth, tileHeight), new Point(0, tileHeight)});
 
-            Mat perspectivetransform=Imgproc.getPerspectiveTransform(src,dst);
-            Mat finalImage=new Mat();
-            Imgproc.warpPerspective(uploadedImg,finalImage,perspectivetransform,new Size(tileWidth,tileHeight));
+            Mat perspectiveTransform = Imgproc.getPerspectiveTransform(src,dst);
+            Mat finalImage = new Mat();
+            Imgproc.warpPerspective(uploadedImg, finalImage, perspectiveTransform, new Size(tileWidth, tileHeight));
 
-            ImageTile t=new ImageTile("",finalImage);
+            ImageTile t = new ImageTile("", finalImage);
 
             Point center=getCenterPoint(inputPts);
             t.setCoor(center.x,center.y);
             extractedTiles.add(t);
         }
-
     }
 
     public void matchAllTiles(){
@@ -368,8 +357,8 @@ public class TileDetector {
      */
     private Mat rescaleImg(Mat img, int newWidth){
         Mat resized = new Mat();
-        float scale=(float)newWidth/img.width();
-        Size scaleSize=new Size(newWidth, img.height()*scale);
+        float scale = (float)newWidth / img.width();
+        Size scaleSize = new Size(newWidth, img.height() * scale);
         Imgproc.resize(img,resized,scaleSize);
         return resized;
     }
@@ -450,9 +439,11 @@ public class TileDetector {
      * @return inverted array
      */
     private Point[] invertPoints(Point[] array, int index1, int index2){
-        Point p=array[index1];
-        array[index1]=array[index2];
-        array[index2]=p;
+        Point p = array[index1];
+
+        array[index1] = array[index2];
+        array[index2] = p;
+
         return array;
     }
 
@@ -462,13 +453,12 @@ public class TileDetector {
      * @return boolean : true if the polygon is sorted clockwise
      */
     private boolean isClockwise(Point[] points) {
-        int numPoints = points.length;
-        if (numPoints < 3) return false;
+        if (points.length < 3) return false;
 
         double sum = 0;
-        for (int i = 0; i < numPoints; i++) {
+        for (int i = 0; i < points.length; i++) {
             Point currentPoint = points[i];
-            Point nextPoint = points[(i + 1) % numPoints];
+            Point nextPoint = points[(i + 1) % points.length];
             sum += (nextPoint.x - currentPoint.x) * (nextPoint.y + currentPoint.y);
         }
         return sum < 0;
@@ -523,5 +513,4 @@ public class TileDetector {
 
         return new Point(sumX / numPoints, sumY / numPoints);
     }
-
 }
