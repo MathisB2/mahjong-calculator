@@ -1,6 +1,7 @@
 const h=document.getElementById("hand");
 const htmlDrawerTileList=document.getElementById("drawerTileList");
 
+
 class Tile {
     type;
     img;
@@ -168,6 +169,8 @@ class Hand{
                 e.addEventListener("dragover", allowDrop);
                 e.addEventListener("drop", drop);
                 e.addEventListener("click", onTileClick)
+
+                
 
             }
         }
