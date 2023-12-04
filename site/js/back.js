@@ -235,17 +235,17 @@ class Hand{
 
 
 function onSlotClick(event){
-    main.setActive(event.target.id.slice(-1));
+    maine.setActive(event.target.id.slice(-1));
     openDrawer();
 }
 function onTileClick(event){
 
     let id=event.target.id;
-    let tile=main.getTile(id);
+    let tile=maine.getTile(id);
 
     addTileToDrawer(tile);
-    main.removeTile(id);
-    main.drawHand();
+    maine.removeTile(id);
+    maine.drawHand();
 
 }
 
@@ -292,37 +292,37 @@ function insertFromDrawer(id,slotId){
 
     let tile=getAvailableTile(id);
 
-    if(main.slotList[slotId.slice(-1)].canAdd(tile.name)){
+    if(maine.slotList[slotId.slice(-1)].canAdd(tile.name)){
         removeTileFromDrawer(id);
 
-        main.setActive(slotId.slice(-1));
+        maine.setActive(slotId.slice(-1));
 
 
-        main.addTileByTile(tile);
+        maine.addTileByTile(tile);
     }
 
 
     // main.addTile("bamboo_1");
-    main.drawHand();
+    maine.drawHand();
 
 }
 
 function insertTile(id1,slotId){
-    let tile = main.getTile(id1);
+    let tile = maine.getTile(id1);
 
 
-    if(main.slotList[slotId.slice(-1)].canAdd(tile.name)) {
-        main.removeTile(id1);
-        main.setActive(slotId.slice(-1));
-        main.addTileByTile(tile);
+    if(maine.slotList[slotId.slice(-1)].canAdd(tile.name)) {
+        maine.removeTile(id1);
+        maine.setActive(slotId.slice(-1));
+        maine.addTileByTile(tile);
     }
-    main.drawHand();
+    maine.drawHand();
 
 
 }
 
 function canSwap(tile1,tile2){
-    let copie=main.getActiveSlot().copy();
+    let copie=maine.getActiveSlot().copy();
 
     copie.deleteTile(tile1.id);
 
@@ -334,8 +334,8 @@ function canSwap(tile1,tile2){
 }
 
 function swapTiles(id1, id2){
-    let tile = main.getTile(id1);
-    let tile2 = main.getTile(id2);
+    let tile = maine.getTile(id1);
+    let tile2 = maine.getTile(id2);
 
     console.log("can swap"+canSwap(tile,tile2));
     if(canSwap(tile,tile2)){
@@ -359,14 +359,14 @@ function swapTiles(id1, id2){
     }
 
 
-    main.drawHand();
+    maine.drawHand();
 }
 
 
 
 function swapDrawerToHand(id1,id2){
     let tile = getAvailableTile(id1);
-    let tile2 = main.getTile(id2);
+    let tile2 = maine.getTile(id2);
     let tile3=tile2.copy();
 
     if(canSwap(tile,tile2)){
@@ -382,7 +382,7 @@ function swapDrawerToHand(id1,id2){
 
 
 
-    main.drawHand();
+    maine.drawHand();
 }
 
 function onDrawerTileClick(event){
@@ -395,11 +395,11 @@ function onDrawerTileClick(event){
     //console.log("slot full :"+main.getActiveSlot().canAdd(name));
 
 
-    if(getSizeByName(name)>1 && main.getActiveSlot().canAdd(name)){
+    if(getSizeByName(name)>1 && maine.getActiveSlot().canAdd(name)){
         let tile=getAvailableTile(id);
-        main.addTileByTile(tile);
+        maine.addTileByTile(tile);
         removeTileFromDrawer(id);
-        main.drawHand();
+        maine.drawHand();
     }
 
 }
@@ -515,13 +515,13 @@ function addTileToDrawer(tile){
 
 
 
-const main = new Hand();
-main.setActive(0);
+const maine = new Hand();
+maine.setActive(0);
 // main.addTile("bamboo_1");
 // main.addTile("bamboo_1");
 // main.addTile("bamboo_2");
 importTiles();
-main.drawHand();
+maine.drawHand();
 
 
 
