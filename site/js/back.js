@@ -513,15 +513,26 @@ function addTileToDrawer(tile){
     }
 }
 
+function clear(){
+    delete maine;
+    maine=new Hand();
+    maine.setActive(0);
+    maine.drawHand();
+}
 
 
-const maine = new Hand();
+
+
+let maine = new Hand();
 maine.setActive(0);
-// main.addTile("bamboo_1");
-// main.addTile("bamboo_1");
-// main.addTile("bamboo_2");
+// maine.addTile("bamboo_1");
+ maine.addTile("bamboo_1");
+ maine.addTile("bamboo_2");
+
 importTiles();
 maine.drawHand();
+
+clear();
 
 
 
