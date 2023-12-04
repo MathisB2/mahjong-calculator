@@ -26,6 +26,7 @@
 
 body {
     background-color: var(--backgound);
+    overscroll-behavior: contain;
 }
 
 
@@ -254,13 +255,19 @@ nav{
     justify-content: right;
 }
 
-#drawerHeader #drawerActionIcons a{
+#drawerHeader #drawerActionIcons input{
+    display: none;
+
+}
+
+
+#drawerHeader #drawerActionIcons label{
     width: fit-content;
     margin-left: 16px;
 
 }
 
-#drawerHeader #drawerActionIcons a img{
+#drawerHeader #drawerActionIcons label img{
     height: 24px;
     margin: 0;
 
@@ -281,7 +288,7 @@ nav{
 
 }
 
-#drawerValidateButton a{
+#drawerValidateButton div{
     background-color: var(--mainColor);
     width: 100%;
     border-radius: 4px;
