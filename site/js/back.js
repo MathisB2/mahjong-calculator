@@ -43,6 +43,8 @@ class Tile {
 
 }
 
+
+
 class Slot{
     tileList;
     slotId;
@@ -75,7 +77,6 @@ class Slot{
 
 
     _isTriple(){
-
         if(this.tileList.length!=3){
             return false;
         }
@@ -117,11 +118,14 @@ class Slot{
     canAdd(name){
 
         if(this._isTriple() && this.tileList[0].name==name){
+            console.log("cas1");
             return true;
         }
         if(this.tileList.length<3){
+            console.log("cas2");
             return true;
         }
+        console.log("cas3");
         return false;
     }
 
@@ -144,13 +148,19 @@ class Hand{
     currentId;
 
     constructor() {
-        this.slotList = [];
-        for(let i=0;i<5;i++){
-            this.slotList[i]=new Slot(i);
-        }
+        this._initSlotList();
 
         this.activeSlot=0;
         this.currentId=0;
+    }
+
+
+    _initSlotList(){
+        this.slotList = [];
+        for(let i=0;i<5;i++){
+            // this.slotList[i]=[];
+            this.slotList[i]=new Slot(i);
+        }
     }
 
 
@@ -226,6 +236,63 @@ class Hand{
         console.log("Active slot : "+i);
     }
 
+    getSlotFor(t){
+        for (let slot of this.slotList){
+            for (let tile of slot.tileList){
+                if(t.id==tile.id){
+                    return slot;
+                }
+            }
+        }
+        return null;
+    }
+
+
+    importDetectionResults(callback){
+        this.clear();
+        let obj = JSON.parse(callback);
+        this.activeSlot=0;
+
+        for(let cluster of obj){
+            for(let tile of cluster){
+                tile=JSON.parse(tile);
+                /*
+
+                console.log(tile.name);
+                this.addTile(tile.name);
+
+                removeTileFromDrawer(getAvailableTileByName(tile.name));
+
+                 */
+                tile=getAvailableTileByName(tile.name);
+                if (tile!=null){
+                    if(this.slotList[this.activeSlot].canAdd(tile.name)){
+                        removeTileFromDrawer(tile.id);
+
+                        this.addTileByTile(tile);
+                    }
+                }
+
+            }
+            this.activeSlot++;
+
+        }
+        this.activeSlot=0;
+        this.drawHand();
+    }
+
+
+    clear(){
+        delete this.slotList;
+        this._initSlotList();
+        this.setActive(0);
+        this.drawHand();
+        importTiles();
+
+
+    }
+
+
 
 }
 
@@ -262,6 +329,7 @@ function drop(event){
 
     let id=event.dataTransfer.getData("id")
     let dropZone = event.target;
+
     console.log("classe "+dropZone.className);
     if(dropZone.className=="tile"){
         //console.log("ok");
@@ -322,13 +390,21 @@ function insertTile(id1,slotId){
 }
 
 function canSwap(tile1,tile2){
-    let copie=maine.getActiveSlot().copy();
+    console.log("slot"+maine.activeSlot);
+
+    let copie=maine.getSlotFor(tile1).copy();
+    console.log(copie);
 
     copie.deleteTile(tile1.id);
+    console.log(copie);
+
+
+    let copie2=maine.getSlotFor(tile2).copy();
+    copie2.deleteTile(tile2.id);
 
 
 
-    let resultat=copie.canAdd(tile2.name);
+    let resultat=copie.canAdd(tile2.name) && copie2.canAdd(tile1.name);
     return resultat;
 
 }
@@ -409,6 +485,7 @@ function onDrawerTileClick(event){
 
 
 function importTiles(){
+    availableTiles=[];
     let folder="img\/tiles\/"
     let fileExtension=".png";
     let fileNames=[
@@ -481,6 +558,15 @@ function getAvailableTile(id,test){
 
     return null;
 }
+function getAvailableTileByName(name){
+    for(let machin of availableTiles){
+        if(machin[0].name==name){
+            return machin[0];
+        }
+    }
+
+    return null;
+}
 
 
 function removeTileFromDrawer(id){
@@ -495,6 +581,8 @@ function removeTileFromDrawer(id){
 
     }
 }
+
+
 
 function addTileToDrawer(tile){
     for(let i=0; i<availableTiles.length;i++){
@@ -513,12 +601,6 @@ function addTileToDrawer(tile){
     }
 }
 
-function clear(){
-    delete maine;
-    maine=new Hand();
-    maine.setActive(0);
-    maine.drawHand();
-}
 
 
 
@@ -526,13 +608,13 @@ function clear(){
 let maine = new Hand();
 maine.setActive(0);
 // maine.addTile("bamboo_1");
- maine.addTile("bamboo_1");
- maine.addTile("bamboo_2");
+//  maine.addTile("bamboo_1");
+ // maine.addTile("bamboo_2");
+ // maine.addTile("bamboo_2");
 
 importTiles();
 maine.drawHand();
 
-clear();
 
 
 
