@@ -13,15 +13,11 @@ const convertBase64 = (file) => {
 };
 
 
-function sleep(ms) {
-    var unixtime_ms = new Date().getTime();
-    while(new Date().getTime() < unixtime_ms + ms) {}
-}
 async function main(){
-    let network = NetworkController.getController("localhost", 8080);
+    let network = NetworkController.getController("91.173.135.183", 32768);
     let image = network.getNetNamespace("ImageNet");
 
-     const fileBTN=document.getElementById("fileInput")
+    const fileBTN=document.getElementById("fileInput")
     const popup=document.querySelector(".popUp");
 
     fileBTN.addEventListener("change", async (e) => {

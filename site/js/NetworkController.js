@@ -129,7 +129,7 @@ class NetNameSpace {
                 resolve: resolve,
                 reject: reject
             };
-            setTimeout(reject, 3000);
+            setTimeout(reject, 30000);
             this._send(message, callId);
         }).catch(function (message){
             console.error(message);

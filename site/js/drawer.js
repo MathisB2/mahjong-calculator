@@ -106,9 +106,11 @@ function dragStop(e){
 
 
 drawerHandle.addEventListener("mousedown", dragStart);
+drawerHeader.addEventListener("mousedown", dragStart);
 document.addEventListener("mousemove", dragging);
 document.addEventListener("mouseup", dragStop);
 
 drawerHandle.addEventListener("touchstart", dragStart);
+drawerHeader.addEventListener("touchstart", dragStart);
 document.addEventListener("touchmove", dragging);
 document.addEventListener("touchend", dragStop);
