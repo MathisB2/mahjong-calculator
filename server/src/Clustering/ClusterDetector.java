@@ -16,18 +16,18 @@ public class ClusterDetector {
         }
 
         int i1, i2;
-        double dist;
+        double minDist;
 
         while(clusters.size() > 5){
-            dist = -1;
+            minDist = -1;
             i1 = 0;
             i2 = 0;
             for(int i = 0; i < clusters.size(); i++){
                 for(int y = i + 1; y < clusters.size(); y++){
-                    double d = dMin(clusters.get(i), clusters.get(y));
-                    if(dist != -1 && dist >= dist) continue;
+                    double dist = dMin(clusters.get(i), clusters.get(y));
+                    if(minDist != -1 && dist >= minDist) continue;
 
-                    dist = d;
+                    minDist = dist;
                     i1 = i;
                     i2 = y;
                 }

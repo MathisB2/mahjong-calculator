@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/../client/JavaScript/NetworkController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/JavaScript/NetworkController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/JavaScript/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/JavaScript/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clustering/ClusterDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clustering/ClusterDetector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageService/ClusterDetector.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageService/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/DataSet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageService/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageService.java" afterDir="false" />
@@ -158,7 +159,7 @@
       <workItem from="1701418176023" duration="12337000" />
       <workItem from="1701693699176" duration="10809000" />
       <workItem from="1701705874565" duration="2517000" />
-      <workItem from="1701766483130" duration="971000" />
+      <workItem from="1701766483130" duration="1319000" />
     </task>
     <servers />
   </component>
