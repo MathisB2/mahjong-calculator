@@ -1,21 +1,21 @@
 package ImageService;
 
+import org.json.JSONObject;
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
 import org.opencv.imgcodecs.Imgcodecs;
 
-public class ImageTile {
+public class ImageTile extends Point {
     private String name;
     private Mat img;
-    private Point coor;
 
     public ImageTile(String name, String path){
         this.name = name;
         this.img = Imgcodecs.imread(path);
     }
     public ImageTile(String name, Mat img){
-        this.name=name;
-        this.img=img;
+        this.name = name;
+        this.img = img;
     }
     public void setName(String n){
         name=n;
@@ -27,15 +27,23 @@ public class ImageTile {
         return img;
     }
     public void setImg(Mat img){
-        this.img=img;
+        this.img = img;
     }
-    public void setCoor(double x, double y){
-        this.coor=new Point(x,y);
+    @Override
+    public String toString() {
+        return this.toJSONObject().toString();
     }
-    public void setCoor(Point p){
-        this.coor=p;
+
+    @Override
+    public boolean equals(Object obj){
+        return ((ImageTile) obj).getName() == this.getName();
     }
-    public Point getCoor(){
-        return this.coor;
+    public JSONObject toJSONObject(){
+        JSONObject obj = new JSONObject();
+        try{
+            obj.put("name", this.name);
+        }catch (Exception e){};
+
+        return obj;
     }
 }

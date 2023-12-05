@@ -1,9 +1,15 @@
 package ImageService;
 
 import org.opencv.core.*;
+import org.opencv.core.Point;
 import org.opencv.highgui.HighGui;
 import org.opencv.imgproc.Imgproc;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
+import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,11 +18,9 @@ public class TilesView {
     Size tileDimension;
     public TilesView(){
         this.tileDimension = new Size(280, 370);
-
     }
 
-    public void showMatches(int width, ArrayList<ImageTile> extractedTiles, ArrayList<ImageTile> matchedTiles){
-
+    public void showMatches(ArrayList<ImageTile> extractedTiles, ArrayList<ImageTile> matchedTiles){
         int s = extractedTiles.size();
         Mat[][] binds = new Mat[2][s];
         Mat tmp;
@@ -34,10 +38,17 @@ public class TilesView {
                 ++j;
             }
         }
+        int width = 1600;
+        this.showImage(rescaleImg(stackImages(binds), width));
+    }
+    public void showImage(Mat imageMat) {
+        JFrame jf = new JFrame();
 
-        Mat result=stackImages(binds);
-        HighGui.imshow("Tiles binds", rescaleImg(result,width));
-        HighGui.waitKey();
+        BufferedImage img = (BufferedImage) HighGui.toBufferedImage(imageMat);
+
+        jf.getContentPane().add(new JLabel(new ImageIcon(img)));
+        jf.setSize(new Dimension(img.getWidth(), img.getHeight()+20));
+        jf.setVisible(true);
 
     }
 

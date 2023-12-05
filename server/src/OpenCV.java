@@ -1,4 +1,4 @@
-import ImageMatching.ImageTile;
+
 import ImageService.*;
 import org.opencv.core.*;
 
@@ -18,7 +18,7 @@ public class OpenCV {
         var matchedTiles = detector.getMatchedTilesTo(extractedTiles);
 
         System.out.println((System.currentTimeMillis() - time)/1000.0);
-        view.showMatches(1600, extractedTiles, matchedTiles);
+        view.showMatches(extractedTiles, matchedTiles);
 
        /* List<List<ImageTile>> clusters = detector.findCluster();
 

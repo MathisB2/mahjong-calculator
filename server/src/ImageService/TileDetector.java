@@ -40,7 +40,9 @@ public class TileDetector {
             ImageTile t = new ImageTile("", finalImage);
 
             Point center = inputPts.getCenter();
-            t.setCoor(center.x,center.y);
+            t.x = center.x;
+            t.y = center.y;
+
             extractedTiles.add(t);
         }
         return extractedTiles;
@@ -56,14 +58,14 @@ public class TileDetector {
             Thread th = new Thread(() ->  {
                 ImageTile result = this.dataset.findMatchingTile(t.getImg());
                 t.setName(result.getName());
-                result.setCoor(t.getCoor());
+                result.x = t.x;
+                result.y = t.y;
+
                 extractedTiles.add(t);
 
                 if(!t.getName().equals("")){
                     matchedTiles.add(result);
                 }
-
-                System.out.println(t.getCoor());
             });
             th.start();
             ths.add(th);
@@ -156,16 +158,5 @@ public class TileDetector {
             }
         }
         return cnt;
-    }
-
-    public void showContours(Mat img, ArrayList<MatOfPoint> contours) {
-        Mat clone = img.clone();
-
-        int i;
-        for (i = 0; i < contours.size(); i++) {
-            Imgproc.drawContours(clone, contours, i, new Scalar(0, 255, 255), 3);
-        }
-        HighGui.imshow("Contours", clone);
-        HighGui.waitKey();
     }
 }

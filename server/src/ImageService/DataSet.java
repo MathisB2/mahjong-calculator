@@ -7,61 +7,69 @@ import org.opencv.imgproc.Imgproc;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DataSet {
     private String name;
-    private ArrayList<ImageTile> tiles;
+    private HashMap<ImageTile, Mat> tiles;
+    private SIFT sift;
 
     public DataSet() {
-        tiles = new ArrayList<>();
+        tiles = new HashMap<>();
     }
 
     public DataSet(String name) {
-        this.tiles = new ArrayList<>();
+        this.tiles = new HashMap<>();
+        this.sift = SIFT.create();
         this.name = name;
         loadFolder(name);
     }
     private void loadFolder(String folderName){
         if(this.tiles.size() != 0){
-            System.err.println("dataSet "+folderName+" already loaded");
+            System.err.println("dataSet " + folderName + " already loaded");
             return;
         }
 
-        File folder = new File("src/img/dataSet/"+folderName);
+        File folder = new File("src/img/dataSet/" + folderName);
         File[] listOfFiles = folder.listFiles();
         String fileName;
+        MatOfKeyPoint keyPoints = new MatOfKeyPoint();
 
         for(File file : listOfFiles){
             fileName = file.getName();
             fileName = fileName.substring(0, fileName.lastIndexOf("."));
 
-            this.tiles.add(new ImageTile(fileName,file.toString()));
+            ImageTile img = new ImageTile(fileName, file.toString());
+            Mat des = new Mat();
+
+            sift.detect(img.getImg(), keyPoints);
+            sift.compute(img.getImg(), keyPoints, des);
+
+            this.tiles.put(img, des);
         }
     }
 
-    public ImageTile findMatchingTile(Mat img){
+    public ImageTile findMatchingTile(Mat img, float ratioThreshold){
         ImageTile matchedTile = null;
-        float ratioThreshold = .6f;
         double bestScore = 0;
-
-        SIFT sift = SIFT.create();
 
         MatOfKeyPoint kp1 = new MatOfKeyPoint();
         Mat des1 = new Mat();
-        Mat des2 = new Mat();
+        Mat des2;
 
         sift.detect(img, kp1);
         sift.compute(img, kp1, des1);
 
         BFMatcher matcher = BFMatcher.create();
-        MatOfKeyPoint kp2 = new MatOfKeyPoint();
 
         List<MatOfDMatch> knnMatches = new ArrayList<>();
 
-        for(ImageTile currentTile : this.tiles) {
-            sift.detect(currentTile.getImg(), kp2);
-            sift.compute(currentTile.getImg(), kp2, des2);
+        for(Map.Entry<ImageTile, Mat> tileInfo : this.tiles.entrySet()) {
+            ImageTile currentTile = tileInfo.getKey();
+            des2 = tileInfo.getValue();
+
             matcher.knnMatch(des1, des2, knnMatches, 2);
 
             double score = 0;
@@ -71,24 +79,25 @@ public class DataSet {
                     score += ratioThreshold *matches[1].distance - matches[0].distance;
                 }
             }
-
             if(bestScore < score){
                 bestScore = score;
                 matchedTile = currentTile;
             }
         }
 
-        if(matchedTile != null) {
-            System.out.println("la tuile trouvée est : "+matchedTile.getName());
-            return matchedTile;
-        }
-
+        if(matchedTile != null) return matchedTile;
         return new ImageTile("", Mat.zeros(0, 0, CvType.CV_8UC3));
     }
+
+    public ImageTile findMatchingTile(Mat img){
+        return findMatchingTile(img, .6f);
+    }
+
     public void sizeTo(Size size){
         if(this.tiles.size() == 0) return;
 
-        for(ImageTile img : this.tiles){
+        for(Map.Entry<ImageTile, Mat> tileInfo : this.tiles.entrySet()) {
+            ImageTile img = tileInfo.getKey();
             if(img.getImg().cols() != size.width || img.getImg().rows() != size.height){
                 img.setImg(rescaleImg(img.getImg(), (int)size.width, (int)size.height));
             }

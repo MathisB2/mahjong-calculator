@@ -22,7 +22,7 @@ async function main(){
         let base64 = await convertBase64(file);
 
         image.call(base64).then(function (callback) {
-            console.log(callback+" "+i);
+            console.log(callback);
         });
     });
 }
