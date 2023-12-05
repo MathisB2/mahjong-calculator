@@ -14,7 +14,7 @@ const convertBase64 = (file) => {
 
 
 async function main(){
-    let network = NetworkController.getController("91.173.135.183", 32768);
+    let network = NetworkController.getController("172.22.69.111", 8080);
     let image = network.getNetNamespace("ImageNet");
 
     const fileBTN=document.getElementById("fileInput")

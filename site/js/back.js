@@ -53,14 +53,19 @@ class Slot{
         this.slotId=id;
     }
 
-    drawSlot(){
+    drawSlot(active=false){
         let tmp="<section class='lineHand' id='slot"+this.slotId+"'>";
 
         for(let element of this.tileList) {
             tmp+=element.draw();
         }
         if(this.tileList.length<3 || (this.tileList.length==3 && this._isTriple())) {
-            tmp += this._drawAddButton();
+            if(active){
+                tmp += this._drawActiveAddButton()
+            }else{
+                tmp += this._drawAddButton();
+            }
+
         }
         tmp+="</section>";
         return tmp;
@@ -73,6 +78,10 @@ class Slot{
 
     _drawAddButton(){
         return "<div class=\"emptyTile\" id=\"bouton"+this.slotId+"\">+</div>";
+    }
+
+    _drawActiveAddButton(){
+        return "<div class=\"activeEmptyTile\" id=\"bouton"+this.slotId+"\">+</div>";
     }
 
 
@@ -166,9 +175,10 @@ class Hand{
 
     drawHand() {
         h.innerHTML = "";
-        for (let element of this.slotList) {
-            element.drawSlot();
-            h.innerHTML += element.drawSlot()
+        for (let i=0;i<this.slotList.length;i++) {
+                h.innerHTML += this.slotList[i].drawSlot(i==this.activeSlot);
+
+
 
         }
         for (let element of this.slotList) {
@@ -304,6 +314,7 @@ class Hand{
 function onSlotClick(event){
     maine.setActive(event.target.id.slice(-1));
     openDrawer();
+    maine.drawHand()
 }
 function onTileClick(event){
 
@@ -357,23 +368,19 @@ function drop(event){
 
 
 function insertFromDrawer(id,slotId){
-
     let tile=getAvailableTile(id);
 
     if(maine.slotList[slotId.slice(-1)].canAdd(tile.name)){
         removeTileFromDrawer(id);
-
         maine.setActive(slotId.slice(-1));
-
-
         maine.addTileByTile(tile);
     }
+    console.log(parseInt(slotId.slice(-1))+1);
 
-
-    // main.addTile("bamboo_1");
     maine.drawHand();
 
 }
+
 
 function insertTile(id1,slotId){
     let tile = maine.getTile(id1);
@@ -384,10 +391,13 @@ function insertTile(id1,slotId){
         maine.setActive(slotId.slice(-1));
         maine.addTileByTile(tile);
     }
+
     maine.drawHand();
 
-
 }
+
+
+
 
 function canSwap(tile1,tile2){
     console.log("slot"+maine.activeSlot);
