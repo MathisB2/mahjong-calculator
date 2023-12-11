@@ -203,22 +203,22 @@ nav{
 
 @keyframes flickerAnimation {
     0%   { opacity:1; }
-    50%  { opacity:0; }
+    50%  { opacity:0.2; }
     100% { opacity:1; }
 }
 @-o-keyframes flickerAnimation{
     0%   { opacity:1; }
-    50%  { opacity:0; }
+    50%  { opacity:0.2; }
     100% { opacity:1; }
 }
 @-moz-keyframes flickerAnimation{
     0%   { opacity:1; }
-    50%  { opacity:0; }
+    50%  { opacity:0.2; }
     100% { opacity:1; }
 }
 @-webkit-keyframes flickerAnimation{
     0%   { opacity:1; }
-    50%  { opacity:0; }
+    50%  { opacity:0.2; }
     100% { opacity:1; }
 }
 .lineHand div.activeEmptyTile{
@@ -231,8 +231,43 @@ nav{
 }
 
 
+.boxContainer{
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+.boxContainer input{
 
+    display: none;
 
+}
+
+.boxContainer span {
+    content: "";
+    height: 32px; /* Ajustez selon la taille de l'icône */
+    width: 32px; /* Ajustez selon la taille de l'icône */
+    border: 1px solid #ccc; /* Bordure de la case à cocher */
+    background-size: cover;
+    background-position: center;
+    border: none;
+}
+
+.checkmarkChecked {
+    background-image: url("img/icons/eyeClosed.svg"); /* Chemin vers l'icône cochée */
+    display: none;
+}
+.checkmarkUnchecked {
+    background-image: url("img/icons/eyeOpened.svg"); /* Chemin vers l'icône non cochée */
+    display: block;
+}
+
+.boxContainer input:checked ~ .checkmarkChecked {
+    display: block;
+}
+
+.boxContainer input:checked ~ .checkmarkUnchecked {
+    display: none;
+}
 
 
 

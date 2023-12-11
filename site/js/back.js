@@ -2,6 +2,7 @@ const h=document.getElementById("hand");
 const htmlDrawerTileList=document.getElementById("drawerTileList");
 
 
+
 class Tile {
     type;
     img;
@@ -25,7 +26,7 @@ class Tile {
     }
 
     drawUnavailable(opacity){
-        let tmp = "<div class=\"tile\" id=\""+this.id+"\" ";
+        let tmp = "<div class=\"tile\" id=\""+this.id+"\" draggable=\"true\"";
         tmp += " style=\"opacity:"+opacity+"%; background-image:url('";
         tmp += this.img;
         tmp += "')\"> </div>";
@@ -48,16 +49,23 @@ class Tile {
 class Slot{
     tileList;
     slotId;
+    hidden;
     constructor(id) {
         this.tileList = [];
         this.slotId=id;
+        this.hidden=false;
     }
 
     drawSlot(active=false){
         let tmp="<section class='lineHand' id='slot"+this.slotId+"'>";
 
         for(let element of this.tileList) {
-            tmp+=element.draw();
+            if(this.hidden){
+                tmp+=element.drawUnavailable(50);
+            }else{
+                tmp+=element.draw();
+            }
+
         }
         if(this.tileList.length<3 || (this.tileList.length==3 && this._isTriple())) {
             if(active){
@@ -67,6 +75,15 @@ class Slot{
             }
 
         }
+        tmp+="<label class=\"boxContainer\" >"
+        if(this.hidden){
+            tmp+="<input id=\"check"+this.slotId+"\" type=\"checkbox\" checked >";
+        }else{
+            tmp+="<input id=\"check"+this.slotId+"\" type=\"checkbox\" >";
+        }
+        tmp+="<span class=\"checkmarkChecked\"></span>";
+        tmp+="<span class=\"checkmarkUnchecked\"></span>";
+        tmp+="</label>";
         tmp+="</section>";
         return tmp;
 
@@ -147,6 +164,10 @@ class Slot{
 
         return s;
     }
+    toggleHidden(){
+        this.hidden=!this.hidden;
+        console.log(this.hidden);
+    }
 
 }
 
@@ -204,6 +225,16 @@ class Hand{
 
 
         }
+        for (let i=0;i<5;i++){
+            let e=document.getElementById("check"+i);
+            if(e){
+                e.addEventListener("click",toggleHidden);
+
+            }
+        }
+
+
+
         drawDrawerTiles();
     }
 
@@ -307,7 +338,14 @@ class Hand{
 }
 
 
+function toggleHidden(event){
+    let id=event.target.id.slice(-1);
 
+
+    console.log(id);
+    maine.slotList[id].toggleHidden();
+    maine.drawHand();
+}
 
 
 
