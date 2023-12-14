@@ -14,14 +14,14 @@ const convertBase64 = (file) => {
 
 
 async function main(){
-    let network = NetworkController.getController("172.22.69.111", 8080);
+    let network = NetworkController.getController("localhost", 8080);
     let image = network.getNetNamespace("ImageNet");
 
     const fileBTN=document.getElementById("fileInput")
     const popup=document.querySelector(".popUp");
 
     fileBTN.addEventListener("change", async (e) => {
-        popup.style.display="block";
+        popup.style.display="flex";
 
 
 
