@@ -5,18 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43f76323-03ed-4a48-9093-7b06be31145d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../client/JavaScript/NetworkController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/JavaScript/NetworkController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/JavaScript/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/JavaScript/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clustering/ClusterDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clustering/ClusterDetector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/ClusterDetector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/DataSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/ImageTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/TileDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/TileDetector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/TilesView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/TilesView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/ScoreService/MahjongSettement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/ScoreService/MahjongSettement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/Tiles/TileFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/Tiles/TileFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/img/photos/Thumbs.db" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/img/photos/Thumbs.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OpenCV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OpenCV.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/MahjongSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/MahjongSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/MahjongSettement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/MahjongSettement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tiles/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiles/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tiles/TileFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiles/TileFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +48,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;Z:/Documents/SAE/main_branch/client&quot;,
+    &quot;last_opened_file_path&quot;: &quot;Z:/Documents/SAE/main_branch/server&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -81,7 +78,7 @@
       <recent name="ImageService" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.OpenCV">
     <configuration name="FeatureMatching" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="FeatureMatching" />
       <module name="server" />
@@ -126,8 +123,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.OpenCV" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.truc_de_mathis" />
         <item itemvalue="Application.FeatureMatching" />
         <item itemvalue="Application.MorphologyDemo1" />
@@ -159,7 +156,9 @@
       <workItem from="1701418176023" duration="12337000" />
       <workItem from="1701693699176" duration="10809000" />
       <workItem from="1701705874565" duration="2517000" />
-      <workItem from="1701766483130" duration="1319000" />
+      <workItem from="1701766483130" duration="3601000" />
+      <workItem from="1702300799386" duration="226000" />
+      <workItem from="1702655092423" duration="3366000" />
     </task>
     <servers />
   </component>

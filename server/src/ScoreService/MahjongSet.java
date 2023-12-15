@@ -9,12 +9,14 @@ import java.util.ArrayList;
 
 public class MahjongSet {
     ArrayList<Tile> tiles;
+    boolean hidden;
 
     MahjongSet(){
         this.tiles = new ArrayList();
     }
     MahjongSet(JSONObject jsonSet) throws JSONException {
         this.tiles = new ArrayList();
+        this.hidden = jsonSet.getBoolean("hidden");
         JSONArray jsonTiles = jsonSet.getJSONArray("Tiles");
 
         for(int i = 0; i < jsonTiles.length(); ++i){
@@ -33,6 +35,10 @@ public class MahjongSet {
         assert tiles.size() <= 4 : "can't have a group with more than 4 tiles";
         assert !this.hasTile(tile) : "can't add existing tile";
         this.tiles.remove(tile);
+    }
+
+    public boolean isHidden(){
+        return this.hidden;
     }
 
     public void removeTile(Tile tile){

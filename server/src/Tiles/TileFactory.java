@@ -9,7 +9,7 @@ public class TileFactory {
 
         switch (tileType){
             case "WindTile": return new WindTile();
-            default:return new WindTile();
+            default: return new DragonTile();
         }
     }
 }

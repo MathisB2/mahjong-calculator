@@ -4,29 +4,27 @@ import org.opencv.core.*;
 
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Timer;
 
 public class OpenCV {
-    public static void main(String[] args) {
-        double time = System.currentTimeMillis();
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-        TileDetector detector = new TileDetector(new DataSet("data2"), 1600);
-        TilesView view = new TilesView();
-
-        var extractedTiles = detector.extractTiles("src/img/photos/img48.jpg");
-        var matchedTiles = detector.getMatchedTilesTo(extractedTiles);
-
-        System.out.println((System.currentTimeMillis() - time)/1000.0);
-        view.showMatches(extractedTiles, matchedTiles);
-
-       /* List<List<ImageTile>> clusters = detector.findCluster();
-
-        for (int i = 0; i < clusters.size(); i++) {
-            for (int y=0;y<clusters.get(i).size();y++){
-                System.out.println("Cluster " + (i + 1) + ": " + clusters.get(i).get(y).getName());
+    public static boolean isSuite(int numbers[]){
+        Arrays.sort(numbers);
+        for (int i = 0; i < numbers.length - 1; i += 2) {
+            if (!(numbers[i] + 1 == numbers[i + 1])) {
+                return false;
             }
-        }*/
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isSuite(new int[]{5, 5, 5}));
+        System.out.println(isSuite(new int[]{1,2,3,4,5}));
+        System.out.println(isSuite(new int[]{5, 3, 8}));
+        System.out.println(isSuite(new int[]{5, 4, 5}));
     }
 }
 
