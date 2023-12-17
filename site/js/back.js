@@ -659,7 +659,9 @@ function onTrashClick(){
 
 
 function onNextClick(){
-    window.location.href = "gameSettings.html";
+    if(true){ //check if tilelist is not emtpy
+        window.location.href = "gameSettings.html";
+    }
 }
 
 
