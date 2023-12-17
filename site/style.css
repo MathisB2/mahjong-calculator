@@ -377,7 +377,7 @@ nav{
     border-radius: 4px;
     text-decoration: none;
     font-size: 16pt;
-    line-height: 18pt;
+    line-height: 16pt;
     font-weight: 500;
     color: var(--backgound);
     padding:0;
@@ -500,6 +500,8 @@ main.settings>div:first-child{
 
 main.settings section{
     width: 100%;
+    max-width: 400px;
+    margin: auto;
     padding: 16px;
     margin-bottom: 32px;
     /*border: solid red 1px;*/
@@ -568,13 +570,26 @@ main.settings input:checked + label img{
 
 }
 
+
+#settingsBackButton{
+    width: fit-content;
+    padding: 0 7px;
+    margin-right: 8px;
+    color: var(--mainColor);
+    background-color: var(--backgound);
+    border: solid var(--mainColor) 3px;
+    font-weight: 500;
+    font-size: 20pt;
+    line-height: 23pt;
+}
+
 .settings .drawerButton div{
     background-color: var(--mainColor);
     width: 100%;
     border-radius: 4px;
     text-decoration: none;
     font-size: 16pt;
-    line-height: 18pt;
+    line-height: 16pt;
     font-weight: 500;
     color: var(--backgound);
     padding:8px;
