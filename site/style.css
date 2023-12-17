@@ -21,7 +21,8 @@
     --textColor:#7B8190;
     --drawerDefaultHeight:50vh;
     --headerDefaultHeight:48px;
-    /*--tileShadow:*/
+    --tileShadow:0 0 5px rgba(0,0,0,.4);
+    --buttonLineHeight: 18pt;
 }
 
 body {
@@ -124,6 +125,8 @@ body {
 
 /* --------------- page calcul -------------*/
 
+
+/*header*/
 nav{
     width: 100%;
     background-color: var(--secondColor);
@@ -155,6 +158,10 @@ nav{
 }
 
 
+
+
+/*liste des tuiles*/
+
 #hand{
     width: 100%;
     height: calc(100vh - var(--headerDefaultHeight) - var(--drawerDefaultHeight));
@@ -181,7 +188,7 @@ nav{
     color: var(--mainColor);
 
     margin-right: 16px;
-    box-shadow: 0 0 5px rgba(0,0,0,.4);
+    box-shadow: var(--tileShadow);
     text-align: center;
     cursor: pointer;
 
@@ -271,6 +278,9 @@ nav{
 
 
 
+
+
+/* tiroir d'ajout des tuiles*/
 #drawer{
     width: 100%;
     position: fixed;
@@ -348,7 +358,7 @@ nav{
 
 
 
-#drawerValidateButton{
+.drawerButton{
     position: fixed;
     left: 0;
     bottom: 0;
@@ -359,15 +369,16 @@ nav{
 
 }
 
-#drawerValidateButton div{
+.drawerButton div{
     background-color: var(--mainColor);
     width: 100%;
     border-radius: 4px;
     text-decoration: none;
     font-size: 16pt;
-    line-height: 24pt;
+    line-height: 18pt;
     font-weight: 500;
     color: var(--backgound);
+    padding:0;
 }
 
 #drawerTileList{
@@ -416,6 +427,10 @@ nav{
 }
 
 
+
+
+/* animation de chargement */
+
 .popUp{
     position: absolute;
     top: var(--headerDefaultHeight);
@@ -445,6 +460,127 @@ nav{
     width: 100%;
     max-width: 480px;
 }
+
+
+/*------------------------Game settings------------------------*/
+
+
+h1{
+    font-size: 18pt;
+    color: var(--textColor);
+}
+
+h2{
+    font-size: 16pt;
+    color: var(--secondColor);
+}
+
+h3{
+    color: var(--textColor);
+    font-weight: 500;
+    margin-top: 12px;
+}
+
+
+
+main.settings{
+    --checkedColor: var(--mainColor);
+    --tileWidth: 64px;
+}
+
+main.settings>div:first-child{
+    overflow-y: scroll;
+    /*background-color: #4DC69A;*/
+    height: calc(100vh - var(--headerDefaultHeight));
+}
+
+main.settings section{
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 32px;
+    /*border: solid red 1px;*/
+
+}
+
+
+main.settings div section:last-child{
+ /*border: solid blue 2px;*/
+    margin-bottom: 64px;
+
+
+}
+
+main.settings section div{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+main.settings input{
+    display: none;
+}
+
+main.settings label{
+    /*border: solid blue 1px;*/
+    width: var(--tileWidth);
+
+}
+
+main.settings label img{
+    width: 100%;
+    box-shadow: var(--tileShadow);
+    border-radius: 8px;
+}
+main.settings label h3{
+    text-align: center;
+    color: var(--textColor);
+    font-weight: 400;
+    margin: 0;
+}
+
+
+
+main.settings input:checked + label h3{
+    color: var(--checkedColor);
+    font-weight: 700;
+}
+
+main.settings input:checked + label img{
+    outline: solid 3px var(--checkedColor);
+
+}
+
+
+
+.settings .drawerButton{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    text-align: center;
+    background-color: var(--darkerBackground);
+    width: 100%;
+    padding: 8px 16px;
+
+}
+
+.settings .drawerButton div{
+    background-color: var(--mainColor);
+    width: 100%;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 16pt;
+    line-height: 18pt;
+    font-weight: 500;
+    color: var(--backgound);
+    padding:8px;
+}
+
+
+
+
+
+
 
 
 

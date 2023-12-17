@@ -2,7 +2,7 @@ const drawer = document.querySelector("#drawer");
 const drawerHandle = document.querySelector("#drawerHandle");
 const drawerHeader = document.querySelector("#drawerHeader");
 const drawerTileList = document.querySelector("#drawerTileList");
-const drawerButton = document.querySelector("#drawerValidateButton");
+const drawerButton = document.querySelector(".drawerButton");
 
 const nav=document.querySelector("nav");
 const hand=document.querySelector("#hand");

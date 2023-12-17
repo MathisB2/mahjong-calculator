@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet" />
+    <link rel="icon" href="img/logo.png" />
+    <title>Mahjong Calculator</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+
+<body>
+<header>
+
+    <nav>
+        <span id="openBurger" onclick="openNav()">&#9776</span>
+        <div class="textLogo">
+                <span>
+                    Mahjong
+                </span>
+            <span>
+                    Calculator
+                </span>
+        </div>
+    </nav>
+
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html">Accueil</a>
+        <a href="calcul.html">Calcul</a>
+        <a href="photo.html">Photo</a>
+        <a href="resultat.html">Résultat</a>
+    </div>
+</header>
+
+
+<main class="settings">
+
+    <div>
+        <h1>Détails du jeu</h1>
+        <section id="gameWind">
+            <h2>Vent de la partie</h2>
+            <div>
+                <input type="radio" id="gameNorth" name="gameWind" checked />
+                <label for="gameNorth">
+                    <img src="img/tiles/wind_north.png" alt="North">
+                    <h3>Nord</h3>
+                </label>
+                <input type="radio" id="gameSouth" name="gameWind"/>
+                <label for="gameSouth">
+                    <img src="img/tiles/wind_south.png" alt="South">
+                    <h3>Sud</h3>
+                </label>
+                <input type="radio" id="gameEast" name="gameWind"/>
+                <label for="gameEast">
+                    <img src="img/tiles/wind_east.png" alt="East">
+                    <h3>Est</h3>
+                </label>
+                <input type="radio" id="gameWest" name="gameWind"/>
+                <label for="gameWest">
+                    <img src="img/tiles/wind_west.png" alt="West">
+                    <h3>Ouest</h3>
+                </label>
+            </div>
+
+        </section>
+
+
+        <section id="playerWind">
+            <h2>Vent du joueur</h2>
+            <div>
+                <input type="radio" id="playerNorth" name="playerWind" checked />
+                <label for="playerNorth">
+                    <img src="img/tiles/wind_north.png" alt="North">
+                    <h3>Nord</h3>
+                </label>
+                <input type="radio" id="playerSouth" name="playerWind"/>
+                <label for="playerSouth">
+                    <img src="img/tiles/wind_south.png" alt="South">
+                    <h3>Sud</h3>
+                </label>
+                <input type="radio" id="playerEast" name="playerWind"/>
+                <label for="playerEast">
+                    <img src="img/tiles/wind_east.png" alt="East">
+                    <h3>Est</h3>
+                </label>
+                <input type="radio" id="playerWest" name="playerWind"/>
+                <label for="playerWest">
+                    <img src="img/tiles/wind_west.png" alt="West">
+                    <h3>Ouest</h3>
+                </label>
+            </div>
+        </section>
+
+        <section id="playerBonus">
+            <h2>Bonnus du joueur</h2>
+            <h3>Fleurs</h3>
+            <div>
+                <input type="checkbox" id="flower1" name="playerFlowers"/>
+                <label for="flower1">
+                    <img src="img/tiles/flower_1_plum_blossom_east.png" alt="North">
+                </label>
+                <input type="checkbox" id="flower2" name="playerFlowers"/>
+                <label for="flower2">
+                    <img src="img/tiles/flower_2_orchid_south.png" alt="South">
+                </label>
+                <input type="checkbox" id="flower3" name="playerFlowers"/>
+                <label for="flower3">
+                    <img src="img/tiles/flower_3_chrysanthemum_west.png" alt="East">
+                </label>
+                <input type="checkbox" id="flower4" name="playerFlowers"/>
+                <label for="flower4">
+                    <img src="img/tiles/flower_4_bamboo_north.png" alt="West">
+                </label>
+            </div>
+
+            <h3>Saisons</h3>
+            <div>
+                <input type="checkbox" id="season1" name="playerFlowers"/>
+                <label for="season1">
+                    <img src="img/tiles/season_1_spring_east.png" alt="North">
+                </label>
+                <input type="checkbox" id="season2" name="playerFlowers"/>
+                <label for="season2">
+                    <img src="img/tiles/season_2_summer_south.png" alt="South">
+                </label>
+                <input type="checkbox" id="season3" name="playerFlowers"/>
+                <label for="season3">
+                    <img src="img/tiles/season_3_autumn_west.png" alt="East">
+                </label>
+                <input type="checkbox" id="season4" name="playerFlowers"/>
+                <label for="season4">
+                    <img src="img/tiles/season_4_winter_north.png" alt="West">
+                </label>
+            </div>
+        </section>
+    </div>
+
+
+
+
+    <div class="drawerButton">
+        <div id="settingsSendButton">
+            Valider
+        </div>
+    </div>
+
+
+
+
+
+
+</main>
+
+<script type="text/javascript" src="js/NetworkController.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+
+</html>
