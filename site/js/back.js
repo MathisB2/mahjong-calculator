@@ -1,6 +1,7 @@
 const h=document.getElementById("hand");
 const htmlDrawerTileList=document.getElementById("drawerTileList");
 const trashButton=document.getElementById("trashButton");
+const nextButton=document.getElementById("drawerNextButton");
 
 
 class Tile {
@@ -656,7 +657,21 @@ function onTrashClick(){
     importTiles()
 }
 
-trashButton.addEventListener("click", onTrashClick);
+
+function onNextClick(){
+    window.location.href = "gameSettings.html";
+}
+
+
+if(trashButton){
+    trashButton.addEventListener("click", onTrashClick);
+}
+
+if(nextButton){
+    nextButton.addEventListener("click", onNextClick);
+}
+
+
 
 let maine = new Hand();
 maine.setActive(0);

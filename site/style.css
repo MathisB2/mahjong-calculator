@@ -468,6 +468,8 @@ nav{
 h1{
     font-size: 18pt;
     color: var(--textColor);
+    text-align: center;
+    margin: 8px;
 }
 
 h2{
