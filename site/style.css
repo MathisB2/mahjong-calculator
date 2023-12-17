@@ -330,6 +330,8 @@ nav{
 
 
 #drawerHeader #drawerActionIcons{
+    display: flex;
+    align-items: center;
     width: fit-content;
     margin: 0;
     padding: 0;
