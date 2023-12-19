@@ -14,8 +14,27 @@ function onBackClick(){
 function onSendClick(){
     if(settings.isSet() && settings.isValid()){
         settings.update();
-        console.log("envoi au serveur");
-        // window.location.href = "resultat.html";
+
+
+        if(localStorage.getItem('maine')!=null){
+            savedData=localStorage.getItem('maine');
+            let instance = JSON.parse(savedData);
+            instance.gameWind=settings.gameWind;
+            instance.playerWind=settings.playerWind;
+            instance.playerFlowers=settings.playerFlowers;
+            instance.playerSeasons=settings.playerSeasons;
+            console.log(instance);
+
+            localStorage.setItem("maine",instance.toString());
+
+            console.log("envoi au serveur");
+
+            // window.location.href = "resultat.html";
+        }else{
+            alert("Erreur");
+        }
+
+
     }
 
 }
@@ -33,8 +52,8 @@ if(sendButton){
 
 
 class gameSettings{
-    gameWind="gameNorth"
-    playerWind="playerNorth"
+    gameWind="gameNorth";
+    playerWind="playerNorth";
     playerFlowers=[];
     playerSeasons=[];
 

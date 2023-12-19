@@ -1,3 +1,5 @@
+
+
 const h=document.getElementById("hand");
 const htmlDrawerTileList=document.getElementById("drawerTileList");
 const trashButton=document.getElementById("trashButton");
@@ -9,10 +11,17 @@ class Tile {
     img;
     name;
     id;
+    shortenName;
+    value;
     constructor(name,id) {
         this.name=name;
         this.id=id;
         this.img="img/tiles/"+name+".png";
+
+        let splited=name.split("_");
+        this.shortenName=splited[0];
+        console.log(splited.length);
+        this.value=splited[splited.length-1]
     }
 
 
@@ -39,6 +48,8 @@ class Tile {
         let t=new Tile(this.name, this.id);
         t.type=this.type;
         t.img=this.img;
+        t.shortenName=this.shortenName;
+        t.value=this.value;
         return t;
     }
 
@@ -178,6 +189,11 @@ class Hand{
     activeSlot;
     currentId;
 
+    gameWind="gameNorth";
+    playerWind="playerNorth";
+    playerFlowers=[];
+    playerSeasons=[];
+
     constructor() {
         this._initSlotList();
 
@@ -286,6 +302,7 @@ class Hand{
                 }
             }
         }
+        console.log(t);
         return null;
     }
 
@@ -334,6 +351,11 @@ class Hand{
 
     }
 
+
+    toString(){
+        let jsonString=JSON.stringify(this);
+        return jsonString;
+    }
 
 
 }
@@ -438,7 +460,7 @@ function insertTile(id1,slotId){
 
 
 
-function canSwap(tile1,tile2){
+function canSwap(tile1,tile2,drawer=false){
     console.log("slot"+maine.activeSlot);
 
     let copie=maine.getSlotFor(tile1).copy();
@@ -448,12 +470,17 @@ function canSwap(tile1,tile2){
     console.log(copie);
 
 
-    let copie2=maine.getSlotFor(tile2).copy();
-    copie2.deleteTile(tile2.id);
 
+    let resultat=false;
+    if(drawer){
+        resultat=copie.canAdd(tile2.name);
+    }else{
+        let copie2=maine.getSlotFor(tile2).copy();
+        copie2.deleteTile(tile2.id);
+        resultat=copie.canAdd(tile2.name) && copie2.canAdd(tile1.name);
 
+    }
 
-    let resultat=copie.canAdd(tile2.name) && copie2.canAdd(tile1.name);
     return resultat;
 
 }
@@ -481,6 +508,15 @@ function swapTiles(id1, id2){
         info = tile.id;
         tile.id = tile2.id;
         tile2.id = info;
+
+        info = tile.shortenName;
+        tile.shortenName = tile2.shortenName;
+        tile2.shortenName = info;
+
+
+        info = tile.value;
+        tile.value = tile2.value;
+        tile2.value = info;
     }
 
 
@@ -494,13 +530,15 @@ function swapDrawerToHand(id1,id2){
     let tile2 = maine.getTile(id2);
     let tile3=tile2.copy();
 
-    if(canSwap(tile,tile2)){
+    if(canSwap(tile2,tile,true)){
         addTileToDrawer(tile3);
 
         tile2.id=tile.id;
         tile2.name = tile.name;
         tile2.type = tile.type;
         tile2.img = tile.img;
+        tile2.shortenName=tile.shortenName;
+        tile2.value=tile.value;
 
         removeTileFromDrawer(tile.id);
     }
@@ -660,6 +698,8 @@ function onTrashClick(){
 
 function onNextClick(){
     if(true){ //check if tilelist is not emtpy
+        console.log(maine.toString());
+        localStorage.setItem("maine",maine.toString());
         window.location.href = "gameSettings.html";
     }
 }
@@ -672,6 +712,7 @@ if(trashButton){
 if(nextButton){
     nextButton.addEventListener("click", onNextClick);
 }
+
 
 
 
