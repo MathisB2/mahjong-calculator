@@ -1,4 +1,4 @@
-package Settement;
+package Settlement;
 
 public class RuleSet<T> extends RulesContainer<T> implements ScoreRule<T> {
     private ScoreRule<T> mainRule;

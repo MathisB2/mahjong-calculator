@@ -56,6 +56,13 @@ public class NetworkService extends WebSocketServer {
 
     @Override
     public void onMessage(WebSocket conn, String messageInfo) {
+        Thread th = new Thread(() -> {
+            processMessage(conn, messageInfo);
+        });
+        th.start();
+    }
+
+    private void processMessage(WebSocket conn, String messageInfo){
         try{
             JSONObject clientCall = new JSONObject(messageInfo);
             String name = clientCall.getString("name");

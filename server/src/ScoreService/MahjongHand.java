@@ -1,6 +1,7 @@
 package ScoreService;
 
 import Tiles.Tile;
+import Tiles.TileFactory;
 import Tiles.WindTile;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -9,19 +10,24 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 public class MahjongHand {
     private ArrayList<MahjongSet> sets;
-    private WindTile wind;
+    private WindTile playerWind;
+    private WindTile gameWind;
 
     MahjongHand(JSONObject hand) throws JSONException {
         this.sets = new ArrayList(5);
         JSONArray jsonSets = hand.getJSONArray("Sets");
+        TileFactory factory = new TileFactory();
+        this.playerWind = (WindTile) factory.get(hand.getJSONObject("playerWind"));
+        this.gameWind = (WindTile) factory.get(hand.getJSONObject("gameWind"));
 
         for(int i = 0; i < jsonSets.length(); ++i){
             JSONObject jsonSet = jsonSets.getJSONObject(i);
             this.addSet(new MahjongSet(jsonSet));
         }
     }
-    MahjongHand(WindTile wind){
-        this.wind = wind;
+    MahjongHand(WindTile playerWind, WindTile gameWind){
+        this.playerWind = playerWind;
+        this.gameWind = gameWind;
         this.sets = new ArrayList(5);
     }
     public ArrayList<MahjongSet> getSets(){

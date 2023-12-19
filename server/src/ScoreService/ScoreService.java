@@ -6,16 +6,16 @@ import org.json.JSONObject;
 
 public class ScoreService {
     NetNamespace scoreNet;
-    MahjongSettement settement;
+    MahjongSettlement settlement;
     public ScoreService(NetworkService networkService){
         scoreNet = networkService.newNameSpace("ScoreNet");
-        settement = new MahjongSettement();
+        settlement = new MahjongSettlement();
 
         scoreNet.connect((WebSocket user, String message) ->{
             JSONObject jsonHand = new JSONObject(message);
             MahjongHand hand = new MahjongHand(jsonHand);
 
-            return settement.getScoreOf(hand).toString();
+            return settlement.getScoreOf(hand).toString();
         });
     }
 }

@@ -5,15 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43f76323-03ed-4a48-9093-7b06be31145d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ScoreService/Rules/Flush.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ScoreService/Rules/Hidden.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ScoreService/Rules/Square.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ScoreService/Rules/Suite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tiles/BambooTile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tiles/CharacterTile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tiles/DotTile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tiles/FlowerTile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tiles/SeasonTile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/ScoreService/MahjongSettement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/ScoreService/MahjongSettement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/NetworkService/NetworkService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/NetworkService/NetworkService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/ScoreService/MahjongSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/ScoreService/MahjongSet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/ScoreService/MahjongSettement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/ScoreService/ScoreService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/ScoreService/ScoreService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/Settement/AdditionScoreRule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/Settement/IRule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/Settement/MultiplicationScoreRule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/Settement/RuleSet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/Settement/RulesContainer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/Settement/ScoreRule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/Settement/Settement.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/server/Tiles/TileFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/Tiles/TileFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/img/photos/Thumbs.db" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/img/photos/Thumbs.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OpenCV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OpenCV.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NetworkService/NetworkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NetworkService/NetworkService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/MahjongHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/MahjongHand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ScoreService/MahjongSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/MahjongSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/MahjongSettement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/MahjongSettement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/MahjongSettement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/MahjongSettlement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/ScoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/ScoreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settement/AdditionScoreRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settlement/AdditionScoreRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settement/IRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settlement/IRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settement/MultiplicationScoreRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settlement/MultiplicationScoreRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settement/RuleSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settlement/RuleSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settement/RulesContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settlement/RulesContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settement/ScoreRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settlement/ScoreRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settement/Settement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settlement/Settlement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tiles/DragonTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiles/DragonTile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tiles/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiles/Tile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tiles/TileFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiles/TileFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tiles/WindTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiles/WindTile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +107,7 @@
       <recent name="ImageService" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.OpenCV">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="FeatureMatching" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="FeatureMatching" />
       <module name="server" />
@@ -123,8 +152,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.OpenCV" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.OpenCV" />
         <item itemvalue="Application.truc_de_mathis" />
         <item itemvalue="Application.FeatureMatching" />
         <item itemvalue="Application.MorphologyDemo1" />
@@ -159,6 +188,8 @@
       <workItem from="1701766483130" duration="3601000" />
       <workItem from="1702300799386" duration="226000" />
       <workItem from="1702655092423" duration="3366000" />
+      <workItem from="1702974235148" duration="3720000" />
+      <workItem from="1702991364528" duration="2286000" />
     </task>
     <servers />
   </component>

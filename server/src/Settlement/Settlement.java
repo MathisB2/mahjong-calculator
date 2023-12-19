@@ -1,6 +1,6 @@
-package Settement;
+package Settlement;
 
-public class Settement<T> extends RulesContainer<T> {
+public class Settlement<T> extends RulesContainer<T> {
     public Integer getScoreOf(T param){
         int score = 0;
         for(ScoreRule<T> rule: rules){

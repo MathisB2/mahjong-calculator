@@ -4,12 +4,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class TileFactory {
-    public static Tile get(JSONObject jsonTile) throws JSONException {
-        String tileType = jsonTile.getString("Tile");
+    public Tile get(JSONObject jsonTile) throws JSONException {
+        String tileType = jsonTile.getString("type");
 
         switch (tileType){
-            case "WindTile": return new WindTile();
-            default: return new DragonTile();
+            case "BambooTile": return new BambooTile(jsonTile.getInt("value"));
+            case "CharacterTile": return new CharacterTile(jsonTile.getInt("value"));
+            case "DotTile": return new DotTile(jsonTile.getInt("value"));
+            case "DragonTile": return new DragonTile(jsonTile.getString("value"));
+            case "WindTile": return new WindTile(jsonTile.getString("value"));
+            case "FlowerTile": return new FlowerTile();
+            default: return new SeasonTile();
         }
     }
 }

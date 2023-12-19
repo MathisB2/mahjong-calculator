@@ -17,11 +17,13 @@ public class MahjongSet {
     MahjongSet(JSONObject jsonSet) throws JSONException {
         this.tiles = new ArrayList();
         this.hidden = jsonSet.getBoolean("hidden");
-        JSONArray jsonTiles = jsonSet.getJSONArray("Tiles");
+
+        JSONArray jsonTiles = jsonSet.getJSONArray("tileList");
+        TileFactory factory = new TileFactory();
 
         for(int i = 0; i < jsonTiles.length(); ++i){
             JSONObject jsonTile = jsonTiles.getJSONObject(i);
-            this.addTile(TileFactory.get(jsonTile));
+            this.addTile(factory.get(jsonTile));
         }
     }
 

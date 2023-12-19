@@ -1,4 +1,4 @@
-package Settement;
+package Settlement;
 
 import java.util.ArrayList;
 

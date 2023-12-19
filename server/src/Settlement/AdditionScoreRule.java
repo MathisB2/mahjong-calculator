@@ -1,4 +1,4 @@
-package Settement;
+package Settlement;
 
 public class AdditionScoreRule<T> implements ScoreRule<T> {
     IRule<T> rule;
