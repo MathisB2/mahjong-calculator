@@ -28,6 +28,7 @@
 body {
     background-color: var(--backgound);
     overscroll-behavior: contain;
+    /*transform: rotate(45deg);*/
 }
 
 
@@ -727,8 +728,6 @@ main.settings input:checked + label img{
     height: 1.5px;
 }
 
-
-
 #div-bas {
     width: 100Vw;
     display: flex;
@@ -774,83 +773,4 @@ main.settings input:checked + label img{
 #file-bas img {
     width: 6Vh;
     height: 5Vh;
-}
-
-/* video */
-
-#camera{
-    overflow: hidden;
-    transform: translatez(0);
-}
-
-#camera video{
-    transform: translatez(0);
-    position: absolute;
-    top: -100%;
-    bottom: -100%;
-    left: -100%;
-    right: -100%;
-
-    margin: auto;
-
-    min-width: 100%;
-    min-height: 100%;
-}
-
-
-/* --------------- page score ----------------- */
-
-#score {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50Vw;
-}
-
-#total {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50Vw;
-}
-
-#score-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 5Vh;
-}
-
-#score-center hr {
-    position: absolute;
-    width: 75Vw;
-    height: 1px;
-    background-color: black;
-    margin-top: 8Vh;
-}
-
-#total p {
-    font-size: 7Vw;
-}
-
-#score p {
-    font-size: 11Vw;
-}
-
-#detail {
-    margin-top: 4Vh;
-    font-size: 4Vw;
-    padding-left: 10Vw;
-}
-
-#score span {
-    margin-top: 6Vw;
-    font-size: 4Vw;
-}
-
-#petit-score {
-    position: absolute;
-    right: 10Vw;
-    margin-bottom: 5Vh;
-    color: #4DC69A;
 }

@@ -3,7 +3,6 @@ export class Tile {
     img;
     name;
     id;
-    shortenName;
     value;
 
     constructor(name,id) {
@@ -12,9 +11,9 @@ export class Tile {
         this.img="img/tiles/"+name+".png";
 
         let split = name.split("_");
-        this.shortenName = split[0];
+        this.type = split[0];
 
-        this.value = split[split.length-1]
+        this.value = split[1]
     }
 
     draw(){
@@ -42,7 +41,6 @@ export class Tile {
 
         t.type=this.type;
         t.img=this.img;
-        t.shortenName=this.shortenName;
         t.value=this.value;
 
         return t;

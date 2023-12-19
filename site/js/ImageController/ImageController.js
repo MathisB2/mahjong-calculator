@@ -1,5 +1,6 @@
 import {Signal} from "../Signal/Signal.js";
 import {NetworkController} from "../NetworkController/NetworkController.js";
+import {networkConfig} from "../config.js";
 
 export let ImageManager = function() {
     let imageController = null;
@@ -24,7 +25,7 @@ class ImageController{
         const popup = document.querySelector(".popUp");
         if(fileBTN == null || popup == null) return;
 
-        const network = NetworkController.getController("localhost", 8080);
+        let network = NetworkController.getController(networkConfig.ip, networkConfig.port);
         const imageNet = network.getNetNamespace("ImageNet");
 
         this.imageNet =  imageNet;
