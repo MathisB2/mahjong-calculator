@@ -35,6 +35,9 @@ async function main(){
         });
 
 
+        image.call()
+
+
     });
 }
 
