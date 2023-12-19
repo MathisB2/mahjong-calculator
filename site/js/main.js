@@ -1,47 +1,15 @@
-const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(file);
+import {NetworkController} from "./NetworkController/NetworkController.js";
+import {ImageManager} from "./ImageController/ImageController.js";
+import {startBack} from "./HandController/back.js";
+import {startDrawer} from "./HandController/drawer.js";
+import {startSettings} from "./HandController/gameSettings.js";
 
-        fileReader.onload = () => {
-            resolve(fileReader.result);
-        };
-        fileReader.onerror = (error) => {
-            reject(error);
-        };
-    });
-};
-
-
-async function main(){
+function main(){
     let network = NetworkController.getController("localhost", 8080);
-    let image = network.getNetNamespace("ImageNet");
+    let imgController = ImageManager.getController();
 
-    const fileBTN=document.getElementById("fileInput")
-    const popup=document.querySelector(".popUp");
-
-    fileBTN.addEventListener("change", async (e) => {
-        popup.style.display="flex";
-
-
-
-        const file = e.target.files[0];
-        let base64 = await convertBase64(file);
-
-        image.call(base64).then(function (callback) {
-            console.log(JSON.parse(callback));
-            maine.importDetectionResults(callback)
-            popup.style.display="none";
-        });
-
-
-        image.call()
-
-
-    });
+    startBack().then();
+    startDrawer().then();
+    startSettings().then();
 }
-
-
-
-
 main();

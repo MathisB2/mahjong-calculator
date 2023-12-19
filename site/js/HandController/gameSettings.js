@@ -6,50 +6,8 @@ const playerWindInputs=document.getElementsByName("playerWind");
 const playerFlowersInputs=document.getElementsByName("playerFlowers");
 const playerSeasonsInputs=document.getElementsByName("playerSeasons");
 
-
-
-function onBackClick(){
-    window.location.href = "calcul.html";
-}
-function onSendClick(){
-    if(settings.isSet() && settings.isValid()){
-        settings.update();
-
-
-        if(localStorage.getItem('maine')!=null){
-            savedData=localStorage.getItem('maine');
-            let instance = JSON.parse(savedData);
-            instance.gameWind=settings.gameWind;
-            instance.playerWind=settings.playerWind;
-            instance.playerFlowers=settings.playerFlowers;
-            instance.playerSeasons=settings.playerSeasons;
-            console.log(instance);
-
-            localStorage.setItem("maine",instance.toString());
-
-            console.log("envoi au serveur");
-
-            // window.location.href = "resultat.html";
-        }else{
-            alert("Erreur");
-        }
-
-
-    }
-
-}
-
-
-if(backButton){
-    backButton.addEventListener("click", onBackClick);
-}
-if(sendButton){
-    sendButton.addEventListener("click", onSendClick);
-}
-
-
-
-
+const DATA_NAME = 'mahjongHand';
+let settings;
 
 class gameSettings{
     gameWind="gameNorth";
@@ -68,8 +26,6 @@ class gameSettings{
         this.HTMLplayerFlowersInputs=playerFlowersInputs;
         this.HTMLplayerSeasonsInputs=playerSeasonsInputs;
     }
-
-
 
     _updateGameWind(){
         for(let i = 0; i < this.HTMLgameWindInputs.length; i++){
@@ -114,7 +70,6 @@ class gameSettings{
 
     }
 
-
     isSet(){
         return this.HTMLgameWindInputs!=null && this.HTMLplayerWindInputs!=null && this.HTMLplayerSeasonsInputs!=null && this.HTMLplayerFlowersInputs!=null
     }
@@ -124,9 +79,44 @@ class gameSettings{
     }
 }
 
+function onSendClick(){
+    if(settings.isSet() && settings.isValid()){
+        settings.update();
+        let savedData = localStorage.getItem(DATA_NAME)
 
-let settings;
-if(gameWindInputs && playerWindInputs && playerFlowersInputs && playerSeasonsInputs){
-    settings=new gameSettings(gameWindInputs,playerWindInputs,playerFlowersInputs,playerSeasonsInputs);
-    document.addEventListener("mouseup",settings.update.bind(settings));
+        if(savedData!=null){
+            let instance = JSON.parse(savedData);
+
+            instance.gameWind = settings.gameWind;
+            instance.playerWind = settings.playerWind;
+            instance.playerFlowers = settings.playerFlowers;
+            instance.playerSeasons = settings.playerSeasons;
+
+            localStorage.setItem(DATA_NAME,instance.toString());
+
+            console.log("sending to server...");
+
+            //TODO send to server
+
+            // when answer: window.location.href = "resultat.html";
+
+            console.log("... sent to server");
+        }else{
+            alert("error");
+        }
+    }
+}
+
+function onBackClick(){
+    window.location.href = "calcul.html";
+}
+
+export async function startSettings(){
+    if(gameWindInputs && playerWindInputs && playerFlowersInputs && playerSeasonsInputs){
+        settings = new gameSettings(gameWindInputs,playerWindInputs,playerFlowersInputs,playerSeasonsInputs);
+
+        document.addEventListener("mouseup",settings.update.bind(settings));
+        backButton.addEventListener("click", onBackClick);
+        sendButton.addEventListener("click", onSendClick);
+    }
 }
