@@ -381,6 +381,7 @@ nav{
     font-weight: 500;
     color: var(--backgound);
     padding:0;
+    cursor: pointer;
 }
 
 #drawerTileList{
