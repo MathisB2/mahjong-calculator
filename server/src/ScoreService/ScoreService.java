@@ -11,7 +11,7 @@ public class ScoreService {
         scoreNet = networkService.newNameSpace("ScoreNet");
         settlement = new MahjongSettlement();
 
-        scoreNet.connect((WebSocket user, String message) ->{
+        scoreNet.connect((WebSocket user, String message) -> {
             JSONObject jsonHand = new JSONObject(message);
             MahjongHand hand = new MahjongHand(jsonHand);
 

@@ -16,7 +16,7 @@ public class Flush extends AdditionScoreRule<MahjongSet> {
             Tile refferedTile = tiles.get(0);
 
             for (int i = 1; i < 3; ++i) {
-                if (tiles.get(i).getClass() != refferedTile.getClass()) return false;
+                if (!refferedTile.equals(tiles.get(i))) return false;
             }
 
             return true;
