@@ -8,12 +8,12 @@ public class TileFactory {
         String tileType = jsonTile.getString("type");
 
         switch (tileType){
-            case "BambooTile": return new BambooTile(jsonTile.getInt("value"));
-            case "CharacterTile": return new CharacterTile(jsonTile.getInt("value"));
-            case "DotTile": return new DotTile(jsonTile.getInt("value"));
-            case "DragonTile": return new DragonTile(jsonTile.getString("value"));
-            case "WindTile": return new WindTile(jsonTile.getString("value"));
-            case "FlowerTile": return new FlowerTile();
+            case "bamboo": return new BambooTile(jsonTile.getInt("value"));
+            case "character": return new CharacterTile(jsonTile.getInt("value"));
+            case "dot": return new DotTile(jsonTile.getInt("value"));
+            case "dragon": return new DragonTile(jsonTile.getString("value"));
+            case "wind": return new WindTile(jsonTile.getString("value"));
+            case "flower": return new FlowerTile();
             default: return new SeasonTile();
         }
     }
