@@ -15,9 +15,11 @@
     box-sizing: border-box;
     font-family: 'figtree';
     --mainColor:#17C979;
+    --RGBmainColor:23,201,121;
     --secondColor:#2B3144;
     --backgound:#FFFFFF;
     --darkerBackground:#F4F5F9;
+    --RGBdarkerBackground:244,245,249;
     --textColor:#7B8190;
     --drawerDefaultHeight:50vh;
     --headerDefaultHeight:48px;
@@ -442,7 +444,7 @@ nav{
     left: 0;
     width: 100%;
     height: calc(100% - var(--headerDefaultHeight));
-    background-color: #e5e5e5;
+    background-color: var(--darkerBackground);
     display: none;
     align-items: center;
     flex-direction: column;
@@ -459,12 +461,34 @@ nav{
     color: var(--textColor)
 }
 
+.popUp .videoContainer{
+    width: 100%;
+    position: relative;
+    --overlayFading: 16%;
+    --overlayColor: var(--RGBdarkerBackground);
+}
 
 .popUp video{
     /*border: solid red 2px;*/
     width: 100%;
     max-width: 480px;
+    pointer-events: none;
 }
+
+
+
+
+.popUp .videoOverlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /*background-color: rgba(var(--rgbMainColor),0.5);*/
+    background: linear-gradient(0deg, rgba(var(--overlayColor),1) 0%, rgba(var(--overlayColor),0) var(--overlayFading), rgba(var(--overlayColor),0) calc(100% - var(--overlayFading)), rgba(var(--overlayColor),1) 100%);
+    opacity: 1;
+}
+
 
 
 /*------------------------Game settings------------------------*/
