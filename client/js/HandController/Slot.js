@@ -76,9 +76,11 @@ export class Slot{
         for(let element of this.tileList) {
             if(element.id==id){
                 this.tileList.splice(i,1);
+                return true;
             }
             i++;
         }
+        return false;
     }
 
 

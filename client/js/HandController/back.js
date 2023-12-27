@@ -74,16 +74,23 @@ class Hand{
     addTile(name){
         this.slotList[this.activeSlot].addTile(new Tile(name,this.currentId));
         this.currentId++;
+        this.setNextActive();
     }
 
     addTileByTile(tile){
         this.slotList[this.activeSlot].addTile(tile);
+        this.setNextActive();
     }
 
 
     removeTile(id){
-        for (let element of this.slotList){
-            element.deleteTile(id);
+        let i=0;
+        for (let element of this.slotList) {
+            if (element.deleteTile(id)) {
+                this.setActive(i)
+            }
+            i++;
+
         }
     }
 
@@ -107,6 +114,23 @@ class Hand{
 
     setActive(i){
         this.activeSlot = i;
+        let element = document.getElementById("bouton"+i);
+        if(element){
+            element.scrollIntoView({ behavior: 'smooth'});
+        }
+
+
+    }
+
+    setNextActive() {
+        let case1 = this.getActiveSlot().tileList.length >= 4;
+        let case2 = this.getActiveSlot().tileList.length == 3 && !this.getActiveSlot()._isTriple();
+        let condition = this.activeSlot < this.slotList.length-1;
+
+        if (condition && (case1 || case2)) {
+            this.setActive(parseInt(this.activeSlot)+1);
+            this.setNextActive();
+        }
     }
 
     getSlotFor(t){
