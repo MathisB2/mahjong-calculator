@@ -38,7 +38,7 @@ class Hand{
     drawHand() {
         h.innerHTML = "";
         for (let i=0;i<this.slotList.length;i++) {
-            h.innerHTML += this.slotList[i].drawSlot(i===this.activeSlot);
+            h.innerHTML += this.slotList[i].drawSlot(i==this.activeSlot);
         }
 
         for (let element of this.slotList) {

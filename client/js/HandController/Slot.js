@@ -20,7 +20,7 @@ export class Slot{
             }
         }
 
-        if(this.tileList.length<3 || (this.tileList.length==3 && this._isTriple())) {
+        if(this.tileList.length<3 || this._isTriple()) {
             if(active){
                 tmp += this._drawActiveAddButton()
             }else{
