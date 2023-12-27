@@ -88,6 +88,7 @@ class Hand{
         for (let element of this.slotList) {
             if (element.deleteTile(id)) {
                 this.setActive(i)
+                return;
             }
             i++;
 

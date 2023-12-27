@@ -10,16 +10,20 @@ const hand=document.querySelector("#hand");
 const maxDrawerHeight = 80 // en %
 
 let isDragging=false;
+let isOpened=false;
 let startY;
 
 export function openDrawer(){
+    if(isOpened)return;
     drawer.style.transition=".2s ease-out"
     setDrawerHeight(.5*window.innerHeight);
+    isOpened=true;
 }
 
 function closeDrawer(){
     drawer.style.transition=".2s ease-out"
     setDrawerHeight(getMinDrawerHeight());
+    isOpened=false;
 }
 
 function getTileListHeight(currentDrawerHeight=drawer.offsetHeight){
@@ -49,7 +53,7 @@ function setDrawerHeight(h){
 
 function roundDrawerHeight(h){
     if(h<256){
-        setDrawerHeight(getMinDrawerHeight());
+        closeDrawer()
     }else{
         if(h<0.65*window.innerHeight){
             setDrawerHeight(.5*window.innerHeight);
