@@ -37,11 +37,35 @@ class gameSettings{
         if(savedData != null) {
             let instance = JSON.parse(savedData);
 
+            //winds
             for (let input of this.HTMLGameWindInputs) {
-                input.checked=instance.gameWind.name==input.id.replace("game","");
+                input.checked=instance.gameWind.name == this._getType(input.id);
             }
             for (let input of this.HTMLPlayerWindInputs) {
-                input.checked=instance.playerWind.name==input.id.replace("player","");
+                input.checked=instance.playerWind.name == this._getType(input.id);
+            }
+
+            //bonuses
+            for (let input of this.HTMLPlayerFlowersInputs) {
+                input.checked = false;
+                let value = this._getType(input.id);
+
+                for (let flower of instance.playerFlowers) {
+                    if(flower.value == value){
+                        input.checked = true;
+                    }
+                }
+            }
+
+            for (let input of this.HTMLPlayerSeasonsInputs) {
+                input.checked = false;
+                let value = this._getType(input.id);
+
+                for (let season of instance.playerSeasons) {
+                    if(season.value == value){
+                        input.checked = true;
+                    }
+                }
             }
 
         }
@@ -82,7 +106,7 @@ class gameSettings{
     }
 
     _getType(name){
-        return name.replace("game","").replace("player","");
+        return name.replace("game","").replace("player","").replace("flower","").replace("season","");
     }
 
     update(){
@@ -103,22 +127,46 @@ class gameSettings{
         let t = new Tile(name);
         t.type="wind";
         t.value=this._bindWindtoInt(name);
+        t.img=undefined;
         return t;
     }
 
     _bindWindtoInt(wind){
         switch (wind){
             case "North":
-                return 0;
-            case "South":
                 return 1;
-            case "East":
+            case "South":
                 return 2;
-            default:
+            case "East":
                 return 3;
+            default:
+                return 5;
         }
     }
 
+    playerFlowersToTiles(){
+        let array=[];
+        for (let flower of this.playerFlowers) {
+            array.push(this._getBonusTile("flower",parseInt(this._getType(flower))));
+        }
+        return array;
+    }
+
+    playerSeasonsToTiles(){
+        let array=[];
+        for (let season of this.playerSeasons) {
+            array.push(this._getBonusTile("season",parseInt(this._getType(season))));
+        }
+        return array;
+    }
+
+    _getBonusTile(name,value){
+        let t = new Tile(name);
+        t.type="bonus";
+        t.value=value;
+        t.img=undefined;
+        return t;
+    }
     saveToStorage(){
         let savedData = localStorage.getItem(storageConfig.hand)
         if(savedData != null) {
@@ -127,8 +175,8 @@ class gameSettings{
             instance.gameWind = this.gameWindToTile();
             instance.playerWind = this.playerWindToTile();
 
-            instance.playerFlowers = this.playerFlowers;
-            instance.playerSeasons = this.playerSeasons;
+            instance.playerFlowers = this.playerFlowersToTiles();
+            instance.playerSeasons = this.playerSeasonsToTiles();
 
             localStorage.setItem(storageConfig.hand, JSON.stringify(instance));
             return true;
