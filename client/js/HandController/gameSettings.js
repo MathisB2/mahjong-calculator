@@ -1,5 +1,5 @@
 import {NetworkController} from "../NetworkController/NetworkController.js";
-import {handStorageName, networkConfig} from "../config.js";
+import {storageConfig, networkConfig} from "../config.js";
 import {Tile} from "./Tile.js";
 
 const backButton = document.getElementById("settingsBackButton");
@@ -33,7 +33,7 @@ class gameSettings{
     }
 
     _init(){
-        let savedData = localStorage.getItem(handStorageName)
+        let savedData = localStorage.getItem(storageConfig.hand)
         if(savedData != null) {
             let instance = JSON.parse(savedData);
 
@@ -120,7 +120,7 @@ class gameSettings{
     }
 
     saveToStorage(){
-        let savedData = localStorage.getItem(handStorageName)
+        let savedData = localStorage.getItem(storageConfig.hand)
         if(savedData != null) {
             let instance = JSON.parse(savedData);
 
@@ -130,7 +130,7 @@ class gameSettings{
             instance.playerFlowers = this.playerFlowers;
             instance.playerSeasons = this.playerSeasons;
 
-            localStorage.setItem(handStorageName, JSON.stringify(instance));
+            localStorage.setItem(storageConfig.hand, JSON.stringify(instance));
             return true;
         }
         return false;
@@ -151,7 +151,7 @@ function onSendClick(){
     if(settings.isSet() && settings.isValid()){
         settings.update();
         settings.saveToStorage();
-        let savedData = localStorage.getItem(handStorageName)
+        let savedData = localStorage.getItem(storageConfig.hand)
         if(savedData != null){
             let instance = JSON.parse(savedData);
             console.log("sending to server...");

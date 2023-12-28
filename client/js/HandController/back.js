@@ -2,7 +2,7 @@ import {ImageManager} from "../ImageController/ImageController.js";
 import {Tile} from "./Tile.js";
 import {Slot} from "./Slot.js";
 import {openDrawer} from "./drawer.js";
-import {handStorageName} from "../config.js";
+import {storageConfig} from "../config.js";
 
 const h = document.getElementById("hand");
 const htmlDrawerTileList = document.getElementById("drawerTileList");
@@ -397,7 +397,7 @@ function importTiles(){
         availableTiles.push(tmp);
     }
 
-    if(localStorage.getItem(handStorageName)!=null){
+    if(localStorage.getItem(storageConfig.hand)!=null){
         importTilesFromLocalStorage();
         mahjongHand.drawHand();
     }
@@ -406,7 +406,7 @@ function importTiles(){
 }
 
 function importTilesFromLocalStorage(){
-    let savedData = localStorage.getItem(handStorageName)
+    let savedData = localStorage.getItem(storageConfig.hand)
     if(savedData != null) {
 
        let instance = JSON.parse(savedData);
@@ -515,7 +515,7 @@ function addTileToDrawer(tile){
 }
 
 function onTrashClick(){
-    localStorage.removeItem(handStorageName);
+    localStorage.removeItem(storageConfig.hand);
     mahjongHand.clear();
     importTiles();
 }
@@ -523,7 +523,7 @@ function onTrashClick(){
 function onNextClick(){
     if(mahjongHand.isValid()){
         console.log(mahjongHand.toString());
-        localStorage.setItem(handStorageName,mahjongHand.toString());
+        localStorage.setItem(storageConfig.hand,mahjongHand.toString());
         window.location.href = "gameSettings.html";
     }else{
         alert("Veuillez saisir une main valide");
