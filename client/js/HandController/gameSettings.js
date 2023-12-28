@@ -29,6 +29,22 @@ class gameSettings{
         this.HTMLPlayerWindInputs=playerWindInputs;
         this.HTMLPlayerFlowersInputs=playerFlowersInputs;
         this.HTMLPlayerSeasonsInputs=playerSeasonsInputs;
+        this._init();
+    }
+
+    _init(){
+        let savedData = localStorage.getItem(handStorageName)
+        if(savedData != null) {
+            let instance = JSON.parse(savedData);
+
+            for (let input of this.HTMLGameWindInputs) {
+                input.checked=instance.gameWind.name==input.id.replace("game","");
+            }
+            for (let input of this.HTMLPlayerWindInputs) {
+                input.checked=instance.playerWind.name==input.id.replace("player","");
+            }
+
+        }
     }
 
     _updateGameWind(){
@@ -76,6 +92,51 @@ class gameSettings{
         this._updatePlayerSeasons();
     }
 
+
+    gameWindToTile(){
+        return this._getWindTile(this._getType(this.gameWind));
+    }
+    playerWindToTile(){
+        return this._getWindTile(this._getType(this.playerWind));
+    }
+    _getWindTile(name){
+        let t = new Tile(name);
+        t.type="wind";
+        t.value=this._bindWindtoInt(name);
+        return t;
+    }
+
+    _bindWindtoInt(wind){
+        switch (wind){
+            case "North":
+                return 0;
+            case "South":
+                return 1;
+            case "East":
+                return 2;
+            default:
+                return 3;
+        }
+    }
+
+    saveToStorage(){
+        let savedData = localStorage.getItem(handStorageName)
+        if(savedData != null) {
+            let instance = JSON.parse(savedData);
+
+            instance.gameWind = this.gameWindToTile();
+            instance.playerWind = this.playerWindToTile();
+
+            instance.playerFlowers = this.playerFlowers;
+            instance.playerSeasons = this.playerSeasons;
+
+            localStorage.setItem(handStorageName, JSON.stringify(instance));
+            return true;
+        }
+        return false;
+    }
+
+
     isSet(){
         return this.HTMLGameWindInputs!=null && this.HTMLPlayerWindInputs!=null && this.HTMLPlayerSeasonsInputs!=null && this.HTMLPlayerFlowersInputs!=null
     }
@@ -89,18 +150,10 @@ class gameSettings{
 function onSendClick(){
     if(settings.isSet() && settings.isValid()){
         settings.update();
+        settings.saveToStorage();
         let savedData = localStorage.getItem(handStorageName)
         if(savedData != null){
             let instance = JSON.parse(savedData);
-
-            instance.gameWind = new Tile(settings.gameWind);
-            instance.playerWind = new Tile(settings.playerWind);
-
-            instance.playerFlowers = settings.playerFlowers;
-            instance.playerSeasons = settings.playerSeasons;
-
-            localStorage.setItem(handStorageName,JSON.stringify(instance));
-
             console.log("sending to server...");
 
             scoreNet.call(JSON.stringify(instance)).then(function (message){
@@ -115,6 +168,8 @@ function onSendClick(){
 }
 
 function onBackClick(){
+    settings.update();
+    settings.saveToStorage();
     window.location.href = "calcul.html";
 }
 

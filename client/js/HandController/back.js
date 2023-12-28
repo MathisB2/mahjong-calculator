@@ -17,8 +17,8 @@ class Hand{
     activeSlot;
     currentId;
 
-    gameWind="gameNorth";
-    playerWind="playerNorth";
+    gameWind = new Tile("North");
+    playerWind = new Tile("North");;
     playerFlowers=[];
     playerSeasons=[];
 
@@ -176,9 +176,13 @@ class Hand{
 
         this._initSlotList();
         this.setActive(0);
-        this.drawHand();
+        this.gameWind = new Tile("North");
+        this.playerWind = new Tile("North");
+        this.playerFlowers=[];
+        this.playerSeasons=[];
 
         importTiles();
+        this.drawHand();
     }
 
     toString(){
@@ -405,9 +409,8 @@ function importTilesFromLocalStorage(){
     let savedData = localStorage.getItem(handStorageName)
     if(savedData != null) {
 
-        let instance = JSON.parse(savedData);
+       let instance = JSON.parse(savedData);
 
-        console.log(instance);
        let i=0;
         for (let slot of instance.slotList) {
             mahjongHand.setActive(i);
@@ -421,6 +424,11 @@ function importTilesFromLocalStorage(){
             }
             i++;
         }
+
+        mahjongHand.gameWind=instance.gameWind;
+        mahjongHand.playerWind=instance.playerWind;
+        mahjongHand.playerFlowers=instance.playerFlowers;
+        mahjongHand.playerSeasons=instance.playerSeasons;
     }
 
 }
