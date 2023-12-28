@@ -1,5 +1,5 @@
 import {NetworkController} from "../NetworkController/NetworkController.js";
-import {networkConfig} from "../config.js";
+import {handStorageName, networkConfig} from "../config.js";
 import {Tile} from "./Tile.js";
 
 const backButton = document.getElementById("settingsBackButton");
@@ -10,7 +10,6 @@ const playerWindInputs = document.getElementsByName("playerWind");
 const playerFlowersInputs = document.getElementsByName("playerFlowers");
 const playerSeasonsInputs = document.getElementsByName("playerSeasons");
 
-const DATA_NAME = 'mahjongHand';
 let settings;
 let scoreNet;
 
@@ -92,7 +91,7 @@ class gameSettings{
 function onSendClick(){
     if(settings.isSet() && settings.isValid()){
         settings.update();
-        let savedData = localStorage.getItem(DATA_NAME)
+        let savedData = localStorage.getItem(handStorageName)
         console.log(savedData);
         if(savedData != null){
             let instance = JSON.parse(savedData);
@@ -103,7 +102,7 @@ function onSendClick(){
             instance.playerFlowers = settings.playerFlowers;
             instance.playerSeasons = settings.playerSeasons;
 
-            localStorage.setItem(DATA_NAME,instance.toString());
+            localStorage.setItem(handStorageName,instance.toString());
 
             console.log("sending to server...");
             console.log(instance);

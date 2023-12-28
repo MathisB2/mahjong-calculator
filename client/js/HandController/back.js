@@ -2,6 +2,7 @@ import {ImageManager} from "../ImageController/ImageController.js";
 import {Tile} from "./Tile.js";
 import {Slot} from "./Slot.js";
 import {openDrawer} from "./drawer.js";
+import {handStorageName} from "../config.js";
 
 const h = document.getElementById("hand");
 const htmlDrawerTileList = document.getElementById("drawerTileList");
@@ -373,6 +374,8 @@ function onDrawerTileClick(event){
 }
 
 function importTiles(){
+
+
     availableTiles=[];
     let fileNames=[
         "dot_1", "dot_2", "dot_3", "dot_4", "dot_5", "dot_6", "dot_7", "dot_8", "dot_9",
@@ -389,7 +392,36 @@ function importTiles(){
         }
         availableTiles.push(tmp);
     }
+
+    if(localStorage.getItem(handStorageName)!=null){
+        importTilesFromLocalStorage();
+        mahjongHand.drawHand();
+    }
     drawDrawerTiles();
+
+}
+
+function importTilesFromLocalStorage(){
+    let savedData = localStorage.getItem(handStorageName)
+    if(savedData != null) {
+
+        let instance = JSON.parse(savedData);
+
+        console.log(instance);
+       let i=0;
+        for (let slot of instance.slotList) {
+            mahjongHand.setActive(i);
+            mahjongHand.getActiveSlot().hidden=slot.hidden;
+            for (let tile of slot.tileList) {
+                tile = getAvailableTileByName(tile.name);
+                if (tile == null) continue;
+
+                removeTileFromDrawer(tile.id);
+                mahjongHand.addTileByTile(tile);
+            }
+            i++;
+        }
+    }
 
 }
 
@@ -475,14 +507,15 @@ function addTileToDrawer(tile){
 }
 
 function onTrashClick(){
-    mahjongHand.clear()
-    importTiles()
+    localStorage.removeItem(handStorageName);
+    mahjongHand.clear();
+    importTiles();
 }
 
 function onNextClick(){
     if(mahjongHand.isValid()){
         console.log(mahjongHand.toString());
-        localStorage.setItem("mahjongHand",mahjongHand.toString());
+        localStorage.setItem(handStorageName,mahjongHand.toString());
         window.location.href = "gameSettings.html";
     }else{
         alert("Veuillez saisir une main valide");
