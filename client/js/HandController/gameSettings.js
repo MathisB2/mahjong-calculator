@@ -74,8 +74,6 @@ class gameSettings{
         this._updatePlayerWind();
         this._updatePlayerFlowers();
         this._updatePlayerSeasons();
-        console.log(this)
-
     }
 
     isSet(){
@@ -92,7 +90,6 @@ function onSendClick(){
     if(settings.isSet() && settings.isValid()){
         settings.update();
         let savedData = localStorage.getItem(handStorageName)
-        console.log(savedData);
         if(savedData != null){
             let instance = JSON.parse(savedData);
 
@@ -102,10 +99,9 @@ function onSendClick(){
             instance.playerFlowers = settings.playerFlowers;
             instance.playerSeasons = settings.playerSeasons;
 
-            localStorage.setItem(handStorageName,instance.toString());
+            localStorage.setItem(handStorageName,JSON.stringify(instance));
 
             console.log("sending to server...");
-            console.log(instance);
 
             scoreNet.call(JSON.stringify(instance)).then(function (message){
                 console.log(message);
