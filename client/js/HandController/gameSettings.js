@@ -140,7 +140,7 @@ class gameSettings{
             case "East":
                 return 3;
             default:
-                return 5;
+                return 4;
         }
     }
 
