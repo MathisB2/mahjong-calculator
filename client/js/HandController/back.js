@@ -183,6 +183,31 @@ class Hand{
     toString(){
         return JSON.stringify(this);
     }
+
+
+    isEmpty(){
+        for (let slot of this.slotList) {
+            if(!slot.isEmpty()){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    getSize(){
+        let size=0;
+        for (let slot of this.slotList) {
+            size+=slot.tileList.length;
+        }
+        return size;
+
+    }
+
+    isValid(){
+        let size=this.getSize();
+        return !this.isEmpty() && size>=14 && size<=18;
+    }
 }
 
 function toggleHidden(event){
@@ -455,10 +480,12 @@ function onTrashClick(){
 }
 
 function onNextClick(){
-    if(true){ //TODO check if tile-list is not empty
+    if(mahjongHand.isValid()){
         console.log(mahjongHand.toString());
         localStorage.setItem("mahjongHand",mahjongHand.toString());
         window.location.href = "gameSettings.html";
+    }else{
+        alert("Veuillez saisir une main valide");
     }
 }
 

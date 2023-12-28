@@ -114,4 +114,9 @@ export class Slot{
         console.log(this.hidden);
     }
 
+
+    isEmpty(){
+        return this.tileList.length==0;
+    }
+
 }
