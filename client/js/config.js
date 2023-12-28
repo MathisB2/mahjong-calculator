@@ -4,6 +4,6 @@ export const networkConfig = {
 }
 export const storageConfig={
     hand: "mahjongHand",
-    score: "score",
+    score: "mahjongScore",
 
 }

@@ -159,6 +159,7 @@ function onSendClick(){
             scoreNet.call(JSON.stringify(instance)).then(function (message){
                 console.log(message);
                 console.log("... received from server");
+                localStorage.setItem(storageConfig.score,"25");
                 //window.location.href = "resultat.html";
             })
         }else{
