@@ -135,7 +135,21 @@ nav{
     background-color: var(--secondColor);
     display: flex;
     line-height: var(--headerDefaultHeight);
+    position: fixed;
+    top: 0;
+    left: 0;
 }
+
+header::after{
+    content: "";
+    height: var(--headerDefaultHeight);
+    /*border: solid red 1px;*/
+    width:100%;
+    display: block;
+
+}
+
+
 
 #openBurger{
     font-size: 32px;
