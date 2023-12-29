@@ -545,16 +545,11 @@ main.settings section{
     margin: auto;
     padding: 16px;
     margin-bottom: 32px;
-    /*border: solid red 1px;*/
-
 }
 
 
-main.settings div section:last-child{
- /*border: solid blue 2px;*/
+#playerBonus{
     margin-bottom: 64px;
-
-
 }
 
 main.settings section div{
