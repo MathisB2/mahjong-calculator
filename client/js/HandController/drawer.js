@@ -7,7 +7,8 @@ const drawerButton = document.querySelector(".drawerButton");
 const nav=document.querySelector("nav");
 const hand=document.querySelector("#hand");
 
-const maxDrawerHeight = 80 // en %
+const maxDrawerHeight = 80; // en %
+const minDrawerHeight=20;
 
 let isDragging=false;
 let isOpened=false;
@@ -52,7 +53,7 @@ function setDrawerHeight(h){
 }
 
 function roundDrawerHeight(h){
-    if(h<256){
+    if(h<getMinDrawerHeight()*(1+(minDrawerHeight/100))){
         closeDrawer()
     }else{
         if(h<0.65*window.innerHeight){
