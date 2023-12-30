@@ -4,9 +4,11 @@ import {startSettings} from "./HandController/gameSettings.js";
 import {startHeader} from "./GlobalHtmlObjects/Header/header.js";
 
 function main(){
-    startHeader().then();
+    startHeader().then(
+        headerResult => startDrawer()
+    );
     startBack().then();
-    startDrawer().then();
+    // startDrawer().then();
     startSettings().then();
 }
 main();

@@ -1,10 +1,12 @@
+import {startHeader} from "../GlobalHtmlObjects/Header/header.js";
+
 const drawer = document.querySelector("#drawer");
 const drawerHandle = document.querySelector("#drawerHandle");
 const drawerHeader = document.querySelector("#drawerHeader");
 const drawerTileList = document.querySelector("#drawerTileList");
 const drawerButton = document.querySelector(".drawerButton");
 
-const nav=document.querySelector("nav");
+let nav=document.querySelector("nav");
 const hand=document.querySelector("#hand");
 
 const maxDrawerHeight = 80; // en %
@@ -32,7 +34,7 @@ function getTileListHeight(currentDrawerHeight=drawer.offsetHeight){
 }
 
 function getHandHeight(currentDrawerHeight=drawer.offsetHeight){
-    return window.innerHeight-(nav.offsetHeight+currentDrawerHeight);
+    return window.innerHeight-nav.offsetHeight-currentDrawerHeight;
 }
 
 
@@ -92,6 +94,7 @@ function dragStop(){
 }
 
 export async function startDrawer(){
+    nav=document.querySelector("nav");
     if(!(drawerHandle
         && drawer
         && drawerTileList
@@ -99,6 +102,8 @@ export async function startDrawer(){
         && drawerHeader
         && nav
         && hand)) return;
+
+
     drawerHandle.addEventListener("mousedown", dragStart);
     drawerHeader.addEventListener("mousedown", dragStart);
     document.addEventListener("mousemove", dragging);
@@ -108,6 +113,8 @@ export async function startDrawer(){
     drawerHeader.addEventListener("touchstart", dragStart);
     document.addEventListener("touchmove", dragging);
     document.addEventListener("touchend", dragStop);
+
+
 
 
     closeDrawer();
