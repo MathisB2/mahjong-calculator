@@ -219,7 +219,7 @@ function onSendClick(){
 function onBackClick(){
     settings.update();
     settings.saveToStorage();
-    window.location.href = "calcul.html";
+    window.location.href = "calculator.html";
 }
 
 export async function startSettings(){
