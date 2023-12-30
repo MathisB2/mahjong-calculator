@@ -1,12 +1,26 @@
+import {HtmlTag} from "../HtmlObjects/HtmlTag.js";
+
 export class NavigationMenu{
     toHtml(){
-        return "" +
-            "<nav>" +
-            "   <label id=\"openBurger\" for=\"sideNavBox\">&#9776</label>" +
-            "   <div class=\"textLogo\">" +
-            "        <span>Mahjong</span>" +
-            "        <span>Calculator</span>" +
-            "    </div>" +
-            "</nav>";
+        let span1 = new HtmlTag("span");
+        span1.innerText = "Mahjong ";
+
+        let span2 = new HtmlTag("span");
+        span2.innerText = "Calculator";
+
+        let div = new HtmlTag("div");
+        div.setAttribute("class","textLogo");
+        div.addChild(span1);
+        div.addChild(span2);
+
+        let label = new HtmlTag("label");
+        label.setAttribute("id","openBurger");
+        label.setAttribute("for","sideNavBox");
+        label.innerText="&#9776";
+
+        let nav = new HtmlTag("nav");
+        nav.addChild(label);
+        nav.addChild(div);
+        return nav.toHtml();
     }
 }

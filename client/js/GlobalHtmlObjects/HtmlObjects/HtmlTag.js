@@ -5,16 +5,19 @@ export class HtmlTag{
     innerText;
     children;
     attributes;
+    hasClosingTag;
 
     constructor(type="span") {
         this.type=type;
         this.innerText="";
         this.children=[];
         this.attributes=[];
+        this.hasClosingTag=true;
     }
 
     toHtml(){
         let str=this.getOpeningTag();
+        if(!this.hasClosingTag) return str;
         str+=this.innerText;
         for (let child of this.children) {
             str+=child.toHtml();

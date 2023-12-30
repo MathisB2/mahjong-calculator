@@ -1,5 +1,6 @@
 import {NavigationMenu} from "./NavigationMenu.js";
 import {BurgerMenu} from "./BurgerMenu.js";
+import {HtmlTag} from "../HtmlObjects/HtmlTag.js";
 const headerObject=document.querySelector("header")
 
 
@@ -23,15 +24,16 @@ class Header{
         if(this.burgerMenu==""){
             return this.navigationMenu.toHtml();
         }
-        return "<input type=\"checkbox\" id=\"sideNavBox\">"
+
+        let input = new HtmlTag("input");
+        input.hasClosingTag=false;
+        input.setAttribute("type","checkbox");
+        input.setAttribute("id","sideNavBox");
+        return input.toHtml()
             + this.navigationMenu.toHtml()
             + this.burgerMenu.toHtml()
     }
 }
-
-
-
-
 
 
 
