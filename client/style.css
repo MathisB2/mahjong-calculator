@@ -35,99 +35,6 @@ body {
 
 
 
-/* Side nav */
-
-
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-    color: white;
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-
-
-
-/* ------------- page index --------------- */
-
-/* header */
-
-
-
-
-
-#nav_GD{
-    background-color:var(--secondColor);
-    width: 15Vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
-
-#cote {
-    font-size:30px;
-    cursor:pointer;
-}
-
-#nav_M{
-    background-color:var(--secondColor);
-    width: 85Vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 20px;
-    color: white;
-}
-
-/* image de fond */
-
-#fond_image{
-    width: 100VW;
-    height: 400px;
-    background-image: url("img/fond.avif");
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--backgound);
-    font-size: 8vW;
-}
-
-#fond_image span {
-    color: var(--mainColor);
-}
-
-
-/* --------------- page calcul -------------*/
-
 
 /*header*/
 nav{
@@ -172,6 +79,138 @@ header::after{
 .textLogo span:last-child{
     color:var(--mainColor);
     font-weight: 700;
+}
+
+
+
+/*-------------- menu de navigation --------------*/
+
+
+#sideNavBox{
+    display: none;
+}
+
+
+#sideNavBox:checked~#sideNav{
+    display: block;
+    pointer-events: auto;
+}
+
+#sideNavBox:checked~#sideNav>#sideNavMenu{
+   transform: none;
+}
+
+
+
+#sideNavBox:checked~#sideNav #sideNavOverlay{
+    opacity: 1;
+}
+
+
+
+
+#sideNav{
+    position: absolute;
+    /*display: none;*/
+    left: 0;
+    top: var(--headerDefaultHeight);
+    width: 100%;
+    height: calc(100% - var(--headerDefaultHeight));
+    z-index: 1;
+    pointer-events: none;
+    --transitionDuration:.2s ease-out
+
+
+}
+
+
+#sideNavMenu{
+    position: fixed;
+    top: var(--headerDefaultHeight);
+    left: 0;
+    max-width: 90%;
+    height: 100%;
+    background-color: var(--darkerBackground);
+    box-shadow: 4px 0 8px rgba(0,0,0,.4);
+    transform: translateX(-110%);
+    transition:var(--transitionDuration);
+
+    --menuFontSize:16pt;
+    font-size: var(--menuFontSize);
+    color: var(--textColor);
+    padding: 32px;
+
+}
+
+#sideNavOverlay{
+    position: fixed;
+    top: var(--headerDefaultHeight);
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(43, 49, 68, 0.5);
+    opacity: 0;
+    transition:var(--transitionDuration);
+    backdrop-filter: blur(4px);
+
+
+}
+
+
+#sideNavMenu label{
+    line-height: var(--menuFontSize);
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    margin-bottom: 64px;
+    color: var(--secondColor);
+
+}
+
+#sideNavMenu label span:last-child{
+    font-size: 24pt;
+    font-weight: 100;
+    line-height: var(--menuFontSize);
+}
+
+#sideNavMenu ul{
+    list-style: none;
+    --lineHeight: 32px;
+}
+
+#sideNavMenu ul li{
+    margin-bottom: 16px;
+}
+
+
+#sideNavMenu ul li img{
+    width: var(--lineHeight);
+    margin-right: 16px;
+}
+
+#sideNavMenu ul li a{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+
+    text-decoration: none;
+    color: var(--secondColor);
+    font-weight: 400;
+}
+
+#sideNavMenu ul li a.activeLink{
+    font-weight: 700;
+}
+
+#sideNavMenu ul li a.activeLink:hover{
+    text-decoration: none;
+    font-weight: 700;
+}
+
+#sideNavMenu ul li a:hover{
+    text-decoration: underline;
+    color: var(--secondColor);
+    font-weight: 500;
 }
 
 
