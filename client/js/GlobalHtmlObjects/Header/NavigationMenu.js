@@ -16,7 +16,7 @@ export class NavigationMenu{
         let label = new HtmlTag("label");
         label.setAttribute("id","openBurger");
         label.setAttribute("for","sideNavBox");
-        label.innerText="&#9776";
+        // label.innerText="&#9776";
 
         let nav = new HtmlTag("nav");
         nav.addChild(label);
