@@ -110,7 +110,7 @@ header::after{
 
 
 #sideNav{
-    position: absolute;
+    position: fixed;
     /*display: none;*/
     left: 0;
     top: var(--headerDefaultHeight);
@@ -129,7 +129,7 @@ header::after{
     top: var(--headerDefaultHeight);
     left: 0;
     max-width: 90%;
-    height: 100%;
+    height: calc(100% - var(--headerDefaultHeight));
     background-color: var(--darkerBackground);
     box-shadow: 4px 0 8px rgba(0,0,0,.4);
     transform: translateX(-110%);
@@ -140,6 +140,10 @@ header::after{
     color: var(--textColor);
     padding: 32px;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
 }
 
 #sideNavOverlay{
@@ -147,7 +151,7 @@ header::after{
     top: var(--headerDefaultHeight);
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% - var(--headerDefaultHeight));
     background-color: rgba(43, 49, 68, 0.5);
     opacity: 0;
     transition:var(--transitionDuration);
@@ -171,11 +175,13 @@ header::after{
     font-size: 24pt;
     font-weight: 100;
     line-height: var(--menuFontSize);
+    margin-left: 8px;
 }
 
 #sideNavMenu ul{
     list-style: none;
     --lineHeight: 32px;
+    height: 100%;
 }
 
 #sideNavMenu ul li{
@@ -196,6 +202,7 @@ header::after{
     text-decoration: none;
     color: var(--secondColor);
     font-weight: 400;
+    cursor: pointer;
 }
 
 #sideNavMenu ul li a.activeLink{
@@ -214,6 +221,16 @@ header::after{
 }
 
 
+#sideNavMenuBottomInfo{
+    color: var(--textColor);
+    font-size: 12pt;
+    text-decoration: none;
+    text-align: center;
+}
+
+#sideNavMenuBottomInfo:hover{
+    text-decoration: underline;
+}
 
 
 /*liste des tuiles*/
