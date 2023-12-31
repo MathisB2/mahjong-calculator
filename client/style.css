@@ -755,6 +755,101 @@ main.settings input:checked + label img{
 
 
 
+/*-------------------------page a propos--------------------------*/
+
+main.about section.logo{
+    background-color: var(--secondColor);
+    padding: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+main.about section.logo img{
+    width: 24vw;
+    margin-right: 4vw;
+}
+
+main.about section.logo div.textLogo{
+    font-size: 6vw;
+    margin: 0;
+}
+
+
+main.about section.content{
+    margin: 0;
+    padding: 32px;
+}
+
+
+main.about h1{
+    text-align: left;
+    color: var(--secondColor);
+    margin: 0;
+    margin-bottom: 8px;
+    font-size: 28px;
+}
+
+main.about p{
+    font-size: 18px;
+    text-align: justify;
+    color: var(--textColor);
+}
+
+main.about h2{
+    text-align: left;
+    color: var(--secondColor);
+    margin: 48px 0 8px;
+    font-size: 24px;
+}
+
+main.about h3{
+    text-align: left;
+    color: var(--secondColor);
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+
+.aboutInfo{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: calc(2 * var(--separatorPadding));
+    font-size: 18px;
+    position: relative;
+    --separatorPadding: 32px
+}
+
+
+.aboutInfo::before{
+    content: "";
+    position: absolute;
+    top: calc(0px - var(--separatorPadding));
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--textColor);
+}
+
+.aboutInfo h3{
+    width: fit-content;
+}
+
+.aboutInfo>div{
+    padding-left: 32px;
+    /*border: solid red 1px;*/
+    color: var(--textColor);
+}
+
+.aboutInfo a{
+    color: var(--textColor);
+}
+
+
+
 
 
 
