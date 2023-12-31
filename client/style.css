@@ -31,7 +31,7 @@ body {
     --drawerDefaultHeight:50vh;
     --headerDefaultHeight:48px;
     --tileShadow:0 0 5px rgba(0,0,0,.4);
-    --globalTileWidth: 64px;
+    --globalTileWidth: min(calc((100vw - 48px) / 5.5),64px);
     --buttonLineHeight: 18pt;
 }
 
@@ -681,7 +681,7 @@ main.settings input{
 
 main.settings label{
     /*border: solid blue 1px;*/
-    width: var(--tileWidth);
+    width: var(--globalTileWidth);
 
 }
 

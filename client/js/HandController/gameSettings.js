@@ -222,6 +222,10 @@ function onBackClick(){
     window.location.href = "calculator.html";
 }
 
+function updateTileWidth(){
+
+}
+
 export async function startSettings(){
     if(!(gameWindInputs
         && playerWindInputs
