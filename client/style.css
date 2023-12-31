@@ -314,7 +314,7 @@ header::after{
 .lineHand{
     display: flex;
     margin: 32px;
-
+    margin-right: 16px;
 }
 
 
@@ -323,27 +323,34 @@ header::after{
     max-height: 370px;
     border-radius: calc(.16 * var(--tileWidth));
     width: var(--tileWidth);
-    line-height: calc(37 / 28 * var(--tileWidth));
+    /*line-height: calc(37 / 28 * var(--tileWidth));*/
     height: calc(37 / 28 * var(--tileWidth));
-    font-size: 64px;
-    color: var(--mainColor);
+    /*font-size:64px;*/
+    /*color: var(--mainColor);*/
 
-    margin-right: 16px;
+    margin-right: calc(var(--tileWidth) / 4);
     box-shadow: var(--tileShadow);
-    text-align: center;
+    /*text-align: center;*/
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
+
+.lineHand div img{
+    width: calc(var(--tileWidth) / 2.4);
+}
+
 
 .lineHand div.tile{
     background-size: cover;
     background-position: center;
-    background-image: url("img/tiles/bamboo_1.png");
 }
 
 .lineHand div.emptyTile{
     background-color: var(--darkerBackground);
-    border: dashed var(--secondColor) 2px;
+    border: dashed var(--secondColor) calc(var(--tileWidth) / 32);
 }
 
 
@@ -371,7 +378,7 @@ header::after{
 }
 .lineHand div.activeEmptyTile{
     background-color: var(--darkerBackground);
-    border: dashed var(--secondColor) 2px;
+    border: dashed var(--secondColor) calc(var(--tileWidth) / 32);
     -webkit-animation: flickerAnimation 1s infinite;
     -moz-animation: flickerAnimation 1s infinite;
     -o-animation: flickerAnimation 1s infinite;
@@ -392,12 +399,10 @@ header::after{
 
 .boxContainer span {
     content: "";
-    height: 32px; /* Ajustez selon la taille de l'icône */
-    width: 32px; /* Ajustez selon la taille de l'icône */
-    border: 1px solid #ccc; /* Bordure de la case à cocher */
+    height: calc(var(--tileWidth) / 2);
+    width: calc(var(--tileWidth) / 2);
     background-size: cover;
     background-position: center;
-    border: none;
 }
 
 .checkmarkChecked {

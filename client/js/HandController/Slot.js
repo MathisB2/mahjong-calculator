@@ -1,3 +1,5 @@
+import {HtmlTag} from "../GlobalHtmlObjects/HtmlObjects/HtmlTag.js";
+
 export class Slot{
     tileList;
     slotId;
@@ -48,12 +50,28 @@ export class Slot{
         this.tileList.push(tile);
     }
 
+
+
+    #getAddButton(){
+        let img = new HtmlTag("img");
+        img.setAttribute("src","img/icons/addTile.svg");
+        img.setAttribute("alt","+");
+
+        let div = new HtmlTag("div");
+        div.setAttribute("id","bouton"+this.slotId);
+        div.addChild(img);
+        return div;
+    }
     _drawAddButton(){
-        return "<div class=\"emptyTile\" id=\"bouton"+this.slotId+"\">+</div>";
+        let div=this.#getAddButton();
+        div.setAttribute("class","emptyTile");
+        return div.toHtml();
     }
 
     _drawActiveAddButton(){
-        return "<div class=\"activeEmptyTile\" id=\"bouton"+this.slotId+"\">+</div>";
+        let div=this.#getAddButton();
+        div.setAttribute("class","activeEmptyTile");
+        return div.toHtml();
     }
 
     _isTriple(){
