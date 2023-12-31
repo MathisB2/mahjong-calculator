@@ -530,11 +530,20 @@ function onNextClick(){
     }
 }
 
+function updateTileWidth(){
+    let width= Math.min(((window.innerWidth-48)/5.5),64);
+    document.body.style.setProperty("--globalTileWidth",width+"px");
+}
+
+
 export async function startBack(){
     if((h && htmlDrawerTileList && trashButton && nextButton) == null) return;
+    updateTileWidth();
 
     trashButton.addEventListener("click", onTrashClick);
     nextButton.addEventListener("click", onNextClick);
+
+    window.onresize=updateTileWidth;
 
     mahjongHand = new Hand();
     mahjongHand.setActive(0);

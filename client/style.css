@@ -14,6 +14,13 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'figtree';
+
+}
+
+body {
+    background-color: var(--backgound);
+    overscroll-behavior: contain;
+
     --mainColor:#17C979;
     --RGBmainColor:23,201,121;
     --secondColor:#2B3144;
@@ -26,12 +33,6 @@
     --tileShadow:0 0 5px rgba(0,0,0,.4);
     --globalTileWidth: 64px;
     --buttonLineHeight: 18pt;
-}
-
-body {
-    background-color: var(--backgound);
-    overscroll-behavior: contain;
-    /*transform: rotate(45deg);*/
 }
 
 
