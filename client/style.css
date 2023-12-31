@@ -31,7 +31,7 @@ body {
     --drawerDefaultHeight:50vh;
     --headerDefaultHeight:48px;
     --tileShadow:0 0 5px rgba(0,0,0,.4);
-    --globalTileWidth: min(calc((100vw - 48px) / 5.5),64px);
+    --globalTileWidth: 64px;
     --buttonLineHeight: 18pt;
 }
 
@@ -309,7 +309,8 @@ header::after{
     width: 100%;
     height: calc(100vh - var(--headerDefaultHeight) - var(--drawerDefaultHeight));
     overflow-y: scroll;
-    --tileWidth: var(--globalTileWidth);
+
+    --tileWidth: min(calc((100vw - 48px) / 5.5), var(--globalTileWidth));
 }
 
 
@@ -534,7 +535,7 @@ header::after{
     overflow-y: scroll;
     padding: 16px;
     align-content: start;
-    --tileWidth: var(--globalTileWidth);
+    --tileWidth: min(calc((100vw - 48px) / 5.5), var(--globalTileWidth));
 
 
     display: grid;
@@ -647,7 +648,7 @@ h3{
 
 main.settings{
     --checkedColor: var(--mainColor);
-    --tileWidth: 64px;
+    --tileWidth: min(calc((100vw - 32px) / 5), var(--globalTileWidth));
 }
 
 main.settings>div:first-child{
@@ -680,15 +681,15 @@ main.settings input{
 }
 
 main.settings label{
-    /*border: solid blue 1px;*/
-    width: var(--globalTileWidth);
+    width: var(--tileWidth);
 
 }
 
 main.settings label img{
     width: 100%;
     box-shadow: var(--tileShadow);
-    border-radius: 8px;
+    border-radius: calc(.16 * var(--tileWidth));;
+
 }
 main.settings label h3{
     text-align: center;
@@ -756,91 +757,6 @@ main.settings input:checked + label img{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-#fond_blanc{
-    background-color: white;
-    width: 100vW;
-}
-
-.barre_long{
-    display: flex;
-}
-
-.forme_rectangle {
-    margin-right: 6Vw;
-    width: 50px;
-    height: 65px;
-    background-color: #dbdbdb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
-    color: #4DC69A;
-    border-radius: 10px;
-    border: dashed black;
-}
-
-#barre_long{
-    margin-top: 15px;
-    padding-left: 10Vw;
-    display: flex;
-    align-items: center;
-    height: 100px;
-}
-
-#fond_blanc hr {
-    color: #333;
-    text-align: center;
-    margin-left: 10Vw;
-    margin-right: 10Vw;
-}
-
-
-/* page qui slide vers le haut */
-
-#slide {
-    padding-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 20px;
-    background-color: #DCDCDC;
-    position: absolute;
-    bottom: -40px;
-    width: 100%;
-    height: 200px;
-}
-
-
-#slide hr {
-    width: 130px;
-    margin-bottom: 20px;
-    background-color: black;
-}
-
-#slide a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    background-color: #4DC69A;
-    width: 80Vw;
-    height: 40px;
-    font-size: 20px;
-    text-decoration: none;
-    color: white;
-}
 
 
 /* ---------------- page photo --------------- */
