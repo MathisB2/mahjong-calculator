@@ -24,6 +24,7 @@
     --drawerDefaultHeight:50vh;
     --headerDefaultHeight:48px;
     --tileShadow:0 0 5px rgba(0,0,0,.4);
+    --globalTileWidth: 64px;
     --buttonLineHeight: 18pt;
 }
 
@@ -307,7 +308,7 @@ header::after{
     width: 100%;
     height: calc(100vh - var(--headerDefaultHeight) - var(--drawerDefaultHeight));
     overflow-y: scroll;
-    --tileWidth: 64px;
+    --tileWidth: var(--globalTileWidth);
 }
 
 
@@ -323,14 +324,11 @@ header::after{
     max-height: 370px;
     border-radius: calc(.16 * var(--tileWidth));
     width: var(--tileWidth);
-    /*line-height: calc(37 / 28 * var(--tileWidth));*/
     height: calc(37 / 28 * var(--tileWidth));
-    /*font-size:64px;*/
-    /*color: var(--mainColor);*/
 
     margin-right: calc(var(--tileWidth) / 4);
     box-shadow: var(--tileShadow);
-    /*text-align: center;*/
+
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -534,12 +532,8 @@ header::after{
 #drawerTileList{
     overflow-y: scroll;
     padding: 16px;
-    /*display: flex;*/
-    /*flex-flow: row wrap;*/
-    /*justify-content: space-between;*/
-    /*!*align-items: start;*!*/
     align-content: start;
-    --tileWidth: 64px;
+    --tileWidth: var(--globalTileWidth);
 
 
     display: grid;
@@ -560,20 +554,13 @@ header::after{
     max-height: 370px;
     border-radius: calc(.16 * var(--tileWidth));
     width: var(--tileWidth);
-    line-height: calc(37 / 28 * var(--tileWidth));
     height: calc(37 / 28 * var(--tileWidth));
-    font-size: 64px;
-    color: var(--mainColor);
 
-    margin-right: 16px;
     box-shadow: 0 0 5px rgba(0,0,0,.4);
-    text-align: center;
     cursor: pointer;
 
     background-size: cover;
     background-position: center;
-    background-image: url("img/tiles/bamboo_1.png");
-
 }
 
 
