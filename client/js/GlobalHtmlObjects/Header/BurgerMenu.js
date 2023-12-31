@@ -16,7 +16,7 @@ export class BurgerMenu{
         this.itemsList.push(new BurgerMenuItem("Accueil","index.html","img/icons/home.svg"))
         this.itemsList.push(new BurgerMenuItem("Calculatrice","calculator.html","img/icons/calculator.svg"))
         this.itemsList.push(new BurgerMenuItem("Règles du jeu","","img/icons/rules.svg"))
-        this.itemsList.push(new BurgerMenuItem("À propos","","img/icons/info.svg"))
+        this.itemsList.push(new BurgerMenuItem("À propos","about.html","img/icons/info.svg"))
 
     }
 
