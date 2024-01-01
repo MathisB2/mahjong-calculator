@@ -1,6 +1,6 @@
 import {Signal} from "../Signal/Signal.js";
 import {NetworkController} from "../NetworkController/NetworkController.js";
-import {networkConfig} from "../config.js";
+import {imageConfig, networkConfig} from "../config.js";
 
 export let ImageManager = function() {
     let imageController = null;
@@ -35,7 +35,7 @@ class ImageController{
             popup.style.display="flex";
 
             const file = e.target.files[0];
-            let resized = await this.resizeImage(file,1600);
+            let resized = await this.resizeImage(file,imageConfig.maxWidth);
             let base64 = await this.convertBase64(resized);
             console.log(base64);
 
