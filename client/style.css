@@ -340,6 +340,7 @@ header::after{
 
 .lineHand div img{
     width: calc(var(--tileWidth) / 2.4);
+    pointer-events: none;
 }
 
 
