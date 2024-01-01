@@ -34,10 +34,10 @@ class ImageController{
         fileBTN.addEventListener("change", async (e) => {
             popup.style.display="flex";
 
-
-
             const file = e.target.files[0];
-            let base64 = await this.convertBase64(file);
+            let resized = await this.resizeImage(file,1600);
+            let base64 = await this.convertBase64(resized);
+            console.log(base64);
 
             imageNet.call(base64).then(function (callback) {
                 this.OnTilesReceived.fire(callback);
@@ -50,7 +50,6 @@ class ImageController{
     convertBase64 (file) {
         return new Promise((resolve, reject) => {
             const fileReader = new FileReader();
-            fileReader.readAsDataURL(file);
 
             fileReader.onload = () => {
                 resolve(fileReader.result);
@@ -58,7 +57,53 @@ class ImageController{
             fileReader.onerror = (error) => {
                 reject(error);
             };
+
+            fileReader.readAsDataURL(file);
         });
     };
+
+
+    resizeImage(file, maxSize) {
+        return new Promise((resolve) => {
+            const reader = new FileReader();
+
+            reader.onload = (readerEvent) => {
+                const image = new Image();
+
+                image.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+
+                    let width = image.width;
+                    let height = image.height;
+
+                    if (width > height) {
+                        if (width > maxSize) {
+                            height *= maxSize / width;
+                            width = maxSize;
+                        }
+                    } else {
+                        if (height > maxSize) {
+                            width *= maxSize / height;
+                            height = maxSize;
+                        }
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    context.drawImage(image, 0, 0, width, height);
+
+                    canvas.toBlob((blob) => {
+                        resolve(blob);
+                    }, file.type);
+                };
+
+                image.src = readerEvent.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
 
 }
