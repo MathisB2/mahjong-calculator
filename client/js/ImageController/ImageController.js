@@ -32,12 +32,18 @@ class ImageController{
         this.OnTilesReceived = new Signal();
 
         fileBTN.addEventListener("change", async (e) => {
-            popup.style.display="flex";
 
             const file = e.target.files[0];
+            if((file.type.indexOf("image")) == -1) {
+                alert("Le format du fichier n'est pas pris en charge");
+                return;
+            }
+
+            popup.style.display="flex";
+
+            console.log(file);
             let resized = await this.resizeImage(file,imageConfig.maxWidth);
             let base64 = await this.convertBase64(resized);
-            console.log(base64);
 
             imageNet.call(base64).then(function (callback) {
                 this.OnTilesReceived.fire(callback);
