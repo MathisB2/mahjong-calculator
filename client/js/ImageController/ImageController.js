@@ -44,6 +44,7 @@ class ImageController{
             console.log(file);
             let resized = await this.resizeImage(file,imageConfig.maxWidth);
             let base64 = await this.convertBase64(resized);
+            console.log(base64);
 
             imageNet.call(base64).then(function (callback) {
                 this.OnTilesReceived.fire(callback);
@@ -80,21 +81,7 @@ class ImageController{
                     const canvas = document.createElement('canvas');
                     const context = canvas.getContext('2d');
 
-                    let width = image.width;
-                    let height = image.height;
-
-                    if (width > height) {
-                        if (width > maxSize) {
-                            height *= maxSize / width;
-                            width = maxSize;
-                        }
-                    } else {
-                        if (height > maxSize) {
-                            width *= maxSize / height;
-                            height = maxSize;
-                        }
-                    }
-
+                    const [width, height] = this.#getSize(image.width, image.height, maxSize);
                     canvas.width = width;
                     canvas.height = height;
 
@@ -109,6 +96,20 @@ class ImageController{
             };
             reader.readAsDataURL(file);
         });
+    }
+
+
+
+    #getSize(width, height, maxSize){
+        if(width < maxSize && height < maxSize) {
+            return [width,height];
+        }
+
+        if (width > height && width > maxSize) {
+            return [ maxSize, height * (maxSize / width)];
+        }
+
+        return  [width * (maxSize / height), maxSize];
     }
 
 
