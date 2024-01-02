@@ -76,6 +76,7 @@ class Hand{
         this.slotList[this.activeSlot].addTile(new Tile(name,this.currentId));
         this.currentId++;
         this.setNextActive();
+
     }
 
     addTileByTile(tile){
@@ -121,17 +122,17 @@ class Hand{
             element.scrollIntoView({ behavior: 'smooth'});
         }
 
-
     }
 
     setNextActive() {
         let case1 = this.getActiveSlot().tileList.length >= 4;
         let case2 = this.getActiveSlot().tileList.length == 3 && !this.getActiveSlot()._isTriple();
         let condition = this.activeSlot < this.slotList.length-1;
-
         if (condition && (case1 || case2)) {
             this.setActive(parseInt(this.activeSlot)+1);
             this.setNextActive();
+        }else{
+            this.setActive(parseInt(this.activeSlot));
         }
     }
 
