@@ -4,7 +4,7 @@ export const networkConfig = {
 }
 
 export const imageConfig = {
-    maxWidth: 1100,
+    maxWidth: 1600,
 }
 export const storageConfig={
     hand: "mahjongHand",
