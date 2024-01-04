@@ -5,13 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43f76323-03ed-4a48-9093-7b06be31145d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ScoreService/Rules/Mahjong.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ScoreService/Rules/Pair.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/server/ScoreService/Rules/Flush.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/server/ScoreService/Rules/Hidden.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/server/ScoreService/Rules/Square.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/server/ScoreService/Rules/Suite.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/server/Tiles/BambooTile.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/server/Tiles/CharacterTile.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/server/Tiles/DotTile.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/server/Tiles/FlowerTile.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/server/Tiles/SeasonTile.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/Rules/Flush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/Rules/Flush.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/Rules/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/Rules/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/ScoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/ScoreService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tiles/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiles/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/ScoreService/MahjongHand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/ScoreService/MahjongHand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/ScoreService/MahjongSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/ScoreService/MahjongSet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/ScoreService/MahjongSettlement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/ScoreService/MahjongSettlement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/Tiles/DragonTile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/Tiles/DragonTile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/Tiles/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/Tiles/Tile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/Tiles/TileFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/Tiles/TileFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/Tiles/WindTile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/Tiles/WindTile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NetworkService/NetworkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NetworkService/NetworkService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/MahjongHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/MahjongHand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tiles/TileFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiles/TileFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,25 +52,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;Z:/Documents/SAE/main_branch/server&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "Z:/Documents/SAE/main_branch/client",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="ImageService" />
@@ -154,12 +168,11 @@
       <workItem from="1701418176023" duration="12337000" />
       <workItem from="1701693699176" duration="10809000" />
       <workItem from="1701705874565" duration="2517000" />
-      <workItem from="1701766483130" duration="3601000" />
-      <workItem from="1702300799386" duration="226000" />
-      <workItem from="1702655092423" duration="3366000" />
-      <workItem from="1702974235148" duration="3720000" />
-      <workItem from="1702991364528" duration="3614000" />
-      <workItem from="1703259169598" duration="3634000" />
+      <workItem from="1701766483130" duration="1319000" />
+      <workItem from="1701768580376" duration="623000" />
+      <workItem from="1701785718636" duration="688000" />
+      <workItem from="1702299147906" duration="1948000" />
+      <workItem from="1702995323610" duration="2768000" />
     </task>
     <servers />
   </component>

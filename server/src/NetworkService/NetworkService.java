@@ -56,16 +56,8 @@ public class NetworkService extends WebSocketServer {
 
     @Override
     public void onMessage(WebSocket conn, String messageInfo) {
-        Thread th = new Thread(() -> {
-            processMessage(conn, messageInfo);
-        });
-        th.start();
-    }
-
-    private void processMessage(WebSocket conn, String messageInfo){
         try{
             JSONObject clientCall = new JSONObject(messageInfo);
-            String name = clientCall.getString("name");
             String messageId = clientCall.getString("messageId");
 
             boolean ended = clientCall.getBoolean("ended");
@@ -74,11 +66,7 @@ public class NetworkService extends WebSocketServer {
             if(!ended) return;
 
             try {
-                assert namespaces.containsKey(name) : "namespace "+name+" is not defined";
-                NetNamespace netNamespace = namespaces.get(name);
-                clientCall.put("message", this.getToQueue(messageId));
-
-                netNamespace.entries.fireAsync(new Tuple(conn, clientCall));
+                processMessage(conn, clientCall);
             } catch (Exception e) {
                 System.err.println(e.getMessage());
                 clientCall.put("error", true);
@@ -89,6 +77,23 @@ public class NetworkService extends WebSocketServer {
             System.err.println(e.getMessage());
             conn.send("{'name': 'FatalError', 'message':"+ e.getMessage() + "}");
         }
+    }
+
+    private void processMessage(WebSocket conn, JSONObject clientCall) throws JSONException {
+        String name = clientCall.getString("name");
+        String messageId = clientCall.getString("messageId");
+        assert namespaces.containsKey(name) : "namespace "+name+" is not defined";
+        NetNamespace netNamespace = namespaces.get(name);
+        clientCall.put("message", this.getToQueue(messageId));
+
+        Thread th = new Thread(() -> {
+            try{
+                netNamespace.entries.fireAsync(new Tuple(conn, clientCall));
+            }catch(Exception e){}
+        });
+
+        th.setDaemon(true);
+        th.start();
     }
 
     private void addToQueue(String messageId, String message){

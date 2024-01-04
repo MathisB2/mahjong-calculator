@@ -15,8 +15,10 @@ public class MahjongHand {
 
     MahjongHand(JSONObject hand) throws JSONException {
         this.sets = new ArrayList(5);
-        JSONArray jsonSets = hand.getJSONArray("Sets");
+
+        JSONArray jsonSets = hand.getJSONArray("slotList");
         TileFactory factory = new TileFactory();
+
         this.playerWind = (WindTile) factory.get(hand.getJSONObject("playerWind"));
         this.gameWind = (WindTile) factory.get(hand.getJSONObject("gameWind"));
 
