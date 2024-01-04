@@ -28,6 +28,8 @@ body {
     --darkerBackground:#F4F5F9;
     --RGBdarkerBackground:244,245,249;
     --textColor:#7B8190;
+    --gradientSecondColor:#03C093;
+    --mainGradient:linear-gradient(90deg, var(--gradientSecondColor) 0%, var(--mainColor) 100%);
     --drawerDefaultHeight:50vh;
     --headerDefaultHeight:48px;
     --tileShadow:0 0 5px rgba(0,0,0,.4);
@@ -39,6 +41,11 @@ body {
 
 
 /*header*/
+
+
+header{
+    z-index: 24;
+}
 nav{
     width: 100%;
     background-color: var(--secondColor);
@@ -48,6 +55,7 @@ nav{
     top: 0;
     left: 0;
     align-items: center;
+    z-index: 64;
 }
 
 header::after{
@@ -183,8 +191,8 @@ header::after{
     height: calc(100% - var(--headerDefaultHeight));
     z-index: 1;
     pointer-events: none;
-    --transitionDuration:.2s ease-out
-
+    --transitionDuration:.2s ease-out;
+    z-index: 128;
 
 }
 
@@ -301,6 +309,9 @@ header::after{
 
 
 
+
+
+/*---------------------- calculator.html ------------------------*/
 
 
 /*liste des tuiles*/
@@ -624,7 +635,7 @@ header::after{
 
 
 
-/*------------------------Game settings------------------------*/
+/*------------------------ gameSettings.html ------------------------*/
 
 
 h1{
@@ -756,7 +767,7 @@ main.settings input:checked + label img{
 
 
 
-/*-------------------------page a propos--------------------------*/
+/*------------------------- about.html --------------------------*/
 
 main.about section.logo{
     background-color: var(--secondColor);
@@ -854,85 +865,75 @@ main.about h3{
 
 
 
-
-/* ---------------- page photo --------------- */
-
+/*-------------------------- index.html --------------------------*/
 
 
-#photo-haut{
-    width: 100Vw;
-    height: 10Vh;
+#indexCoverSection{
+    height: calc(100vh - var(--headerDefaultHeight));
+    text-align: center;
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#camera {
-    width: 100Vw;
-    height: 60Vh;
-}
-
-
-#photo-haut a {
-    text-decoration: none;
-    color: black;
-    font-size: 4Vw;
-    margin-right: 10Vw;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-
-#photo-haut a hr{
-    margin-left: 6Vw;
-    background-color: #4DC69A;
-    height: 1.5px;
-}
-
-#div-bas {
-    width: 100Vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-}
-
-#div-bas p {
-    margin-top: 20px;
-    font-size: 3.5Vw;
-}
-
-#div-long {
-    width: 100Vw;
-    display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    font-size: 14pt;
+    color: var(--backgound);
+    background-image: url("img/indexBackgroundCover.png");
+    background-size: cover;
+    background-position: 0%,50%;
+    font-weight: 300;
+    position: relative;
 }
 
-
-#bouton {
-    width: 15Vh;
-    height: 13Vh;
-}
-
-
-.inputfile {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
+#indexCoverSection:before{
+    content: "";
     position: absolute;
-    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--secondColor);
+    opacity: .64;
+    z-index: 0;
 }
 
-#file-bas {
-    position: absolute;
-    left: 30px;
+#indexCoverSection>div{
+    z-index: 1;
 }
 
 
-#file-bas img {
-    width: 6Vh;
-    height: 5Vh;
+#indexCoverSection>div:first-child{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.index h1{
+    color: var(--backgound);
+    font-size: min(6vw, 24pt);
+    font-weight: 400;
+    width: 64%;
+    margin-bottom: 32px;
+}
+
+.index h1 span{
+    background: var(--mainGradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+
+#indexCoverButton{
+    background: var(--mainGradient);
+    padding: 8px 16px;
+    width: fit-content;
+    border-radius: 32px;
+    color: var(--backgound);
+    font-size: 14pt;
+    text-decoration: none;
+    font-weight: 400;
 }
