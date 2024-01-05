@@ -1,6 +1,7 @@
 import {AnimationFolder, cropValue} from "./animationFolder.js";
 
 const uiCanvas = document.getElementById("indexUiAnimation");
+const tilesCanvas = document.getElementById("indexTileScrollingAnimation");
 
 class ScrollAnimation{
     #canvas;
@@ -121,5 +122,17 @@ export async function startAnimations(){
         let height=uiAnimation.height;
         uiAnimation.startOffset=-height/2;
         uiAnimation.minScrollRange = 240;   // 1frame/5px
+    }
+
+
+
+    if(tilesCanvas){
+        let tilesFolder = new AnimationFolder("img/animations/tileAnimation","png", 960, 540,20,);
+        await tilesFolder.loadFrames();
+
+        let tilesAnimation=new ScrollAnimation(tilesCanvas,tilesFolder,0,0);
+        let height=tilesAnimation.height;
+        tilesAnimation.startOffset=-height;
+        tilesAnimation.endOffset=height;
     }
 }

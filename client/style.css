@@ -941,12 +941,12 @@ main.about h3{
 }
 
 
-#indexContent{
-    /*padding: 16px;*/
-}
 
 #indexContent>section{
     margin-top: 128px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .index h2{
@@ -967,13 +967,16 @@ main.about h3{
 }
 
 
-#indexUxInfo img{
-    margin-top: 64px;
-    height: 192px;
-    width: 100%;
-}
+
 
 #indexUiAnimation{
     width: 100%;
     max-width: 540px;
+    margin: auto;
+}
+
+
+#indexTileScrollingAnimation{
+    width: 100%;
+    max-width: 960px;
 }
