@@ -113,19 +113,6 @@ class ScrollAnimation{
 
 
 export async function startAnimations(){
-    if(!uiCanvas){
-        let uiFolder = new AnimationFolder("img/animations/uiAnimation","png", 540, 960,48,);
-        await uiFolder.loadFrames();
-
-        let uiAnimation=new ScrollAnimation(uiCanvas,uiFolder,0,0);
-        let height=uiAnimation.height;
-        uiAnimation.startOffset=-height/2;
-        uiAnimation.minScrollRange = 240;   // 1frame/5px
-        uiAnimation.updateStatus();
-    }
-
-
-
     if(tilesCanvas){
 
         let tilesFolder = new AnimationFolder("img/animations/tileAnimation/sequence","jpg", 1080, 1080,120);
@@ -138,4 +125,19 @@ export async function startAnimations(){
         tilesAnimation.updateStatus();
 
     }
+
+    if(uiCanvas){
+        let uiFolder = new AnimationFolder("img/animations/uiAnimation","png", 540, 960,48,);
+        await uiFolder.loadFrames();
+
+        let uiAnimation=new ScrollAnimation(uiCanvas,uiFolder,0,0);
+        let height=uiAnimation.height;
+        uiAnimation.startOffset=-height/2;
+        uiAnimation.minScrollRange = 240;   // 1frame/5px
+        uiAnimation.updateStatus();
+    }
+
+
+
+
 }
