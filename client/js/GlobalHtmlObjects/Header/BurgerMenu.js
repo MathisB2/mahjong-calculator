@@ -1,6 +1,7 @@
 import {HtmlTag} from "../HtmlObjects/HtmlTag.js";
 import {BurgerMenuItem} from "./BurgerMenuItem.js";
 import {projectConfig} from "../../config.js";
+import {globalLinks} from "../linkItem.js";
 
 export class BurgerMenu{
 
@@ -13,11 +14,9 @@ export class BurgerMenu{
         this.closeText="Fermer";
         this.itemsList=[];
 
-        this.itemsList.push(new BurgerMenuItem("Accueil","index.html","img/icons/home.svg"))
-        this.itemsList.push(new BurgerMenuItem("Calculatrice","calculator.html","img/icons/calculator.svg"))
-        this.itemsList.push(new BurgerMenuItem("Règles du jeu","","img/icons/rules.svg"))
-        this.itemsList.push(new BurgerMenuItem("À propos","about.html","img/icons/info.svg"))
-
+        for (let link of globalLinks) {
+            this.itemsList.push(new BurgerMenuItem(link.text,link.url,link.icon))
+        }
     }
 
 
