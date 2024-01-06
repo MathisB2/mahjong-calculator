@@ -17,6 +17,7 @@ class ScrollAnimation{
 
     #folder;
     #enabled;
+    #currentFrame;
 
 
     constructor(canvas, folder, startOffset=0, endOffset=0) {
@@ -31,13 +32,13 @@ class ScrollAnimation{
         this.minScrollRange = folder.getFrameCount(); // 1frame/px
         this.#enabled=false
 
-        this.#computeSize();
+        this.computeSize();
         document.addEventListener("scroll", this.update.bind(this));
-        window.addEventListener("resize", this.#computeSize.bind(this));
+        window.addEventListener("resize", this.computeSize.bind(this));
     }
 
 
-    #computeSize(){
+    computeSize(){
         if(this.#folder.getFrameCount()==0) return;
         const rect = this.#canvas.getBoundingClientRect();
 
@@ -76,17 +77,16 @@ class ScrollAnimation{
 
 
     update(){
-        let progress = 1;
-        if(this.#enabled){}
-            progress = this.#getAnimProgress();
+        this.#context.clearRect(0, 0, this.#canvas.width, this.#canvas.height);
+        if(!this.#enabled) return;
 
+        let progress = this.#getAnimProgress();
         let frame = this.#folder.getFrame(progress);
 
-        // if(frame == this.#currentFrame) return;
 
-        this.#context.clearRect(0, 0, this.#canvas.width, this.#canvas.height);
+        if(this.#currentFrame!=null && frame.src == this.#currentFrame.src) return;
         this.#context.drawImage(frame, 0, 0, this.#canvas.width, this.#canvas.height);
-
+        console.log("updated")
     }
 
 
@@ -94,12 +94,13 @@ class ScrollAnimation{
     enable(){
         this.#enabled=true;
         this.update();
-        console.log("animation enabled");
+        console.log("animation enabled :",this.getScrollRange(),"/",this.minScrollRange);
     }
 
     disable(){
         this.#enabled=false;
-        console.log("animation disabled");
+        this.#currentFrame=null;
+        console.log("animation disabled :",this.getScrollRange(),"/",this.minScrollRange);
     }
 
 
@@ -120,18 +121,21 @@ export async function startAnimations(){
         let height=uiAnimation.height;
         uiAnimation.startOffset=-height/2;
         uiAnimation.minScrollRange = 240;   // 1frame/5px
+        uiAnimation.updateStatus();
     }
 
 
 
     if(tilesCanvas){
 
-        let tilesFolder = new AnimationFolder("img/animations/tileAnimation/sequence","jpg", 1080, 1080,60,);
+        let tilesFolder = new AnimationFolder("img/animations/tileAnimation/sequence","jpg", 1080, 1080,120);
         await tilesFolder.loadFrames();
 
-        let tilesAnimation=new ScrollAnimation(tilesCanvas,tilesFolder,0,0);
+        let tilesAnimation= new ScrollAnimation(tilesCanvas,tilesFolder,0,0);
         let height=tilesAnimation.height;
         tilesAnimation.startOffset=-height;
         tilesAnimation.endOffset=height;
+        tilesAnimation.updateStatus();
+
     }
 }
