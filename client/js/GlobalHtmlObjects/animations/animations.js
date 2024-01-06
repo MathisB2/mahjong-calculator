@@ -79,7 +79,7 @@ class ScrollAnimation{
 
     update(){
         let progress = 1;
-        if(this.#enabled)
+        if(this.#enabled){}
             progress = this.#getAnimProgress();
 
         let frame = this.#folder.getFrame(progress);
@@ -127,7 +127,7 @@ export async function startAnimations(){
 
 
     if(tilesCanvas){
-        let tilesFolder = new AnimationFolder("img/animations/tileAnimation","png", 960, 540,20,);
+        let tilesFolder = new AnimationFolder("img/animations/tileAnimation/sequence","jpg", 1080, 1080,60,);
         await tilesFolder.loadFrames();
 
         let tilesAnimation=new ScrollAnimation(tilesCanvas,tilesFolder,0,0);

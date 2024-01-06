@@ -969,14 +969,48 @@ main.about h3{
 
 
 
-#indexUiAnimation{
+canvas{
     width: 100%;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+#indexUiAnimation{
     max-width: 540px;
-    margin: auto;
 }
 
 
-#indexTileScrollingAnimation{
+
+#indexTileAnimationGroup{
     width: 100%;
     max-width: 960px;
+    aspect-ratio: 1/1;
+    position: relative;
+    padding: 0;
+    --fadingColor: var(--backgound);
+    --fadingTransparent: rgba(255,255,255,0);
+}
+
+#indexTileScrollingAnimation{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("img/animations/tileAnimation/default/0120.png");
+}
+
+#indexTileScrollingAnimation+div{
+    --fadingHeight:4%;
+    background: linear-gradient(0deg, var(--fadingColor) 0%, var(--fadingTransparent) var(--fadingHeight), var(--fadingTransparent) calc(100% - var(--fadingHeight)), var(--fadingColor) 100%);
+}
+
+
+.animationOverlay{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
