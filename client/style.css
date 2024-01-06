@@ -929,7 +929,7 @@ main.about h3{
 }
 
 
-#indexCoverButton{
+.gradientButtonLink{
     background: var(--mainGradient);
     padding: 8px 16px;
     width: fit-content;
@@ -1067,4 +1067,41 @@ canvas{
     text-align: center;
     position: absolute;
     left: -30px; /* Déplace le cercle vers la gauche pour l'entourer autour du numéro */
+}
+
+
+
+#indexBottomButtonDiv{
+    margin: 64px 0;
+    text-align: center;
+}
+
+
+
+footer{
+    color: var(--backgound);
+    background-color: var(--secondColor);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px;
+}
+
+
+footer ul{
+    list-style: none;
+    text-align: center;
+    margin-bottom: 32px;
+    font-size: 12pt;
+}
+
+footer ul li a{
+    text-decoration: none;
+    color: var(--backgound);
+    font-weight: 200;
+    line-height: 32px;
+}
+
+footer ul li a:hover{
+    text-decoration: underline;
 }
