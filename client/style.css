@@ -957,10 +957,11 @@ main.about h3{
 
 .indexText{
     padding: 16px;
+    width: 100%;
 }
 
 
-#indexContent p{
+#indexContent p, #indexContent ul{
     font-size: 14pt;
     color: var(--textColor);
     text-align: justify;
@@ -991,7 +992,7 @@ canvas{
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("img/animations/tileAnimation/default/0120.png");
+    background-image: url("img/animations/uiAnimation/default/0108.png");
 }
 
 #indexUiAnimation+div{
@@ -1032,4 +1033,38 @@ canvas{
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+
+
+#indexStepList{
+    list-style: none;
+    padding: 0;
+    counter-reset: item-counter;
+    --lineHeight: 32px;
+}
+
+
+#indexStepList li {
+    position: relative;
+    margin-left: 30px; /* Ajustez la valeur selon vos besoins */
+    padding-left: 10px; /* Espace entre le numéro et le texte du li */
+    margin-bottom: 24px;
+    line-height: var(--lineHeight);
+
+}
+
+#indexStepList li::before {
+    line-height: var(--lineHeight);
+    content: counter(item-counter); /* Utilise le compteur CSS pour afficher le numéro */
+    counter-increment: item-counter; /* Incrémente le compteur à chaque élément */
+    display: inline-block;
+    width: var(--lineHeight); /* Ajustez la taille du cercle selon vos besoins */
+    height: var(--lineHeight);
+    border-radius: 50%;
+    background: var(--mainGradient); /* Couleur du cercle */
+    color: white; /* Couleur du texte à l'intérieur du cercle */
+    text-align: center;
+    position: absolute;
+    left: -30px; /* Déplace le cercle vers la gauche pour l'entourer autour du numéro */
 }

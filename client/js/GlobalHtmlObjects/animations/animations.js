@@ -127,7 +127,7 @@ export async function startAnimations(){
     }
 
     if(uiCanvas){
-        let uiFolder = new AnimationFolder("img/animations/uiAnimation","png", 540, 960,48,);
+        let uiFolder = new AnimationFolder("img/animations/uiAnimation/sequence","jpg", 1080, 1920,108,);
         await uiFolder.loadFrames();
 
         let uiAnimation=new ScrollAnimation(uiCanvas,uiFolder,0,0);
