@@ -21,11 +21,14 @@ class ScrollAnimation{
 
     constructor(canvas, folder, startOffset=0, endOffset=0) {
         this.#canvas=canvas;
+        this.#canvas.width=folder.width;
+        this.#canvas.height=folder.height;
+
         this.#context=this.#canvas.getContext('2d');
         this.#folder=folder;
         this.startOffset=startOffset;
         this.endOffset=endOffset;
-        this.minScrollRange=100;
+        this.minScrollRange = folder.getFrameCount(); // 1frame/px
         this.#enabled=false
 
         this.#computeSize();
@@ -36,7 +39,6 @@ class ScrollAnimation{
 
     #computeSize(){
         if(this.#folder.getFrameCount()==0) return;
-        this.#updateCanvasSize();
         const rect = this.#canvas.getBoundingClientRect();
 
         let scrollTop = document.documentElement.scrollTop;
@@ -48,11 +50,7 @@ class ScrollAnimation{
         this.updateStatus();
     }
 
-    #updateCanvasSize(){
-        let ratio = this.#folder.height / this.#folder.width;
-        this.#canvas.height = ratio * this.#canvas.width;
 
-    }
 
     updateStatus(){
         if(this.getScrollRange()<this.minScrollRange){
@@ -114,7 +112,7 @@ class ScrollAnimation{
 
 
 export async function startAnimations(){
-    if(uiCanvas){
+    if(!uiCanvas){
         let uiFolder = new AnimationFolder("img/animations/uiAnimation","png", 540, 960,48,);
         await uiFolder.loadFrames();
 
@@ -127,6 +125,7 @@ export async function startAnimations(){
 
 
     if(tilesCanvas){
+
         let tilesFolder = new AnimationFolder("img/animations/tileAnimation/sequence","jpg", 1080, 1080,60,);
         await tilesFolder.loadFrames();
 
