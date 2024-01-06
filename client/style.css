@@ -70,21 +70,21 @@ header::after{
 
 
 @keyframes logoAnimation {
-    0%   { background-image: url("img/icons/logoAnimation/0001.png"); }
-    7%   { background-image: url("img/icons/logoAnimation/0002.png"); }
-    14%   { background-image: url("img/icons/logoAnimation/0003.png"); }
-    21%   { background-image: url("img/icons/logoAnimation/0004.png"); }
-    29%   { background-image: url("img/icons/logoAnimation/0005.png"); }
-    36%   { background-image: url("img/icons/logoAnimation/0006.png"); }
-    43%   { background-image: url("img/icons/logoAnimation/0007.png"); }
-    50%   { background-image: url("img/icons/logoAnimation/0008.png"); }
-    57%   { background-image: url("img/icons/logoAnimation/0009.png"); }
-    64%   { background-image: url("img/icons/logoAnimation/0010.png"); }
-    71%   { background-image: url("img/icons/logoAnimation/0011.png"); }
-    79%   { background-image: url("img/icons/logoAnimation/0012.png"); }
-    86%   { background-image: url("img/icons/logoAnimation/0013.png"); }
-    93%   { background-image: url("img/icons/logoAnimation/0014.png"); }
-    100%   { background-image: url("img/icons/logoAnimation/0015.png"); }
+    0%   { background-image: url("img/animations/logoAnimation/0001.png"); }
+    7%   { background-image: url("img/animations/logoAnimation/0002.png"); }
+    14%   { background-image: url("img/animations/logoAnimation/0003.png"); }
+    21%   { background-image: url("img/animations/logoAnimation/0004.png"); }
+    29%   { background-image: url("img/animations/logoAnimation/0005.png"); }
+    36%   { background-image: url("img/animations/logoAnimation/0006.png"); }
+    43%   { background-image: url("img/animations/logoAnimation/0007.png"); }
+    50%   { background-image: url("img/animations/logoAnimation/0008.png"); }
+    57%   { background-image: url("img/animations/logoAnimation/0009.png"); }
+    64%   { background-image: url("img/animations/logoAnimation/0010.png"); }
+    71%   { background-image: url("img/animations/logoAnimation/0011.png"); }
+    79%   { background-image: url("img/animations/logoAnimation/0012.png"); }
+    86%   { background-image: url("img/animations/logoAnimation/0013.png"); }
+    93%   { background-image: url("img/animations/logoAnimation/0014.png"); }
+    100%   { background-image: url("img/animations/logoAnimation/0015.png"); }
 }
 
 #openBurger{
@@ -108,27 +108,27 @@ header::after{
 }
 
 #sideNavBox:not(:checked)~nav #openBurger:before{
-    background-image: url("img/icons/logoAnimation/0015.png");
+    background-image: url("img/animations/logoAnimation/0015.png");
     opacity:1;
 }
 
 
 #sideNavBox:not(:checked)~nav #openBurger:after{
-    background-image: url("img/icons/logoAnimation/0001.png");
+    background-image: url("img/animations/logoAnimation/0001.png");
     opacity:0;
     animation: logoAnimation var(--animDuration);
 }
 
 #sideNavBox:checked~nav #openBurger:before{
     opacity: 0;
-    background-image: url("img/icons/logoAnimation/0015.png");
+    background-image: url("img/animations/logoAnimation/0015.png");
     animation: logoAnimation var(--animDuration) reverse;
 }
 
 #sideNavBox:checked~nav #openBurger:after{
     opacity: 1;
 
-    background-image: url("img/icons/logoAnimation/0001.png");
+    background-image: url("img/animations/logoAnimation/0001.png");
 }
 
 #sideNavBox:checked~nav #openBurger{
