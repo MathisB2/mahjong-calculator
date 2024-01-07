@@ -34,7 +34,7 @@ body {
     --headerDefaultHeight:48px;
     --tileShadow:0 0 5px rgba(0,0,0,.4);
     --globalTileWidth: 64px;
-    --buttonLineHeight: 18pt;
+    --buttonLineHeight: 16pt;
 }
 
 
@@ -665,11 +665,7 @@ main.settings{
     --tileWidth: min(calc((100vw - 32px) / 5), var(--globalTileWidth));
 }
 
-main.settings>div:first-child{
-    overflow-y: scroll;
-    /*background-color: #4DC69A;*/
-    height: calc(100vh - var(--headerDefaultHeight));
-}
+
 
 main.settings section{
     width: 100%;
@@ -736,31 +732,45 @@ main.settings input:checked + label img{
     width: 100%;
     padding: 8px 16px;
 
+    font-size: var(--buttonLineHeight);
+    line-height: var(--buttonLineHeight);
+    font-weight: 500;
+
 }
 
 
 #settingsBackButton{
-    width: fit-content;
-    padding: 0 7px;
     margin-right: 8px;
-    color: var(--mainColor);
+    background: var(--mainGradient);
+    width: 50%;
+    box-sizing: border-box;
+    position: relative;
+    --borderWidth: 3px;
+}
+
+#settingsBackButton div{
+    position: absolute;
+    width: calc(100% - 2 * var(--borderWidth));
+    height: calc(100% - 2 * var(--borderWidth));
+    top: 0;
+    left: 0;
     background: var(--backgound);
-    border: solid var(--mainColor) 3px;
-    font-weight: 500;
-    font-size: 20pt;
-    line-height: 23pt;
+    margin: var(--borderWidth);
+    line-height: calc(var(--buttonLineHeight) - 2 * var(--borderWidth));
+    border-radius: 2px;
+    color: var(--mainColor);
+
 }
 
 .settings .drawerButton div{
+    padding: inherit;
     background: var(--mainGradient);
-    width: 100%;
+    width: 50%;
     border-radius: 4px;
     text-decoration: none;
-    font-size: 16pt;
-    line-height: 16pt;
-    font-weight: 500;
+
     color: var(--backgound);
-    padding:8px;
+
 }
 
 
