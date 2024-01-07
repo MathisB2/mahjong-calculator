@@ -881,7 +881,7 @@ main.about h3{
     padding-bottom: 32px;
     font-size: 14pt;
     color: var(--backgound);
-    background-image: url("img/indexBackgroundCover.png");
+    background-image: url("img/indexBackgroundCover.jpg");
     background-size: cover;
     background-position: 0,50%;
     font-weight: 300;
@@ -960,6 +960,11 @@ main.about h3{
     width: 100%;
 }
 
+
+#indexContent{
+    max-width: 400px;
+    margin: auto;
+}
 
 #indexContent p, #indexContent ul{
     font-size: 14pt;
