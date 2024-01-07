@@ -1041,32 +1041,35 @@ canvas{
     list-style: none;
     padding: 0;
     counter-reset: item-counter;
-    --lineHeight: 32px;
+    --circleSize: 32px;
+    --leftSpacing: 12px;    /* space between cricle and text */
+
 }
 
 
 #indexStepList li {
     position: relative;
-    margin-left: 30px; /* Ajustez la valeur selon vos besoins */
-    padding-left: 10px; /* Espace entre le numéro et le texte du li */
+    margin-left: var(--circleSize);
+    padding-left: 10px;
     margin-bottom: 24px;
-    line-height: var(--lineHeight);
+    line-height: var(--circleSize);
 
 }
 
 #indexStepList li::before {
-    line-height: var(--lineHeight);
-    content: counter(item-counter); /* Utilise le compteur CSS pour afficher le numéro */
-    counter-increment: item-counter; /* Incrémente le compteur à chaque élément */
+    line-height: var(--circleSize);
+    content: counter(item-counter);
+    counter-increment: item-counter;
+
     display: inline-block;
-    width: var(--lineHeight); /* Ajustez la taille du cercle selon vos besoins */
-    height: var(--lineHeight);
+    width: var(--circleSize);
+    height: var(--circleSize);
     border-radius: 50%;
-    background: var(--mainGradient); /* Couleur du cercle */
-    color: white; /* Couleur du texte à l'intérieur du cercle */
+    background: var(--mainGradient);
+    color: white;
     text-align: center;
     position: absolute;
-    left: -30px; /* Déplace le cercle vers la gauche pour l'entourer autour du numéro */
+    left: calc(-1 * var(--circleSize));
 }
 
 
@@ -1075,6 +1078,17 @@ canvas{
     margin: 64px 0;
     text-align: center;
 }
+
+
+#indexIphoneImg{
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-image: url("img/indexIphone.jpg");
+    background-size: cover;
+    background-position: 50% 50%;
+    border-radius: 16px;
+}
+
 
 
 
