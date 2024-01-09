@@ -41,13 +41,13 @@ class ImageController{
 
             popup.style.display="flex";
 
-            console.log(file);
             let resized = await this.resizeImage(file,imageConfig.maxWidth);
             let base64 = await this.convertBase64(resized);
-            console.log(base64);
+
+            let controller = this;
 
             imageNet.call(base64).then(function (callback) {
-                this.OnTilesReceived.fire(callback);
+                controller.OnTilesReceived.fire(callback);
                 popup.style.display="none";
             });
         });
