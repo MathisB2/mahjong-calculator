@@ -781,25 +781,22 @@ main.settings input:checked + label img{
     margin: auto;
     display: flex;
     width: 90%;
-    border-bottom: 3px solid #ccc;
+    border-bottom: 2px solid var(--textColor);
 
 }
 
 #indexScore div{
     width: 50%;
 }
-#indexScore p{
-    font-size: var(--buttonLineHeight);
+#indexScore div{
+    font-size: 16pt;
+    color: var(--secondColor);
 }
 
-#indexHistory{
-
-    margin: auto;
-    width: 90%;
-    border: 3px solid #ccc;
-    border-radius: 16px;
-    height: 300px;
+#indexScore div span{
+    font-size: 24pt;
 }
+
 
 
 .score .drawerButton{
@@ -819,7 +816,7 @@ main.settings input:checked + label img{
 }
 
 
-#settingsBackButton{
+#scoreBackButton{
     margin-right: 8px;
     background: var(--mainGradient);
     width: 100%;
@@ -828,7 +825,7 @@ main.settings input:checked + label img{
     --borderWidth: 3px;
 }
 
-#settingsBackButton div{
+#scoreBackButton div{
     position: absolute;
     width: calc(100% - 2 * var(--borderWidth));
     height: calc(100% - 2 * var(--borderWidth));

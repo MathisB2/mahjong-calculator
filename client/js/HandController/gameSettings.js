@@ -206,10 +206,8 @@ function onSendClick(){
             console.log(savedData);
 
             scoreNet.call(JSON.stringify(instance)).then(function (message){
-                console.log(message);
-                console.log("...received from server");
-                localStorage.setItem(storageConfig.score,"25");
-                //window.location.href = "resultat.html";
+                if(message==null) return;
+                window.location.href = "score.html";
             })
         }else{
             alert("error");
@@ -223,9 +221,6 @@ function onBackClick(){
     window.location.href = "calculator.html";
 }
 
-function updateTileWidth(){
-
-}
 
 export async function startSettings(){
     if(!(gameWindInputs
