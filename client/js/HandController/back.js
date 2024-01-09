@@ -173,6 +173,7 @@ class Hand{
     }
 
     clear(){
+        localStorage.removeItem(storageConfig.hand);
         delete this.slotList;
 
         this._initSlotList();
@@ -379,8 +380,6 @@ function onDrawerTileClick(event){
 }
 
 function importTiles(){
-
-
     availableTiles=[];
     let fileNames=[
         "dot_1", "dot_2", "dot_3", "dot_4", "dot_5", "dot_6", "dot_7", "dot_8", "dot_9",
@@ -516,9 +515,7 @@ function addTileToDrawer(tile){
 }
 
 function onTrashClick(){
-    localStorage.removeItem(storageConfig.hand);
     mahjongHand.clear();
-    importTiles();
 }
 
 function onNextClick(){
@@ -545,7 +542,7 @@ export async function startBack(){
     mahjongHand.drawHand();
 
     let imageController = ImageManager.getController()
-    imageController.OnTilesReceived.connect(function(callback){
-        mahjongHand.importDetectionResults(callback)
+    imageController.OnTilesReceived.connect((callback) => {
+        mahjongHand.importDetectionResults(callback);
     });
 }

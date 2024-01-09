@@ -206,7 +206,8 @@ function onSendClick(){
             console.log(savedData);
 
             scoreNet.call(JSON.stringify(instance)).then(function (message){
-                if(message==null) return;
+                if(message == null) return;
+                localStorage.setItem(storageConfig.score, message);
                 window.location.href = "score.html";
             })
         }else{
