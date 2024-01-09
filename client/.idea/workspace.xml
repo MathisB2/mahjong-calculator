@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fde5e0a-dc61-4d8b-91c5-05ac54431315" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/HtmlObjects/HtmlText.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/HtmlObjects/HtmlTag.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/HtmlObjects/HtmlTag.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/score.html" beforeDir="false" afterPath="$PROJECT_DIR$/score.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/Header/BurgerMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/Header/BurgerMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/Header/BurgerMenuItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/Header/BurgerMenuItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/Header/NavigationMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/Header/NavigationMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/footer/footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/footer/footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/footer/footerItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/footer/footerItem.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +54,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -69,7 +72,7 @@
       <option name="presentableId" value="Default" />
       <updated>1704802048395</updated>
       <workItem from="1704802050188" duration="12438000" />
-      <workItem from="1704831245636" duration="384000" />
+      <workItem from="1704831245636" duration="977000" />
     </task>
     <servers />
   </component>

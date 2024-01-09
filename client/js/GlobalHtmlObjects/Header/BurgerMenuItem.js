@@ -28,7 +28,7 @@ export class BurgerMenuItem{
         img.setAttribute("alt","icon");
 
         let span = new HtmlTag("span");
-        span.innerText=this.text;
+        span.addText(this.text);
 
         a.setAttribute("href",this.url);
         a.addChild(img);

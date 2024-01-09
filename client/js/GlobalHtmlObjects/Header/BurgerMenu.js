@@ -29,10 +29,10 @@ export class BurgerMenu{
 
     #getCloseSection(){
         let span1 = new HtmlTag("span");
-        span1.innerText = this.closeText;
+        span1.addText(this.closeText);
 
         let span2 = new HtmlTag("span");
-        span2.innerText = "×";
+        span2.addText("×");
 
         let label = new HtmlTag("label");
         label.setAttribute("for","sideNavBox");
@@ -51,7 +51,7 @@ export class BurgerMenu{
 
     #getBottomSection(){
         let a=new HtmlTag("a");
-        a.innerText = projectConfig.name+" V"+projectConfig.version;
+        a.addText(projectConfig.name+" V"+projectConfig.version);
         a.setAttribute("id","sideNavMenuBottomInfo");
         a.setAttribute("href","https://iutbg-gitlab.iutbourg.univ-lyon1.fr/2023-2024-sae-but2/mahjong-calculator");
         return a;

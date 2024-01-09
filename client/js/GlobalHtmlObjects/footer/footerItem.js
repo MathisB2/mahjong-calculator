@@ -12,7 +12,7 @@ export class FooterItem{
 
     getHtmlObject(){
         let a = new HtmlTag("a");
-        a.innerText = this.text;
+        a.addText(this.text);
         a.setAttribute("href", this.url);
 
         let li = new HtmlTag("li");

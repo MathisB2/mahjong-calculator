@@ -3,10 +3,10 @@ import {HtmlTag} from "../HtmlObjects/HtmlTag.js";
 export class NavigationMenu{
     toHtml(){
         let span1 = new HtmlTag("span");
-        span1.innerText = "Mahjong ";
+        span1.addText("Mahjong ");
 
         let span2 = new HtmlTag("span");
-        span2.innerText = "Calculator";
+        span2.addText("Calculator");
 
         let div = new HtmlTag("div");
         div.setAttribute("class","textLogo");
