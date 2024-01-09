@@ -15,6 +15,6 @@ public class MultiplicationScoreRule<T> implements ScoreRule<T> {
     @Override
     public int modifyScore(T param, int score) {
         if(!isVerified(param)) return score;
-        return score + multiplier;
+        return score * multiplier;
     }
 }

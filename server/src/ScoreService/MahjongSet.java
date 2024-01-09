@@ -36,7 +36,8 @@ public class MahjongSet {
     public void addTile(Tile tile){
         assert tiles.size() <= 4 : "can't have a group with more than 4 tiles";
         assert !this.hasTile(tile) : "can't add existing tile";
-        this.tiles.remove(tile);
+
+        this.tiles.add(tile);
     }
 
     public boolean isHidden(){

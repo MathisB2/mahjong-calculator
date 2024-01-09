@@ -12,7 +12,7 @@ public class TileFactory {
             case "character": return new CharacterTile(jsonTile.getInt("value"));
             case "dot": return new DotTile(jsonTile.getInt("value"));
             case "dragon": return new DragonTile(jsonTile.getString("value"));
-            case "wind": return new WindTile(jsonTile.getString("value"));
+            case "wind": return new WindTile(jsonTile.getString("name"));
             case "flower": return new FlowerTile();
             default: return new SeasonTile();
         }
