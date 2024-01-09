@@ -4,10 +4,8 @@ import {projectConfig} from "../../config.js";
 import {globalLinks} from "../linkItem.js";
 
 export class BurgerMenu{
-
     closeText;
     itemsList;
-
 
     constructor() {
 
@@ -19,8 +17,6 @@ export class BurgerMenu{
         }
     }
 
-
-
     #getOverlay(){
         let div = new HtmlTag("div");
         div.setAttribute("id","sideNavOverlay");
@@ -30,7 +26,6 @@ export class BurgerMenu{
         label.addChild(div);
         return label;
     }
-
 
     #getCloseSection(){
         let span1 = new HtmlTag("span");
@@ -45,7 +40,6 @@ export class BurgerMenu{
         label.addChild(span2);
         return label;
     }
-
 
     #getMainSection(){
         let ul = new HtmlTag("ul");
