@@ -14,4 +14,11 @@ public abstract class Tile {
         if (!(o instanceof Tile tile)) return false;
         return value == tile.value && tile.getClass() == this.getClass();
     }
+
+    @Override
+    public String toString() {
+        return "Tile{" +
+                "value=" + value +
+                '}';
+    }
 }

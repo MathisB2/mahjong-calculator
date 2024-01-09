@@ -14,7 +14,9 @@ public class MahjongSettlement {
         loadSetSettlement();
     }
     private void loadHandSettlement(){
+        var mahjongRule = new Mahjong(20);
 
+        mahjongHandSettlement.insertRule(mahjongRule);
     }
     private void loadSetSettlement(){
         var flush = new Flush(2);
@@ -28,7 +30,6 @@ public class MahjongSettlement {
         flushSet.insertRule(square);
 
         var suiteSet = new RuleSet(suite);
-        suiteSet.insertRule(hidden);
 
         mahjongSetSettlement.insertRule(flushSet);
         mahjongSetSettlement.insertRule(suiteSet);

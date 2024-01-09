@@ -249,7 +249,11 @@
       <change beforePath="$PROJECT_DIR$/out/production/server/img/renders/tuile.webp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/server/truc_de_mathis.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ScoreService/MahjongSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/MahjongSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/MahjongSettlement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/MahjongSettlement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/Rules/Suite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/Rules/Suite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ScoreService/ScoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/ScoreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settlement/MultiplicationScoreRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settlement/MultiplicationScoreRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tiles/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiles/Tile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tiles/TileFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiles/TileFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -399,7 +403,7 @@
       <workItem from="1701785718636" duration="688000" />
       <workItem from="1702299147906" duration="1948000" />
       <workItem from="1702995323610" duration="2768000" />
-      <workItem from="1704806582213" duration="1796000" />
+      <workItem from="1704806582213" duration="4827000" />
     </task>
     <servers />
   </component>
@@ -422,7 +426,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/ScoreService/MahjongSettlement.java</url>
-          <line>37</line>
+          <line>39</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
