@@ -11,7 +11,6 @@
       <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/linkItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/linkItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/HandController/gameSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/gameSettings.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/score.html" beforeDir="false" afterPath="$PROJECT_DIR$/score.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +63,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1704802048395</updated>
-      <workItem from="1704802050188" duration="9847000" />
+      <workItem from="1704802050188" duration="10466000" />
     </task>
     <servers />
   </component>
