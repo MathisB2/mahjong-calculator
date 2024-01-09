@@ -1,71 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5bd2dcd-6544-42a0-984d-037d6a80fb66" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/HandController/back.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/back.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/HandController/gameSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/gameSettings.js" afterDir="false" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/js/ImageController/ImageController.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ImageController/ImageController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documents/IUT-Projet.url" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documents/Presentation_SAE_S3.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documents/deploy.bat" beforeDir="false" />
->>>>>>> f9bbb78f905f225398b2f8f4cdd131c152b0448a
+    <list default="true" id="6fde5e0a-dc61-4d8b-91c5-05ac54431315" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/Score/History.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/Score/historyItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/Score/score.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/Score/score.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="2aigQyBTqKmX3gAB6aZ8DuYHtX3" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2aiWnSqfn4lQVyYxjKSKzVKfYaB" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "Z:/Documents/SAE/html/client",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
+    "last_opened_file_path": "Z:/Documents/2A_SAE/html/client",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="Z:\Documents\2A_SAE\html\client" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b5bd2dcd-6544-42a0-984d-037d6a80fb66" name="Changes" comment="" />
-      <created>1704806801141</created>
+      <changelist id="6fde5e0a-dc61-4d8b-91c5-05ac54431315" name="Changes" comment="" />
+      <created>1704802048395</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-<<<<<<< HEAD
       <updated>1704802048395</updated>
-      <workItem from="1704802050188" duration="10466000" />
-=======
-      <updated>1704806801141</updated>
-<<<<<<< HEAD
-      <workItem from="1704806802143" duration="5197000" />
->>>>>>> f9bbb78f905f225398b2f8f4cdd131c152b0448a
-=======
-      <workItem from="1704806802143" duration="5601000" />
->>>>>>> f2bbf93b2e5995f61fe8c069df5d8504de6dc627
+      <workItem from="1704802050188" duration="12438000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

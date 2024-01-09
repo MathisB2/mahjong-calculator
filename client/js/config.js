@@ -9,6 +9,7 @@ export const imageConfig = {
 export const storageConfig={
     hand: "mahjongHand",
     score: "mahjongScore",
+    history: "mahjongHistory",
 }
 
 export const projectConfig={

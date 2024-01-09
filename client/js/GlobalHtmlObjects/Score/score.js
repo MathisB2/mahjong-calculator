@@ -1,5 +1,6 @@
 import {storageConfig} from "../../config.js";
 import {HtmlTag} from "../HtmlObjects/HtmlTag.js";
+import {History} from "./History.js";
 
 const scoreObject = document.getElementById("scoreDisplay");
 const backButton = document.getElementById("scoreBackButton");
@@ -17,6 +18,11 @@ export async function startScore(){
         window.location.href="calculator.html";
         return;
     }
+
+
+    let history = new History();
+    history.toHtml();
+
 
     backButton.addEventListener("click", onBackClick);
 
