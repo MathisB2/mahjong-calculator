@@ -39,8 +39,6 @@ export class BurgerMenuItem{
         return li;
     }
 
-
-
     isActive(){
         let path = window.location.pathname;
         let page = path.split("/").pop();

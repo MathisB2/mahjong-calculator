@@ -4,11 +4,10 @@ export class LinkItem{
     icon;
 
     constructor(text, url, icon=null) {
-        this.text=text;
-        this.url=url;
-        this.icon=icon;
+        this.text = text;
+        this.url = url;
+        this.icon = icon;
     }
-
 }
 
 

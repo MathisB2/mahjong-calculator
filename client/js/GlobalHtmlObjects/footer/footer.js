@@ -15,7 +15,6 @@ export class Footer{
         }
     }
 
-
     toHtml(){
         let ul = new HtmlTag("ul");
         for (let item of this.itemList) {
@@ -27,8 +26,6 @@ export class Footer{
 
         return ul.toHtml() + span.toHtml();
     }
-
-
 }
 
 

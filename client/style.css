@@ -774,7 +774,81 @@ main.settings input:checked + label img{
 }
 
 
+/*------------------------ score.html ------------------------*/
 
+#indexScore{
+    padding: 16px;
+    margin: auto;
+    display: flex;
+    width: 90%;
+    border-bottom: 2px solid var(--textColor);
+
+}
+
+#indexScore div{
+    width: 50%;
+}
+#indexScore div{
+    font-size: 16pt;
+    color: var(--secondColor);
+}
+
+#indexScore div span{
+    font-size: 24pt;
+}
+
+
+
+.score .drawerButton{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    text-align: center;
+    background-color: var(--darkerBackground);
+    width: 100%;
+    padding: 8px 16px;
+
+    font-size: var(--buttonLineHeight);
+    line-height: var(--buttonLineHeight);
+    font-weight: 500;
+
+}
+
+
+#scoreBackButton{
+    margin-right: 8px;
+    background: var(--mainGradient);
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    --borderWidth: 3px;
+}
+
+#scoreBackButton div{
+    position: absolute;
+    width: calc(100% - 2 * var(--borderWidth));
+    height: calc(100% - 2 * var(--borderWidth));
+    top: 0;
+    left: 0;
+    background: var(--backgound);
+    margin: var(--borderWidth);
+    line-height: calc(var(--buttonLineHeight) - 2 * var(--borderWidth));
+    border-radius: 2px;
+    color: var(--mainColor);
+
+}
+
+.score .drawerButton div{
+    padding: inherit;
+    background: var(--mainGradient);
+    width: 100%;
+    border-radius: 4px;
+    text-decoration: none;
+
+    color: var(--backgound);
+
+}
 
 
 
