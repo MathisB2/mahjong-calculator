@@ -203,10 +203,11 @@ function onSendClick(){
         if(savedData != null){
             let instance = JSON.parse(savedData);
             console.log("sending to server...");
+            console.log(savedData);
 
             scoreNet.call(JSON.stringify(instance)).then(function (message){
                 console.log(message);
-                console.log("... received from server");
+                console.log("...received from server");
                 localStorage.setItem(storageConfig.score,"25");
                 //window.location.href = "resultat.html";
             })

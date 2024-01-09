@@ -522,13 +522,13 @@ function onTrashClick(){
 }
 
 function onNextClick(){
-    if(mahjongHand.isValid()){
+    //if(mahjongHand.isValid()){
         console.log(mahjongHand.toString());
         localStorage.setItem(storageConfig.hand,mahjongHand.toString());
         window.location.href = "gameSettings.html";
-    }else{
-        alert("Veuillez saisir une main valide");
-    }
+    //}else{
+    //    alert("Veuillez saisir une main valide");
+    //}
 }
 
 export async function startBack(){
@@ -545,5 +545,7 @@ export async function startBack(){
     mahjongHand.drawHand();
 
     let imageController = ImageManager.getController()
-    imageController.OnTilesReceived.connect(mahjongHand.importDetectionResults);
+    imageController.OnTilesReceived.connect(function(callback){
+        mahjongHand.importDetectionResults(callback)
+    });
 }
