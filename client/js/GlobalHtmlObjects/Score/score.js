@@ -4,6 +4,7 @@ import {History} from "./History.js";
 
 const scoreObject = document.getElementById("scoreDisplay");
 const backButton = document.getElementById("scoreBackButton");
+const historyObject = document.getElementById("history");
 
 
 function onBackClick(){
@@ -20,8 +21,10 @@ export async function startScore(){
     }
 
 
-    let history = new History();
+    let history = new History(historyObject);
     history.toHtml();
+
+    history.addItem(score);
 
 
     backButton.addEventListener("click", onBackClick);
