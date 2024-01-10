@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fde5e0a-dc61-4d8b-91c5-05ac54431315" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/photo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../site/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../documents/repartition des taches.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../documents/repartition des taches.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,10 +30,11 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2aiWnSqfn4lQVyYxjKSKzVKfYaB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -45,7 +46,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "html",
-    "last_opened_file_path": "C:/Users/Mathis/Desktop/sae/html2/client",
+    "last_opened_file_path": "Z:/Documents/2A/S3/SAE/code/html/client",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -69,6 +70,7 @@
       <updated>1704802048395</updated>
       <workItem from="1704802050188" duration="12438000" />
       <workItem from="1704831245636" duration="1347000" />
+      <workItem from="1704877232623" duration="1106000" />
     </task>
     <servers />
   </component>
