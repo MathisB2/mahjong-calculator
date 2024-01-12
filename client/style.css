@@ -780,27 +780,22 @@ main.settings input:checked + label img{
 
 .score{
     height: calc(100vh - var(--headerDefaultHeight));
-    overflow: hidden;
-
-}
-
-
-#scoreText{
-    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin: auto;
 }
+
+
 
 #indexScore{
     padding: 16px;
-    margin: auto;
     margin-bottom: 64px;
+    margin-top: 16px;
+
     display: flex;
-    align-items: flex-end;
-    width: 100%;
+    align-items: center;
+    width: 90%;
     border-bottom: 2px solid var(--textColor);
 
 }
@@ -809,18 +804,47 @@ main.settings input:checked + label img{
     width: 50%;
     font-size: 16pt;
     color: var(--secondColor);
+    font-weight: 400;
 }
 
 #indexScore div span{
-    font-size: 24pt;
+    font-size: 32pt;
+    font-weight: 600;
 }
+
+
+
+
+
+
+.score h2{
+    margin-bottom: 16px;
+}
+#history{
+    width: 90%;
+    height: 100%;
+    margin-bottom: 16px;
+    font-size: 14pt;
+    overflow-y: scroll;
+    border-radius: 8px;
+    background: var(--darkerBackground);
+    box-shadow: 0 0 5px rgba(0,0,0,.4);
+    padding: 8px;
+}
+
+
+#history div{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+
 
 
 
 .score .drawerButton{
-    position: fixed;
-    left: 0;
-    bottom: 0;
+    position: relative;
     display: flex;
     text-align: center;
     background-color: var(--darkerBackground);
@@ -830,6 +854,7 @@ main.settings input:checked + label img{
     font-size: var(--buttonLineHeight);
     line-height: var(--buttonLineHeight);
     font-weight: 500;
+
 
 
 }
@@ -872,26 +897,6 @@ main.settings input:checked + label img{
     color: var(--backgound);
 
 }
-
-
-.score h2{
-    margin-bottom: 16px;
-}
-#history{
-    border: solid red 1px;
-    width: 80%;
-    margin: auto;
-    margin-bottom: 128px;
-    overflow-y: scroll;
-}
-
-
-#history div{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 16px;
-}
-
 
 
 
