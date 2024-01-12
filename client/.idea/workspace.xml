@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6fde5e0a-dc61-4d8b-91c5-05ac54431315" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/Score/History.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/Score/History.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/Score/historyItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/Score/historyItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/Score/score.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/Score/score.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/score.html" beforeDir="false" afterPath="$PROJECT_DIR$/score.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documents/repartition des taches.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../documents/repartition des taches.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +73,9 @@
       <workItem from="1704802050188" duration="12438000" />
       <workItem from="1704831245636" duration="1347000" />
       <workItem from="1704877232623" duration="1106000" />
-      <workItem from="1704892051274" duration="6811000" />
+      <workItem from="1704892051274" duration="9092000" />
+      <workItem from="1704967004312" duration="858000" />
+      <workItem from="1705060725354" duration="4949000" />
     </task>
     <servers />
   </component>

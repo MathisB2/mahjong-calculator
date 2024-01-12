@@ -18,28 +18,6 @@
 }
 
 
-/* ===== Scrollbar CSS ===== */
-/* Firefox */
-* {
-    scrollbar-width: auto;
-    scrollbar-color: #17c979 #ffffff;
-}
-
-/* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-    width: 8px;
-}
-
-*::-webkit-scrollbar-track {
-    background: #ffffff;
-}
-
-*::-webkit-scrollbar-thumb {
-    background-color: #17c979;
-    border-radius: 4px;
-    border: 0px none #ffffff;
-}
-
 body {
     background-color: var(--backgound);
     overscroll-behavior: none;
@@ -799,19 +777,36 @@ main.settings input:checked + label img{
 
 /*------------------------ score.html ------------------------*/
 
+
+.score{
+    height: calc(100vh - var(--headerDefaultHeight));
+    overflow: hidden;
+
+}
+
+
+#scoreText{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+}
+
 #indexScore{
     padding: 16px;
     margin: auto;
+    margin-bottom: 64px;
     display: flex;
-    width: 90%;
+    align-items: flex-end;
+    width: 100%;
     border-bottom: 2px solid var(--textColor);
 
 }
 
 #indexScore div{
     width: 50%;
-}
-#indexScore div{
     font-size: 16pt;
     color: var(--secondColor);
 }
@@ -836,29 +831,34 @@ main.settings input:checked + label img{
     line-height: var(--buttonLineHeight);
     font-weight: 500;
 
+
 }
 
 
 #scoreBackButton{
-    margin-right: 8px;
     background: var(--mainGradient);
     width: 100%;
     box-sizing: border-box;
     position: relative;
     --borderWidth: 3px;
+    height: calc(var(--buttonLineHeight) + 16px);
+
+
 }
 
 #scoreBackButton div{
     position: absolute;
     width: calc(100% - 2 * var(--borderWidth));
     height: calc(100% - 2 * var(--borderWidth));
+
     top: 0;
     left: 0;
     background: var(--backgound);
     margin: var(--borderWidth);
-    line-height: calc(var(--buttonLineHeight) - 2 * var(--borderWidth));
+    line-height: calc(var(--buttonLineHeight) - (2 * var(--borderWidth)));
     border-radius: 2px;
     color: var(--mainColor);
+    padding: 8px;
 
 }
 
@@ -874,13 +874,14 @@ main.settings input:checked + label img{
 }
 
 
-
+.score h2{
+    margin-bottom: 16px;
+}
 #history{
     border: solid red 1px;
     width: 80%;
-    height: 400px;
     margin: auto;
-    margin-top: 128px;
+    margin-bottom: 128px;
     overflow-y: scroll;
 }
 
