@@ -49,7 +49,7 @@ export class HistoryItem{
         }else if(diff < 60){
             return "Il y a "+diff+"min";
         }else if(diff < 60*24){
-            return "Il y a "+Math.round(diff/60)+"h";
+            return "Il y a "+Math.floor(diff/60)+"h";
         }
     }
 
@@ -92,11 +92,11 @@ export class HistoryItem{
 
     #getDayDifference(date1, date2){
         let one_day = 1000 * 60 * 60 * 24;
-        return Math.round((date1.getTime() - date2.getTime()) / one_day);
+        return Math.floor((date1.getTime() - date2.getTime()) / one_day);
     }
 
     #getMinDifference(date1, date2){
         let one_min = 1000 * 60;
-        return Math.round((date1.getTime() - date2.getTime()) / one_min);
+        return Math.floor((date1.getTime() - date2.getTime()) / one_min);
     }
 }
