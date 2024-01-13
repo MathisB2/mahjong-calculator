@@ -831,6 +831,7 @@ main.settings input:checked + label img{
     box-shadow: 0 0 5px rgba(0,0,0,.4);
     padding: 8px;
     color: var(--textColor);
+
 }
 
 
@@ -858,6 +859,12 @@ main.settings input:checked + label img{
 
 #history h3:first-child{
     margin-top: 0;
+}
+
+#history h4{
+    text-align: center;
+    font-weight: 400;
+    font-style: italic;
 }
 
 

@@ -23,6 +23,7 @@ export class History{
 
     addItem(score){
         this.itemList.push(new HistoryItem(score));
+        this.itemList.sort((a, b) => a.timestamp - b.timestamp);
         this.#saveToLocalStorage();
 
     }
@@ -33,11 +34,18 @@ export class History{
     }
 
     toHtml(){
+        if(this.isEmpty()){
+            let h4 = new HtmlTag("h4");
+            h4.addText("L'historique est vide");
+            this.historyObject.innerHTML = h4.toHtml();
+            return;
+        }
+
+
         let map = this.#computeMap();
         this.historyObject.innerHTML= "";
 
         map.forEach((value, key) => {
-            console.log(key)
             let h3 = new HtmlTag("h3");
             h3.addText(key);
             this.historyObject.innerHTML += h3.toHtml();
@@ -61,6 +69,11 @@ export class History{
             map.set(title, array);
         }
         return map;
+    }
+
+
+    isEmpty(){
+        return this.itemList.length==0;
     }
 
 }

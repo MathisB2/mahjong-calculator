@@ -22,9 +22,9 @@ export async function startScore(){
 
 
     let history = new History(historyObject);
+    history.addItem(score);
     history.toHtml();
 
-    history.addItem(score);
 
 
     backButton.addEventListener("click", onBackClick);
