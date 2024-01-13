@@ -49,7 +49,8 @@ export class History{
             let h3 = new HtmlTag("h3");
             h3.addText(key);
             this.historyObject.innerHTML += h3.toHtml();
-
+            value.sort((a, b) => a.timestamp - b.timestamp)
+            console.log(key);
             for (let item of value) {
                 this.historyObject.innerHTML += item.toHtml();
             }

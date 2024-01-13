@@ -8,12 +8,10 @@ export class HistoryItem{
     constructor(score,date=new Date()) {
         this.date = date;
         this.score = score
-        this.timestamp = this.#getMinDifference(new Date(), this.date);
+        this.timestamp = this.#getSecDifference(new Date(), this.date);
     }
 
     toHtml(){
-        // console.log(this.getMinDifference(new Date(),this.date))
-
         let span=new HtmlTag("span");
         span.addText(this.#getStringDate());
         let span2=new HtmlTag("span");
@@ -49,17 +47,17 @@ export class HistoryItem{
         }else if(diff < 60){
             return "Il y a "+diff+"min";
         }else if(diff < 60*24){
-            return "Il y a "+Math.floor(diff/60)+"h";
+            return "Il y a "+Math.round(diff/60)+"h";
         }
     }
 
 
 
     getTitle(){
-        if(this.timestamp< 60*24){
+        if(this.timestamp< 60*60*24){
             return this.#getRelativeStringTime();
         }
-        return this.#getRelativeStringDay;
+        return this.#getRelativeStringDay();
     }
     #getRelativeStringDay(){
         let diff = this.#getDayDifference(this.date, new Date())
@@ -70,7 +68,7 @@ export class HistoryItem{
         }else if(diff < 7){
             return "Il y a "+diff+" jours";
         }
-        return "Il y a plus d'une semaine"
+        return "Il y a plus d'une semaine";
     }
 
 
@@ -92,11 +90,16 @@ export class HistoryItem{
 
     #getDayDifference(date1, date2){
         let one_day = 1000 * 60 * 60 * 24;
-        return Math.floor((date1.getTime() - date2.getTime()) / one_day);
+        return Math.round((date1.getTime() - date2.getTime()) / one_day);
     }
 
     #getMinDifference(date1, date2){
         let one_min = 1000 * 60;
-        return Math.floor((date1.getTime() - date2.getTime()) / one_min);
+        return Math.round((date1.getTime() - date2.getTime()) / one_min);
+    }
+
+    #getSecDifference(date1, date2){
+        let one_sec = 1000;
+        return Math.round((date1.getTime() - date2.getTime()) / one_sec);
     }
 }
