@@ -1,6 +1,7 @@
 export const networkConfig = {
     ip: "localhost",
     port: 8080,
+    timeout: 10000,
 }
 
 export const imageConfig = {
