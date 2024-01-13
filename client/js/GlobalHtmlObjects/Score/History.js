@@ -32,16 +32,6 @@ export class History{
         localStorage.setItem(storageConfig.history, JSON.stringify(this));
     }
 
-    toHtmlOld(){
-        this.historyObject.innerHTML= "";
-
-        let copy = this.itemList;
-        copy.reverse();
-        for (let item of copy) {
-            this.historyObject.innerHTML += item.toHtml();
-        }
-    }
-
     toHtml(){
         let map = this.#computeMap();
         this.historyObject.innerHTML= "";

@@ -9,6 +9,7 @@
       <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/Score/History.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/Score/History.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/Score/historyItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/Score/historyItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/score.html" beforeDir="false" afterPath="$PROJECT_DIR$/score.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +77,7 @@
       <workItem from="1704892051274" duration="9092000" />
       <workItem from="1704967004312" duration="858000" />
       <workItem from="1705060725354" duration="4949000" />
-      <workItem from="1705136639818" duration="4561000" />
+      <workItem from="1705136639818" duration="5143000" />
     </task>
     <servers />
   </component>

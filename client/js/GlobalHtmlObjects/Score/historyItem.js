@@ -17,7 +17,7 @@ export class HistoryItem{
         let span=new HtmlTag("span");
         span.addText(this.#getStringDate());
         let span2=new HtmlTag("span");
-        span2.addText(this.timestamp+this.#getStringPts());
+        span2.addText(this.score+this.#getStringPts());
 
         let div=new HtmlTag("div");
         div.addChild(span);

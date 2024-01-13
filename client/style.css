@@ -830,15 +830,35 @@ main.settings input:checked + label img{
     background: var(--darkerBackground);
     box-shadow: 0 0 5px rgba(0,0,0,.4);
     padding: 8px;
+    color: var(--textColor);
 }
 
 
 #history div{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 }
 
+#history div span:first-child{
+    font-style: italic;
+}
+
+#history div span:last-child{
+    color: var(--secondColor);
+    font-weight: 800;
+}
+
+#history h3{
+    font-size: 14pt;
+    margin-top: 32px;
+    color: var(--secondColor);
+    font-weight: 600;
+}
+
+#history h3:first-child{
+    margin-top: 0;
+}
 
 
 
