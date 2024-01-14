@@ -47,7 +47,7 @@ export class HistoryItem{
         }else if(diff < 60){
             return "Il y a "+diff+"min";
         }else if(diff < 60*24){
-            return "Il y a "+Math.round(diff/60)+"h";
+            return "Il y a "+Math.floor(diff/60)+"h";
         }
     }
 
@@ -60,7 +60,7 @@ export class HistoryItem{
         return this.#getRelativeStringDay();
     }
     #getRelativeStringDay(){
-        let diff = this.#getDayDifference(this.date, new Date())
+        let diff = this.#getDayDifference(new Date(), this.date)
         if(diff == 0){
             return "Aujourd'hui";
         }else if(diff == 1){
