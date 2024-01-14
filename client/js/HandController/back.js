@@ -153,12 +153,19 @@ class Hand{
         this.clear();
         let obj = JSON.parse(callback);
         this.activeSlot=0;
+        console.log(callback);
 
         for(let cluster of obj){
+            // console.log(cluster);
+            if(this.activeSlot>this.slotList.length-1) continue;
+            console.log(this.activeSlot);
             for(let tile of cluster){
                 tile = JSON.parse(tile)
                 tile = getAvailableTileByName(tile.name);
+
+                console.log(tile);
                 if (tile == null) continue;
+
 
                 if(this.slotList[this.activeSlot].canAdd(tile.name)){
                     removeTileFromDrawer(tile.id);
@@ -175,7 +182,6 @@ class Hand{
     clear(){
         localStorage.removeItem(storageConfig.hand);
         delete this.slotList;
-
         this._initSlotList();
         this.setActive(0);
         this.gameWind = new Tile("North");
