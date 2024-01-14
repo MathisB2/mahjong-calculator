@@ -1,5 +1,3 @@
-import {startHeader} from "../GlobalHtmlObjects/Header/header.js";
-
 const drawer = document.querySelector("#drawer");
 const drawerHandle = document.querySelector("#drawerHandle");
 const drawerHeader = document.querySelector("#drawerHeader");
@@ -104,15 +102,15 @@ export async function startDrawer(){
         && hand)) return;
 
 
-    drawerHandle.addEventListener("mousedown", dragStart);
-    drawerHeader.addEventListener("mousedown", dragStart);
-    document.addEventListener("mousemove", dragging);
-    document.addEventListener("mouseup", dragStop);
+    drawerHandle.addEventListener("mousedown", dragStart, {passive:false});
+    drawerHeader.addEventListener("mousedown", dragStart, {passive:false});
+    document.addEventListener("mousemove", dragging, {passive:false});
+    document.addEventListener("mouseup", dragStop, {passive:false});
 
-    drawerHandle.addEventListener("touchstart", dragStart);
-    drawerHeader.addEventListener("touchstart", dragStart);
-    document.addEventListener("touchmove", dragging);
-    document.addEventListener("touchend", dragStop);
+    drawerHandle.addEventListener("touchstart", dragStart, {passive:false});
+    drawerHeader.addEventListener("touchstart", dragStart, {passive:false});
+    document.addEventListener("touchmove", dragging, {passive:false});
+    document.addEventListener("touchend", dragStop, {passive:false});
 
 
 
