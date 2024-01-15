@@ -1,5 +1,6 @@
 package Clustering;
 
+import ImageService.ImageTile;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,7 +19,7 @@ public class Cluster extends ArrayList<Point> {
         JSONArray obj = new JSONArray();
 
         for(var point : this){
-            obj.put(point.toString());
+            obj.put(((ImageTile) point).toJSONObject());
         }
 
         return obj;
