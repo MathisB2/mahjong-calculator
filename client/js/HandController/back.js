@@ -93,7 +93,6 @@ class Hand{
                 return;
             }
             i++;
-
         }
     }
 
@@ -152,28 +151,24 @@ class Hand{
     importDetectionResults(callback){
         this.clear();
         let obj = JSON.parse(callback);
-        this.activeSlot=0;
+        let i = 0
         console.log(callback);
 
         for(let cluster of obj){
-            // console.log(cluster);
-            if(this.activeSlot>this.slotList.length-1) continue;
-            console.log(this.activeSlot);
-            for(let tile of cluster){
-                tile = JSON.parse(tile)
-                tile = getAvailableTileByName(tile.name);
 
-                console.log(tile);
+            if(i>this.slotList.length-1) continue;
+            for(let tile of cluster){
+                tile = getAvailableTileByName(tile.name);
                 if (tile == null) continue;
 
+                let slot = this.slotList[i]
 
-                if(this.slotList[this.activeSlot].canAdd(tile.name)){
+                if(slot.canAdd(tile.name)){
                     removeTileFromDrawer(tile.id);
-
-                    this.addTileByTile(tile);
+                    slot.addTile(tile);
                 }
             }
-            ++this.activeSlot;
+            ++i;
         }
         this.activeSlot = 0;
         this.drawHand();
