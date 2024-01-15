@@ -21,6 +21,7 @@ public class TilesView {
     }
 
     public void showMatches(ArrayList<ImageTile> extractedTiles, ArrayList<ImageTile> matchedTiles){
+        if(extractedTiles.size()==0 || matchedTiles.size()==0) return;
         int s = extractedTiles.size();
         Mat[][] binds = new Mat[2][s];
         Mat tmp;
