@@ -349,6 +349,7 @@ header::after{
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none;
 
 }
 
@@ -452,6 +453,7 @@ header::after{
     box-shadow: 0 -2px 8px rgba(0,0,0,.4);
     border-top-left-radius: 32px;
     border-top-right-radius: 32px;
+    user-select: none;
 }
 
 
@@ -529,6 +531,7 @@ header::after{
     text-align: center;
     background-color: var(--darkerBackground);
     width: 100%;
+    user-select: none;
 
 
 }

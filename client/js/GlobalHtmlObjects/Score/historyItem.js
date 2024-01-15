@@ -3,7 +3,7 @@ import {HtmlTag} from "../HtmlObjects/HtmlTag.js";
 export class HistoryItem{
     date;
     score;
-    timestamp   //time elapsed in minutes
+    timestamp   //time elapsed in sec
 
     constructor(score,date=new Date()) {
         this.date = date;
