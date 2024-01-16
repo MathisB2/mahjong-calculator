@@ -1293,3 +1293,31 @@ footer ul li a{
 footer ul li a:hover{
     text-decoration: underline;
 }
+
+
+
+
+
+/*--------------------------------- gameRules.html ---------------------------------*/
+
+main.gameRules{
+    max-width: 400px;
+    margin: auto;
+    padding: 8px;
+}
+
+
+.gameRules h1{
+    margin-bottom: 64px;
+}
+
+
+.gameRules h2{
+    margin-bottom: 16px;
+}
+
+.gameRules p{
+    text-align: justify;
+    margin-bottom: 64px;
+    color: var(--textColor);
+}
