@@ -36,16 +36,13 @@ public class ImageService {
         DataSet dataSet2 = new DataSet("data2");
 
         imageNet.connect((WebSocket user, String encodedImage) -> {
-            double time = System.currentTimeMillis();
             TileDetector detector = new TileDetector(dataSet2, 1600);
             TilesView view = new TilesView();
 
             var extractedTiles = detector.extractTiles(decodeImage(encodedImage));
             var matchedTiles = detector.getMatchedTilesTo(extractedTiles);
 
-            System.out.println((System.currentTimeMillis() - time)/1000.0);
-            System.out.println(extractedTiles.size());
-            view.showMatches(extractedTiles, matchedTiles);
+            //view.showMatches(extractedTiles, matchedTiles);
             Clusters clusters = clusterDetector.getClustersFrom(matchedTiles);
 
             return clusters.toJSONObject().toString();
