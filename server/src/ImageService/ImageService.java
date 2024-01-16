@@ -10,21 +10,32 @@ import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
 import org.opencv.imgcodecs.Imgcodecs;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Base64;
 import java.util.Base64.Decoder;
 
 public class ImageService {
-    NetNamespace imageNet;
-    ClusterDetector clusterDetector;
-    public ImageService(NetworkService networkService) {
-        imageNet = networkService.newNameSpace("ImageNet");
+    private NetNamespace imageNet;
+    private ClusterDetector clusterDetector;
+    static private ImageService service = null;
+    static public ImageService get(){
+        if(service == null) load();
+        return service;
+    }
+
+    static public void load(){
+        assert service == null : "service is already loaded";
+        service = new ImageService();
+    }
+    private ImageService() {
+        imageNet = NetworkService.getNetwork().newNameSpace("ImageNet");
         clusterDetector = new ClusterDetector();
 
         DataSet dataSet2 = new DataSet("data2");
 
         imageNet.connect((WebSocket user, String encodedImage) -> {
-            System.out.println("new image from user");
             double time = System.currentTimeMillis();
             TileDetector detector = new TileDetector(dataSet2, 1600);
             TilesView view = new TilesView();

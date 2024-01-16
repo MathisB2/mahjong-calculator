@@ -5,8 +5,9 @@ import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.net.InetSocketAddress;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,6 +22,12 @@ public class NetworkService extends WebSocketServer {
         conns = new HashSet<>();
         queue = new HashMap<>();
         namespaces = new HashMap<>();
+    }
+
+    static public NetworkService getNetwork() {
+        NetworkConfiguration config = NetworkConfiguration.get();
+
+        return getNetworkOnPort(config.getPort());
     }
 
     static public NetworkService getNetworkOnPort(int port){
