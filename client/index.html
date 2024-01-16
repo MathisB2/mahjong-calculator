@@ -1,12 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link href="style.css" rel="stylesheet" />
+    <link rel="icon" href="img/logo.png" />
+    <title>Mahjong Calculator</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
+
 <body>
-    <input type="file" name="file" id="file" class="inputfile">image</input>
+
+    <header></header>
+    <main class="index">
+        <section id="indexCoverSection">
+            <div>
+                <h1>Calculez votre score en toute <span>simplicité</span></h1>
+                <a href="calculator.html" class="gradientButtonLink">
+                    Essayer maintenant →
+                </a>
+            </div>
+            <div>
+                <p>Découvrir les fonctionalités</p>
+                <p>↓</p>
+            </div>
+        </section>
+
+        <section id="indexContent">
+
+            <section id="indexUxInfo">
+                <div class="indexText">
+                    <h2>Une expérience <span>simplifiée</span></h2>
+                    <p>Calculer votre score n’aura jamais été aussi simple ! Mahjong Calculator inclut les règles du jeu officièles, vous n’avez plus besoin des les retenir.</p>
+                </div>
+
+                <div id="indexTileAnimationGroup">
+                    <canvas id="indexTileScrollingAnimation"></canvas>
+                    <div class="animationOverlay"></div>
+                </div>
+            </section>
+
+            <section id="indexUIInfo">
+                <div class="indexText">
+                    <h2>Un interface <span>intuitive</span></h2>
+                    <p>Nous avons conçu une interface simple à utiliser, adaptée à tous les joueurs, débutants ou experts.</p>
+                </div>
+
+                <div id="indexUiAnimationGroup">
+                    <canvas id="indexUiAnimation" ></canvas>
+                    <div class="animationOverlay"></div>
+                </div>
+            </section>
+
+
+            <section>
+                <div class="indexText">
+                    <h2>3 étapes <span>simples</span></h2>
+                    <ul id="indexStepList">
+                        <li>Prenez votre jeu en photo</li>
+                        <li>Choisissez vos bonus</li>
+                        <li>Validez !</li>
+                    </ul>
+                    <div id="indexIphoneImg"></div>
+                </div>
+            </section>
+
+            <section>
+                <div class="indexText">
+                    <h2><span>Aucune</span> installation requise</h2>
+                    <p>Tout se passe en ligne ! Vous n’avez pas besoin de payer, ni de créer une comtpe.</p>
+
+                    <div id="indexBottomButtonDiv">
+                        <a href="calculator.html" class="gradientButtonLink">
+                            Calculer mon score →
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+
+
+        </section>
+    </main>
+
+    <footer></footer>
+
+
+    <script type="module" src="js/main.js"></script>
 </body>
-<script type="text/javascript" src="JavaScript/NetworkController.js"></script>
-<script type="text/javascript" src="JavaScript/main.js"></script>
+
 </html>
