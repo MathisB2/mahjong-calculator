@@ -40,8 +40,8 @@ public class TileDetector {
             ImageTile t = new ImageTile("", finalImage);
 
             Point center = inputPts.getCenter();
-            t.x = center.x;
-            t.y = center.y;
+            t.x = (int) center.x;
+            t.y = (int) center.y;
 
             extractedTiles.add(t);
         }
