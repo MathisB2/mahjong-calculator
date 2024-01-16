@@ -8,7 +8,7 @@ import org.opencv.core.Point;
 
 import java.util.ArrayList;
 
-public class Cluster extends ArrayList<Point> {
+public class Cluster extends ArrayList<ClusterPoint> {
     public void concat(Cluster cluster){
         for(var point : cluster){
             this.add(point);
@@ -19,7 +19,7 @@ public class Cluster extends ArrayList<Point> {
         JSONArray obj = new JSONArray();
 
         for(var point : this){
-            obj.put(((ImageTile) point).toJSONObject());
+            obj.put(point.toJSONObject());
         }
 
         return obj;

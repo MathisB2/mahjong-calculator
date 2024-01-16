@@ -1,11 +1,12 @@
 package ImageService;
 
+import Clustering.ClusterPoint;
 import org.json.JSONObject;
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
 import org.opencv.imgcodecs.Imgcodecs;
 
-public class ImageTile extends Point {
+public class ImageTile extends ClusterPoint {
     private String name;
     private Mat img;
 
