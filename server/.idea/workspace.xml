@@ -256,8 +256,10 @@
       <change beforePath="$PROJECT_DIR$/out/production/server/serverConfig.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/server/truc_de_mathis.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clustering/Cluster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clustering/Cluster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clustering/ClusterDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clustering/ClusterDetector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageService/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageService/ImageTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageService/TilesView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/TilesView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NetworkService/NetworkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NetworkService/NetworkService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ScoreService/ScoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/ScoreService.java" afterDir="false" />
@@ -412,7 +414,7 @@
       <workItem from="1702995323610" duration="2768000" />
       <workItem from="1704806582213" duration="8736000" />
       <workItem from="1705311313116" duration="111000" />
-      <workItem from="1705391368590" duration="3759000" />
+      <workItem from="1705391368590" duration="4642000" />
     </task>
     <servers />
   </component>

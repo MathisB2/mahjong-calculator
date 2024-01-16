@@ -50,7 +50,6 @@ public class TilesView {
         jf.getContentPane().add(new JLabel(new ImageIcon(img)));
         jf.setSize(new Dimension(img.getWidth(), img.getHeight()+20));
         jf.setVisible(true);
-
     }
 
     private Mat addRightBorder(Mat img, int borderWidth){
