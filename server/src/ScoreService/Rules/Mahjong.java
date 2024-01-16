@@ -2,7 +2,6 @@ package ScoreService.Rules;
 
 import ScoreService.MahjongHand;
 import Settlement.AdditionScoreRule;
-import Settlement.IRule;
 
 public class Mahjong extends AdditionScoreRule<MahjongHand> {
     public Mahjong(int adder) {

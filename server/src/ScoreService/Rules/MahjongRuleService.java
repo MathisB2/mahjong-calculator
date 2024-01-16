@@ -1,2 +1,4 @@
-package MahjongRules.Rules;public class MahjongRuleService {
+package ScoreService.Rules;
+
+public class MahjongRuleService {
 }

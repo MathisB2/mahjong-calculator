@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="43f76323-03ed-4a48-9093-7b06be31145d" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/src/Clustering/ClusterPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataService/DataService.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/NetworkService/NetworkConfiguration.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/NetworkService/networkconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ScoreService/Rules/MahjongRuleService.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/serverConfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/server/Clustering/Cluster.class" beforeDir="false" />
@@ -262,7 +264,15 @@
       <change beforePath="$PROJECT_DIR$/src/ImageService/TilesView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/TilesView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NetworkService/NetworkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NetworkService/NetworkService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/MahjongSettlement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/MahjongSettlement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/Rules/Flush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/Rules/Flush.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/Rules/Hidden.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/Rules/Hidden.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/Rules/Mahjong.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/Rules/Mahjong.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/Rules/Pair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/Rules/Pair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/Rules/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/Rules/Square.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/Rules/Suite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/Rules/Suite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ScoreService/ScoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/ScoreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/encoded_hand_exemple.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -414,7 +424,7 @@
       <workItem from="1702995323610" duration="2768000" />
       <workItem from="1704806582213" duration="8736000" />
       <workItem from="1705311313116" duration="111000" />
-      <workItem from="1705391368590" duration="4642000" />
+      <workItem from="1705391368590" duration="5680000" />
     </task>
     <servers />
   </component>

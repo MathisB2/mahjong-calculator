@@ -1,7 +1,6 @@
 package ScoreService.Rules;
 
 import ScoreService.MahjongSet;
-import Settlement.IRule;
 import Settlement.MultiplicationScoreRule;
 
 public class Hidden extends MultiplicationScoreRule<MahjongSet> {
