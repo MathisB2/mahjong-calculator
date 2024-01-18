@@ -28,7 +28,7 @@ public class ImageService {
         imageNet = NetworkService.getNetwork().getNameSpace("ImageNet");
         clusterDetector = new ClusterDetector();
 
-        DataSet dataSet2 = new DataSet("data2");
+        DataSet dataSet2 = new MultiDataSet(new String[]{"data2","data1"});
 
         imageNet.connect((WebSocket user, String encodedImage) -> {
             TileDetector detector = new TileDetector(dataSet2, 1600);
@@ -36,8 +36,9 @@ public class ImageService {
             var extractedTiles = detector.extractTiles(decodeImage(encodedImage));
             var matchedTiles = detector.getMatchedTilesTo(extractedTiles);
 
-            //TilesView view = new TilesView();
-            //view.showMatches(extractedTiles, matchedTiles);
+            TilesView view = new TilesView();
+            view.showMatches(extractedTiles, matchedTiles);
+
             Clusters clusters = clusterDetector.getClustersFrom(matchedTiles);
 
             return clusters.toJSONObject().toString();

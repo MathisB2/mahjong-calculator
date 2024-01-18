@@ -40,8 +40,8 @@ public class TileDetector {
             ImageTile t = new ImageTile("", finalImage);
 
             Point center = inputPts.getCenter();
-            t.x = center.x;
-            t.y = center.y;
+            t.x = (int) center.x;
+            t.y = (int) center.y;
 
             extractedTiles.add(t);
         }
@@ -113,21 +113,26 @@ public class TileDetector {
         Imgproc.cvtColor(image, clone, Imgproc.COLOR_BGR2GRAY);
         Imgproc.blur(clone,clone,new Size(5,5));
         Imgproc.threshold(clone, clone, 0, 1, Imgproc.THRESH_OTSU);
+        (new TilesView()).showImage(clone);
 
         Mat tilesMask = new Mat();
         Imgproc.dilate(clone, tilesMask, Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, new Size(dilateSize, dilateSize)));
+        (new TilesView()).showImage(clone);
 
         Mat maskBGR = new Mat();
         List<Mat> listMat = Arrays.asList(tilesMask, tilesMask, tilesMask);
         Core.merge(listMat, maskBGR);
+        (new TilesView()).showImage(clone);
 
         Core.multiply(image, maskBGR, clone);
         Imgproc.cvtColor(clone, clone, Imgproc.COLOR_BGR2GRAY);
 
         Imgproc.adaptiveThreshold(clone, clone, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C, Imgproc.THRESH_BINARY, 7, 4);
+        (new TilesView()).showImage(clone);
 
-        dilateSize = 4;
+        dilateSize = 6;
         Imgproc.erode(clone, clone, Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, new Size(dilateSize, dilateSize)));
+        (new TilesView()).showImage(clone);
 
         Core.multiply(clone, tilesMask, clone);
 
