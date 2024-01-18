@@ -4,14 +4,12 @@ import NetworkService.*;
 import org.java_websocket.WebSocket;
 import org.json.JSONObject;
 
-import java.security.Provider;
-
 public class ScoreService {
     private NetNamespace scoreNet;
     private MahjongSettlement settlement;
     static private ScoreService service = null;
     private ScoreService(){
-        scoreNet = NetworkService.getNetwork().newNameSpace("ScoreNet");
+        scoreNet = NetworkService.getNetwork().getNameSpace("ScoreNet");
         settlement = new MahjongSettlement();
 
         scoreNet.connect((WebSocket user, String message) -> {

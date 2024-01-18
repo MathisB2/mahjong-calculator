@@ -1,13 +1,12 @@
 package NetworkService;
 
+import Signal.Signal;
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.net.InetSocketAddress;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,11 +16,16 @@ public class NetworkService extends WebSocketServer {
     private final Set<WebSocket> conns;
     private final HashMap<String, String> queue;
     private final HashMap<String, NetNamespace> namespaces;
+    public Signal<WebSocket> onEnter;
+    public Signal<WebSocket> onLeave;
     private NetworkService(int port){
         super(new InetSocketAddress(port));
         conns = new HashSet<>();
         queue = new HashMap<>();
         namespaces = new HashMap<>();
+
+        onEnter = new Signal();
+        onLeave = new Signal();
     }
 
     static public NetworkService getNetwork() {
@@ -38,7 +42,7 @@ public class NetworkService extends WebSocketServer {
         return service;
     }
 
-    public NetNamespace newNameSpace(String name){
+    public NetNamespace getNameSpace(String name){
         if (namespaces.containsKey(name)) return namespaces.get(name);
         NetNamespace namespace = new NetNamespace(name, this);
         namespaces.put(name, namespace);
@@ -52,13 +56,15 @@ public class NetworkService extends WebSocketServer {
     }
     @Override
     public void onOpen(WebSocket conn, ClientHandshake handshake) {
-        conns.add(conn);
         System.out.println("New connection from " + conn.getRemoteSocketAddress().getAddress().getHostAddress());
+        conns.add(conn);
+        onEnter.fireSafely(conn);
     }
 
     @Override
     public void onClose(WebSocket conn, int code, String reason, boolean remote) {
         conns.remove(conn);
+        onLeave.fireSafely(conn);
     }
 
     @Override

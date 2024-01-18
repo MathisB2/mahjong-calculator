@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43f76323-03ed-4a48-9093-7b06be31145d" name="Changes" comment="">
-
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataServices/DataService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataServices/LogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataServices/UserData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/src/DataService/DataService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageService/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NetworkService/NetworkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NetworkService/NetworkService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/ScoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/ScoreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Signal/Signal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Signal/Signal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
