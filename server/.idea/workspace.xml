@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43f76323-03ed-4a48-9093-7b06be31145d" name="Changes" comment="">
-
+    <list default="true" id="10df1254-a638-4d6f-8e7d-6860f993f786" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ImageService/ImageShapes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ImageService/PointInPolygon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageService/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageService/TileDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/TileDetector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/photos/Thumbs.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/photos/Thumbs.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,30 +39,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-<<<<<<< HEAD
-    "last_opened_file_path": "Z:/Documents/SAE/main_branch/client",
-=======
-    "last_opened_file_path": "Z:/Documents/2A/S3/SAE/code/main/server",
->>>>>>> 9acd1bdd33e7876fe0045f98f099626b2bd736bb
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;Z:/Documents/SAE/html/client&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="ImageService" />
@@ -133,7 +126,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="43f76323-03ed-4a48-9093-7b06be31145d" name="Changes" comment="" />
+      <changelist id="10df1254-a638-4d6f-8e7d-6860f993f786" name="Changes" comment="" />
       <created>1698326418991</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -162,13 +155,9 @@
       <workItem from="1702995323610" duration="2768000" />
       <workItem from="1704806582213" duration="8736000" />
       <workItem from="1705311313116" duration="111000" />
-<<<<<<< HEAD
-      <workItem from="1705391368590" duration="5680000" />
-      <workItem from="1705574389209" duration="1719000" />
-=======
       <workItem from="1705391368590" duration="4642000" />
       <workItem from="1705415292175" duration="118000" />
->>>>>>> 9acd1bdd33e7876fe0045f98f099626b2bd736bb
+      <workItem from="1706019617308" duration="4738000" />
     </task>
     <servers />
   </component>
@@ -193,6 +182,11 @@
           <url>file://$PROJECT_DIR$/src/ScoreService/MahjongSettlement.java</url>
           <line>38</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ImageService/TileDetector.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

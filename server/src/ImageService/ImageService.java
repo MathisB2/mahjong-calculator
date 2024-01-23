@@ -40,7 +40,6 @@ public class ImageService {
             view.showMatches(extractedTiles, matchedTiles);
 
             Clusters clusters = clusterDetector.getClustersFrom(matchedTiles);
-
             return clusters.toJSONObject().toString();
         });
     }
