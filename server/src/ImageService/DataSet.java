@@ -12,20 +12,26 @@ import java.util.List;
 import java.util.Map;
 
 public class DataSet {
+    private String name;
     private HashMap<ImageTile, Mat> tiles;
     private SIFT sift;
 
     public DataSet() {
-        this.tiles = new HashMap<>();
-        this.sift = SIFT.create();
+        tiles = new HashMap<>();
     }
 
     public DataSet(String name) {
         this.tiles = new HashMap<>();
         this.sift = SIFT.create();
+        this.name = name;
         loadFolder(name);
     }
-    protected void loadFolder(String folderName){
+    private void loadFolder(String folderName){
+        if(this.tiles.size() != 0){
+            System.err.println("dataSet " + folderName + " already loaded");
+            return;
+        }
+
         File folder = new File("src/img/dataSet/" + folderName);
         File[] listOfFiles = folder.listFiles();
         String fileName;

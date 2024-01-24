@@ -2,6 +2,7 @@ package ScoreService.Rules;
 
 import ScoreService.MahjongSet;
 import Settlement.AdditionScoreRule;
+import Settlement.IRule;
 import Tiles.Tile;
 
 import java.util.ArrayList;
