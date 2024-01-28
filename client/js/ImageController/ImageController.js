@@ -46,7 +46,6 @@ class ImageController{
             }
 
             loadingPopup.show();
-            await new Promise((resolve) => setTimeout(resolve, 4000));
 
             let resized = await this.resizeImage(file,imageConfig.maxWidth);
             let base64 = await this.convertBase64(resized);

@@ -670,7 +670,7 @@ main.calculator{
 }
 
 
-#resultPopUp img{
+#resultPopUp>canvas{
     width: 100%;
     margin-top: 8px;
     border-radius: 8px;

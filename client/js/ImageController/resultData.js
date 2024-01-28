@@ -18,8 +18,39 @@ export class ResultData{
     }
 
 
-    getContourImageObject(){
-        //TODO : draw contours on the image and return the canvas
+    drawContourImage(canvas){
+        canvas.width = this.image.width;
+        canvas.height = this.image.height;
+        console.log(this.image);
+        let ctx = canvas.getContext("2d");
+        //TODO : draw contours on the image
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const img = new Image();
+            img.src = e.target.result;
+            img.onload = function () {
+                canvas.width = img.width;
+                canvas.height = img.height;
+
+                if(img.height>img.width){
+                    canvas.width = img.height;
+                    canvas.height = img.width;
+
+                    let rotationAngle = 90;
+                    ctx.clearRect(0, 0, canvas.width, canvas.height); // Effacer le contenu précédent
+                    ctx.save(); // Enregistrer l'état actuel du contexte
+                    ctx.translate(canvas.width / 2, canvas.height / 2);
+                    ctx.rotate((rotationAngle * Math.PI) / 180);
+                    ctx.drawImage(img, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width); // Inverser largeur et hauteur
+                    ctx.restore(); // Restaurer l'état précédent du contexte
+                }else{
+                    ctx.drawImage(img,0,0,canvas.width,canvas.height);
+                }
+                // ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            };
+        };
+        reader.readAsDataURL(this.image);
     }
 
     getResultTableObject(){

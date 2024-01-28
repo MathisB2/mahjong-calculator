@@ -13,18 +13,27 @@ export class ResultPopup extends Popup{
         let title = new HtmlTag("h2");
         title.addText("Résultats de la détéction");
 
-        let img = new HtmlTag("img");
-        img.setAttribute("src","img/indexBackgroundCover.jpg");
-        img.setAttribute("alt","loadingAnimation");
+        let canvas = new HtmlTag("canvas");
+        canvas.addAttribute("id","contourCanvas");
 
         let resultList = this.data.getResultTableObject();
         resultList.setAttribute("id", "resultList");
 
         let bottomSection = this.data.getButtonObject();
 
-        this.panel.innerHTML= title.toHtml()+img.toHtml()+resultList.toHtml()+bottomSection.toHtml();
+        this.panel.innerHTML= title.toHtml()+canvas.toHtml()+resultList.toHtml()+bottomSection.toHtml();
+
+        this.drawImages()
+    }
 
 
+    drawImages(){
+        this.#drawHeaderImage();
+    }
+
+    #drawHeaderImage(){
+        let canvas = findChildById(this.panel, "contourCanvas");
+        this.data.drawContourImage(canvas);
     }
 
 }
