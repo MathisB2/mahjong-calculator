@@ -10,5 +10,8 @@ export async function startTileManager(){
 
     const p = new LoadingPopup(overlay)
     p.show();
+    const wait = (n) => new Promise((resolve) => setTimeout(resolve, n));
+    await wait(2000);
+    p.hide();
 
 }
