@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fde5e0a-dc61-4d8b-91c5-05ac54431315" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/js/ImageController/popup/loadingPopup.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/ImageController/popup/popup.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/ImageController/popup/popupPanel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calculator.html" beforeDir="false" afterPath="$PROJECT_DIR$/calculator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/tileController.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/tileController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,11 +62,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Mathis\Desktop\sae\html\client\js\ImageController\popup" />
       <recent name="C:\Users\Mathis\Desktop\sae\html\client\img\videos" />
       <recent name="Z:\Documents\2A\S3\SAE\code\main\client\js\HandController" />
       <recent name="Z:\Documents\2A\S3\SAE\code\main\client\js\HandController\hand" />
       <recent name="Z:\Documents\2A\S3\SAE\code\main\client\js\HandController\drawer" />
-      <recent name="Z:\Documents\2A_SAE\html\client" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -89,7 +93,7 @@
       <workItem from="1706292065883" duration="1644000" />
       <workItem from="1706293893251" duration="6660000" />
       <workItem from="1706430975175" duration="2736000" />
-      <workItem from="1706434159683" duration="10556000" />
+      <workItem from="1706434159683" duration="15671000" />
     </task>
     <servers />
   </component>

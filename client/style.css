@@ -614,6 +614,9 @@ main.calculator{
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    opacity: 0;
+    transition: .2s ease-out;
+    /*pointer-events: none;*/
 
 
 
@@ -628,6 +631,7 @@ main.calculator{
     text-align: center;
     padding: 32px;
     transition: .2s ease-out;
+    transform: scale(0);
 }
 
 
