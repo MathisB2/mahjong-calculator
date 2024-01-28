@@ -45,6 +45,7 @@ body {
 
 header{
     z-index: 24;
+    box-shadow: 0 2px 8px rgba(0,0,0,.4);
 }
 nav{
     width: 100%;
@@ -598,18 +599,38 @@ main.calculator{
 
 /* animation de chargement */
 
-.popUp{
+.popUpOverlay{
     position: absolute;
     top: var(--headerDefaultHeight);
     left: 0;
     width: 100%;
     height: calc(100% - var(--headerDefaultHeight));
+    padding: 32px;
+
+    background-color: rgba(43, 49, 68, 0.64);
+    backdrop-filter: blur(4px);
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+
+
+}
+
+.popUp{
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0,0,0,.4);
+    max-width: 480px;
     background-color: var(--darkerBackground);
-    display: none;
+    display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    padding: 32px;
+    transition: .2s ease-out;
 }
 
 
@@ -621,33 +642,15 @@ main.calculator{
     color: var(--textColor)
 }
 
-.popUp .videoContainer{
-    width: 100%;
-    position: relative;
-    --overlayFading: 16%;
-    --overlayColor: var(--RGBdarkerBackground);
-}
 
-.popUp video{
-    /*border: solid red 2px;*/
-    width: 100%;
-    max-width: 480px;
-    pointer-events: none;
+.popUp img{
+    max-width: 48px;
+    margin: 16px;
 }
 
 
 
 
-.popUp .videoOverlay{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    /*background-color: rgba(var(--rgbMainColor),0.5);*/
-    background: linear-gradient(0deg, rgba(var(--overlayColor),1) 0%, rgba(var(--overlayColor),0) var(--overlayFading), rgba(var(--overlayColor),0) calc(100% - var(--overlayFading)), rgba(var(--overlayColor),1) 100%);
-    opacity: 1;
-}
 
 
 

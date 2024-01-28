@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fde5e0a-dc61-4d8b-91c5-05ac54431315" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/js/HandController/TileManager.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/HandController/drawer/drawer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/HandController/drawer/drawerController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/HandController/drawer/elementFinder.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/HandController/drawer/tileDrawer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/calc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calculator.html" beforeDir="false" afterPath="$PROJECT_DIR$/calculator.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/animations/animationFolder.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/animations/animationFolder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/animations/animations.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/animations/animations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/HandController/back.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/back.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/HandController/drawer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../server/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,24 +40,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;Z:/Documents/2A/S3/SAE/code/main/client&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "html",
+    "last_opened_file_path": "C:/Users/Mathis/Desktop/sae/html/client",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Mathis\Desktop\sae\html\client\img\videos" />
       <recent name="Z:\Documents\2A\S3\SAE\code\main\client\js\HandController" />
       <recent name="Z:\Documents\2A\S3\SAE\code\main\client\js\HandController\hand" />
       <recent name="Z:\Documents\2A\S3\SAE\code\main\client\js\HandController\drawer" />
@@ -98,6 +89,7 @@
       <workItem from="1706292065883" duration="1644000" />
       <workItem from="1706293893251" duration="6660000" />
       <workItem from="1706430975175" duration="2736000" />
+      <workItem from="1706434159683" duration="3826000" />
     </task>
     <servers />
   </component>
