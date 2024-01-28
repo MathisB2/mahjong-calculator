@@ -1,5 +1,4 @@
-import {startBack} from "./HandController/back.js";
-import {startDrawer} from "./HandController/drawer.js";
+import {startTileManager} from "./HandController/tileController.js";
 import {startSettings} from "./HandController/gameSettings.js";
 import {startHeader} from "./GlobalHtmlObjects/Header/header.js";
 import {startAbout} from "./GlobalHtmlObjects/aboutInfos/about.js";
@@ -9,9 +8,10 @@ import {startHistory, startScore} from "./GlobalHtmlObjects/Score/score.js";
 
 function main(){
     startHeader().then(
-        headerResult => startDrawer()
+        () => (
+            startTileManager()
+        )
     );
-    startBack().then();
     startSettings().then();
     startAbout().then();
     startAnimations().then();

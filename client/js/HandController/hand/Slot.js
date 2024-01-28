@@ -1,4 +1,4 @@
-import {HtmlTag} from "../GlobalHtmlObjects/HtmlObjects/HtmlTag.js";
+import {HtmlTag} from "../../GlobalHtmlObjects/HtmlObjects/HtmlTag.js";
 
 export class Slot{
     tileList;

@@ -31,7 +31,6 @@ body {
     --textColor:#7B8190;
     --gradientSecondColor:#03C093;
     --mainGradient:linear-gradient(90deg, var(--gradientSecondColor) 0%, var(--mainColor) 100%);
-    --drawerDefaultHeight:50vh;
     --headerDefaultHeight:48px;
     --tileShadow:0 0 5px rgba(0,0,0,.4);
     --globalTileWidth: 64px;
@@ -317,11 +316,20 @@ header::after{
 /*---------------------- calculator.html ------------------------*/
 
 
+main.calculator{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - var(--headerDefaultHeight));
+}
+
 /*liste des tuiles*/
 
 #hand{
     width: 100%;
-    height: calc(100vh - var(--headerDefaultHeight) - var(--drawerDefaultHeight));
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
     overflow-y: scroll;
 
     --tileWidth: min(calc((100vw - 48px) / 5.5), var(--globalTileWidth));
@@ -445,15 +453,14 @@ header::after{
 /* tiroir d'ajout des tuiles*/
 #drawer{
     width: 100%;
-    position: fixed;
-    left: 0;
-    bottom: 0;
     background-color: var(--darkerBackground);
-    height: var(--drawerDefaultHeight);
     box-shadow: 0 -2px 8px rgba(0,0,0,.4);
     border-top-left-radius: 32px;
     border-top-right-radius: 32px;
     user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 
@@ -525,8 +532,9 @@ header::after{
 
 .drawerButton{
     position: fixed;
-    left: 0;
     bottom: 0;
+    left: 0;
+
     display: flex;
     text-align: center;
     background-color: var(--darkerBackground);
@@ -560,6 +568,8 @@ header::after{
     grid-template-columns: repeat(auto-fill, var(--tileWidth));
     grid-gap: calc(var(--tileWidth) / 4);
     justify-content: space-between;
+    flex-grow: 1;
+    margin-bottom: 64px;
 
 }
 

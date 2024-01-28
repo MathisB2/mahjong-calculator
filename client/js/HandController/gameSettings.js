@@ -1,6 +1,6 @@
 import {NetworkController} from "../NetworkController/NetworkController.js";
 import {storageConfig, networkConfig} from "../config.js";
-import {Tile} from "./Tile.js";
+import {Tile} from "./hand/Tile.js";
 
 const backButton = document.getElementById("settingsBackButton");
 const sendButton = document.getElementById("settingsSendButton");
