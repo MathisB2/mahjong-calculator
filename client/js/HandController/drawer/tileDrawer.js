@@ -1,5 +1,5 @@
 import {Drawer} from "./drawer.js";
-import {findChildByClass, findChildById} from "./elementFinder.js";
+import {findChildByClass, findChildById} from "../../GlobalHtmlObjects/HtmlObjects/elementFinder.js";
 
 export class TileDrawer extends Drawer{
     #drawerButton;

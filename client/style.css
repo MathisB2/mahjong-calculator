@@ -631,6 +631,7 @@ main.calculator{
     text-align: center;
     padding: 32px;
     transition: .2s ease-out;
+    transform: scale(0);
 }
 
 
@@ -650,14 +651,14 @@ main.calculator{
 
 
 
-#loadingOverlay{
+#loadingPopUp{
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
 }
 
-#resultOverlay{
+#resultPopUp{
     width: 100%;
     height: 100%;
     display: flex;
@@ -669,7 +670,7 @@ main.calculator{
 }
 
 
-#resultOverlay img{
+#resultPopUp img{
     width: 100%;
     margin-top: 8px;
     border-radius: 8px;

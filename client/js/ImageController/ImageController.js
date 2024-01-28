@@ -1,6 +1,9 @@
 import {Signal} from "../Signal/Signal.js";
 import {NetworkController} from "../NetworkController/NetworkController.js";
 import {imageConfig, networkConfig} from "../config.js";
+import {ResultData} from "./resultData.js";
+import {ResultPopup} from "./popup/resultPopup.js";
+import {LoadingPopup} from "./popup/loadingPopup.js";
 
 export let ImageManager = function() {
     let imageController = null;
@@ -22,8 +25,12 @@ class ImageController{
 
     constructor() {
         const fileBTN = document.getElementById("fileInput")
-        const popup = document.querySelector(".popUp");
-        if(fileBTN == null || popup == null) return;
+        const resultOverlay = document.querySelector("#resultOverlay");
+        const loadingOverlay = document.querySelector("#loadingOverlay");
+        if(fileBTN == null || resultOverlay == null || loadingOverlay==null) return;
+
+        const loadingPopup = new LoadingPopup(loadingOverlay);
+        let resultPopup;
 
         let network = NetworkController.getController(networkConfig.ip, networkConfig.port);
         const imageNet = network.getNetNamespace("ImageNet");
@@ -32,14 +39,14 @@ class ImageController{
         this.OnTilesReceived = new Signal();
 
         fileBTN.addEventListener("change", async (e) => {
-
             const file = e.target.files[0];
             if((file.type.indexOf("image")) == -1) {
                 alert("Le format du fichier n'est pas pris en charge");
                 return;
             }
 
-            popup.style.display="flex";
+            loadingPopup.show();
+            await new Promise((resolve) => setTimeout(resolve, 4000));
 
             let resized = await this.resizeImage(file,imageConfig.maxWidth);
             let base64 = await this.convertBase64(resized);
@@ -48,7 +55,11 @@ class ImageController{
 
             imageNet.call(base64).then(function (callback) {
                 controller.OnTilesReceived.fire(callback);
-                popup.style.display="none";
+
+                let resultData = new ResultData(resized,callback);
+                resultPopup = new ResultPopup(resultOverlay,resultData);
+                loadingPopup.hide()
+                resultPopup.show()
             });
         });
     }

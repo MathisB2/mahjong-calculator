@@ -1,37 +1,29 @@
-import {HtmlTag} from "../../GlobalHtmlObjects/HtmlObjects/HtmlTag.js";
-import {PopupPanel} from "./popupPanel.js";
-
 export class Popup{
     overlay;
     panel;
 
+
     #isVisible
 
-    constructor(overlay) {
-        this.overlay = overlay
-        this.panel = new PopupPanel();
+    constructor(overlay, panel) {
+        this.overlay = overlay;
+        this.panel = panel;
         this.#isVisible = false;
-        this.update();
-    }
-
-    update(){
-        this.overlay.innerHTML = this.panel.toHtml();
+        this.hide();
     }
 
 
     show(){
         this.#isVisible = true;
-        this.overlay.style.opacity = 1;
-        this.panel.style.clear();
-        this.update();
+        this.overlay.style.opacity = "1";
+        this.overlay.style.pointerEvents = "auto"
+        this.panel.style.transform = "none";
     }
 
     hide(){
         this.#isVisible = false;
-        this.overlay.style.opacity = 0;
-        this.panel.setStyle("transform", "scale(0)");
-        this.update();
+        this.overlay.style.opacity = "0";
+        this.overlay.style.pointerEvents = "none";
+        this.panel.style.transform = "scale(0)";
     }
-
-
 }
