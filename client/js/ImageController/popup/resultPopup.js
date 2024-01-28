@@ -29,6 +29,7 @@ export class ResultPopup extends Popup{
 
     drawImages(){
         this.#drawHeaderImage();
+        this.#drawMatchesImages();
     }
 
     #drawHeaderImage(){
@@ -36,6 +37,18 @@ export class ResultPopup extends Popup{
         this.data.drawContourImage(canvas);
     }
 
+
+    #drawMatchesImages(){
+        for (let i = 1; i <= this.data.getSize(); i++) {
+            let imgCanvas = document.getElementById("extractedTile"+i);
+            let tileCanvas = document.getElementById("matchedTile"+i);
+            console.log(imgCanvas)
+            if(!(imgCanvas && tileCanvas)) continue;
+            console.log(i);
+            this.data.drawExtractedImage(imgCanvas, i);
+            this.data.drawMatchedImage(tileCanvas, i);
+        }
+    }
 }
 
 

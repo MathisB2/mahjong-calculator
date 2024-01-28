@@ -52,6 +52,18 @@ export class ResultData{
         reader.readAsDataURL(this.image);
     }
 
+    drawExtractedImage(canvas, index){
+        let blob = this.matches[index-1].getImageAsBlob();
+        let ctx = canvas.getContext("2d");
+        //TODO : get ctx and draw the image
+    }
+
+    drawMatchedImage(canvas, index){
+        let blob = this.matches[index-1].getTileAsBlob();
+        let ctx = canvas.getContext("2d");
+        //TODO : get ctx and draw the image
+    }
+
     getResultTableObject(){
         let section = new HtmlTag("section");
         let table = new HtmlTag("table");
@@ -119,5 +131,9 @@ export class ResultData{
             if(match.checked) count++;
         }
         return count;
+    }
+
+    getSize(){
+        return this.matches.length;
     }
 }

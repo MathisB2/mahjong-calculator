@@ -6,11 +6,17 @@ export class TileMatcher{
 
     num
     checked
+
+    imageWidth;
+    imageHeight;
     constructor(image64, name,num) {
         this.image = image64;
         this.name = name;
         this.num = num;
         this.checked = true;
+
+        this.imageWidth = 280;
+        this.imageHeight = 370;
     }
     getHtmlObject(){
         let row = new HtmlTag("tr");
@@ -21,6 +27,7 @@ export class TileMatcher{
 
         let tileCanvas = new HtmlTag("canvas");
         tileCanvas.addAttribute("class","tileResult");
+        tileCanvas.addAttribute("id","extractedTile"+this.num);
         let tile = new HtmlTag("td");
         tile.addChild(tileCanvas)
         row.addChild(tile);
@@ -31,8 +38,9 @@ export class TileMatcher{
 
         let matchedCanvas = new HtmlTag("canvas");
         matchedCanvas.addAttribute("class","tileResult");
+        matchedCanvas.addAttribute("id","matchedTile"+this.num);
         let matched = new HtmlTag("td");
-        matched.addChild(tileCanvas)
+        matched.addChild(matchedCanvas)
         row.addChild(matched);
 
         let label = new HtmlTag("label");
@@ -57,5 +65,18 @@ export class TileMatcher{
 
     #getId(){
         return "result"+this.num;
+    }
+
+
+    getImageAsBlob(){
+        //TODO return image as blob
+        return new Blob();
+    }
+
+    getTileAsBlob(){
+        let url = "img/tiles/"+this.name+".png"
+        //TODO : read the url and return the image as blob
+        //tile size may be 600x800
+        return new Blob();
     }
 }
