@@ -67,16 +67,10 @@ export class HtmlTag{
     }
 
     addStyle(property,value){
-        this.style.push(new HtmlStyleProperty(property,value));
+        this.style.addStyle(property,value);
     }
 
     setStyle(property,value){
-        for (let styleProperty of this.style) {
-            if(styleProperty.property==property){
-                styleProperty.value=value;
-                return;
-            }
-        }
-        this.addAttribute(property,value);
+       this.style.setStyle(property,value);
     }
 }

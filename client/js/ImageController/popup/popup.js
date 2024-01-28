@@ -30,7 +30,8 @@ export class Popup{
     hide(){
         this.#isVisible = false;
         this.overlay.style.opacity = 0;
-        this.panel.setAttribute("style","transform : scale(0)");
+        this.panel.setStyle("transform", "scale(0)");
+        // this.panel.setAttribute("style","transform : scale(0)");
         this.update();
     }
 

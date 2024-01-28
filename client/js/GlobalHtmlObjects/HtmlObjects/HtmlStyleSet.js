@@ -1,4 +1,5 @@
 import {HtmlAttribute} from "./HtmlAttribute.js";
+import {HtmlStyleProperty} from "./HtmlStyleProperty.js";
 
 export class HtmlStyleSet extends HtmlAttribute{
     styleProperties
@@ -21,4 +22,21 @@ export class HtmlStyleSet extends HtmlAttribute{
         return str;
     }
 
+    addStyle(property, value){
+        this.styleProperties.push(new HtmlStyleProperty(property,value));
+    }
+
+    setStyle(property,value){
+        for (let styleProperty of this.styleProperties) {
+            if(styleProperty.property == property){
+                styleProperty.value=value;
+                return;
+            }
+        }
+        this.addStyle(property,value);
+    }
+
+    clear(){
+        this.styleProperties = [];
+    }
 }
