@@ -21,10 +21,10 @@ export class Tile {
         let div = new HtmlTag("div");
         div.setAttribute("class", "tile");
         div.setAttribute("id" , this.id);
-        let style = "background-image:url('"+this.img+"')";
-        if(!available) style += "; opacity:50%;";
 
-        div.setAttribute("style",style);
+        div.addStyle("background-image","url('"+this.img+"')");
+        if(!available) div.addStyle("opacity", "50%");
+
         return div;
     }
 

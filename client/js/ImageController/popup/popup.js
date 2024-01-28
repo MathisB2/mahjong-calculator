@@ -11,7 +11,6 @@ export class Popup{
         this.overlay = overlay
         this.panel = new PopupPanel();
         this.#isVisible = false;
-
         this.update();
     }
 
@@ -23,7 +22,7 @@ export class Popup{
     show(){
         this.#isVisible = true;
         this.overlay.style.opacity = 1;
-        this.panel.setAttribute("style","transform : none");
+        this.panel.style.clear();
         this.update();
     }
 
@@ -31,7 +30,6 @@ export class Popup{
         this.#isVisible = false;
         this.overlay.style.opacity = 0;
         this.panel.setStyle("transform", "scale(0)");
-        // this.panel.setAttribute("style","transform : scale(0)");
         this.update();
     }
 
