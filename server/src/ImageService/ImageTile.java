@@ -11,19 +11,20 @@ public class ImageTile extends ClusterPoint {
     final static public ImageTile NULL = new ImageTile(Mat.zeros(370, 280,CvType.CV_8UC3));
     private String name;
     private Mat img;
-
-    public ImageTile(String name, String path){
-        this.name = name;
-        this.img = Imgcodecs.imread(path);
-    }
     public ImageTile(Mat img){
         this.name = "NULL";
         this.img = img;
     }
+    public ImageTile(String name, String path){
+        this.name = name;
+        this.img = Imgcodecs.imread(path);
+    }
+
     public ImageTile(String name, Mat img){
         this.name = name;
         this.img = img;
     }
+
     public void setName(String n){
         name=n;
     }

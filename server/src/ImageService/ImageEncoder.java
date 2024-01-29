@@ -24,12 +24,9 @@ public class ImageEncoder {
     }
 
     public String encode(Mat image){
-        return encoder.encode(matToBytes(image)).toString();
-    }
+        MatOfByte matOfByte = new MatOfByte();
+        Imgcodecs.imencode(".png", image, matOfByte);
 
-    private byte[] matToBytes(Mat mat){
-        byte[] b = new byte[mat.channels() * mat.cols() * mat.rows()];
-        mat.get(0, 0, b);
-        return b;
+        return encoder.encodeToString(matOfByte.toArray());
     }
 }
