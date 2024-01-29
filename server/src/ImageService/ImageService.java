@@ -29,11 +29,12 @@ public class ImageService {
         clusterDetector = new ClusterDetector();
 
         DataSet dataSet2 = new MultiDataSet(new String[]{"data2","data1"});
-
+        ImageEncoder encoder = new ImageEncoder();
         imageNet.connect((WebSocket user, String encodedImage) -> {
             TileDetector detector = new TileDetector(dataSet2, 1600);
-
-            var extractedTiles = detector.extractTiles(decodeImage(encodedImage));
+            Mat image = encoder.decode(encodedImage);
+            System.out.print(encodedImage == encoder.encode(image));
+            var extractedTiles = detector.extractTiles(image);
             var matchedTiles = detector.getMatchedTilesTo(extractedTiles);
 
             TilesView view = new TilesView();
@@ -42,14 +43,5 @@ public class ImageService {
             Clusters clusters = clusterDetector.getClustersFrom(matchedTiles);
             return clusters.toJSONObject().toString();
         });
-    }
-
-    private Mat decodeImage(String encodedImage){
-        Decoder decoder = Base64.getDecoder();
-        byte[] bytes = decoder.decode(encodedImage.split(",")[1]);
-
-        Mat image = Imgcodecs.imdecode(new MatOfByte(bytes), Imgcodecs.IMREAD_COLOR);
-
-        return image;
     }
 }

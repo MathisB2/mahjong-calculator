@@ -2,11 +2,13 @@ package ImageService;
 
 import Clustering.ClusterPoint;
 import org.json.JSONObject;
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
 import org.opencv.imgcodecs.Imgcodecs;
 
 public class ImageTile extends ClusterPoint {
+    static public ImageTile NULL_TILE = new ImageTile("",Mat.zeros(370, 280,CvType.CV_8UC3));
     private String name;
     private Mat img;
 
