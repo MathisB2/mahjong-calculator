@@ -1,6 +1,6 @@
 export const networkConfig = {
-    ip: "172.22.69.111",
-    // ip: "localhost",
+    // ip: "172.22.69.111",
+    ip: "localhost",
     port: 8080,
     timeout: 10000,
 }

@@ -46,7 +46,7 @@ public class TileDetector {
             Mat finalImage = new Mat();
             Imgproc.warpPerspective(image, finalImage, perspectiveTransform, tileDimension);
 
-            ImageTile t = new ImageTile("", finalImage);
+            ImageTile t = new ImageTile(finalImage);
 
             Point center = inputPts.getCenter();
             t.x = (int) center.x;

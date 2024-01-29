@@ -80,7 +80,7 @@ public class DataSet {
         }
 
         if(matchedTile != null) return matchedTile;
-        return new ImageTile("", Mat.zeros(0, 0, CvType.CV_8UC3));
+        return ImageTile.NULL;
     }
 
     public ImageTile findMatchingTile(Mat img){
