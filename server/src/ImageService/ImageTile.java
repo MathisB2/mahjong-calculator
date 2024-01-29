@@ -8,13 +8,17 @@ import org.opencv.core.Point;
 import org.opencv.imgcodecs.Imgcodecs;
 
 public class ImageTile extends ClusterPoint {
-    static public ImageTile NULL = new ImageTile("",Mat.zeros(370, 280,CvType.CV_8UC3));
+    static public ImageTile NULL = new ImageTile(Mat.zeros(370, 280,CvType.CV_8UC3));
     private String name;
     private Mat img;
 
     public ImageTile(String name, String path){
         this.name = name;
         this.img = Imgcodecs.imread(path);
+    }
+    public ImageTile(Mat img){
+        this.name = "NULL";
+        this.img = img;
     }
     public ImageTile(String name, Mat img){
         this.name = name;
@@ -45,6 +49,7 @@ public class ImageTile extends ClusterPoint {
         JSONObject obj = new JSONObject();
         try{
             obj.put("name", this.name);
+            obj.put("image", (new ImageEncoder()).encode(this.img));
         }catch (Exception e){};
 
         return obj;
