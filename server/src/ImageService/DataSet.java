@@ -80,7 +80,7 @@ public class DataSet {
         }
 
         if(matchedTile != null) return matchedTile;
-        return ImageTile.NULL_TILE;
+        return ImageTile.NULL;
     }
 
     public ImageTile findMatchingTile(Mat img){
