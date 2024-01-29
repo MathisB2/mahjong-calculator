@@ -8,7 +8,7 @@ import org.opencv.core.Point;
 import org.opencv.imgcodecs.Imgcodecs;
 
 public class ImageTile extends ClusterPoint {
-    static public ImageTile NULL = new ImageTile(Mat.zeros(370, 280,CvType.CV_8UC3));
+    final static public ImageTile NULL = new ImageTile(Mat.zeros(370, 280,CvType.CV_8UC3));
     private String name;
     private Mat img;
 
