@@ -4,19 +4,27 @@ import {HtmlTag} from "../GlobalHtmlObjects/HtmlObjects/HtmlTag.js";
 export class ResultData{
     image;
     contours;
+    clusters;
     matches;
 
-    constructor(image, JSONData) {
+    constructor(image, clusters) {
         this.image = image;
         this.contours = [];
-        this.matches = [];
-        //TODO read json to get contours and matches
-
-        for (let i = 0; i < 14; i++) {
-            this.matches.push(new TileMatcher("e","bamboo",i+1));
-        }
+        this.clusters = clusters;
+        this.matches = this.getTileMatcherList();
     }
 
+    getTileMatcherList(){
+        let list = [];
+        let i=0;
+        for (let cluster of this.clusters) {
+            for(let tile of cluster){
+                list.push(new TileMatcher(tile.image,tile.name,i));
+                i++;
+            }
+        }
+        return list;
+    }
 
     drawContourImage(canvas){
         canvas.width = this.image.width;
@@ -52,41 +60,28 @@ export class ResultData{
         reader.readAsDataURL(this.image);
     }
 
-    drawExtractedImage(canvas, index){
-        let blob = this.matches[index-1].getImageAsBlob();
-        let ctx = canvas.getContext("2d");
-        //TODO : get ctx and draw the image
-    }
-
-    drawMatchedImage(canvas, index){
-        let blob = this.matches[index-1].getTileAsBlob();
-        let ctx = canvas.getContext("2d");
-        //TODO : get ctx and draw the image
-    }
-
     getResultTableObject(){
-        let section = new HtmlTag("section");
-        let table = new HtmlTag("table");
+        let section = document.createElement("section");
+        let table = document.createElement("table");
         let thead = this.#getTableHead();
-        let tbody = new HtmlTag("tbody");
+        let tbody = document.createElement("tbody");
 
         for (let row of this.matches) {
-            tbody.addChild(row.getHtmlObject());
+            tbody.appendChild(row.getHtmlObject());
         }
 
-        table.addChild(thead);
-        table.addChild(tbody);
+        table.appendChild(thead);
+        table.appendChild(tbody);
 
-        section.addChild(table)
-        section.addText("Total : "+this.#getCheckCount()+"/"+this.matches.length+" "+this.#getTileText(this.matches.length));
-
-        return section
+        section.appendChild(table)
+        let text = document.createTextNode("Total : "+this.getCheckCount()+"/"+this.matches.length+" "+this.#getTileText(this.matches.length));
+        section.appendChild(text);
+        return section;
     }
 
-
     getButtonObject(){
-        let section = new HtmlTag("section");
-        section.addText("Importer "+this.#getCheckCount()+" "+this.#getTileText(this.matches.length));
+        let section = document.createElement("section");
+        section.textContent ="Importer "+this.getCheckCount()+" "+this.#getTileText(this.matches.length);
         section.setAttribute("id", "resultButton");
         return section;
     }
@@ -98,42 +93,39 @@ export class ResultData{
     }
 
     #getTableHead(){
-        let thead = new HtmlTag("thead");
-        let tr = new HtmlTag("tr");
+        let thead = document.createElement("thead");
+        let tr = document.createElement("tr");
 
-        let num = new HtmlTag("th");
-        num.addText("N°");
-        tr.addChild(num);
+        let num = document.createElement("th");
+        num.textContent = "N°";
+        tr.appendChild(num);
 
-        let img = new HtmlTag("th");
-        img.addText("Img");
-        tr.addChild(img);
+        let img = document.createElement("th");
+        img.textContent = "Img";
+        tr.appendChild(img);
 
-        let empty = new HtmlTag("th");
-        tr.addChild(empty);
+        let empty = document.createElement("th");
+        tr.appendChild(empty);
 
-        let tile = new HtmlTag("th");
-        tile.addText("Tuile");
-        tr.addChild(tile);
+        let tile = document.createElement("th");
+        tile.textContent = "Tuile";
+        tr.appendChild(tile);
 
-        let name = new HtmlTag("th");
-        name.addText("Nom");
-        tr.addChild(name);
+        let name = document.createElement("th");
+        name.textContent = "Nom";
+        tr.appendChild(name);
 
-        tr.addChild(empty);
-        thead.addChild(tr);
+        let empty2 = document.createElement("th");
+        tr.appendChild(empty2);
+        thead.appendChild(tr);
         return thead;
     }
 
-    #getCheckCount(){
+    getCheckCount(){
         let count = 0;
         for (let match of this.matches) {
             if(match.checked) count++;
         }
         return count;
-    }
-
-    getSize(){
-        return this.matches.length;
     }
 }

@@ -9,8 +9,8 @@ export class TileMatcher{
 
     imageWidth;
     imageHeight;
-    constructor(image64, name,num) {
-        this.image = image64;
+    constructor(image, name,num) {
+        this.image = image;
         this.name = name;
         this.num = num;
         this.checked = true;
@@ -18,47 +18,51 @@ export class TileMatcher{
         this.imageWidth = 280;
         this.imageHeight = 370;
     }
+
+
     getHtmlObject(){
-        let row = new HtmlTag("tr");
+        let row = document.createElement("tr");
+        let num = document.createElement("td");
+        num.textContent = this.num;
+        row.appendChild(num);
 
-        let num = new HtmlTag("td");
-        num.addText(this.num);
-        row.addChild(num);
+        let extractedImg = this.image;
+        extractedImg.setAttribute("class", "tileResult");
+        extractedImg.setAttribute("id", "extractedTile"+this.name);
+        let tile = document.createElement("td");
+        tile.appendChild(extractedImg);
+        row.appendChild(tile);
 
-        let tileCanvas = new HtmlTag("canvas");
-        tileCanvas.addAttribute("class","tileResult");
-        tileCanvas.addAttribute("id","extractedTile"+this.num);
-        let tile = new HtmlTag("td");
-        tile.addChild(tileCanvas)
-        row.addChild(tile);
+        let arrow = document.createElement("td");
+        arrow.textContent = "→";
+        row.appendChild(arrow);
 
-        let arrow = new HtmlTag("td");
-        arrow.addText("→");
-        row.addChild(arrow);
+        let tileImg = this.getTileImage();
+        tileImg.setAttribute("class","tileResult");
+        tileImg.setAttribute("id","matchedTile"+this.num);
 
-        let matchedCanvas = new HtmlTag("canvas");
-        matchedCanvas.addAttribute("class","tileResult");
-        matchedCanvas.addAttribute("id","matchedTile"+this.num);
-        let matched = new HtmlTag("td");
-        matched.addChild(matchedCanvas)
-        row.addChild(matched);
 
-        let label = new HtmlTag("label");
-        label.addAttribute("for",this.#getId());
-        label.addText(this.name);
-        let name = new HtmlTag("td")
-        name.addChild(label);
-        row.addChild(name);
+        let matched = document.createElement("td");
 
-        let input = new HtmlTag("input");
-        input.hasClosingTag = false;
-        input.addAttribute("type","checkbox");
-        input.addAttribute("name","result");
-        if(this.checked) input.addAttribute("checked","true");
-        input.addAttribute("id",this.#getId());
-        let keep = new HtmlTag("td");
-        keep.addChild(input);
-        row.addChild(keep);
+        matched.appendChild(tileImg);
+        row.appendChild(matched);
+
+        let label = document.createElement("label");
+        label.setAttribute("for", this.#getId());
+        label.textContent = this.name;
+        let name = document.createElement("td")
+        name.appendChild(label);
+        row.appendChild(name);
+
+        let input = document.createElement("input");
+        // input.hasClosingTag = false;
+        input.setAttribute("type","checkbox");
+        input.setAttribute("name","result");
+        if(this.checked) input.setAttribute("checked","true");
+        input.setAttribute("id",this.#getId());
+        let keep = document.createElement("td");
+        keep.appendChild(input);
+        row.appendChild(keep);
 
         return row;
     }
@@ -68,15 +72,10 @@ export class TileMatcher{
     }
 
 
-    getImageAsBlob(){
-        //TODO return image as blob
-        return new Blob();
-    }
-
-    getTileAsBlob(){
+    getTileImage(){
         let url = "img/tiles/"+this.name+".png"
-        //TODO : read the url and return the image as blob
-        //tile size may be 600x800
-        return new Blob();
+        let image = new Image();
+        image.src = url;
+        return image;
     }
 }

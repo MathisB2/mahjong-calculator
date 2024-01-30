@@ -37,12 +37,9 @@ export class TileDrawer extends Drawer{
             + this.#drawerHeader.getBoundingClientRect().height
             + this.#drawerHandle.getBoundingClientRect().height;
 
-
-        let tileWidth = Math.min((window.innerWidth - 48) / 5.5, 64);
         let height =    this.#drawerTileList.scrollHeight +
                         this.#drawerHeader.scrollHeight +
                         this.#drawerHandle.scrollHeight + 64;
-        console.log(height);
         this.maxHeight = Math.min(height,.64*window.innerHeight);
         this.close();
     }

@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fde5e0a-dc61-4d8b-91c5-05ac54431315" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/js/ImageController/imageDecoder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/drawer/tileDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/drawer/tileDrawer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/tileController.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/tileController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/ImageController/ImageController.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ImageController/ImageController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/ImageController/TileMatcher.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ImageController/TileMatcher.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/ImageController/popup/resultPopup.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ImageController/popup/resultPopup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/ImageController/resultData.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ImageController/resultData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +53,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "html",
-    "last_opened_file_path": "C:/Users/Mathis/Desktop/sae/html/client",
+    "last_opened_file_path": "Z:/Documents/2A/S3/SAE/code/html/client",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -91,6 +96,9 @@
       <workItem from="1706293893251" duration="6660000" />
       <workItem from="1706430975175" duration="2736000" />
       <workItem from="1706434159683" duration="36596000" />
+      <workItem from="1706521339753" duration="46000" />
+      <workItem from="1706531053804" duration="3812000" />
+      <workItem from="1706600235246" duration="12998000" />
     </task>
     <servers />
   </component>
