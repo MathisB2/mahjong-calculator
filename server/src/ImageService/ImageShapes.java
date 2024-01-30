@@ -92,7 +92,7 @@ public class ImageShapes {
         for (var shape : shapes) {
             var simplified = simplifyShape(shape, nCorners);
 
-            if (simplified.toArray().length != 4) continue;
+            if (simplified.toArray().length != nCorners) continue;
             simplifiedShapes.add(simplified);
         }
 

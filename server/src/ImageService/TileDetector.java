@@ -52,7 +52,7 @@ public class TileDetector {
         }catch(Exception e){
             System.out.print(e);
         }
-        
+
         return matchedTiles;
     }
 
