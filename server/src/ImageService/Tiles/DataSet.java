@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public class DataSet {
+    private static int MIN_SCORE = 100;
     private HashMap<ImageTile, Mat> tiles;
     private SIFT sift;
 
@@ -74,7 +75,7 @@ public class DataSet {
                     score += ratioThreshold *matches[1].distance - matches[0].distance;
                 }
             }
-            if(bestScore < score){
+            if(bestScore < score && score > MIN_SCORE){
                 bestScore = score;
                 matchedTile = currentTile;
             }

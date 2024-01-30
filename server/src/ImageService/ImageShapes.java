@@ -37,7 +37,7 @@ public class ImageShapes {
         Core.multiply(image, maskBGR, clone);
         Imgproc.cvtColor(clone, clone, Imgproc.COLOR_BGR2GRAY);
 
-        Imgproc.adaptiveThreshold(clone, clone, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C, Imgproc.THRESH_BINARY, 7, 4);
+        Imgproc.adaptiveThreshold(clone, clone, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C, Imgproc.THRESH_BINARY, 13, 4);
         (new TilesView()).showImage(clone);
 
         dilateSize = 6;
