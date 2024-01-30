@@ -21,6 +21,41 @@ public class TileDetector {
 
         dataset.sizeTo(this.tileDimension);
     }
+    public ArrayList<MatchedTile> getMatchedTilesOn(Mat image){
+        var extractedTiles = extractTiles(image);
+        return getMatchedTilesTo(extractedTiles);
+    }
+
+    public ArrayList<MatchedTile> getMatchedTilesTo(ArrayList<ExtractedTile> extractedTiles){
+        ArrayList<Thread> ths = new ArrayList<>();
+        ArrayList<MatchedTile> matchedTiles = new ArrayList(extractedTiles.size());
+
+        for(int i = 0; i < extractedTiles.size(); ++i){
+            int index = i;
+            ImageTile extractedTile = extractedTiles.get(index);
+
+            Thread th = new Thread(() ->  {
+                ImageTile result = this.dataset.findMatchingTile(extractedTile.getImg());
+                if(result == null) return;
+
+                matchedTiles.add(new MatchedTile(result, extractedTile));
+
+            });
+            ths.add(th);
+            th.start();
+        }
+
+        try{
+            for(Thread th : ths){
+                th.join();
+            }
+        }catch(Exception e){
+            System.out.print(e);
+        }
+        
+        return matchedTiles;
+    }
+
     public ArrayList<ExtractedTile> extractTiles(String imagePath){
         return extractTiles(Imgcodecs.imread(imagePath));
     }
@@ -55,35 +90,6 @@ public class TileDetector {
         return extractedTiles;
     }
 
-    public ArrayList<MatchedTile> getMatchedTilesTo(ArrayList<ExtractedTile> extractedTiles){
-        ArrayList<Thread> ths = new ArrayList<>();
-        ArrayList<MatchedTile> matchedTiles = new ArrayList(extractedTiles.size());
-
-        for(int i = 0; i < extractedTiles.size(); ++i){
-            int index = i;
-            ImageTile extractedTile = extractedTiles.get(index);
-
-            Thread th = new Thread(() ->  {
-                ImageTile result = this.dataset.findMatchingTile(extractedTile.getImg());
-                if(result == null) return;
-
-                matchedTiles.add(new MatchedTile(result, extractedTile));
-
-            });
-            ths.add(th);
-            th.start();
-        }
-        extractedTiles.clear();
-
-        try{
-            for(Thread th : ths){
-                th.join();
-            }
-        }catch(Exception e){
-            System.out.print(e);
-        }
-        return matchedTiles;
-    }
     private void rescaleImgTo(Mat img, int newWidth){
         if(img.width() < img.height()){
             Core.rotate(img, img, Core.ROTATE_90_COUNTERCLOCKWISE);

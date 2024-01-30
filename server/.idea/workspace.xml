@@ -5,12 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10df1254-a638-4d6f-8e7d-6860f993f786" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ImageService/Tiles/ExtractedTile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ImageService/Tiles/MatchedTile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/js/HandController/TileManager.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/js/HandController/drawer/drawer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/js/HandController/drawer/drawerController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/js/HandController/drawer/elementFinder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/js/HandController/drawer/tileDrawer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/js/calc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/calculator.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/calculator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/js/GlobalHtmlObjects/animations/animationFolder.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/js/GlobalHtmlObjects/animations/animationFolder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/js/GlobalHtmlObjects/animations/animations.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/js/GlobalHtmlObjects/animations/animations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/js/HandController/back.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/js/HandController/back.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/js/HandController/drawer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clustering/ClusterDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clustering/ClusterDetector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/Tiles/DataSet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageService/ImageEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageService/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageService/TileDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/TileDetector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/img/photos/Thumbs.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/photos/Thumbs.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +50,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -160,7 +170,6 @@
       <workItem from="1705415292175" duration="118000" />
       <workItem from="1706019617308" duration="7493000" />
       <workItem from="1706526141848" duration="1350000" />
-
       <workItem from="1706532661595" duration="3798000" />
       <workItem from="1706539683531" duration="771000" />
       <workItem from="1706601638991" duration="2322000" />

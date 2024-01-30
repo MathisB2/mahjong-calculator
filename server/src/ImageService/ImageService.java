@@ -30,8 +30,7 @@ public class ImageService {
             TileDetector detector = new TileDetector(dataSet2, 1600);
             Mat image = encoder.decode(encodedImage);
 
-            var extractedTiles = detector.extractTiles(image);
-            var matchedTiles = detector.getMatchedTilesTo(extractedTiles);
+            var matchedTiles = detector.getMatchedTilesOn(image);
 
             TilesView view = new TilesView();
             view.showMatches(matchedTiles);
