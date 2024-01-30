@@ -1,6 +1,8 @@
 export const networkConfig = {
+    // ip: "172.22.69.111",
     ip: "localhost",
     port: 8080,
+    timeout: 10000,
 }
 
 export const imageConfig = {
@@ -9,6 +11,7 @@ export const imageConfig = {
 export const storageConfig={
     hand: "mahjongHand",
     score: "mahjongScore",
+    history: "mahjongHistory",
 }
 
 export const projectConfig={

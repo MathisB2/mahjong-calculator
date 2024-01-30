@@ -5,7 +5,7 @@ import {startHeader} from "./GlobalHtmlObjects/Header/header.js";
 import {startAbout} from "./GlobalHtmlObjects/aboutInfos/about.js";
 import {startAnimations} from "./GlobalHtmlObjects/animations/animations.js";
 import {startFooter} from "./GlobalHtmlObjects/footer/footer.js";
-import {startScore} from "./GlobalHtmlObjects/Score/score.js";
+import {startHistory, startScore} from "./GlobalHtmlObjects/Score/score.js";
 
 function main(){
     startHeader().then(
@@ -17,5 +17,6 @@ function main(){
     startAnimations().then();
     startFooter().then();
     startScore().then();
+    startHistory().then();
 }
 main();

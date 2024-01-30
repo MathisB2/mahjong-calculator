@@ -1,3 +1,5 @@
+import {networkConfig} from "../config.js";
+
 export class NetNameSpace {
     name;
     connectedFunctions = {};
@@ -38,7 +40,7 @@ export class NetNameSpace {
                 resolve: resolve,
                 reject: reject
             };
-            setTimeout(reject, 30000);
+            setTimeout(reject, networkConfig.timeout);
             this._send(message, callId);
         }).catch(function (message){
             console.error(message);

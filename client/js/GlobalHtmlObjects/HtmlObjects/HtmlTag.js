@@ -1,15 +1,14 @@
 import {HtmlAttribute} from "./HtmlAttribute.js";
+import {HtmlText} from "./HtmlText.js";
 
 export class HtmlTag{
     type;
-    innerText;
     children;
     attributes;
     hasClosingTag;
 
     constructor(type="span") {
         this.type=type;
-        this.innerText="";
         this.children=[];
         this.attributes=[];
         this.hasClosingTag=true;
@@ -18,7 +17,6 @@ export class HtmlTag{
     toHtml(){
         let str=this.getOpeningTag();
         if(!this.hasClosingTag) return str;
-        str+=this.innerText;
         for (let child of this.children) {
             str+=child.toHtml();
         }
@@ -54,5 +52,10 @@ export class HtmlTag{
 
     addChild(child){
         this.children.push(child);
+    }
+
+
+    addText(text){
+        this.addChild(new HtmlText(text));
     }
 }

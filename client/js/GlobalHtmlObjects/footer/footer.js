@@ -22,7 +22,7 @@ export class Footer{
         }
 
         let span = new HtmlTag("span");
-        span.innerText = this.bottomText;
+        span.addText(this.bottomText);
 
         return ul.toHtml() + span.toHtml();
     }

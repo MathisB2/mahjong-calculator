@@ -4,8 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5bd2dcd-6544-42a0-984d-037d6a80fb66" name="Changes" comment="">
+    <list default="true" id="e70fd414-1a18-437f-a047-568fec96e4eb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/gameRules.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/history.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/icons/history.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/icons/historyActive.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/HtmlObjects/HtmlText.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/Score/History.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/Score/historyItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../documents/IUT-Projet.url" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../documents/Presentation_SAE_S3.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../documents/deploy.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../documents/repartition des taches.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/Header/BurgerMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/Header/BurgerMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/Header/BurgerMenuItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/Header/BurgerMenuItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/Header/NavigationMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/Header/NavigationMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/HtmlObjects/HtmlTag.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/HtmlObjects/HtmlTag.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/Score/score.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/Score/score.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/footer/footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/footer/footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/footer/footerItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/footer/footerItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/linkItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/linkItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/back.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/back.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/drawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/drawer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/gameSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/gameSettings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/NetworkController/NetNameSpace.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/NetworkController/NetNameSpace.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/score.html" beforeDir="false" afterPath="$PROJECT_DIR$/score.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,34 +45,33 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="2aigQyBTqKmX3gAB6aZ8DuYHtX3" />
+  <component name="ProjectId" id="2bMPgLN0jXT4jSsbbU5zpb78kNf" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;Z:/Documents/SAE/html/client&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "Z:/Documents/SAE/html/client",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b5bd2dcd-6544-42a0-984d-037d6a80fb66" name="Changes" comment="" />
-      <created>1704806801141</created>
+      <changelist id="e70fd414-1a18-437f-a047-568fec96e4eb" name="Changes" comment="" />
+      <created>1706022085162</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1704806801141</updated>
-      <workItem from="1704806802143" duration="6171000" />
-      <workItem from="1706014842050" duration="681000" />
+      <updated>1706022085162</updated>
+      <workItem from="1706022086113" duration="1496000" />
     </task>
     <servers />
   </component>

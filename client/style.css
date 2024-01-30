@@ -17,9 +17,10 @@
 
 }
 
+
 body {
     background-color: var(--backgound);
-    overscroll-behavior: contain;
+    overscroll-behavior: none;
 
     --mainColor:#17C979;
     --RGBmainColor:23,201,121;
@@ -348,6 +349,7 @@ header::after{
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none;
 
 }
 
@@ -451,6 +453,7 @@ header::after{
     box-shadow: 0 -2px 8px rgba(0,0,0,.4);
     border-top-left-radius: 32px;
     border-top-right-radius: 32px;
+    user-select: none;
 }
 
 
@@ -528,6 +531,7 @@ header::after{
     text-align: center;
     background-color: var(--darkerBackground);
     width: 100%;
+    user-select: none;
 
 
 }
@@ -776,10 +780,24 @@ main.settings input:checked + label img{
 
 /*------------------------ score.html ------------------------*/
 
+
+.score{
+    height: calc(100vh - var(--headerDefaultHeight));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
 #indexScore{
     padding: 16px;
-    margin: auto;
+    margin-bottom: 64px;
+    margin-top: 16px;
+
     display: flex;
+    align-items: center;
     width: 90%;
     border-bottom: 2px solid var(--textColor);
 
@@ -787,22 +805,76 @@ main.settings input:checked + label img{
 
 #indexScore div{
     width: 50%;
-}
-#indexScore div{
     font-size: 16pt;
     color: var(--secondColor);
+    font-weight: 400;
 }
 
 #indexScore div span{
-    font-size: 24pt;
+    font-size: 32pt;
+    font-weight: 600;
 }
+
+
+
+
+
+
+.score h2{
+    margin-bottom: 16px;
+}
+#history{
+    width: 90%;
+    height: 100%;
+    margin-bottom: 16px;
+    font-size: 14pt;
+    overflow-y: scroll;
+    border-radius: 8px;
+    background: var(--darkerBackground);
+    box-shadow: 0 0 5px rgba(0,0,0,.4);
+    padding: 8px;
+    color: var(--textColor);
+
+}
+
+
+#history div{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+#history div span:first-child{
+    font-style: italic;
+}
+
+#history div span:last-child{
+    color: var(--secondColor);
+    font-weight: 800;
+}
+
+#history h3{
+    font-size: 14pt;
+    margin-top: 32px;
+    color: var(--secondColor);
+    font-weight: 600;
+}
+
+#history h3:first-child{
+    margin-top: 0;
+}
+
+#history h4{
+    text-align: center;
+    font-weight: 400;
+    font-style: italic;
+}
+
 
 
 
 .score .drawerButton{
-    position: fixed;
-    left: 0;
-    bottom: 0;
+    position: relative;
     display: flex;
     text-align: center;
     background-color: var(--darkerBackground);
@@ -813,29 +885,35 @@ main.settings input:checked + label img{
     line-height: var(--buttonLineHeight);
     font-weight: 500;
 
+
+
 }
 
 
 #scoreBackButton{
-    margin-right: 8px;
     background: var(--mainGradient);
     width: 100%;
     box-sizing: border-box;
     position: relative;
     --borderWidth: 3px;
+    height: calc(var(--buttonLineHeight) + 16px);
+
+
 }
 
 #scoreBackButton div{
     position: absolute;
     width: calc(100% - 2 * var(--borderWidth));
     height: calc(100% - 2 * var(--borderWidth));
+
     top: 0;
     left: 0;
     background: var(--backgound);
     margin: var(--borderWidth);
-    line-height: calc(var(--buttonLineHeight) - 2 * var(--borderWidth));
+    line-height: calc(var(--buttonLineHeight) - (2 * var(--borderWidth)));
     border-radius: 2px;
     color: var(--mainColor);
+    padding: 8px;
 
 }
 
@@ -850,6 +928,13 @@ main.settings input:checked + label img{
 
 }
 
+/*------------------------- history.html --------------------------*/
+
+.history{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 
 
@@ -1207,4 +1292,32 @@ footer ul li a{
 
 footer ul li a:hover{
     text-decoration: underline;
+}
+
+
+
+
+
+/*--------------------------------- gameRules.html ---------------------------------*/
+
+main.gameRules{
+    max-width: 400px;
+    margin: auto;
+    padding: 8px;
+}
+
+
+.gameRules h1{
+    margin-bottom: 64px;
+}
+
+
+.gameRules h2{
+    margin-bottom: 16px;
+}
+
+.gameRules p{
+    text-align: justify;
+    margin-bottom: 64px;
+    color: var(--textColor);
 }

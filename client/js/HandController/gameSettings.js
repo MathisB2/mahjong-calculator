@@ -205,11 +205,18 @@ function onSendClick(){
             console.log("sending to server...");
             console.log(savedData);
 
-            scoreNet.call(JSON.stringify(instance)).then(function (message){
-                if(message == null) return;
-                localStorage.setItem(storageConfig.score, message);
-                window.location.href = "score.html";
-            })
+
+                scoreNet.call(JSON.stringify(instance)).then(function (message){
+                    if(message == null){
+                        alert("Échec de la connexion avec le serveur")
+                        return;
+                    }
+                    localStorage.setItem(storageConfig.score, message);
+                    window.location.href = "score.html";
+                })
+
+
+
         }else{
             alert("error");
         }
