@@ -30,7 +30,7 @@ public class TilesView {
         int borderWidth = 10;
         int j = 0;
         for (int i = 0; i < s; i++) {
-            tmp = matchedTiles.get(i).getExtractedImg();
+            tmp = matchedTiles.get(i).getExtractedImg().clone();
             Imgproc.putText(tmp, matchedTiles.get(i).getName(), new Point(10,40), Core.SORT_DESCENDING, 1.2, new Scalar(0, 0, 255), 2);
             binds[0][i] = addRightBorder(tmp,borderWidth);
 
