@@ -1,15 +1,11 @@
 package ImageService;
 import Clustering.ClusterDetector;
 import Clustering.Clusters;
+import ImageService.Tiles.DataSet;
 import NetworkService.*;
 
 import org.java_websocket.WebSocket;
 import org.opencv.core.Mat;
-import org.opencv.core.MatOfByte;
-import org.opencv.imgcodecs.Imgcodecs;
-
-import java.util.Base64;
-import java.util.Base64.Decoder;
 
 public class ImageService {
     private NetNamespace imageNet;
@@ -38,7 +34,7 @@ public class ImageService {
             var matchedTiles = detector.getMatchedTilesTo(extractedTiles);
 
             TilesView view = new TilesView();
-            view.showMatches(extractedTiles, matchedTiles);
+            view.showMatches(matchedTiles);
 
             Clusters clusters = clusterDetector.getClustersFrom(matchedTiles);
             return clusters.toJSONObject().toString();

@@ -1,5 +1,6 @@
-package ImageService;
+package ImageService.Tiles;
 
+import ImageService.ImageTile;
 import org.opencv.core.*;
 import org.opencv.features2d.BFMatcher;
 import org.opencv.features2d.SIFT;
@@ -92,14 +93,13 @@ public class DataSet {
         for(Map.Entry<ImageTile, Mat> tileInfo : this.tiles.entrySet()) {
             ImageTile img = tileInfo.getKey();
             if(img.getImg().cols() != size.width || img.getImg().rows() != size.height){
-                img.setImg(rescaleImg(img.getImg(), (int)size.width, (int)size.height));
+                rescaleImg(img.getImg(), (int)size.width, (int)size.height);
             }
         }
     }
-    private Mat rescaleImg(Mat img, int newWidth, int newHeight){
-        Mat resized = new Mat();
-        Size scaleSize=new Size(newWidth, newHeight);
-        Imgproc.resize(img,resized,scaleSize);
-        return resized;
+    private void rescaleImg(Mat img, int newWidth, int newHeight){
+        Size scaleSize = new Size(newWidth, newHeight);
+
+        Imgproc.resize(img,img,scaleSize);
     }
 }

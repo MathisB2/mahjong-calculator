@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10df1254-a638-4d6f-8e7d-6860f993f786" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ImageService/Tiles/ExtractedTile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ImageService/Tiles/MatchedTile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/DataSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clustering/ClusterDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clustering/ClusterDetector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageService/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/Tiles/DataSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageService/ImageEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageEncoder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageService/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageService/ImageTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageService/MultiDataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/MultiDataSet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageService/TileDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/TileDetector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageService/TilesView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/TilesView.java" afterDir="false" />
     </list>
@@ -159,7 +165,7 @@
       <workItem from="1706019617308" duration="7493000" />
       <workItem from="1706526141848" duration="1350000" />
       <workItem from="1706532661595" duration="3982000" />
-      <workItem from="1706605387582" duration="309000" />
+      <workItem from="1706605387582" duration="2371000" />
     </task>
     <servers />
   </component>
