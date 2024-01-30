@@ -1,15 +1,11 @@
 package ImageService;
 import Clustering.ClusterDetector;
 import Clustering.Clusters;
+import ImageService.Tiles.DataSet;
 import NetworkService.*;
 
 import org.java_websocket.WebSocket;
 import org.opencv.core.Mat;
-import org.opencv.core.MatOfByte;
-import org.opencv.imgcodecs.Imgcodecs;
-
-import java.util.Base64;
-import java.util.Base64.Decoder;
 
 public class ImageService {
     private NetNamespace imageNet;
@@ -33,12 +29,11 @@ public class ImageService {
         imageNet.connect((WebSocket user, String encodedImage) -> {
             TileDetector detector = new TileDetector(dataSet2, 1600);
             Mat image = encoder.decode(encodedImage);
-            
-            var extractedTiles = detector.extractTiles(image);
-            var matchedTiles = detector.getMatchedTilesTo(extractedTiles);
+
+            var matchedTiles = detector.getMatchedTilesOn(image);
 
             TilesView view = new TilesView();
-            view.showMatches(extractedTiles, matchedTiles);
+            view.showMatches(matchedTiles);
 
             Clusters clusters = clusterDetector.getClustersFrom(matchedTiles);
             return clusters.toJSONObject().toString();

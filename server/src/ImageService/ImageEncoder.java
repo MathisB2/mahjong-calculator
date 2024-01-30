@@ -13,7 +13,7 @@ public class ImageEncoder {
     private Encoder encoder;
     private Decoder decoder;
 
-    ImageEncoder(){
+    public ImageEncoder(){
         encoder = Base64.getEncoder();
         decoder = Base64.getDecoder();
     }

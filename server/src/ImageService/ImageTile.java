@@ -24,18 +24,11 @@ public class ImageTile extends ClusterPoint {
         this.name = name;
         this.img = img;
     }
-
-    public void setName(String n){
-        name=n;
-    }
     public String getName() {
         return name;
     }
     public Mat getImg() {
         return img;
-    }
-    public void setImg(Mat img){
-        this.img = img;
     }
     @Override
     public String toString() {
