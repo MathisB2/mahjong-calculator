@@ -11,11 +11,6 @@
       <change beforePath="$PROJECT_DIR$/src/Clustering/ClusterDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clustering/ClusterDetector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageService/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/Tiles/DataSet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageService/ImageEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageEncoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/ImageTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/MultiDataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/MultiDataSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/TileDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/TileDetector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/TilesView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/TilesView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,19 +39,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "Z:/Documents/SAE/main_branch/server",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;Z:/Documents/2A/S3/SAE/code/main/server&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="ImageService" />
@@ -164,8 +160,10 @@
       <workItem from="1705415292175" duration="118000" />
       <workItem from="1706019617308" duration="7493000" />
       <workItem from="1706526141848" duration="1350000" />
-      <workItem from="1706532661595" duration="3982000" />
-      <workItem from="1706605387582" duration="2371000" />
+
+      <workItem from="1706532661595" duration="3798000" />
+      <workItem from="1706539683531" duration="771000" />
+      <workItem from="1706601638991" duration="2322000" />
     </task>
     <servers />
   </component>

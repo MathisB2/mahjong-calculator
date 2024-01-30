@@ -9,6 +9,7 @@ import java.util.Base64.Decoder;
 import java.util.Base64.Encoder;
 
 public class ImageEncoder {
+    private final static String FORMAT = "jpg";
     private Encoder encoder;
     private Decoder decoder;
 
@@ -25,8 +26,8 @@ public class ImageEncoder {
 
     public String encode(Mat image){
         MatOfByte matOfByte = new MatOfByte();
-        Imgcodecs.imencode(".png", image, matOfByte);
+        Imgcodecs.imencode("."+FORMAT, image, matOfByte);
 
-        return encoder.encodeToString(matOfByte.toArray());
+        return "data:image/" + FORMAT + ";base64," + encoder.encodeToString(matOfByte.toArray());
     }
 }
