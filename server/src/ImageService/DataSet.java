@@ -79,8 +79,7 @@ public class DataSet {
             }
         }
 
-        if(matchedTile != null) return matchedTile;
-        return ImageTile.NULL;
+        return matchedTile;
     }
 
     public ImageTile findMatchingTile(Mat img){

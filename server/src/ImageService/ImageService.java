@@ -33,7 +33,7 @@ public class ImageService {
         imageNet.connect((WebSocket user, String encodedImage) -> {
             TileDetector detector = new TileDetector(dataSet2, 1600);
             Mat image = encoder.decode(encodedImage);
-            
+
             var extractedTiles = detector.extractTiles(image);
             var matchedTiles = detector.getMatchedTilesTo(extractedTiles);
 

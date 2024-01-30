@@ -68,8 +68,10 @@ public class TilesView {
 
         for (int i = 0; i < images.length; i++) {
             for (int j = 0; j < images[0].length; j++) {
-                if (images[i][j].rows() != imgRows || images[i][j].cols() != imgCols) {
-                    throw new IllegalArgumentException("All images must have the same size.");
+                var image = images[i][j];
+
+                if (image.rows() != imgRows || image.cols() != imgCols) {
+                    images[i][j] = ImageTile.NULL.getImg();
                 }
             }
         }

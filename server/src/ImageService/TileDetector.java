@@ -59,14 +59,17 @@ public class TileDetector {
 
     public ArrayList<ImageTile> getMatchedTilesTo(ArrayList<ImageTile> extractedTiles){
         ArrayList<Thread> ths = new ArrayList<>();
-        ArrayList<ImageTile> matchedTiles = new ArrayList(extractedTiles);
+        ArrayList<ImageTile> matchedTiles = new ArrayList(extractedTiles.size());
 
         for(int i = 0; i < extractedTiles.size(); ++i){
             int index = i;
             ImageTile t = extractedTiles.get(index);
             Semaphore sema = new Semaphore(1);
+
             Thread th = new Thread(() ->  {
                 ImageTile result = this.dataset.findMatchingTile(t.getImg());
+                if(result == null) return;
+
                 t.setName(result.getName());
                 result.x = t.x;
                 result.y = t.y;
@@ -77,13 +80,15 @@ public class TileDetector {
                     throw new RuntimeException(e);
                 }
 
-                matchedTiles.remove(index);
-                matchedTiles.add(index, result);
+                extractedTiles.add(t);
+                matchedTiles.add(result);
+
                 sema.release();
             });
             ths.add(th);
             th.start();
         }
+        extractedTiles.clear();
 
         try{
             for(Thread th : ths){
