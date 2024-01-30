@@ -1,16 +1,20 @@
 import {HtmlAttribute} from "./HtmlAttribute.js";
 import {HtmlText} from "./HtmlText.js";
+import {HtmlStyleProperty} from "./HtmlStyleProperty.js";
+import {HtmlStyleSet} from "./HtmlStyleSet.js";
 
 export class HtmlTag{
     type;
     children;
     attributes;
+    style
     hasClosingTag;
 
     constructor(type="span") {
         this.type=type;
         this.children=[];
         this.attributes=[];
+        this.style = new HtmlStyleSet();
         this.hasClosingTag=true;
     }
 
@@ -27,8 +31,11 @@ export class HtmlTag{
     getOpeningTag(){
         let str="<"+this.type;
         for (let attribute of this.attributes) {
+            if(attribute.name=="style") continue;
             str+=" "+attribute.toHtml();
         }
+        str+=this.style.toHtml();
+
         str+=">";
         return str;
     }
@@ -57,5 +64,13 @@ export class HtmlTag{
 
     addText(text){
         this.addChild(new HtmlText(text));
+    }
+
+    addStyle(property,value){
+        this.style.addStyle(property,value);
+    }
+
+    setStyle(property,value){
+       this.style.setStyle(property,value);
     }
 }
