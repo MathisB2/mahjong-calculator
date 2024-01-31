@@ -66,7 +66,6 @@ class ImageController{
 
         for (let cluster of decodedCallBack) {
             for(let tile of cluster){
-                console.log(tile)
                 tile.image = decode(tile.image);
             }
         }

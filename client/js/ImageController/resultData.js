@@ -29,7 +29,6 @@ export class ResultData{
     drawContourImage(canvas){
         canvas.width = this.image.width;
         canvas.height = this.image.height;
-        console.log(this.image);
         let ctx = canvas.getContext("2d");
         //TODO : draw contours on the image
 
@@ -74,22 +73,27 @@ export class ResultData{
         table.appendChild(tbody);
 
         section.appendChild(table)
-        let text = document.createTextNode("Total : "+this.getCheckCount()+"/"+this.matches.length+" "+this.#getTileText(this.matches.length));
+        let text = document.createElement("p");
+        text.textContent = this.getTotalText();
         section.appendChild(text);
         return section;
     }
 
     getButtonObject(){
         let section = document.createElement("section");
-        section.textContent ="Importer "+this.getCheckCount()+" "+this.#getTileText(this.matches.length);
+        section.textContent ="Importer "+this.getCheckCount()+" "+this.#getTileText(this.getCheckCount());
         section.setAttribute("id", "resultButton");
         return section;
     }
 
     #getTileText(count){
         let text = "tuile";
-        if(count>0) text+="s";
+        if(count>1) text+="s";
         return text;
+    }
+
+    getTotalText(){
+        return "Total : "+this.getCheckCount()+"/"+this.matches.length+" "+this.#getTileText(this.matches.length);
     }
 
     #getTableHead(){
@@ -124,7 +128,7 @@ export class ResultData{
     getCheckCount(){
         let count = 0;
         for (let match of this.matches) {
-            if(match.checked) count++;
+            if(match.isChecked()) count++;
         }
         return count;
     }

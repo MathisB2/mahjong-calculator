@@ -4,19 +4,19 @@ export class TileMatcher{
     image;
     name;
 
-    num
-    checked
+    num;
+    checkbox;
 
-    imageWidth;
-    imageHeight;
     constructor(image, name,num) {
         this.image = image;
         this.name = name;
         this.num = num;
-        this.checked = true;
 
-        this.imageWidth = 280;
-        this.imageHeight = 370;
+        this.checkbox = document.createElement("input");
+        this.checkbox.setAttribute("type","checkbox");
+        this.checkbox.setAttribute("name","result");
+        this.checkbox.setAttribute("checked","true");
+        this.checkbox.setAttribute("id",this.#getId());
     }
 
 
@@ -26,11 +26,14 @@ export class TileMatcher{
         num.textContent = this.num;
         row.appendChild(num);
 
+
         let extractedImg = this.image;
         extractedImg.setAttribute("class", "tileResult");
         extractedImg.setAttribute("id", "extractedTile"+this.name);
         let tile = document.createElement("td");
-        tile.appendChild(extractedImg);
+        let extractedLabel = this.#getLabel();
+        extractedLabel.appendChild(extractedImg);
+        tile.appendChild(extractedLabel);
         row.appendChild(tile);
 
         let arrow = document.createElement("td");
@@ -41,27 +44,21 @@ export class TileMatcher{
         tileImg.setAttribute("class","tileResult");
         tileImg.setAttribute("id","matchedTile"+this.num);
 
-
         let matched = document.createElement("td");
-
-        matched.appendChild(tileImg);
+        let matchedLabel = this.#getLabel();
+        matchedLabel.appendChild(tileImg);
+        matched.appendChild(matchedLabel);
         row.appendChild(matched);
 
-        let label = document.createElement("label");
-        label.setAttribute("for", this.#getId());
-        label.textContent = this.name;
         let name = document.createElement("td")
-        name.appendChild(label);
+        let nameLabel = this.#getLabel();
+        nameLabel.textContent = this.name;
+        name.appendChild(nameLabel);
         row.appendChild(name);
 
-        let input = document.createElement("input");
-        // input.hasClosingTag = false;
-        input.setAttribute("type","checkbox");
-        input.setAttribute("name","result");
-        if(this.checked) input.setAttribute("checked","true");
-        input.setAttribute("id",this.#getId());
+
         let keep = document.createElement("td");
-        keep.appendChild(input);
+        keep.appendChild(this.checkbox);
         row.appendChild(keep);
 
         return row;
@@ -71,11 +68,21 @@ export class TileMatcher{
         return "result"+this.num;
     }
 
+    #getLabel(){
+        let label = document.createElement("label");
+        label.setAttribute("for", this.#getId());
+        return label;
+    }
+
 
     getTileImage(){
         let url = "img/tiles/"+this.name+".png"
         let image = new Image();
         image.src = url;
         return image;
+    }
+
+    isChecked(){
+        return this.checkbox.checked;
     }
 }
