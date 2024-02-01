@@ -1,5 +1,4 @@
-import {cropValue} from "../../calc.js";
-import {AnimationFolder} from "./animationFolder.js";
+import {AnimationFolder, cropValue} from "./animationFolder.js";
 
 const uiCanvas = document.getElementById("indexUiAnimation");
 const tilesCanvas = document.getElementById("indexTileScrollingAnimation");
@@ -109,6 +108,10 @@ class ScrollAnimation{
 
 
 
+
+
+
+
 export async function startAnimations(){
     if(tilesCanvas){
 
@@ -133,5 +136,8 @@ export async function startAnimations(){
         uiAnimation.minScrollRange = 240;   // 1frame/5px
         uiAnimation.updateStatus();
     }
+
+
+
 
 }

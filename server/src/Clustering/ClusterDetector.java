@@ -1,16 +1,18 @@
 package Clustering;
 
-import ImageService.Tiles.MatchedTile;
+import ImageService.ImageTile;
+import org.opencv.core.Point;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ClusterDetector {
-    public Clusters getClustersFrom(ArrayList<MatchedTile> points){
+    public Clusters getClustersFrom(ArrayList<ImageTile> matchedTiles){
         Clusters clusters = new Clusters();
-        for(int i = 0; i < points.size(); i++){
+        for(int i = 0; i < matchedTiles.size(); i++){
             Cluster cluster = new Cluster();
             clusters.add(cluster);
-            cluster.add(points.get(i));
+            cluster.add(matchedTiles.get(i));
         }
 
         int i1, i2;

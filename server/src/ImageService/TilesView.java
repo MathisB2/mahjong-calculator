@@ -1,6 +1,5 @@
 package ImageService;
 
-import ImageService.Tiles.MatchedTile;
 import org.opencv.core.*;
 import org.opencv.core.Point;
 import org.opencv.highgui.HighGui;
@@ -21,20 +20,19 @@ public class TilesView {
         this.tileDimension = new Size(280, 370);
     }
 
-    public void showMatches(ArrayList<MatchedTile> matchedTiles){
-        if(matchedTiles.size()==0) return;
-        int s = matchedTiles.size();
+    public void showMatches(ArrayList<ImageTile> extractedTiles, ArrayList<ImageTile> matchedTiles){
+        if(extractedTiles.size()==0 || matchedTiles.size()==0) return;
+        int s = extractedTiles.size();
         Mat[][] binds = new Mat[2][s];
         Mat tmp;
 
         int borderWidth = 10;
         int j = 0;
         for (int i = 0; i < s; i++) {
-            tmp = matchedTiles.get(i).getExtractedImg().clone();
-            Imgproc.putText(tmp, matchedTiles.get(i).getName(), new Point(10,40), Core.SORT_DESCENDING, 1.2, new Scalar(0, 0, 255), 2);
+            tmp = extractedTiles.get(i).getImg();
+            Imgproc.putText(tmp, extractedTiles.get(i).getName(), new Point(10,40), Core.SORT_DESCENDING, 1.2, new Scalar(0, 0, 255), 2);
             binds[0][i] = addRightBorder(tmp,borderWidth);
-
-            if(matchedTiles.get(i).getName().equals("")){
+            if(extractedTiles.get(i).getName().equals("")){
                 binds[1][i] = addRightBorder(Mat.zeros(tileDimension, CvType.CV_8UC3),borderWidth);
             }else{
                 binds[1][i] = addRightBorder(matchedTiles.get(j).getImg(),borderWidth);
@@ -70,10 +68,8 @@ public class TilesView {
 
         for (int i = 0; i < images.length; i++) {
             for (int j = 0; j < images[0].length; j++) {
-                var image = images[i][j];
-
-                if (image.rows() != imgRows || image.cols() != imgCols) {
-                    images[i][j] = ImageTile.NULL.getImg();
+                if (images[i][j].rows() != imgRows || images[i][j].cols() != imgCols) {
+                    throw new IllegalArgumentException("All images must have the same size.");
                 }
             }
         }

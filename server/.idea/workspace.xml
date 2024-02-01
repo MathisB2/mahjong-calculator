@@ -5,24 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10df1254-a638-4d6f-8e7d-6860f993f786" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../client/js/HandController/TileManager.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../client/js/HandController/drawer/drawer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../client/js/HandController/drawer/drawerController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../client/js/HandController/drawer/elementFinder.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../client/js/HandController/drawer/tileDrawer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../client/js/calc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/calculator.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/calculator.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/js/GlobalHtmlObjects/animations/animationFolder.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/js/GlobalHtmlObjects/animations/animationFolder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/js/GlobalHtmlObjects/animations/animations.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/js/GlobalHtmlObjects/animations/animations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/js/HandController/back.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/js/HandController/back.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/js/HandController/drawer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/mongo-java-driver-3.12.14.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/sqlite-jdbc-3.44.1.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataServices/dataStore.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/server.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/ImageShapes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageShapes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/Tiles/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/Tiles/DataSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/TilesView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/TilesView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/photos/Thumbs.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/photos/Thumbs.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,12 +44,21 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;Z:/Documents/2A/S3/SAE/code/main/server&quot;,
+    &quot;last_opened_file_path&quot;: &quot;//iutbg-smbetu.univ-lyon1.fr/homes/Documents/2A_SAE/main/server/lib&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;,
+      &quot;mongo&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
@@ -69,20 +66,21 @@
       <recent name="ImageService" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\iutbg-smbetu.univ-lyon1.fr\homes\Documents\2A_SAE\main\server\lib" />
       <recent name="Z:\Documents\SAE\main_branch\server\src\img\dataSet\superData" />
       <recent name="Z:\Documents\SAE\main_branch\server\src" />
       <recent name="Z:\Documents\SAE\main_branch\server\lib" />
       <recent name="Z:\Documents\2A\S3\SAE\code\Mathis\server\src\img" />
-      <recent name="C:\Users\Mathis\Desktop\sae\merge\mahjong-calculator\server\src\img" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="Z:\Documents\2A_SAE\main\server\lib" />
       <recent name="C:\Users\Mathis\Desktop\sae\mathis\server\src\img" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ImageService" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.TestPdo">
     <configuration name="FeatureMatching" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="FeatureMatching" />
       <module name="server" />
@@ -97,15 +95,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MorphologyDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MorphologyDemo1" />
+    <configuration name="OpenCV" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="OpenCV" />
       <module name="server" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OpenCV" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="OpenCV" />
+    <configuration name="TestPdo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestPdo" />
       <module name="server" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -119,19 +117,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.TestPdo" />
       <item itemvalue="Application.truc_de_mathis" />
       <item itemvalue="Application.FeatureMatching" />
-      <item itemvalue="Application.MorphologyDemo1" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.OpenCV" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestPdo" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.OpenCV" />
         <item itemvalue="Application.truc_de_mathis" />
         <item itemvalue="Application.FeatureMatching" />
-        <item itemvalue="Application.MorphologyDemo1" />
       </list>
     </recent_temporary>
   </component>
@@ -169,11 +167,14 @@
       <workItem from="1705311313116" duration="111000" />
       <workItem from="1705391368590" duration="4642000" />
       <workItem from="1705415292175" duration="118000" />
-      <workItem from="1706019617308" duration="7493000" />
-      <workItem from="1706526141848" duration="1350000" />
-      <workItem from="1706532661595" duration="3798000" />
-      <workItem from="1706539683531" duration="771000" />
-      <workItem from="1706601638991" duration="2322000" />
+      <workItem from="1706019617308" duration="4738000" />
+      <workItem from="1706113314819" duration="1441000" />
+      <workItem from="1706281551989" duration="4821000" />
+      <workItem from="1706601795141" duration="3881000" />
+      <workItem from="1706605776168" duration="477000" />
+      <workItem from="1706606280349" duration="56000" />
+      <workItem from="1706688340410" duration="2616000" />
+      <workItem from="1706772726067" duration="1378000" />
     </task>
     <servers />
   </component>
@@ -198,6 +199,11 @@
           <url>file://$PROJECT_DIR$/src/ScoreService/MahjongSettlement.java</url>
           <line>38</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ImageService/TileDetector.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
