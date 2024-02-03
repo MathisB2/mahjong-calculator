@@ -20,11 +20,12 @@ export class Popup{
     }
 
 
-    show(create = true){
-        if(create || !this.#isCreated) this.createHtml();
+    async show(create = false) {
+        if (create || !this.#isCreated) this.createHtml();
+        await sleep(this.#transition);
         this.#isVisible = true;
         this.content.style.opacity = "1";
-        this.content.style.pointerEvents ="auto";
+        this.content.style.pointerEvents = "auto";
         this.content.firstChild.style.transform = "none";
     }
 
@@ -33,10 +34,8 @@ export class Popup{
         this.content.style.opacity = "0";
         this.content.style.pointerEvents = "none";
         this.content.firstChild.style.transform = "scale(0)";
-        if (destroy) {
-            await sleep(this.#transition);
-            this.destroyHtml();
-        }
+        await sleep(this.#transition);
+        if (destroy) this.destroyHtml();
     }
 
     createHtml(){

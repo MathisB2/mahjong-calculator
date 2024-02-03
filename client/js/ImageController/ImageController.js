@@ -41,23 +41,24 @@ class ImageController{
                 return;
             }
 
-            loadingPopup.show(false);
+            loadingPopup.show();
 
             let resized = await this.resizeImage(file, imageConfig.maxWidth);
             let base64 = await encode(resized);
 
             const controller = this
 
-            imageNet.call(base64).then(function (callback) {
-                loadingPopup.hide();
-                let clusterofTiles = controller.#decodeCallback(callback);
+            imageNet.call(base64).then(async function (callback) {
 
-                let resultData = new ResultData(resized, clusterofTiles);
-                let resultPopup = new ResultPopup(resultOverlay, resultData);
+                let clusterOfTiles = controller.#decodeCallback(callback);
 
+                let resultData = new ResultData(resized, clusterOfTiles);
+
+                let resultPopup = new ResultPopup(main, resultData);
 
                 resultPopup.show()
-            }, loadingPopup.hide.bind(loadingPopup));
+                loadingPopup.hide();
+            });
         });
     }
 

@@ -1,41 +1,52 @@
 import {Popup} from "./popup.js";
-import {HtmlTag} from "../../GlobalHtmlObjects/HtmlObjects/HtmlTag.js";
-import {findChildById} from "../../GlobalHtmlObjects/HtmlObjects/elementFinder.js";
 
 export class ResultPopup extends Popup{
     data;
+    canvas;
     button;
     resultList;
 
-    constructor(overlay, resultData) {
-        let panel = findChildById(overlay,"resultPopUp");
-        super(overlay,panel);
-        this.data = resultData;
+    constructor(parent, resultData) {
+        let content = document.createElement("section");
+        content.setAttribute("class","popUpOverlay");
+        content.setAttribute("id","resultOverlay");
+
+        let panel = document.createElement("section");
+        panel.setAttribute("class","popUp");
+        panel.setAttribute("id","resultPopUp");
+
 
         let title = document.createElement("h2");
         title.textContent ="Résultats de la détéction";
+        panel.appendChild(title);
+
 
         let canvas = document.createElement("canvas");
         canvas.setAttribute("id", "contourCanvas");
+        panel.appendChild(canvas);
 
-        this.resultList = this.data.getResultTableObject();
-        this.resultList.setAttribute("id", "resultList");
+        let resultList = resultData.getResultTableObject();
+        resultList.setAttribute("id","resultList");
+        panel.appendChild(resultList);
 
+        let button = resultData.getButtonObject();
+        panel.appendChild(button);
 
-        this.button = this.data.getButtonObject();
+        content.appendChild(panel);
+        super(parent, content);
 
-        this.panel.innerHTML = "";
-        this.panel.appendChild(title);
-        this.panel.appendChild(canvas);
-        this.panel.appendChild(this.resultList);
-        this.panel.appendChild(this.button);
+        this.data = resultData;
+        this.canvas = canvas;
+        this.resultList = resultList;
+        this.button = button;
+
         this.#drawHeaderImage()
         this.#initEvents();
     }
 
 
     #initEvents(){
-        this.panel.addEventListener("click", this.update.bind(this));
+        this.content.firstChild.addEventListener("click", this.update.bind(this));
         this.button.addEventListener("click", this.#onButtonClick.bind(this));
     }
 
@@ -49,14 +60,8 @@ export class ResultPopup extends Popup{
         this.button.textContent = this.data.getButtonObject().textContent;
     }
 
-    #updateClusters(){
-        this.data.updateClusters();
-    }
-
-
     #drawHeaderImage(){
-        let canvas = findChildById(this.panel, "contourCanvas");
-        this.data.drawContourImage(canvas);
+        this.data.drawContourImage(this.canvas);
     }
 
 
