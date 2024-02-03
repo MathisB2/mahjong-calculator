@@ -1,5 +1,6 @@
-package ImageService;
+package ImageService.Tiles;
 
+import ImageService.ImageTile;
 import org.opencv.core.*;
 import org.opencv.features2d.BFMatcher;
 import org.opencv.features2d.SIFT;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public class DataSet {
+    private static int MIN_SCORE = 100;
     private HashMap<ImageTile, Mat> tiles;
     private SIFT sift;
 
@@ -73,14 +75,13 @@ public class DataSet {
                     score += ratioThreshold *matches[1].distance - matches[0].distance;
                 }
             }
-            if(bestScore < score){
+            if(bestScore < score && score > MIN_SCORE){
                 bestScore = score;
                 matchedTile = currentTile;
             }
         }
 
-        if(matchedTile != null) return matchedTile;
-        return new ImageTile("", Mat.zeros(0, 0, CvType.CV_8UC3));
+        return matchedTile;
     }
 
     public ImageTile findMatchingTile(Mat img){
@@ -93,14 +94,13 @@ public class DataSet {
         for(Map.Entry<ImageTile, Mat> tileInfo : this.tiles.entrySet()) {
             ImageTile img = tileInfo.getKey();
             if(img.getImg().cols() != size.width || img.getImg().rows() != size.height){
-                img.setImg(rescaleImg(img.getImg(), (int)size.width, (int)size.height));
+                rescaleImg(img.getImg(), (int)size.width, (int)size.height);
             }
         }
     }
-    private Mat rescaleImg(Mat img, int newWidth, int newHeight){
-        Mat resized = new Mat();
-        Size scaleSize=new Size(newWidth, newHeight);
-        Imgproc.resize(img,resized,scaleSize);
-        return resized;
+    private void rescaleImg(Mat img, int newWidth, int newHeight){
+        Size scaleSize = new Size(newWidth, newHeight);
+
+        Imgproc.resize(img,img,scaleSize);
     }
 }

@@ -5,11 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10df1254-a638-4d6f-8e7d-6860f993f786" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ImageService/ImageShapes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ImageService/PointInPolygon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/js/HandController/TileManager.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/js/HandController/drawer/drawer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/js/HandController/drawer/drawerController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/js/HandController/drawer/elementFinder.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/js/HandController/drawer/tileDrawer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/js/calc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/calculator.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/calculator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/js/GlobalHtmlObjects/animations/animationFolder.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/js/GlobalHtmlObjects/animations/animationFolder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/js/GlobalHtmlObjects/animations/animations.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/js/GlobalHtmlObjects/animations/animations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/js/HandController/back.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/js/HandController/back.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/js/HandController/drawer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageService/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/TileDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/TileDetector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageService/ImageShapes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageShapes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageService/Tiles/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/Tiles/DataSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageService/TilesView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/TilesView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/img/photos/Thumbs.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/photos/Thumbs.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +56,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;Z:/Documents/SAE/html/client&quot;,
+    &quot;last_opened_file_path&quot;: &quot;Z:/Documents/2A/S3/SAE/code/main/server&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -157,7 +169,11 @@
       <workItem from="1705311313116" duration="111000" />
       <workItem from="1705391368590" duration="4642000" />
       <workItem from="1705415292175" duration="118000" />
-      <workItem from="1706019617308" duration="4738000" />
+      <workItem from="1706019617308" duration="7493000" />
+      <workItem from="1706526141848" duration="1350000" />
+      <workItem from="1706532661595" duration="3798000" />
+      <workItem from="1706539683531" duration="771000" />
+      <workItem from="1706601638991" duration="2322000" />
     </task>
     <servers />
   </component>
@@ -182,11 +198,6 @@
           <url>file://$PROJECT_DIR$/src/ScoreService/MahjongSettlement.java</url>
           <line>38</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ImageService/TileDetector.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

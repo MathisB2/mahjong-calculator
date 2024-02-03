@@ -1,15 +1,11 @@
 package ImageService;
 import Clustering.ClusterDetector;
 import Clustering.Clusters;
+import ImageService.Tiles.DataSet;
 import NetworkService.*;
 
 import org.java_websocket.WebSocket;
 import org.opencv.core.Mat;
-import org.opencv.core.MatOfByte;
-import org.opencv.imgcodecs.Imgcodecs;
-
-import java.util.Base64;
-import java.util.Base64.Decoder;
 
 public class ImageService {
     private NetNamespace imageNet;
@@ -29,27 +25,18 @@ public class ImageService {
         clusterDetector = new ClusterDetector();
 
         DataSet dataSet2 = new MultiDataSet(new String[]{"data2","data1"});
-
+        ImageEncoder encoder = new ImageEncoder();
         imageNet.connect((WebSocket user, String encodedImage) -> {
             TileDetector detector = new TileDetector(dataSet2, 1600);
+            Mat image = encoder.decode(encodedImage);
 
-            var extractedTiles = detector.extractTiles(decodeImage(encodedImage));
-            var matchedTiles = detector.getMatchedTilesTo(extractedTiles);
+            var matchedTiles = detector.getMatchedTilesOn(image);
 
             TilesView view = new TilesView();
-            view.showMatches(extractedTiles, matchedTiles);
+            view.showMatches(matchedTiles);
 
             Clusters clusters = clusterDetector.getClustersFrom(matchedTiles);
             return clusters.toJSONObject().toString();
         });
-    }
-
-    private Mat decodeImage(String encodedImage){
-        Decoder decoder = Base64.getDecoder();
-        byte[] bytes = decoder.decode(encodedImage.split(",")[1]);
-
-        Mat image = Imgcodecs.imdecode(new MatOfByte(bytes), Imgcodecs.IMREAD_COLOR);
-
-        return image;
     }
 }
