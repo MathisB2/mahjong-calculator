@@ -1,29 +1,56 @@
 export class Popup{
-    overlay;
-    panel;
+    parent;
+
+    content;
 
 
     #isVisible
+    #transition
+    #isCreated;
 
-    constructor(overlay, panel) {
-        this.overlay = overlay;
-        this.panel = panel;
+    constructor(parent, content) {
+        this.parent = parent;
+        this.content = content;
         this.#isVisible = false;
-        this.hide();
+        this.#transition = 200;//ms
+        this.#isCreated = false;
+
+        this.createHtml();
+        this.hide(false);
     }
 
 
-    show(){
+    show(create = true){
+        if(create || !this.#isCreated) this.createHtml();
         this.#isVisible = true;
-        this.overlay.style.opacity = "1";
-        this.overlay.style.pointerEvents = "auto"
-        this.panel.style.transform = "none";
+        this.content.style.opacity = "1";
+        this.content.style.pointerEvents ="auto";
+        this.content.firstChild.style.transform = "none";
     }
 
-    hide(){
+    async hide(destroy = true) {
         this.#isVisible = false;
-        this.overlay.style.opacity = "0";
-        this.overlay.style.pointerEvents = "none";
-        this.panel.style.transform = "scale(0)";
+        this.content.style.opacity = "0";
+        this.content.style.pointerEvents = "none";
+        this.content.firstChild.style.transform = "scale(0)";
+        if (destroy) {
+            await sleep(this.#transition);
+            this.destroyHtml();
+        }
     }
+
+    createHtml(){
+        this.parent.appendChild(this.content);
+        this.#isCreated = true;
+    }
+
+    destroyHtml(){
+        this.parent.removeChild(this.content);
+        this.#isCreated = false;
+    }
+}
+
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }

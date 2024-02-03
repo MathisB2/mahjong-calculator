@@ -24,11 +24,10 @@ class ImageController{
 
     constructor() {
         const fileBTN = document.getElementById("fileInput")
-        const resultOverlay = document.querySelector("#resultOverlay");
-        const loadingOverlay = document.querySelector("#loadingOverlay");
-        if(fileBTN == null || resultOverlay == null || loadingOverlay==null) return;
+        const main = document.querySelector(".calculator");
+        if(fileBTN == null || main == null) return;
 
-        const loadingPopup = new LoadingPopup(loadingOverlay);
+        const loadingPopup = new LoadingPopup(main);
 
         let network = NetworkController.getController(networkConfig.ip, networkConfig.port);
         const imageNet = network.getNetNamespace("ImageNet");
@@ -42,7 +41,7 @@ class ImageController{
                 return;
             }
 
-            loadingPopup.show();
+            loadingPopup.show(false);
 
             let resized = await this.resizeImage(file, imageConfig.maxWidth);
             let base64 = await encode(resized);
@@ -50,12 +49,13 @@ class ImageController{
             const controller = this
 
             imageNet.call(base64).then(function (callback) {
+                loadingPopup.hide();
                 let clusterofTiles = controller.#decodeCallback(callback);
 
                 let resultData = new ResultData(resized, clusterofTiles);
                 let resultPopup = new ResultPopup(resultOverlay, resultData);
 
-                loadingPopup.hide()
+
                 resultPopup.show()
             }, loadingPopup.hide.bind(loadingPopup));
         });

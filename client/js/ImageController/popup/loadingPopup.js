@@ -4,21 +4,31 @@ import {findChildById} from "../../GlobalHtmlObjects/HtmlObjects/elementFinder.j
 
 export class LoadingPopup extends Popup{
 
-    constructor(overlay) {
-        let panel = findChildById(overlay,"loadingPopUp");
-        super(overlay,panel);
-        let title = new HtmlTag("h2");
-        title.addText("Détéction des tuiles");
+    constructor(parent) {
+        let content = document.createElement("section");
+        content.setAttribute("class","popUpOverlay");
+        content.setAttribute("id","loadingOverlay");
 
-        let img = new HtmlTag("img");
+        let panel = document.createElement("section");
+        panel.setAttribute("class","popUp");
+        panel.setAttribute("id","loadingPopUp");
+
+        let title = document.createElement("h2");
+        title.textContent = "Détection des tuiles";
+        panel.appendChild(title);
+
+        let img = document.createElement("img");
         img.setAttribute("class", "spinner");
         img.setAttribute("src","img/videos/spinner.svg");
         img.setAttribute("alt","loadingAnimation");
+        panel.appendChild(img);
 
-        let p = new HtmlTag("p");
-        p.addText("Veuillez patienter...");
+        let p = document.createElement("p");
+        p.textContent = "Veuillez patienter...";
+        panel.appendChild(p);
 
-        this.panel.innerHTML= title.toHtml()+img.toHtml()+p.toHtml();
+        content.appendChild(panel);
+        super(parent, content);
     }
 
 }
