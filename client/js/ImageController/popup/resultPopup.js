@@ -40,9 +40,8 @@ export class ResultPopup extends Popup{
     }
 
     #onButtonClick(){
-        console.log(this.data.clusters);
-        this.#updateClusters();
-        console.log(this.data.clusters);
+        console.log(this.data.getClusters());
+        this.hide();
     }
 
     update(){

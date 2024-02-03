@@ -4,20 +4,20 @@ import {HtmlTag} from "../GlobalHtmlObjects/HtmlObjects/HtmlTag.js";
 export class ResultData{
     image;
     contours;
-    clusters;
+    #clusters;
     matches;
 
     constructor(image, clusters) {
         this.image = image;
         this.contours = [];
-        this.clusters = clusters;
+        this.#clusters = clusters;
         this.matches = this.getTileMatcherList();
     }
 
     getTileMatcherList(){
         let list = [];
         let i=0;
-        for (let cluster of this.clusters) {
+        for (let cluster of this.#clusters) {
             for(let tile of cluster){
                 list.push(new TileMatcher(tile.image,tile.name,i));
                 i++;
@@ -26,23 +26,22 @@ export class ResultData{
         return list;
     }
 
-    updateClusters(){
+    getClusters(){
+        console.log(this.#clusters)
+        let clusters = [];
         let listIndex=0;
 
-        for(let i = 0; i<this.clusters.size; i++){
-            for(let j = 0; j<this.clusters[i].size; j++){
+
+        for(let i = 0; i<this.#clusters.length; i++){
+            let cluster = [];
+            for(let j = 0; j<this.#clusters[i].length; j++){
+                if(this.matches[listIndex].isChecked())
+                    cluster.push(this.matches[listIndex]);
                 listIndex++;
             }
+            if(cluster.length>0) clusters.push(cluster);
         }
-
-        for (let cluster of this.clusters) {
-            for(let tile of cluster){
-                if(!this.matches[i].isChecked()){
-                    this.clusters.pop(tile);
-                }
-                i++;
-            }
-        }
+        return clusters;
     }
 
     drawContourImage(canvas){

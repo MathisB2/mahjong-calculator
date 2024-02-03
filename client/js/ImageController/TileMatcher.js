@@ -27,7 +27,7 @@ export class TileMatcher{
 
         let extractedImg = this.image;
         extractedImg.setAttribute("class", "tileResult");
-        extractedImg.setAttribute("id", "extractedTile"+this.name);
+        extractedImg.setAttribute("id", "extractedTile"+this.id);
         let tile = document.createElement("td");
         let extractedLabel = this.#getLabel();
         extractedLabel.appendChild(extractedImg);
