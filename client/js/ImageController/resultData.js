@@ -26,6 +26,25 @@ export class ResultData{
         return list;
     }
 
+    updateClusters(){
+        let listIndex=0;
+
+        for(let i = 0; i<this.clusters.size; i++){
+            for(let j = 0; j<this.clusters[i].size; j++){
+                listIndex++;
+            }
+        }
+
+        for (let cluster of this.clusters) {
+            for(let tile of cluster){
+                if(!this.matches[i].isChecked()){
+                    this.clusters.pop(tile);
+                }
+                i++;
+            }
+        }
+    }
+
     drawContourImage(canvas){
         canvas.width = this.image.width;
         canvas.height = this.image.height;

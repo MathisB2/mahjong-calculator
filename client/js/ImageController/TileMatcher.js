@@ -1,16 +1,14 @@
-import {HtmlTag} from "../GlobalHtmlObjects/HtmlObjects/HtmlTag.js";
-
 export class TileMatcher{
     image;
     name;
 
-    num;
+    id;
     checkbox;
 
     constructor(image, name,num) {
         this.image = image;
         this.name = name;
-        this.num = num;
+        this.id = num;
 
         this.checkbox = document.createElement("input");
         this.checkbox.setAttribute("type","checkbox");
@@ -23,7 +21,7 @@ export class TileMatcher{
     getHtmlObject(){
         let row = document.createElement("tr");
         let num = document.createElement("td");
-        num.textContent = this.num;
+        num.textContent = this.id+1;
         row.appendChild(num);
 
 
@@ -42,7 +40,7 @@ export class TileMatcher{
 
         let tileImg = this.getTileImage();
         tileImg.setAttribute("class","tileResult");
-        tileImg.setAttribute("id","matchedTile"+this.num);
+        tileImg.setAttribute("id","matchedTile"+this.id);
 
         let matched = document.createElement("td");
         let matchedLabel = this.#getLabel();
@@ -52,7 +50,7 @@ export class TileMatcher{
 
         let name = document.createElement("td")
         let nameLabel = this.#getLabel();
-        nameLabel.textContent = this.name;
+        nameLabel.textContent = this.#getShortenName();
         name.appendChild(nameLabel);
         row.appendChild(name);
 
@@ -65,7 +63,15 @@ export class TileMatcher{
     }
 
     #getId(){
-        return "result"+this.num;
+        return "result"+this.id;
+    }
+
+    #getShortenName(){
+        const maxLength = 12;
+        if(this.name.length>maxLength){
+            return this.name.substring(0,maxLength-3)+"...";
+        }
+        return this.name;
     }
 
     #getLabel(){

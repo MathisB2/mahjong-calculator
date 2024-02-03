@@ -35,17 +35,23 @@ export class ResultPopup extends Popup{
 
 
     #initEvents(){
-        this.panel.addEventListener("click", this.#updateModel.bind(this));
+        this.panel.addEventListener("click", this.update.bind(this));
         this.button.addEventListener("click", this.#onButtonClick.bind(this));
     }
 
     #onButtonClick(){
-        console.log("ok");
+        console.log(this.data.clusters);
+        this.#updateClusters();
+        console.log(this.data.clusters);
     }
 
-    #updateModel(){
+    update(){
         this.resultList.lastChild.textContent = this.data.getTotalText();
         this.button.textContent = this.data.getButtonObject().textContent;
+    }
+
+    #updateClusters(){
+        this.data.updateClusters();
     }
 
 
