@@ -708,6 +708,12 @@ main.calculator{
     margin: auto;
 }
 
+#resultList table tbody tr td input{
+    accent-color: var(--secondColor);
+}
+
+
+
 #resultList table tbody tr{
     padding-top: 16px;
 }
