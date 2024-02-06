@@ -12,6 +12,7 @@ class Connection {
         this.signal.connections[this.id] = null;
     }
 }
+
 export class Signal {
     connections;
     curr_id = 0;

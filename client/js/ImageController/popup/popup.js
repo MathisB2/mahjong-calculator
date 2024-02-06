@@ -1,8 +1,6 @@
 export class Popup{
     parent;
-
     content;
-
 
     #isVisible
     #transition
@@ -16,7 +14,7 @@ export class Popup{
         this.#isCreated = false;
 
         this.createHtml();
-        this.hide(false);
+        this.hide(false).then();
     }
 
 
