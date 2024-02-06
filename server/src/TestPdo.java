@@ -3,19 +3,17 @@ import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
-import com.mongodb.client.*;
-import org.bson.Document;
+//import com.mongodb.client.*;
+//import org.bson.Document;
 import java.util.logging.*;
 
 
 public class TestPdo {
-    Class.forName()
     public static void main(String[] args) {
 
 
-//        PDO bd=new PDO();
-//        bd.run();
+        PDO bd=new PDO();
+        bd.run();
 
 //        Connection conn =null;
 //
