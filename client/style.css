@@ -337,14 +337,13 @@ main.calculator{
 }
 
 
-.lineHand{
+.slot{
     display: flex;
-    margin: 32px;
-    margin-right: 16px;
+    margin: 24px;
 }
 
 
-.lineHand div{
+.slot div{
     max-width: 280px;
     max-height: 370px;
     border-radius: calc(.16 * var(--tileWidth));
@@ -362,18 +361,18 @@ main.calculator{
 
 }
 
-.lineHand div img{
+.slot div img{
     width: calc(var(--tileWidth) / 2.4);
     pointer-events: none;
 }
 
 
-.lineHand div.tile{
+.slot div.tile{
     background-size: cover;
     background-position: center;
 }
 
-.lineHand div.emptyTile{
+.slot div.emptyTile{
     background-color: var(--darkerBackground);
     border: dashed var(--secondColor) calc(var(--tileWidth) / 32);
 }
@@ -401,7 +400,7 @@ main.calculator{
     50%  { opacity:0.2; }
     100% { opacity:1; }
 }
-.lineHand div.activeEmptyTile{
+.slot div.activeEmptyTile{
     background-color: var(--darkerBackground);
     border: dashed var(--secondColor) calc(var(--tileWidth) / 32);
     -webkit-animation: flickerAnimation 1s infinite;

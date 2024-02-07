@@ -1,17 +1,19 @@
 import {Tile} from "./hand/Tile.js";
 
 export class TileStack {
-    tile
-    count
+    referredTile;
+    count;
+    maxValue;
 
     constructor(name, count=4){
-        this.tile = new Tile(name);
+        this.referredTile = new Tile(name);
         this.count = count;
+        this.maxValue = count;
     }
 
     getHtmlObject(){
         this.update();
-        return this.tile.getHtmlObject();;
+        return this.referredTile.getHtmlObject();
     }
     increment(){
         ++this.count;
@@ -19,16 +21,25 @@ export class TileStack {
     }
 
     decrement(){
-        console.assert(this.count > 0, "can't be negative")
+        console.assert(!this.isEmpty(), "can't be negative");
         --this.count;
         this.update();
     }
-    update(){
-        let tile = this.tile.getHtmlObject();
-        if(this.count > 0)
-            tile.style.opacity = "1";
-        else
-            tile.style.opacity = "0.5";
 
+    isEmpty(){
+        return this.count <= 0;
+    }
+
+    restore(){
+        this.count = this.maxValue;
+        this.update();
+    }
+
+    update(){
+        let referredTile = this.referredTile.getHtmlObject();
+        if(this.count > 0)
+            referredTile.style.opacity = "1";
+        else
+            referredTile.style.opacity = "0.5";
     }
 }

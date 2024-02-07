@@ -1,13 +1,19 @@
 import {Drawer} from "./drawer.js";
 import {findChildByClass, findChildById} from "../../GlobalHtmlObjects/HtmlObjects/elementFinder.js";
 import {TileStack} from "../tileStack.js";
+import {Signal} from "../../Signal/Signal.js";
+import {Tile} from "../hand/Tile.js";
 
 export class TileDrawer extends Drawer{
     #drawerButton;
     #drawerHandle;
     #drawerHeader;
+    #drawerTrash;
     #drawerTileList;
     tiles;
+    tileClicked;
+    trashClicked;
+
 
     constructor(drawer) {
         let drawerButton = findChildByClass(drawer,"drawerButton");
@@ -20,11 +26,18 @@ export class TileDrawer extends Drawer{
             + drawerHandle.getBoundingClientRect().height;
 
         super(drawer, minHeight, .64*window.innerHeight);
-
+        this.tileClicked = new Signal();
         this.#drawerButton = drawerButton;
         this.#drawerHandle = drawerHandle;
         this.#drawerHeader = drawerHeader;
         this.#drawerTileList = drawerTileList;
+
+        this.trashClicked = new Signal();
+        this.#drawerTrash = findChildById(findChildById(this.#drawerHeader,"drawerActionIcons"),"trashButton");
+
+        this.#drawerTrash.addEventListener("click", (() => {
+            this.trashClicked.fire();
+        }).bind(this));
 
         this.setHandle([drawerHandle,drawerHeader]);
         this.close();
@@ -51,6 +64,10 @@ export class TileDrawer extends Drawer{
     #appendHTMLTiles(){
         for(let tile of this.tiles){
             this.#drawerTileList.appendChild(tile.getHtmlObject());
+            tile.getHtmlObject().addEventListener("click", (() => {
+                if(tile.isEmpty()) return;
+                this.tileClicked.fire(new Tile(tile.referredTile.name));
+            }).bind(this));
         }
     }
 
@@ -82,9 +99,13 @@ export class TileDrawer extends Drawer{
         tileStack.decrement();
     }
 
+    isEmptyOf(name){
+        return this.#getTileStack(name).isEmpty();
+    }
+
     #getTileStack(name){
         for (let tileElement of this.tiles) {
-            if(tileElement.name === name){
+            if(tileElement.referredTile.name === name){
                 return tileElement;
             }
         }
@@ -92,7 +113,11 @@ export class TileDrawer extends Drawer{
         console.error(name+" tileStack does not exist");
     }
 
-    clear(){
-        this.#drawerTileList.innerHTML="";
+
+
+    restore(){
+        for (let tile of this.tiles) {
+            tile.restore();
+        }
     }
 }

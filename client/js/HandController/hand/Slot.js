@@ -1,32 +1,41 @@
-export class Slot{
-    tileList;
-    htmlElement;
+import {EmptyTile} from "./EmptyTile.js";
 
-    constructor() {
-        this.tileList = [];
+export class Slot{
+    #tileList;
+    #htmlElement;
+    #capacity;
+    #emptyTile;
+
+    constructor(capacity = 4) {
+        this.#tileList = [];
+        this.#capacity = capacity;
+        this.#emptyTile = new EmptyTile();
 
         this.#createHtmlElement();
+        this.#update();
     }
 
     #createHtmlElement(){
-        let element = document.createElement("div");
-
-        this.htmlElement = element;
+        let element = document.createElement("section");
+        element.setAttribute("class", "slot");
+        this.#htmlElement = element;
     }
 
     insert(tile){
-        console.assert(!this.isFull(), "slot is full !!!!");
-        console.assert(!this.has(tile), "tile already exist into slot");
+        if(this.isFull() || this.has(tile)) return;
 
-        this.tileList.append(tile);
-        this.htmlElement.addChild(tile.getHTMLObject());
+        this.#tileList.push(tile);
+        this.#htmlElement.appendChild(tile.getHtmlObject());
+
+        this.#update();
     }
 
-
     remove(tile) {
-        for (let i = 0; i < this.tileList.length; i++){
-            if ( this.tileList[i] == tile) {
-                this.tileList.splice(i, 1);
+        for (let i = 0; i < this.#tileList.length; i++){
+            if ( this.#tileList[i] == tile) {
+                tile.clear();
+                this.#tileList.splice(i, 1);
+                this.#update();
                 return;
             }
         }
@@ -34,8 +43,15 @@ export class Slot{
         console.error("tile does not exist into slot");
     }
 
+    #update(){
+        if(this.isFull())
+            this.#htmlElement.removeChild(this.#emptyTile.getHtmlObject());
+        else
+            this.#htmlElement.appendChild(this.#emptyTile.getHtmlObject());
+    }
+
     has(tile){
-        for(let storedTile of this.tileList){
+        for(let storedTile of this.#tileList){
             if(storedTile == tile) return true;
         }
 
@@ -43,15 +59,23 @@ export class Slot{
     }
 
     isFull(){
-        return this.tileList.length >= 4;
+        return this.#tileList.length >= this.#capacity;
     }
 
     getHtmlObject(){
-        return this.htmlElement;
+        return this.#htmlElement;
+    }
+
+    enable(){
+        this.#emptyTile.setActive(true);
+    }
+
+    disable(){
+        this.#emptyTile.setActive(false);
     }
 
     clear(){
-        for (const tile of this.tileList){
+        for (const tile of this.#tileList){
             tile.remove();
         }
     }

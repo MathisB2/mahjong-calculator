@@ -1,5 +1,3 @@
-import {HtmlTag} from "../../GlobalHtmlObjects/HtmlObjects/HtmlTag.js";
-
 export class Tile {
     type;
     img;
@@ -27,6 +25,7 @@ export class Tile {
 
         this.htmlElement = div;
     }
+
 
     getHtmlObject(){
         return this.htmlElement;
