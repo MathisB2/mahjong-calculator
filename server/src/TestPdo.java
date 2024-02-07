@@ -9,9 +9,9 @@ import java.util.logging.*;
 
 
 public class TestPdo {
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
-
+        //Class.forName("com.mysql.jdbc.Driver");
         PDO bd=new PDO();
         bd.run();
 
