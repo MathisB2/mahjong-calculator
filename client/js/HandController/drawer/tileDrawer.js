@@ -13,6 +13,7 @@ export class TileDrawer extends Drawer{
     tiles;
     tileClicked;
     trashClicked;
+    buttonClicked;
 
 
     constructor(drawer) {
@@ -27,6 +28,8 @@ export class TileDrawer extends Drawer{
 
         super(drawer, minHeight, .64*window.innerHeight);
         this.tileClicked = new Signal();
+        this.buttonClicked = new Signal();
+
         this.#drawerButton = drawerButton;
         this.#drawerHandle = drawerHandle;
         this.#drawerHeader = drawerHeader;
@@ -42,7 +45,7 @@ export class TileDrawer extends Drawer{
         this.setHandle([drawerHandle,drawerHeader]);
         this.close();
         this.setTransition(".2s ease-out");
-
+        drawerButton.addEventListener("click", this.buttonClicked.fire.bind(this.buttonClicked))
         window.addEventListener("resize", this.updateBounds.bind(this));
         this.#initTiles();
     }

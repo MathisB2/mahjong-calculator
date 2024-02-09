@@ -1,15 +1,19 @@
 import {Signal} from "../../Signal/Signal.js";
 import {Slot} from "./Slot.js";
-import {cropValue} from "../../calc.js";
+
 export class Hand{
     slotList;
+
     activeSlotId;
     currentId;
     tileClicked;
     htmlHand;
 
+    slotClicked;
+
     constructor(htmlHand) {
         this.tileClicked = new Signal();
+        this.slotClicked = new Signal();
 
         this.activeSlotId = 0;
         this.currentId = 0;
@@ -30,12 +34,16 @@ export class Hand{
     }
 
     #appendSlot(slot, slotId) {
-        let htmlElement = slot.getHtmlObject();
-        this.htmlHand.appendChild(htmlElement);
+        this.htmlHand.appendChild(slot.getHtmlObject());
 
-        htmlElement.addEventListener("click", (() => {
+        slot.clicked.connect(() => {
             this.#setActiveSlot(slotId);
-        }).bind(this))
+            this.slotClicked.fire();
+        })
+
+        slot.changed.connect(() => {
+            this.#setActiveSlot(slotId);
+        })
     }
 
     nextSlot(){
@@ -54,6 +62,7 @@ export class Hand{
         this.slotList[this.activeSlotId].disable();
         this.slotList[slotId].enable();
         this.activeSlotId = slotId;
+
     }
 
     insert(tile){
@@ -63,12 +72,10 @@ export class Hand{
 
         tile.getHtmlObject().addEventListener("click", (() => {
             this.tileClicked.fire(tile);
-        }).bind(this))
-
-       this.#moveToNextAvailableActiveSlot();
+        }).bind(this));
     }
 
-    #moveToNextAvailableActiveSlot(){
+    moveToNextAvailableActiveSlot(){
         for(let i = 0; i < this.slotList.length; ++i){
             let slot = this.slotList[this.activeSlotId];
             if(!slot.isFull())return;
@@ -87,21 +94,22 @@ export class Hand{
         }
     }
 
-    has(tile){
-
-    }
-
     getActiveSlotId(){
         return this.activeSlotId;
     }
-
 
     clear(){
         this.htmlHand.innerHTML="";
         this.#initSlots();
     }
 
-    toString(){
-        return JSON.stringify(this);
+    toJSON(){
+        let json = [];
+
+        for(let slot of this.slotList){
+            json.push(slot.toJSON());
+        }
+
+        return json;
     }
 }

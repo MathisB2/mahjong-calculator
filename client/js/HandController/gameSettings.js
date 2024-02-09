@@ -29,20 +29,20 @@ class gameSettings{
         this.HTMLPlayerWindInputs=playerWindInputs;
         this.HTMLPlayerFlowersInputs=playerFlowersInputs;
         this.HTMLPlayerSeasonsInputs=playerSeasonsInputs;
-        this._init();
+        this.#init();
     }
 
-    _init(){
-        let savedData = localStorage.getItem(storageConfig.hand)
+    #init(){
+        let savedData = localStorage.getItem(storageConfig.settings);
         if(savedData != null) {
-            let instance = JSON.parse(savedData);
+            let settings = JSON.parse(savedData);
 
             //winds
             for (let input of this.HTMLGameWindInputs) {
-                input.checked=instance.gameWind.name == this._getType(input.id);
+                input.checked=settings.gameWind.name == this._getType(input.id);
             }
             for (let input of this.HTMLPlayerWindInputs) {
-                input.checked=instance.playerWind.name == this._getType(input.id);
+                input.checked=settings.playerWind.name == this._getType(input.id);
             }
 
             //bonuses
@@ -50,7 +50,7 @@ class gameSettings{
                 input.checked = false;
                 let value = this._getType(input.id);
 
-                for (let flower of instance.playerFlowers) {
+                for (let flower of settings.playerFlowers) {
                     if(flower.value == value){
                         input.checked = true;
                     }
@@ -61,7 +61,7 @@ class gameSettings{
                 input.checked = false;
                 let value = this._getType(input.id);
 
-                for (let season of instance.playerSeasons) {
+                for (let season of settings.playerSeasons) {
                     if(season.value == value){
                         input.checked = true;
                     }
@@ -168,21 +168,14 @@ class gameSettings{
         return t;
     }
     saveToStorage(){
-        let savedData = localStorage.getItem(storageConfig.hand)
-        if(savedData != null) {
-            let instance = JSON.parse(savedData);
-
-            instance.gameWind = this.gameWindToTile();
-            instance.playerWind = this.playerWindToTile();
-
-            instance.playerFlowers = this.playerFlowersToTiles();
-            instance.playerSeasons = this.playerSeasonsToTiles();
-
-            localStorage.setItem(storageConfig.hand, JSON.stringify(instance));
-            return true;
-        }
-        return false;
+        let data ={};
+        data.gameWind = this.gameWindToTile();
+        data.playerWind = this.playerWindToTile();
+        data.playerFlowers = this.playerFlowersToTiles();
+        data.playerSeasons = this.playerSeasonsToTiles();
+        localStorage.setItem(storageConfig.settings,JSON.stringify(data));
     }
+
 
 
     isSet(){

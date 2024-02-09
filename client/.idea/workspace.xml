@@ -5,15 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fde5e0a-dc61-4d8b-91c5-05ac54431315" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/js/HandController/TileController.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/js/HandController/TileStack.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/js/HandController/hand/EmptyTile.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/js/ImageController/imageDecoder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calculator.html" beforeDir="false" afterPath="$PROJECT_DIR$/calculator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/TileController.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/TileController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/HandController/TileManager.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/js/HandController/back.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/js/HandController/drawer/tileDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/drawer/tileDrawer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/gameSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/gameSettings.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/HandController/hand/Hand.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/hand/Hand.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/HandController/hand/Slot.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/hand/Slot.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/HandController/hand/Tile.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/hand/Tile.js" afterDir="false" />
@@ -26,6 +27,7 @@
       <change beforePath="$PROJECT_DIR$/js/ImageController/popup/resultPopup.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ImageController/popup/resultPopup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/ImageController/resultData.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ImageController/resultData.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/Signal/Signal.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Signal/Signal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
@@ -117,7 +119,7 @@
       <workItem from="1706772898074" duration="4171000" />
       <workItem from="1707224508893" duration="9846000" />
       <workItem from="1707311893882" duration="11892000" />
-      <workItem from="1707486140432" duration="1255000" />
+      <workItem from="1707486140432" duration="7033000" />
     </task>
     <servers />
   </component>

@@ -10,6 +10,7 @@ export const imageConfig = {
 }
 export const storageConfig={
     hand: "mahjongHand",
+    settings : "mahjongSettings",
     score: "mahjongScore",
     history: "mahjongHistory",
 }

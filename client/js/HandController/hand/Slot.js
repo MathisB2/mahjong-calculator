@@ -1,15 +1,20 @@
 import {EmptyTile} from "./EmptyTile.js";
+import {Signal} from "../../Signal/Signal.js";
 
 export class Slot{
     #tileList;
     #htmlElement;
     #capacity;
     #emptyTile;
+    clicked;
+    changed;
 
     constructor(capacity = 4) {
         this.#tileList = [];
         this.#capacity = capacity;
         this.#emptyTile = new EmptyTile();
+        this.clicked = new Signal();
+        this.changed = new Signal();
 
         this.#createHtmlElement();
         this.#update();
@@ -26,6 +31,7 @@ export class Slot{
 
         this.#tileList.push(tile);
         this.#htmlElement.appendChild(tile.getHtmlObject());
+        this.#htmlElement.scrollIntoView({behavior: "smooth"});
 
         this.#update();
     }
@@ -44,10 +50,17 @@ export class Slot{
     }
 
     #update(){
-        if(this.isFull())
-            this.#htmlElement.removeChild(this.#emptyTile.getHtmlObject());
-        else
-            this.#htmlElement.appendChild(this.#emptyTile.getHtmlObject());
+        let emptyElement = this.#emptyTile.getHtmlObject();
+        if(this.isFull()) {
+            this.#htmlElement.removeChild(emptyElement);
+            emptyElement.removeEventListener("click", this.clicked.fire.bind(this.clicked));
+        }
+        else {
+            this.#htmlElement.appendChild(emptyElement);
+            emptyElement.addEventListener("click", this.clicked.fire.bind(this.clicked));
+        }
+
+        this.changed.fire();
     }
 
     has(tile){
@@ -72,6 +85,10 @@ export class Slot{
 
     disable(){
         this.#emptyTile.setActive(false);
+    }
+
+    toJSON(){
+        return this.#tileList;
     }
 
     clear(){
