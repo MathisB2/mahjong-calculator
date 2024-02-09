@@ -1,40 +1,37 @@
-import {HtmlTag} from "../../GlobalHtmlObjects/HtmlObjects/HtmlTag.js";
-
 export class Tile {
     type;
     img;
     name;
-    id;
     value;
 
-    constructor(name,id) {
-        this.name=name;
-        this.id=id;
-        this.img="img/tiles/"+name+".png";
+    htmlElement;
+
+    constructor(name) {
+        this.name = name;
+        this.img = "img/tiles/" + name + ".png";
 
         let split = name.split("_");
         this.type = split[0];
-        this.value = split[1]
+        this.value = split[1];
+
+        this.#createObject();
     }
 
-    getHtmlObject(available = true){
-        let div = new HtmlTag("div");
+    #createObject(){
+        let div = document.createElement("div");
         div.setAttribute("class", "tile");
-        div.setAttribute("id" , this.id);
 
-        div.addStyle("background-image","url('"+this.img+"')");
-        if(!available) div.addStyle("opacity", "50%");
+        div.style.backgroundImage = "url('"+this.img+"')";
 
-        return div;
+        this.htmlElement = div;
     }
 
-    copy(){
-        let t=new Tile(this.name, this.id);
 
-        t.type=this.type;
-        t.img=this.img;
-        t.value=this.value;
+    getHtmlObject(){
+        return this.htmlElement;
+    }
 
-        return t;
+    clear() {
+        this.htmlElement.remove();
     }
 }

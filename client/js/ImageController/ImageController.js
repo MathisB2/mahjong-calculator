@@ -1,9 +1,9 @@
-import {Signal} from "../Signal/Signal.js";
 import {NetworkController} from "../NetworkController/NetworkController.js";
 import {imageConfig, networkConfig} from "../config.js";
 import {ResultData} from "./resultData.js";
 import {ResultPopup} from "./popup/resultPopup.js";
 import {LoadingPopup} from "./popup/loadingPopup.js";
+import {decode, encode} from "./imageDecoder.js";
 
 export let ImageManager = function() {
     let imageController = null;
@@ -20,23 +20,19 @@ export let ImageManager = function() {
 }();
 
 class ImageController{
-    OnTilesReceived;
     imageNet;
 
     constructor() {
         const fileBTN = document.getElementById("fileInput")
-        const resultOverlay = document.querySelector("#resultOverlay");
-        const loadingOverlay = document.querySelector("#loadingOverlay");
-        if(fileBTN == null || resultOverlay == null || loadingOverlay==null) return;
+        const main = document.querySelector(".calculator");
+        if(fileBTN == null || main == null) return;
 
-        const loadingPopup = new LoadingPopup(loadingOverlay);
-        let resultPopup;
+        const loadingPopup = new LoadingPopup(main);
 
         let network = NetworkController.getController(networkConfig.ip, networkConfig.port);
         const imageNet = network.getNetNamespace("ImageNet");
 
         this.imageNet =  imageNet;
-        this.OnTilesReceived = new Signal();
 
         fileBTN.addEventListener("change", async (e) => {
             const file = e.target.files[0];
@@ -47,38 +43,36 @@ class ImageController{
 
             loadingPopup.show();
 
-            let resized = await this.resizeImage(file,imageConfig.maxWidth);
-            let base64 = await this.convertBase64(resized);
+            let resized = await this.resizeImage(file, imageConfig.maxWidth);
+            let base64 = await encode(resized);
 
-            let controller = this;
+            const controller = this
 
-            imageNet.call(base64).then(function (callback) {
-                controller.OnTilesReceived.fire(callback);
+            imageNet.call(base64).then(async function (callback) {
 
-                let resultData = new ResultData(resized,callback);
-                resultPopup = new ResultPopup(resultOverlay,resultData);
-                loadingPopup.hide()
+                let clusterOfTiles = controller.#decodeCallback(callback);
+
+                let resultData = new ResultData(resized, clusterOfTiles);
+
+                let resultPopup = new ResultPopup(main, resultData);
+
                 resultPopup.show()
+                loadingPopup.hide();
             });
         });
     }
 
+    #decodeCallback(callBack){
+        let decodedCallBack = JSON.parse(callBack);
 
-    convertBase64 (file) {
-        return new Promise((resolve, reject) => {
-            const fileReader = new FileReader();
+        for (let cluster of decodedCallBack) {
+            for(let tile of cluster){
+                tile.image = decode(tile.image);
+            }
+        }
 
-            fileReader.onload = () => {
-                resolve(fileReader.result);
-            };
-            fileReader.onerror = (error) => {
-                reject(error);
-            };
-
-            fileReader.readAsDataURL(file);
-        });
-    };
-
+        return decodedCallBack;
+    }
 
     resizeImage(file, maxSize) {
         return new Promise((resolve) => {
@@ -108,8 +102,6 @@ class ImageController{
         });
     }
 
-
-
     #getSize(width, height, maxSize){
         if(width < maxSize && height < maxSize) {
             return [width,height];
@@ -121,6 +113,4 @@ class ImageController{
 
         return  [width * (maxSize / height), maxSize];
     }
-
-
 }
