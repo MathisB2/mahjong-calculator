@@ -152,6 +152,7 @@ class gameSettings{
         return array;
     }
 
+
     playerSeasonsToTiles(){
         let array=[];
         for (let season of this.playerSeasons) {
@@ -168,12 +169,7 @@ class gameSettings{
         return t;
     }
     saveToStorage(){
-        let data ={};
-        data.gameWind = this.gameWindToTile();
-        data.playerWind = this.playerWindToTile();
-        data.playerFlowers = this.playerFlowersToTiles();
-        data.playerSeasons = this.playerSeasonsToTiles();
-        localStorage.setItem(storageConfig.settings,JSON.stringify(data));
+        localStorage.setItem(storageConfig.settings,JSON.stringify(this.toJSONObject()));
     }
 
 
@@ -185,6 +181,17 @@ class gameSettings{
     isValid(){
         return this.gameWind!=null && this.playerWind!=null;
     }
+
+    toJSONObject(){
+        let data ={};
+
+        data.gameWind = this.gameWindToTile();
+        data.playerWind = this.playerWindToTile();
+        data.playerFlowers = this.playerFlowersToTiles();
+        data.playerSeasons = this.playerSeasonsToTiles();
+
+        return data;
+    }
 }
 
 
@@ -192,26 +199,23 @@ function onSendClick(){
     if(settings.isSet() && settings.isValid()){
         settings.update();
         settings.saveToStorage();
-        let savedData = localStorage.getItem(storageConfig.hand)
-        if(savedData != null){
-            let instance = JSON.parse(savedData);
-            console.log("sending to server...");
-            console.log(savedData);
+        let hand = JSON.parse(localStorage.getItem(storageConfig.hand));
+
+        if(hand != null){
+            let json = settings.toJSONObject()
+            json.slotList = hand;
 
 
-                scoreNet.call(JSON.stringify(instance)).then(function (message){
-                    if(message == null){
-                        alert("Échec de la connexion avec le serveur")
-                        return;
-                    }
-                    localStorage.setItem(storageConfig.score, message);
-                    window.location.href = "score.html";
-                })
-
-
-
+            scoreNet.call(JSON.stringify(json)).then(function (message){
+                if(message == null){
+                    alert("Échec de la connexion avec le serveur")
+                    return;
+                }
+                localStorage.setItem(storageConfig.score, message);
+                window.location.href = "score.html";
+            })
         }else{
-            alert("error");
+            alert("Impossible d'importer les tuiles");
         }
     }
 }

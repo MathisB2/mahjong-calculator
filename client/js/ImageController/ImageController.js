@@ -1,8 +1,8 @@
 import {NetworkController} from "../NetworkController/NetworkController.js";
 import {imageConfig, networkConfig} from "../config.js";
 import {ResultData} from "./resultData.js";
-import {ResultPopup} from "./popup/resultPopup.js";
-import {LoadingPopup} from "./popup/loadingPopup.js";
+import {ResultPopup} from "./popup/ResultPopup.js";
+import {LoadingPopup} from "./popup/LoadingPopup.js";
 import {decode, encode} from "./imageDecoder.js";
 
 export let ImageManager = function() {
@@ -41,7 +41,7 @@ class ImageController{
                 return;
             }
 
-            loadingPopup.show();
+            await loadingPopup.show();
 
             let resized = await this.resizeImage(file, imageConfig.maxWidth);
             let base64 = await encode(resized);
@@ -56,8 +56,8 @@ class ImageController{
 
                 let resultPopup = new ResultPopup(main, resultData);
 
-                resultPopup.show()
-                loadingPopup.hide();
+                await resultPopup.show();
+                await loadingPopup.hide();
             });
         });
     }

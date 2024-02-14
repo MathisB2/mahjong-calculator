@@ -1,11 +1,13 @@
 import {EmptyTile} from "./EmptyTile.js";
 import {Signal} from "../../Signal/Signal.js";
+import {Eye} from "./Eye.js";
 
 export class Slot{
     #tileList;
     #htmlElement;
     #capacity;
     #emptyTile;
+    #eye;
     clicked;
     changed;
 
@@ -13,10 +15,12 @@ export class Slot{
         this.#tileList = [];
         this.#capacity = capacity;
         this.#emptyTile = new EmptyTile();
+        this.#eye = new Eye();
         this.clicked = new Signal();
         this.changed = new Signal();
 
         this.#createHtmlElement();
+        this.#connect();
         this.#update();
     }
 
@@ -24,6 +28,19 @@ export class Slot{
         let element = document.createElement("section");
         element.setAttribute("class", "slot");
         this.#htmlElement = element;
+
+    }
+
+    #connect(){
+        this.#eye.clicked.connect(() => {
+            this.hide(this.#eye.isHidden());
+            console.log(this.#eye.isHidden());
+        })
+    }
+
+    hide(hidden){
+        this.#htmlElement.style.opacity = (1 - .5 * hidden).toString();
+        this.#eye.hide(hidden);
     }
 
     insert(tile){
@@ -60,6 +77,8 @@ export class Slot{
             emptyElement.addEventListener("click", this.clicked.fire.bind(this.clicked));
         }
 
+        this.#htmlElement.appendChild(this.#eye.getHtmlObject());
+
         this.changed.fire();
     }
 
@@ -88,10 +107,14 @@ export class Slot{
     }
 
     toJSON(){
-        return this.#tileList;
+        return {
+            tileList: this.#tileList,
+            hidden: this.#eye.isHidden()
+        };
     }
 
     clear(){
+        this.#eye.clear();
         for (const tile of this.#tileList){
             tile.remove();
         }

@@ -1,4 +1,4 @@
-import {Popup} from "./popup.js";
+import {Popup} from "./Popup.js";
 import {HtmlTag} from "../../GlobalHtmlObjects/HtmlObjects/HtmlTag.js";
 import {findChildById} from "../../GlobalHtmlObjects/HtmlObjects/elementFinder.js";
 

@@ -46,6 +46,11 @@ export class Hand{
         })
     }
 
+    hideCurrentSlot(hidden){
+        let slot = this.slotList[this.getActiveSlotId()];
+        slot.hide(hidden);
+    }
+
     nextSlot(){
         let slotId = this.getActiveSlotId();
         let relativeNextSlot = slotId + 1;
@@ -98,10 +103,6 @@ export class Hand{
         return this.activeSlotId;
     }
 
-    clear(){
-        this.htmlHand.innerHTML="";
-        this.#initSlots();
-    }
 
     toJSON(){
         let json = [];
@@ -111,5 +112,11 @@ export class Hand{
         }
 
         return json;
+    }
+
+
+    clear(){
+        this.htmlHand.innerHTML="";
+        this.#initSlots();
     }
 }

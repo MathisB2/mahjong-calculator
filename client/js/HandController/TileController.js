@@ -29,8 +29,7 @@ class TileController {
     }
 
     #connectHand(){
-        this.hand.tileClicked.connect((args) => {
-            let tile = args[0];
+        this.hand.tileClicked.connect((tile) => {
             this.hand.remove(tile);
             this.drawer.insertTile(tile);
         })
@@ -40,9 +39,8 @@ class TileController {
     }
 
     #connectDrawer(){
-        this.drawer.tileClicked.connect((args) => {
+        this.drawer.tileClicked.connect((tile) => {
             if(!this.hand.canInsert()) return;
-            let tile = args[0];
             this.drawer.removeTile(tile);
             this.hand.insert(tile);
 
@@ -65,13 +63,16 @@ class TileController {
         this.hand.windUpActiveSlot();
 
         for (let cluster of clusters) {
-            for (let dataTile of cluster) {
+            let tileList = cluster.tileList == null ? cluster : cluster.tileList;
+
+            for (let dataTile of  tileList) {
                 let tile = new Tile(dataTile.name);
                 if(this.drawer.isEmptyOf(dataTile.name) || !this.hand.canInsert()) continue;
 
                 this.hand.insert(tile);
                 this.drawer.removeTile(tile);
             }
+            this.hand.hideCurrentSlot(cluster.hidden);
             this.hand.nextSlot();
         }
     }

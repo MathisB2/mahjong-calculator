@@ -1,4 +1,4 @@
-import {Popup} from "./popup.js";
+import {Popup} from "./Popup.js";
 import {TileManager} from "../../HandController/TileController.js";
 
 export class ResultPopup extends Popup{
@@ -54,7 +54,7 @@ export class ResultPopup extends Popup{
     #onButtonClick(){
         TileManager.get().importTiles( this.data.getClusters());
 
-        this.hide();
+        this.hide().then();
     }
 
     update(){
