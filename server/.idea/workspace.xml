@@ -5,22 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10df1254-a638-4d6f-8e7d-6860f993f786" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../client/js/HandController/TileManager.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../client/js/HandController/drawer/drawer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../client/js/HandController/drawer/drawerController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../client/js/HandController/drawer/elementFinder.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../client/js/HandController/drawer/tileDrawer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../client/js/calc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/calculator.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/calculator.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/js/GlobalHtmlObjects/animations/animationFolder.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/js/GlobalHtmlObjects/animations/animationFolder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/js/GlobalHtmlObjects/animations/animations.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/js/GlobalHtmlObjects/animations/animations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/js/HandController/back.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/js/HandController/back.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/js/HandController/drawer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../client/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataServices/DataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataServices/DataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataServices/LogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataServices/LogService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageService/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageService/ImageShapes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageShapes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/Tiles/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/Tiles/DataSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageService/TilesView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/TilesView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/img/photos/Thumbs.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/photos/Thumbs.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,20 +40,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "Z:/Documents/2A/S3/SAE/code/main/server",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;Z:/Documents/2A/S3/SAE/code/main/server&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="ImageService" />
@@ -174,6 +170,11 @@
       <workItem from="1706532661595" duration="3798000" />
       <workItem from="1706539683531" duration="771000" />
       <workItem from="1706601638991" duration="3892000" />
+      <workItem from="1706688006500" duration="686000" />
+      <workItem from="1706773100750" duration="2031000" />
+      <workItem from="1707224996679" duration="3101000" />
+      <workItem from="1707486285355" duration="1299000" />
+      <workItem from="1707915179766" duration="2324000" />
     </task>
     <servers />
   </component>

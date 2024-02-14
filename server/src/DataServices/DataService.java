@@ -10,7 +10,6 @@ public class DataService {
     static private DataService service = null;
     static public DataService get(){
         if(service == null) load();
-
         return service;
     }
 
