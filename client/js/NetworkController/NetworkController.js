@@ -14,12 +14,15 @@ export let NetworkController = function() {
     return {
         getController: function (ip, port) {
             let name = "ws://".concat(ip, ":", port.toString());
-            console.log(name);
             if (!isNetworkExist(name)) {
-                let network = createInstance(name);
-                networks[name] = network;
+              this.loadController(ip, port);
             }
             return networks[name];
+        },
+        loadController: function (ip, port){
+            let name = "ws://".concat(ip, ":", port.toString());
+            let network = createInstance(name);
+            networks[name] = network;
         }
     };
 

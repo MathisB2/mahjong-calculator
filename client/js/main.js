@@ -6,8 +6,12 @@ import {startAbout} from "./GlobalHtmlObjects/aboutInfos/about.js";
 import {startAnimations} from "./GlobalHtmlObjects/animations/animations.js";
 import {startFooter} from "./GlobalHtmlObjects/footer/footer.js";
 import {startHistory, startScore} from "./GlobalHtmlObjects/Score/score.js";
+import {startLogin} from "./UsersController/login.js";
+import {NetworkController} from "./NetworkController/NetworkController.js";
+import {networkConfig} from "./config.js";
 
 function main(){
+    NetworkController.loadController(networkConfig.ip, networkConfig.port)
     startHeader().then(
         headerResult => startDrawer()
     );
@@ -18,5 +22,6 @@ function main(){
     startFooter().then();
     startScore().then();
     startHistory().then();
+    startLogin().then();
 }
 main();
