@@ -1,11 +1,17 @@
 package DataServices;
 
 import NetworkService.NetworkService;
+
 import org.java_websocket.WebSocket;
 
+import java.sql.*;
 import java.util.HashMap;
 
+
+
 public class DataService {
+    private Connection conn;
+    String url="jdbc:sqlite:src/DataServices/datastore.db";
     private HashMap<WebSocket, UserData> userDataHashMap = new HashMap<>();
     static private DataService service = null;
     static public DataService get(){
@@ -21,6 +27,8 @@ public class DataService {
     }
 
     private DataService(){
+        connect();
+
         var network = NetworkService.getNetwork();
 
         network.onEnter.connect(user -> {
@@ -31,6 +39,25 @@ public class DataService {
             if(!userDataHashMap.containsKey(user)) return;
             userDataHashMap.remove(user);
         });
+    }
+    private void connect(){
+        try{
+            conn = DriverManager.getConnection(url);
+            System.out.println("success db link");
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+
+    }
+    private void disconnect(){
+        try{
+            if(conn!=null){
+                conn.close();
+                System.out.println("db close");
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
     }
 
     public void link(WebSocket user, UserData data){
@@ -47,5 +74,21 @@ public class DataService {
 
     public boolean hasData(WebSocket user){
         return userDataHashMap.containsKey(user) && userDataHashMap.get(user) != null;
+    }
+
+    public Connection getConn(){
+        return conn;
+    }
+
+    public void addUser(String username, String password){
+        String sql = "INSERT INTO users (username, password) VALUES ('"+username+"','"+password+"');";
+
+        try{
+            Statement stmt = conn.createStatement();
+
+            stmt.executeUpdate(sql);
+        }catch (SQLException e){
+            System.out.println(e);
+        }
     }
 }
