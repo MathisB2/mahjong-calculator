@@ -5,6 +5,7 @@ import {startAbout} from "./GlobalHtmlObjects/aboutInfos/about.js";
 import {startAnimations} from "./GlobalHtmlObjects/animations/animations.js";
 import {startFooter} from "./GlobalHtmlObjects/footer/footer.js";
 import {startHistory, startScore} from "./GlobalHtmlObjects/Score/score.js";
+import {startLogin} from "./UsersController/login.js";
 
 async function main() {
     startSettings().then();
@@ -13,8 +14,10 @@ async function main() {
     startFooter().then();
     startScore().then();
     startHistory().then();
-
+    startLogin().then();
     await startHeader();
+
+
     TileManager.load();
 }
 main().then();

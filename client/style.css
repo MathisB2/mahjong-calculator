@@ -1416,3 +1416,53 @@ main.gameRules{
     margin-bottom: 64px;
     color: var(--textColor);
 }
+
+
+/*--------------------------------- login.html ---------------------------------*/
+
+.log{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - var(--headerDefaultHeight));
+    background-color: var(--darkerBackground);
+    padding: 32px;
+}
+
+.log h1{
+    margin-bottom: 32px;
+}
+
+.log section{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.log input{
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    font-size: 12pt;
+    border-radius: 4px;
+    outline: solid var(--textColor) 2px;
+    border: none;
+}
+
+.log input:focus{
+    outline: solid var(--mainColor) 2px;
+}
+
+.log button{
+    width: 100%;
+    border: none;
+    margin-bottom: 8px;
+}
+
+.log a{
+    width: 100%;
+    text-align: center;
+    color: var(--mainColor);
+}
