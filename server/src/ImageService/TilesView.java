@@ -1,5 +1,6 @@
 package ImageService;
 
+import ImageService.Tiles.ImageTile;
 import ImageService.Tiles.MatchedTile;
 import org.opencv.core.*;
 import org.opencv.core.Point;
@@ -9,8 +10,6 @@ import org.opencv.imgproc.Imgproc;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

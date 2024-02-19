@@ -1,7 +1,6 @@
 package ImageService;
 import Clustering.ClusterDetector;
 import Clustering.Clusters;
-import ImageService.Tiles.DataSet;
 import NetworkService.*;
 
 import org.java_websocket.WebSocket;
@@ -24,7 +23,9 @@ public class ImageService {
         imageNet = NetworkService.getNetwork().getNameSpace("ImageNet");
         clusterDetector = new ClusterDetector();
 
-        DataSet dataSet2 = new MultiDataSet(new String[]{"data2","data1"});
+        DataSet dataSet2 = new DataSet("data2");
+        dataSet2.save();
+
         ImageEncoder encoder = new ImageEncoder();
         imageNet.connect((WebSocket user, String encodedImage) -> {
             TileDetector detector = new TileDetector(dataSet2, 1600);

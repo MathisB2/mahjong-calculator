@@ -1,10 +1,18 @@
 package ImageService;
 
-import ImageService.Tiles.DataSet;
-
 public class MultiDataSet extends DataSet {
-    MultiDataSet(String[] dataSets){
-        for(var dataSet : dataSets)
-            loadFolder(dataSet);
+    private String[] dataSets;
+    MultiDataSet(String[] dataSets) {
+        this.dataSets = dataSets;
+
+        for(var dataSet : dataSets){
+            load(dataSet);
+        }
+    }
+
+    public void save(){
+        for(var dataSet : this.dataSets){
+            save(dataSet);
+        }
     }
 }

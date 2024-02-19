@@ -1,10 +1,6 @@
 package Clustering;
 
-import ImageService.ImageTile;
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.opencv.core.Point;
 
 import java.util.ArrayList;
 
