@@ -12,6 +12,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * class allowing you to load one of the project's datasets and use it for tile comparison and detection
+ *
+ */
 public class DataSet {
     private static int MIN_SCORE = 100;
     private HashMap<ImageTile, Mat> tiles;
@@ -22,11 +26,16 @@ public class DataSet {
         this.sift = SIFT.create();
     }
 
+    /**
+     * DataSet Constructor
+     *
+     * @param name name of the dataset from the project to load
+     */
     public DataSet(String name) {
         this.tiles = new HashMap<>();
         this.sift = SIFT.create();
         loadFolder(name);
-    }
+    } 
     protected void loadFolder(String folderName){
         File folder = new File("src/img/dataSet/" + folderName);
         File[] listOfFiles = folder.listFiles();
@@ -47,6 +56,12 @@ public class DataSet {
         }
     }
 
+    /**
+     *
+     * @param img image of the tile to compare with the dataset
+     * @param ratioThreshold
+     * @return
+     */
     public ImageTile findMatchingTile(Mat img, float ratioThreshold){
         ImageTile matchedTile = null;
         double bestScore = 0;
