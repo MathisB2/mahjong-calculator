@@ -7,15 +7,6 @@
     <list default="true" id="10df1254-a638-4d6f-8e7d-6860f993f786" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Clustering/Cluster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clustering/Cluster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clustering/ClusterDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clustering/ClusterDetector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clustering/ClusterPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clustering/ClusterPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clustering/Clusters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clustering/Clusters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/ImageEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageEncoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/ImageTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/ImageTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/Tiles/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/Tiles/DataSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/Tiles/ExtractedTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/Tiles/ExtractedTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/Tiles/MatchedTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/Tiles/MatchedTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +159,7 @@
       <workItem from="1706532661595" duration="3798000" />
       <workItem from="1706539683531" duration="771000" />
       <workItem from="1706601638991" duration="2322000" />
-      <workItem from="1708525490757" duration="6137000" />
+      <workItem from="1708525490757" duration="7073000" />
     </task>
     <servers />
   </component>
