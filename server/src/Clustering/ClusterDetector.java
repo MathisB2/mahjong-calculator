@@ -4,7 +4,16 @@ import ImageService.Tiles.MatchedTile;
 
 import java.util.ArrayList;
 
+/**
+ * Class to detect and compute clusters from a list of MatchedTiles
+ */
 public class ClusterDetector {
+    /**
+     * Function to get a list of clusters from and ArrayList of MatchedTiles.
+     * The function will return a maximum of 5 clusters.
+     * @param points the ArrayList of MatchedTiles. Each MatchedTile must have valid and set coordinates
+     * @return a Clusters object containing Cluster objects
+     */
     public Clusters getClustersFrom(ArrayList<MatchedTile> points){
         Clusters clusters = new Clusters();
         for(int i = 0; i < points.size(); i++){

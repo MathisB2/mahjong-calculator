@@ -57,7 +57,7 @@ public class DataSet {
     }
 
     /**
-     *
+     * function to get the closer ImageTile (in the dataSet) to img
      * @param img image of the tile to compare with the dataset
      * @param ratioThreshold
      * @return
@@ -103,6 +103,10 @@ public class DataSet {
         return findMatchingTile(img, .6f);
     }
 
+    /**
+     * function to rescale all images in the DataSet
+     * @param size the target size
+     */
     public void sizeTo(Size size){
         if(this.tiles.size() == 0) return;
 
