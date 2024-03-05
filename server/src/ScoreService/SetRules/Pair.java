@@ -1,4 +1,4 @@
-package ScoreService.Rules;
+package ScoreService.SetRules;
 
 import ScoreService.MahjongSet;
 import Settlement.IRule;

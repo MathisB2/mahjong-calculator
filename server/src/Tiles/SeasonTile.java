@@ -1,7 +1,8 @@
 package Tiles;
 
-public class SeasonTile extends Tile{
+public class SeasonTile extends BonusTile{
     SeasonTile() {
         super(-1);
     }
+
 }

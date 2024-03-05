@@ -1,33 +1,37 @@
 package ScoreService;
 
-import ScoreService.Rules.*;
+import ScoreService.GrandHandRules.FullPairHand;
+import ScoreService.HandRules.HiddenHand;
+import ScoreService.HandRules.PureHand;
+import ScoreService.HandRules.SuiteHand;
+import ScoreService.SetRules.*;
 import Settlement.*;
 
 public class MahjongSettlement {
     Settlement<MahjongSet> mahjongSetSettlement;
     Settlement<MahjongHand> mahjongHandSettlement;
+    Settlement<MahjongHand> grandHandSettlement;
     MahjongSettlement(){
+        grandHandSettlement = new Settlement();
         mahjongHandSettlement = new Settlement();
         mahjongSetSettlement = new Settlement();
 
-        loadHandSettlement();
         loadSetSettlement();
-    }
-    private void loadHandSettlement(){
-        var mahjongRule = new Mahjong(20);
-
-        mahjongHandSettlement.insertRule(mahjongRule);
+        loadHandSettlement();
+        loadGrandHandSettlement();
     }
     private void loadSetSettlement(){
         var flush = new Flush(2);
-        var suite = new Suite(0);
+        var suite = new Suite();
 
-        var hidden = new Hidden(2);
-        var square = new Square(2);
+        var hidden = new HiddenSet(2);
+        var square = new Square(4);
+        var honor = new HonorSet(2);
 
         var flushSet = new RuleSet(flush);
         flushSet.insertRule(hidden);
         flushSet.insertRule(square);
+        flushSet.insertRule(honor);
 
         var suiteSet = new RuleSet(suite);
 
@@ -35,9 +39,26 @@ public class MahjongSettlement {
         mahjongSetSettlement.insertRule(suiteSet);
     }
 
-    Integer getScoreOf(MahjongHand hand){
-        int score = mahjongHandSettlement.getScoreOf(hand);
+    private void loadHandSettlement(){
+        var mahjongRule = new Mahjong(20);
+        var mahjongSet = new RuleSet(mahjongRule);
 
+        mahjongSet.insertRule(new SuiteHand(10));
+        mahjongSet.insertRule(new HiddenHand(120));
+
+        mahjongHandSettlement.insertRule(mahjongSet);
+    }
+
+    private void loadGrandHandSettlement(){
+        var fullPairHandRuleSet = new RuleSet(new FullPairHand());
+        fullPairHandRuleSet.insertRule(new PureHand(2));
+        grandHandSettlement.insertRule(fullPairHandRuleSet);
+    }
+    Integer getScoreOf(MahjongHand hand){
+        int score = grandHandSettlement.getScoreOf(hand);
+        if(score > 0) return score;
+
+        score = mahjongHandSettlement.getScoreOf(hand);
         for(var set : hand.getSets()){
             score += mahjongSetSettlement.getScoreOf(set);
         }

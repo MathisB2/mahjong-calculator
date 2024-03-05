@@ -13,6 +13,7 @@ public class DataService {
     private Connection conn;
     String url="jdbc:sqlite:src/DataServices/datastore.db";
     private HashMap<WebSocket, UserData> userDataHashMap = new HashMap<>();
+    private HashMap<WebSocket, UserData> floatingConnections = new HashMap<>();
     static private DataService service = null;
     static public DataService get(){
         if(service == null) load();

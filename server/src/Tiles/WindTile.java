@@ -6,4 +6,9 @@ public class WindTile extends Tile{
         super(-1);
         this.direction = direction;
     }
+
+    @Override
+    public boolean isHonor() {
+        return true;
+    }
 }

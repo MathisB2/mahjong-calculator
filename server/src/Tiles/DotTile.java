@@ -1,7 +1,8 @@
 package Tiles;
 
-public class DotTile extends Tile{
+public class DotTile extends CommonTile{
     DotTile(int value) {
         super(value);
     }
+
 }

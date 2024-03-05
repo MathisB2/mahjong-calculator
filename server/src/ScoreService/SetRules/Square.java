@@ -1,20 +1,19 @@
-package ScoreService.Rules;
+package ScoreService.SetRules;
 
 import ScoreService.MahjongSet;
-import Settlement.AdditionScoreRule;
+import Settlement.MultiplicationScoreRule;
 import Tiles.Tile;
 
 import java.util.ArrayList;
 
-public class Flush extends AdditionScoreRule<MahjongSet> {
-    public Flush(int adder) {
-        super(adder, set -> {
+public class Square extends MultiplicationScoreRule<MahjongSet> {
+    public Square(int multiplier) {
+        super(multiplier, set -> {
             ArrayList<Tile> tiles = set.getTiles();
-            if (tiles.size() < 3) return false;
-
+            if (tiles.size() != 4) return false;
             Tile refferedTile = tiles.get(0);
 
-            for (int i = 1; i < 3; ++i) {
+            for (int i = 1; i < 4; ++i) {
                 if (!refferedTile.equals(tiles.get(i))) return false;
             }
 

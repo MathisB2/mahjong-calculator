@@ -1,4 +1,4 @@
-package ScoreService.Rules;
+package ScoreService.SetRules;
 
 import ScoreService.MahjongSet;
 import Settlement.AdditionScoreRule;
@@ -7,8 +7,8 @@ import Tiles.Tile;
 import java.util.ArrayList;
 
 public class Suite extends AdditionScoreRule<MahjongSet> {
-    public Suite(int adder) {
-        super(adder, set -> {
+    public Suite() {
+        super(0, set -> {
             ArrayList<Tile> tiles = set.getTiles();
             if (tiles.size() < 3) return false;
 

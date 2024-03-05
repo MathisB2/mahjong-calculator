@@ -1,4 +1,4 @@
-package ScoreService.Rules;
+package ScoreService.SetRules;
 
 import ScoreService.MahjongHand;
 import Settlement.AdditionScoreRule;
@@ -7,7 +7,7 @@ public class Mahjong extends AdditionScoreRule<MahjongHand> {
     public Mahjong(int adder) {
         super(adder, hand -> {
             var flush = new Flush(0);
-            var suite = new Suite(0);
+            var suite = new Suite();
             var pair = new Pair();
             boolean canBePair = true;
 

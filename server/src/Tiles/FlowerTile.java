@@ -1,7 +1,8 @@
 package Tiles;
 
-public class FlowerTile extends Tile{
+public class FlowerTile extends BonusTile{
     FlowerTile() {
         super(-1);
     }
+
 }

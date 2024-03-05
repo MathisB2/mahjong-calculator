@@ -38,17 +38,12 @@ public class ImageShapes {
         Imgproc.cvtColor(clone, clone, Imgproc.COLOR_BGR2GRAY);
 
         Imgproc.adaptiveThreshold(clone, clone, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C, Imgproc.THRESH_BINARY, 13, 4);
-<<<<<<< HEAD
 
-        dilateSize = 6;
-        Imgproc.erode(clone, clone, Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, new Size(dilateSize, dilateSize)));
-=======
 //        (new TilesView()).showImage(clone);
 
         dilateSize = 6;
         Imgproc.erode(clone, clone, Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, new Size(dilateSize, dilateSize)));
 //        (new TilesView()).showImage(clone);
->>>>>>> 2b08632928e63b182149fc3ca242e6ba95bcc4e9
 
         Core.multiply(clone, tilesMask, clone);
         Imgproc.findContours(clone, shapes, clone, Imgproc.CHAIN_APPROX_NONE, Imgproc.CHAIN_APPROX_SIMPLE);

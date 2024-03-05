@@ -38,14 +38,7 @@ public class DataSet {
     }
 
     protected void load(String dataName){
-        String path = "src/ImageService/Sifts/" + dataName + ".json";
-        File siftFile = new File(path);
-
-        if(siftFile.exists() && siftFile.canRead()){
-            this.sift.read(path);
-        }else {
-            loadFolder(dataName);
-        }
+        loadFolder(dataName);
     }
 
     private void loadFromFile(String path) throws Exception {
