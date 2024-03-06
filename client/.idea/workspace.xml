@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fde5e0a-dc61-4d8b-91c5-05ac54431315" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/js/UsersController/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/GlobalHtmlObjects/linkItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GlobalHtmlObjects/linkItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,6 +99,9 @@
       <workItem from="1707486365551" duration="3790000" />
       <workItem from="1707915235347" duration="8362000" />
       <workItem from="1708088910987" duration="9051000" />
+      <workItem from="1708439087613" duration="730000" />
+      <workItem from="1708702839949" duration="1227000" />
+      <workItem from="1709735127478" duration="1201000" />
     </task>
     <servers />
   </component>

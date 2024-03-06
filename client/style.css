@@ -532,14 +532,17 @@ main.calculator{
 
 .drawerButton{
     position: fixed;
-    bottom: 0;
+    bottom: 8px;
     left: 0;
 
     display: flex;
     text-align: center;
     background-color: var(--darkerBackground);
+    padding: 8px;
+    /*background-color: red;*/
     width: 100%;
     user-select: none;
+
 
 
 }
@@ -824,7 +827,7 @@ main.settings input:checked + label img{
 .settings .drawerButton{
     position: fixed;
     left: 0;
-    bottom: 0;
+    bottom: 8px;
     display: flex;
     text-align: center;
     background-color: var(--darkerBackground);
