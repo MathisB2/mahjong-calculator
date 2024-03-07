@@ -1,6 +1,7 @@
 import {NetworkController} from "../NetworkController/NetworkController.js";
 import {storageConfig, networkConfig} from "../config.js";
 import {Tile} from "./hand/Tile.js";
+import {SettingItem} from "./settingItem.js";
 
 const backButton = document.getElementById("settingsBackButton");
 const sendButton = document.getElementById("settingsSendButton");
@@ -9,6 +10,7 @@ const gameWindInputs = document.getElementsByName("gameWind");
 const playerWindInputs = document.getElementsByName("playerWind");
 const playerFlowersInputs = document.getElementsByName("playerFlowers");
 const playerSeasonsInputs = document.getElementsByName("playerSeasons");
+const otherSettingsSection = document.getElementById("otherSettings");
 
 let settings;
 let scoreNet;
@@ -23,13 +25,19 @@ class gameSettings{
     HTMLPlayerWindInputs;
     HTMLPlayerFlowersInputs;
     HTMLPlayerSeasonsInputs;
+    HTMLOtherSettingsContainer;
 
-    constructor(gameWindFormName,playerWindInputs,playerFlowersInputs,playerSeasonsInputs) {
+    otherSettings;
+
+    constructor(gameWindFormName,playerWindInputs,playerFlowersInputs,playerSeasonsInputs,HTMLOtherSettingsContainer) {
         this.HTMLGameWindInputs=gameWindFormName;
         this.HTMLPlayerWindInputs=playerWindInputs;
         this.HTMLPlayerFlowersInputs=playerFlowersInputs;
         this.HTMLPlayerSeasonsInputs=playerSeasonsInputs;
+        this.HTMLOtherSettingsContainer = HTMLOtherSettingsContainer;
+        this.otherSettings = []
         this.#init();
+        this.#initSettings();
     }
 
     #init(){
@@ -69,6 +77,27 @@ class gameSettings{
             }
 
         }
+    }
+
+
+
+    #initSettings(){
+        this.buildOtherSetting("mahjongDonne","Mahjong sur la donne");
+        this.buildOtherSetting("mahjongMur","Mahjong avec les tuiles du mur");
+    }
+
+    buildOtherSetting(key,text, checked = false){
+        let setting = new SettingItem(key, text, checked);
+        this.otherSettings.push(setting);
+        setting.buildObject(this.HTMLOtherSettingsContainer);
+    }
+
+    #getOtherSettingList(){
+        let list = [];
+        for (let setting of this.otherSettings) {
+            list.push(setting.toJSONObject());
+        }
+        return list;
     }
 
     _updateGameWind(){
@@ -189,6 +218,7 @@ class gameSettings{
         data.playerWind = this.playerWindToTile();
         data.playerFlowers = this.playerFlowersToTiles();
         data.playerSeasons = this.playerSeasonsToTiles();
+        data.otherSettings = this.#getOtherSettingList();
 
         return data;
     }
@@ -204,6 +234,8 @@ function onSendClick(){
         if(hand != null){
             let json = settings.toJSONObject()
             json.slotList = hand;
+
+            console.log(json);
 
 
             scoreNet.call(JSON.stringify(json)).then(function (message){
@@ -236,7 +268,8 @@ export async function startSettings(){
         && sendButton)) return;
     let network = NetworkController.getController(networkConfig.ip, networkConfig.port);
     scoreNet = network.getNetNamespace("ScoreNet");
-    settings = new gameSettings(gameWindInputs,playerWindInputs,playerFlowersInputs,playerSeasonsInputs);
+    settings = new gameSettings(gameWindInputs,playerWindInputs,playerFlowersInputs,playerSeasonsInputs,otherSettingsSection);
+
 
     document.addEventListener("mouseup",settings.update.bind(settings));
     backButton.addEventListener("click", onBackClick);

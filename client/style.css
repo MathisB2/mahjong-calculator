@@ -532,7 +532,7 @@ main.calculator{
 
 .drawerButton{
     position: fixed;
-    bottom: 8px;
+    bottom: 0;
     left: 0;
 
     display: flex;
@@ -777,11 +777,6 @@ main.settings section{
     margin-bottom: 32px;
 }
 
-
-#playerBonus{
-    margin-bottom: 64px;
-}
-
 main.settings section div{
     display: flex;
     justify-content: space-between;
@@ -823,11 +818,45 @@ main.settings input:checked + label img{
 }
 
 
+.settings #otherSettings{
+    margin-bottom: 64px;
+    --checkboxSize:16px;
+}
+
+#otherSettings h2{
+    margin-bottom: 16px;
+}
+
+#otherSettings div{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+#otherSettings div input{
+    display: inline-block;
+    accent-color: var(--mainColor);
+    height: var(--checkboxSize);
+    width: var(--checkboxSize);
+
+}
+
+#otherSettings div label{
+    font-size: 14pt;
+    line-height: var(--checkboxSize);
+    margin: 0 0 0 4px;
+    width: fit-content;
+
+}
+
+
+
 
 .settings .drawerButton{
     position: fixed;
     left: 0;
-    bottom: 8px;
+    bottom: 0;
     display: flex;
     text-align: center;
     background-color: var(--darkerBackground);

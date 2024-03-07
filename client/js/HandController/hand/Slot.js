@@ -90,6 +90,10 @@ export class Slot{
         return false;
     }
 
+    isEmpty(){
+        return this.#tileList.length == 0;
+    }
+
     isFull(){
         return this.#tileList.length >= this.#capacity;
     }

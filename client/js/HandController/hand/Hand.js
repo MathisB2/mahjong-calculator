@@ -11,6 +11,8 @@ export class Hand{
 
     slotClicked;
 
+    #defaultSlotCapacity = 4;
+
     constructor(htmlHand) {
         this.tileClicked = new Signal();
         this.slotClicked = new Signal();
@@ -24,7 +26,7 @@ export class Hand{
     #initSlots(){
         this.slotList = [];
         for(let i = 0; i < 5; ++i){
-            let slot = new Slot(4);
+            let slot = new Slot(this.#defaultSlotCapacity);
 
             this.#appendSlot(slot, i);
             this.slotList[i] = slot;
@@ -78,6 +80,7 @@ export class Hand{
         tile.getHtmlObject().addEventListener("click", (() => {
             this.tileClicked.fire(tile);
         }).bind(this));
+        // this.#updateSlots();
     }
 
     moveToNextAvailableActiveSlot(){
@@ -119,4 +122,15 @@ export class Hand{
         this.htmlHand.innerHTML="";
         this.#initSlots();
     }
+
+    /*
+    #updateSlots(){
+        let slotCount = this.slotList.length;
+        let lastSlot = this.slotList[slotCount-1];
+        if(!lastSlot.isEmpty()){
+            let slot = new Slot(this.#defaultSlotCapacity);
+            console.log(slotCount)
+            this.#appendSlot(slot, slotCount);
+        }
+    }*/
 }
