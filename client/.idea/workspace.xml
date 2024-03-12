@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fde5e0a-dc61-4d8b-91c5-05ac54431315" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/js/HandController/settingItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/gameSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/gameSettings.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/HandController/hand/Hand.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/hand/Hand.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,6 +101,7 @@
       <workItem from="1707486140432" duration="7033000" />
       <workItem from="1708523199049" duration="803000" />
       <workItem from="1709646957877" duration="1257000" />
+      <workItem from="1710259647909" duration="1254000" />
     </task>
     <servers />
   </component>

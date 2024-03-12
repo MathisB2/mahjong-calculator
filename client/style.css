@@ -538,8 +538,11 @@ main.calculator{
     display: flex;
     text-align: center;
     background-color: var(--darkerBackground);
+    padding: 8px;
+    /*background-color: red;*/
     width: 100%;
     user-select: none;
+
 
 
 }
@@ -774,11 +777,6 @@ main.settings section{
     margin-bottom: 32px;
 }
 
-
-#playerBonus{
-    margin-bottom: 64px;
-}
-
 main.settings section div{
     display: flex;
     justify-content: space-between;
@@ -818,6 +816,40 @@ main.settings input:checked + label img{
     outline: solid 3px var(--checkedColor);
 
 }
+
+
+.settings #otherSettings{
+    margin-bottom: 64px;
+    --checkboxSize:16px;
+}
+
+#otherSettings h2{
+    margin-bottom: 16px;
+}
+
+#otherSettings div{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+#otherSettings div input{
+    display: inline-block;
+    accent-color: var(--mainColor);
+    height: var(--checkboxSize);
+    width: var(--checkboxSize);
+
+}
+
+#otherSettings div label{
+    font-size: 14pt;
+    line-height: var(--checkboxSize);
+    margin: 0 0 0 4px;
+    width: fit-content;
+
+}
+
 
 
 
