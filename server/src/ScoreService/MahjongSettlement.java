@@ -1,6 +1,7 @@
 package ScoreService;
 
 import ScoreService.GrandHandRules.FullPairHand;
+import ScoreService.HandRules.DealHand;
 import ScoreService.HandRules.HiddenHand;
 import ScoreService.HandRules.PureHand;
 import ScoreService.HandRules.SuiteHand;
@@ -45,6 +46,7 @@ public class MahjongSettlement {
 
         mahjongSet.insertRule(new SuiteHand(10));
         mahjongSet.insertRule(new HiddenHand(120));
+        mahjongSet.insertRule(new DealHand(100));
 
         mahjongHandSettlement.insertRule(mahjongSet);
     }

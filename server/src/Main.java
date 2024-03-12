@@ -14,6 +14,5 @@ public class Main {
         ImageService.load();
         DataService.load();
         UsersService.load();
-
     }
 }

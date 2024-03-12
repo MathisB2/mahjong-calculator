@@ -5,8 +5,8 @@ import Settlement.AdditionScoreRule;
 import Settlement.IRule;
 
 public class HiddenHand extends AdditionScoreRule<MahjongHand> {
-    public HiddenHand(int adder) {
-        super(adder, hand -> {
+    public HiddenHand(int points) {
+        super(points, hand -> {
             for(var set : hand.getSets()){
                 if(!set.isHidden()) return false;
             }
