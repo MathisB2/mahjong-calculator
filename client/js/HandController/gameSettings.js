@@ -82,19 +82,29 @@ class gameSettings{
 
 
     #initSettings(){
-        this.buildOtherSetting("mahjongDonne","Mahjong sur la donne");
-        this.buildOtherSetting("mahjongMur","Mahjong avec les tuiles du mur");
+        let savedData = localStorage.getItem(storageConfig.settings);
+        let savedSettings = [];
+        if(savedData != null) {
+            let settings = JSON.parse(savedData);
+            savedSettings = settings.settings;
+        }
+
+        this.buildSetting("dealHand","Mahjong sur la donne",savedSettings);
+        this.buildSetting("wallHand","Mahjong avec les tuiles du mur",savedSettings);
     }
 
-    buildOtherSetting(key,text, checked = false){
-        let setting = new SettingItem(key, text, checked);
+
+
+    buildSetting(key, text, savedSettings){
+        let setting = new SettingItem(key, text, savedSettings.includes(key));
         this.otherSettings.push(setting);
         setting.buildObject(this.HTMLOtherSettingsContainer);
     }
 
-    #getOtherSettingList(){
+    #getSettingsList(){
         let list = [];
         for (let setting of this.otherSettings) {
+            if(!setting.isChecked()) continue;
             list.push(setting.toJSONObject());
         }
         return list;
@@ -218,7 +228,7 @@ class gameSettings{
         data.playerWind = this.playerWindToTile();
         data.playerFlowers = this.playerFlowersToTiles();
         data.playerSeasons = this.playerSeasonsToTiles();
-        data.otherSettings = this.#getOtherSettingList();
+        data.settings = this.#getSettingsList();
 
         return data;
     }
@@ -236,6 +246,7 @@ function onSendClick(){
             json.slotList = hand;
 
             console.log(json);
+            return;
 
 
             scoreNet.call(JSON.stringify(json)).then(function (message){

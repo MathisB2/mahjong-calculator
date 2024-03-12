@@ -9,14 +9,14 @@ export class SettingItem{
     constructor(key, text, checked = false) {
         this.key = key;
         this.text = text;
-        this.checkedDefaultValue = checked;
+        this.#checkedDefaultValue = checked;
     }
 
     getHtmlObject(){
         this.#htmlCheckbox = document.createElement("input");
         this.#htmlCheckbox.setAttribute("type","checkbox");
         this.#htmlCheckbox.setAttribute("id",this.key);
-        if(this.checkedDefaultValue) this.#htmlCheckbox.setAttribute("checked", "true");
+        if(this.#checkedDefaultValue) this.#htmlCheckbox.setAttribute("checked", "true");
 
         this.#htmlLabel = document.createElement("label");
         this.#htmlLabel.setAttribute("for",this.key);
@@ -37,9 +37,6 @@ export class SettingItem{
     }
 
     toJSONObject(){
-        let data ={};
-        data.key = this.key;
-        data.value = this.isChecked();
-        return data
+        return this.key;
     }
 }
