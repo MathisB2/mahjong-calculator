@@ -23,7 +23,7 @@ export class Hand{
 
     #initSlots(){
         this.slotList = [];
-        for(let i = 0; i < 5; ++i){
+        for(let i = 0; i < 7; ++i){
             let slot = new Slot(4);
 
             this.#appendSlot(slot, i);
