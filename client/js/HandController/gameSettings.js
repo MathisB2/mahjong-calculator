@@ -246,8 +246,6 @@ function onSendClick(){
             json.slotList = hand;
 
             console.log(json);
-            return;
-
 
             scoreNet.call(JSON.stringify(json)).then(function (message){
                 if(message == null){
