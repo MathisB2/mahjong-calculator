@@ -1,15 +1,10 @@
 package Settlement;
 
-public class MultiplicationScoreRule<T> implements ScoreRule<T> {
-    IRule<T> rule;
+public abstract class MultiplicationScoreRule<T> implements ScoreRule<T> {
     int multiplier;
-    public MultiplicationScoreRule(int multiplier, IRule<T> rule){
+    public MultiplicationScoreRule(int multiplier){
+        super();
         this.multiplier = multiplier;
-        this.rule = rule;
-    }
-    @Override
-    public boolean isVerified(T param) {
-        return rule.isVerified(param);
     }
 
     @Override

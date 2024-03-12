@@ -1,26 +1,16 @@
 package Settlement;
 
-public class RuleSet<T> extends RulesContainer<T> implements ScoreRule<T> {
-    private ScoreRule<T> mainRule;
-    public RuleSet(ScoreRule<T> rule){
-        this.mainRule = rule;
-    }
-
+public abstract class RuleSet<T> extends RulesContainer<T> implements ScoreRule<T> {
     @Override
     public int modifyScore(T param, int score) {
-        if(!mainRule.isVerified(param)) return score;
+        if(!this.isVerified(param)) return score;
 
-        int additionalScore = mainRule.modifyScore(param, 0);
+        int newScore = score;
 
         for(var rule : rules){
-            additionalScore = rule.modifyScore(param, additionalScore);
+            newScore = rule.modifyScore(param, newScore);
         }
 
-        return score + additionalScore;
-    }
-
-    @Override
-    public boolean isVerified(T param) {
-        return mainRule.isVerified(param);
+        return newScore;
     }
 }

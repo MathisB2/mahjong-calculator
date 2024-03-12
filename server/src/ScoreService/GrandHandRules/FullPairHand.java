@@ -7,16 +7,19 @@ import Settlement.OverriderScoreRule;
 
 public class FullPairHand extends OverriderScoreRule<MahjongHand> {
     public FullPairHand() {
-        super(400, hand->{
-            var sets = hand.getSets();
-            if(sets.size() < 7) return false;
-            Pair pairRule = new Pair();
+        super(400);
+    }
 
-            for(var set : sets){
-                if(!pairRule.isVerified(set))return false;
-            }
+    @Override
+    public boolean isVerified(MahjongHand hand) {
+        var sets = hand.getSets();
+        if(sets.size() < 7) return false;
+        Pair pairRule = new Pair();
 
-            return true;
-        });
+        for(var set : sets){
+            if(!pairRule.isVerified(set))return false;
+        }
+
+        return true;
     }
 }

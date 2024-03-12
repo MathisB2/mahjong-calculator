@@ -1,10 +1,7 @@
 package ScoreService;
 
 import ScoreService.GrandHandRules.FullPairHand;
-import ScoreService.HandRules.DealHand;
-import ScoreService.HandRules.HiddenHand;
-import ScoreService.HandRules.PureHand;
-import ScoreService.HandRules.SuiteHand;
+import ScoreService.HandRules.*;
 import ScoreService.SetRules.*;
 import Settlement.*;
 
@@ -23,36 +20,33 @@ public class MahjongSettlement {
     }
     private void loadSetSettlement(){
         var flush = new Flush(2);
-        var suite = new Suite();
+        var suite = new Suite(0);
 
         var hidden = new HiddenSet(2);
         var square = new Square(4);
         var honor = new HonorSet(2);
 
-        var flushSet = new RuleSet(flush);
-        flushSet.insertRule(hidden);
-        flushSet.insertRule(square);
-        flushSet.insertRule(honor);
+        flush.insertRule(hidden);
+        flush.insertRule(square);
+        flush.insertRule(honor);
 
-        var suiteSet = new RuleSet(suite);
-
-        mahjongSetSettlement.insertRule(flushSet);
-        mahjongSetSettlement.insertRule(suiteSet);
+        mahjongSetSettlement.insertRule(flush);
+        mahjongSetSettlement.insertRule(suite);
     }
 
     private void loadHandSettlement(){
         var mahjongRule = new Mahjong(20);
-        var mahjongSet = new RuleSet(mahjongRule);
 
-        mahjongSet.insertRule(new SuiteHand(10));
-        mahjongSet.insertRule(new HiddenHand(120));
-        mahjongSet.insertRule(new DealHand(100));
+        mahjongRule.insertRule(new SuiteHand(10));
+        mahjongRule.insertRule(new HiddenHand(120));
+        mahjongRule.insertRule(new DealHand(100));
+        mahjongRule.insertRule(new WallHand(2));
 
-        mahjongHandSettlement.insertRule(mahjongSet);
+        mahjongHandSettlement.insertRule(mahjongRule);
     }
 
     private void loadGrandHandSettlement(){
-        var fullPairHandRuleSet = new RuleSet(new FullPairHand());
+        var fullPairHandRuleSet = new FullPairHand();
         fullPairHandRuleSet.insertRule(new PureHand(2));
         grandHandSettlement.insertRule(fullPairHandRuleSet);
     }

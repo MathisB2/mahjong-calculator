@@ -6,6 +6,11 @@ import Settlement.IRule;
 
 public class WallHand extends AdditionScoreRule<MahjongHand> {
     public WallHand(int points) {
-        super(points, hand ->  hand.containsSetting("wallHand"));
+        super(points);
+    }
+
+    @Override
+    public boolean isVerified(MahjongHand hand) {
+        return hand.containsSetting("wallHand");
     }
 }

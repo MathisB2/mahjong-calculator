@@ -5,13 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10df1254-a638-4d6f-8e7d-6860f993f786" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/DealHand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/WallHand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/Mahjong.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/GrandHandRules/FullPairHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/GrandHandRules/FullPairHand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/HandRules/DealHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/DealHand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ScoreService/HandRules/HiddenHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/HiddenHand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/MahjongHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/MahjongHand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/HandRules/PureHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/PureHand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/HandRules/SuiteHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/SuiteHand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/HandRules/WallHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/WallHand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ScoreService/MahjongSettlement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/MahjongSettlement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/SetRules/Flush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/SetRules/Flush.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/SetRules/HiddenSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/SetRules/HiddenSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/SetRules/HonorSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/SetRules/HonorSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/SetRules/Mahjong.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/SetRules/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/SetRules/Square.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/SetRules/Suite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/SetRules/Suite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settlement/AdditionScoreRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settlement/AdditionScoreRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settlement/MultiplicationScoreRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settlement/MultiplicationScoreRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settlement/OverriderScoreRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settlement/OverriderScoreRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settlement/RuleSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settlement/RuleSet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,19 +52,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;Z:/Documents/SAE/main_branch/server&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "Z:/Documents/SAE/html/client",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="ImageService" />
@@ -169,7 +181,7 @@
       <workItem from="1708523135211" duration="1766000" />
       <workItem from="1709646890085" duration="9315000" />
       <workItem from="1710147182648" duration="770000" />
-      <workItem from="1710255613425" duration="2137000" />
+      <workItem from="1710255613425" duration="5424000" />
     </task>
     <servers />
   </component>
@@ -186,6 +198,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ScoreService/GrandHandRules/FullPairHand.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
