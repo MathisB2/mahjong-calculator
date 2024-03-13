@@ -46,15 +46,15 @@ class gameSettings{
 
             //winds
             for (let input of this.HTMLGameWindInputs) {
-                input.checked = "game"+settings.gameWind.direction == input.id;
+                input.checked = "game"+settings.gameWind.direction == input.id.toLowerCase();
             }
             for (let input of this.HTMLPlayerWindInputs) {
-                input.checked = "player"+settings.playerWind.direction == input.id;
+                input.checked = "player"+settings.playerWind.direction == input.id.toLowerCase();
             }
             for (let input of this.HTMLPlayerFlowersInputs) {
                 input.checked = false;
                 for (let flower of settings.playerFlowers) {
-                    if("flower"+flower.direction == input.id){
+                    if("flower"+flower.direction == input.id.toLowerCase()){
                         input.checked = true;
                     }
                 }
@@ -62,7 +62,7 @@ class gameSettings{
             for (let input of this.HTMLPlayerSeasonsInputs) {
                 input.checked = false;
                 for (let season of settings.playerSeasons) {
-                    if("season"+season.direction == input.id){
+                    if("season"+season.direction == input.id.toLowerCase()){
                         input.checked = true;
                     }
                 }
@@ -103,6 +103,7 @@ class gameSettings{
         let direction = tileDirection.default;
         if(checked != null)  direction = checked.replace("game","").toLowerCase();
 
+        console.log(direction)
         let tile = new BonusTile(tileType.wind, direction);
         return tile;
     }
