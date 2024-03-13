@@ -1,7 +1,4 @@
 import {Popup} from "./Popup.js";
-import {HtmlTag} from "../../GlobalHtmlObjects/HtmlObjects/HtmlTag.js";
-import {findChildById} from "../../GlobalHtmlObjects/HtmlObjects/elementFinder.js";
-
 export class LoadingPopup extends Popup{
 
     constructor(parent) {

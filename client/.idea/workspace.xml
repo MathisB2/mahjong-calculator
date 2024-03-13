@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fde5e0a-dc61-4d8b-91c5-05ac54431315" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/js/ImageController/popup/ErrorPopup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/HandController/gameSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/gameSettings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/ImageController/ImageController.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ImageController/ImageController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/ImageController/imageDecoder.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ImageController/ImageDecoder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/ImageController/popup/LoadingPopup.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ImageController/popup/LoadingPopup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/NetworkController/NetNameSpace.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/NetworkController/NetNameSpace.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

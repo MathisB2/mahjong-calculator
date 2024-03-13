@@ -34,24 +34,25 @@ export class NetNameSpace {
 
     call(message){
         const callId = this._generateUUID()
-        let calls = this.calls;
         return new Promise((resolve, reject) => {;
             this.calls[callId] = {
                 resolve: resolve,
                 reject: reject
             };
-            setTimeout(reject, networkConfig.timeout);
-            this._send(message, callId);
-        }).catch(function (message){
-            console.error(message);
-            if(calls[callId]) calls[callId] = null;
+            setTimeout(reject, networkConfig.timeout, "Network call timeout !");
+
+            try{
+                this._send(message, callId);
+            }catch (e) {
+                reject(e.toString())
+            }
         });
     }
     _send(message, callId){
         const messageId = this._generateUUID();
         const limitLength = 30000;
         const nbrSplit = Math.ceil(message.length/limitLength);
-        console.log(message.length);
+
         for(let i = 0; i < nbrSplit; ++i){
             const pack = message.substring(i*limitLength, (i+1)*limitLength);
 

@@ -3,7 +3,8 @@ import {imageConfig, networkConfig} from "../config.js";
 import {ResultData} from "./resultData.js";
 import {ResultPopup} from "./popup/ResultPopup.js";
 import {LoadingPopup} from "./popup/LoadingPopup.js";
-import {decode, encode} from "./imageDecoder.js";
+import {decode, encode} from "./ImageDecoder.js";
+import {ErrorPopup} from "./popup/ErrorPopup.js";
 
 export let ImageManager = function() {
     let imageController = null;
@@ -46,11 +47,9 @@ class ImageController{
             let resized = await this.resizeImage(file, imageConfig.maxWidth);
             let base64 = await encode(resized);
 
-            const controller = this
+            imageNet.call(base64).then(async (callback) => {
 
-            imageNet.call(base64).then(async function (callback) {
-
-                let clusterOfTiles = controller.#decodeCallback(callback);
+                let clusterOfTiles = this.#decodeCallback(callback);
 
                 let resultData = new ResultData(resized, clusterOfTiles);
 
@@ -58,6 +57,11 @@ class ImageController{
 
                 await resultPopup.show();
                 await loadingPopup.hide();
+            }, async (errorMessage) => {
+                let popup = new ErrorPopup(main, errorMessage);
+
+                await loadingPopup.hide();
+                await popup.show();
             });
         });
     }
