@@ -2,6 +2,8 @@ import {NetworkController} from "../NetworkController/NetworkController.js";
 import {storageConfig, networkConfig} from "../config.js";
 import {Tile} from "./hand/Tile.js";
 import {SettingItem} from "./settingItem.js";
+import {BonusTile} from "./hand/BonusTile.js";
+import {tileDirection, tileType} from "./hand/tileDirection.js";
 
 const backButton = document.getElementById("settingsBackButton");
 const sendButton = document.getElementById("settingsSendButton");
@@ -16,18 +18,14 @@ let settings;
 let scoreNet;
 
 class gameSettings{
-    gameWind="gameNorth";
-    playerWind="playerNorth";
-    playerFlowers=[];
-    playerSeasons=[];
-
     HTMLGameWindInputs;
     HTMLPlayerWindInputs;
     HTMLPlayerFlowersInputs;
     HTMLPlayerSeasonsInputs;
     HTMLOtherSettingsContainer;
 
-    otherSettings;
+    settings;
+    #savedSettings
 
     constructor(gameWindFormName,playerWindInputs,playerFlowersInputs,playerSeasonsInputs,HTMLOtherSettingsContainer) {
         this.HTMLGameWindInputs=gameWindFormName;
@@ -35,199 +33,128 @@ class gameSettings{
         this.HTMLPlayerFlowersInputs=playerFlowersInputs;
         this.HTMLPlayerSeasonsInputs=playerSeasonsInputs;
         this.HTMLOtherSettingsContainer = HTMLOtherSettingsContainer;
-        this.otherSettings = []
-        this.#init();
+        this.settings = []
+        this.#savedSettings = [];
+        this.loadFromStorage();
         this.#initSettings();
     }
 
-    #init(){
+    loadFromStorage(){
         let savedData = localStorage.getItem(storageConfig.settings);
         if(savedData != null) {
             let settings = JSON.parse(savedData);
 
             //winds
             for (let input of this.HTMLGameWindInputs) {
-                input.checked=settings.gameWind.name == this._getType(input.id);
+                input.checked = "game"+settings.gameWind.direction == input.id;
             }
             for (let input of this.HTMLPlayerWindInputs) {
-                input.checked=settings.playerWind.name == this._getType(input.id);
+                input.checked = "player"+settings.playerWind.direction == input.id;
             }
-
-            //bonuses
             for (let input of this.HTMLPlayerFlowersInputs) {
                 input.checked = false;
-                let value = this._getType(input.id);
-
                 for (let flower of settings.playerFlowers) {
-                    if(flower.value == value){
+                    if("flower"+flower.direction == input.id){
                         input.checked = true;
                     }
                 }
             }
-
             for (let input of this.HTMLPlayerSeasonsInputs) {
                 input.checked = false;
-                let value = this._getType(input.id);
-
                 for (let season of settings.playerSeasons) {
-                    if(season.value == value){
+                    if("season"+season.direction == input.id){
                         input.checked = true;
                     }
                 }
             }
-
         }
     }
 
 
 
     #initSettings(){
-        let savedData = localStorage.getItem(storageConfig.settings);
-        let savedSettings = [];
-        if(savedData != null) {
-            let settings = JSON.parse(savedData);
-            savedSettings = settings.settings;
-        }
-
-        this.buildSetting("dealHand","Mahjong sur la donne",savedSettings);
-        this.buildSetting("wallHand","Mahjong avec les tuiles du mur",savedSettings);
+        this.buildSetting("dealHand","Mahjong sur la donne");
+        this.buildSetting("wallHand","Mahjong avec les tuiles du mur");
     }
 
 
 
-    buildSetting(key, text, savedSettings){
-        let setting = new SettingItem(key, text, savedSettings.includes(key));
-        this.otherSettings.push(setting);
+    buildSetting(key, text){
+        let setting = new SettingItem(key, text, this.#savedSettings.includes(key));
+        this.settings.push(setting);
         setting.buildObject(this.HTMLOtherSettingsContainer);
     }
 
     #getSettingsList(){
         let list = [];
-        for (let setting of this.otherSettings) {
+        for (let setting of this.settings) {
             if(!setting.isChecked()) continue;
             list.push(setting.toJSONObject());
         }
         return list;
     }
 
-    _updateGameWind(){
-        for(let i = 0; i < this.HTMLGameWindInputs.length; i++){
-            if(this.HTMLGameWindInputs[i].checked){
-                this.gameWind = this._getType(this.HTMLGameWindInputs[i].id);
-            }
+    getGameWind(){
+        let checked = null;
+        for (let element of this.HTMLGameWindInputs) {
+            if (element.checked) checked = element.id;
         }
+
+        let direction = tileDirection.default;
+        if(checked != null)  direction = checked.replace("game","").toLowerCase();
+
+        let tile = new BonusTile(tileType.wind, direction);
+        return tile;
     }
 
-    _updatePlayerWind(){
-        for(let i = 0; i < this.HTMLPlayerWindInputs.length; i++){
-            if(this.HTMLPlayerWindInputs[i].checked){
-                this.playerWind = this._getType(this.HTMLPlayerWindInputs[i].id);
-            }
+    getPlayerWind(){
+        let checked = null;
+        for (let element of this.HTMLPlayerWindInputs) {
+            if (element.checked) checked = element.id;
         }
+        let direction = tileDirection.default;
+        if(checked != null)  direction = checked.replace("player","").toLowerCase();
+
+        let tile = new BonusTile(tileType.wind, direction);
+        return tile;
     }
 
-    _updatePlayerFlowers(){
-        this.playerFlowers=[];
-        for(let i = 0; i < this.HTMLPlayerFlowersInputs.length; i++){
-            if(this.HTMLPlayerFlowersInputs[i].checked){
-                this.playerFlowers.push(this.HTMLPlayerFlowersInputs[i].id);
-            }
+    getPlayerFlowers(){
+        let flowers = [];
+        for (let element of this.HTMLPlayerFlowersInputs) {
+            if (element.checked)
+                flowers.push(new BonusTile(tileType.flower, element.id.replace("flower","").toLowerCase()));
         }
+        return flowers;
     }
 
-    _updatePlayerSeasons(){
-        this.playerSeasons=[];
-        for(let i = 0; i < this.HTMLPlayerSeasonsInputs.length; i++){
-            if(this.HTMLPlayerSeasonsInputs[i].checked){
-                this.playerSeasons.push(this.HTMLPlayerSeasonsInputs[i].id);
-            }
+    getPlayerSeasons(){
+        let seasons = [];
+        for (let element of this.HTMLPlayerSeasonsInputs) {
+            if (element.checked)
+                seasons.push(new BonusTile(tileType.season, element.id.replace("season","").toLowerCase()));
         }
-    }
-
-    _getType(name){
-        return name.replace("game","").replace("player","").replace("flower","").replace("season","");
-    }
-
-    update(){
-        this._updateGameWind();
-        this._updatePlayerWind();
-        this._updatePlayerFlowers();
-        this._updatePlayerSeasons();
+        return seasons;
     }
 
 
-    gameWindToTile(){
-        return this._getWindTile(this._getType(this.gameWind));
-    }
-    playerWindToTile(){
-        return this._getWindTile(this._getType(this.playerWind));
-    }
-    _getWindTile(name){
-        let t = new Tile(name);
-        t.type="wind";
-        t.value=this._bindWindtoInt(name);
-        t.img=undefined;
-        return t;
-    }
 
-    _bindWindtoInt(wind){
-        switch (wind){
-            case "North":
-                return 1;
-            case "South":
-                return 2;
-            case "East":
-                return 3;
-            default:
-                return 4;
-        }
-    }
-
-    playerFlowersToTiles(){
-        let array=[];
-        for (let flower of this.playerFlowers) {
-            array.push(this._getBonusTile("flower",parseInt(this._getType(flower))));
-        }
-        return array;
-    }
-
-
-    playerSeasonsToTiles(){
-        let array=[];
-        for (let season of this.playerSeasons) {
-            array.push(this._getBonusTile("season",parseInt(this._getType(season))));
-        }
-        return array;
-    }
-
-    _getBonusTile(name,value){
-        let t = new Tile(name);
-        t.type="bonus";
-        t.value=value;
-        t.img=undefined;
-        return t;
-    }
     saveToStorage(){
         localStorage.setItem(storageConfig.settings,JSON.stringify(this.toJSONObject()));
     }
 
-
-
-    isSet(){
+    isValid(){
         return this.HTMLGameWindInputs!=null && this.HTMLPlayerWindInputs!=null && this.HTMLPlayerSeasonsInputs!=null && this.HTMLPlayerFlowersInputs!=null
     }
 
-    isValid(){
-        return this.gameWind!=null && this.playerWind!=null;
-    }
 
     toJSONObject(){
         let data ={};
 
-        data.gameWind = this.gameWindToTile();
-        data.playerWind = this.playerWindToTile();
-        data.playerFlowers = this.playerFlowersToTiles();
-        data.playerSeasons = this.playerSeasonsToTiles();
+        data.gameWind = this.getGameWind();
+        data.playerWind = this.getPlayerWind();
+        data.playerFlowers = this.getPlayerFlowers();
+        data.playerSeasons = this.getPlayerSeasons();
         data.settings = this.#getSettingsList();
 
         return data;
@@ -236,8 +163,7 @@ class gameSettings{
 
 
 function onSendClick(){
-    if(settings.isSet() && settings.isValid()){
-        settings.update();
+    if(settings.isValid()){
         settings.saveToStorage();
         let hand = JSON.parse(localStorage.getItem(storageConfig.hand));
 
@@ -262,7 +188,6 @@ function onSendClick(){
 }
 
 function onBackClick(){
-    settings.update();
     settings.saveToStorage();
     window.location.href = "calculator.html";
 }
@@ -279,8 +204,6 @@ export async function startSettings(){
     scoreNet = network.getNetNamespace("ScoreNet");
     settings = new gameSettings(gameWindInputs,playerWindInputs,playerFlowersInputs,playerSeasonsInputs,otherSettingsSection);
 
-
-    document.addEventListener("mouseup",settings.update.bind(settings));
     backButton.addEventListener("click", onBackClick);
     sendButton.addEventListener("click", onSendClick);
 }
