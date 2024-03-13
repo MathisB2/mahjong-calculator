@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fde5e0a-dc61-4d8b-91c5-05ac54431315" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/js/HandController/hand/BonusTile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/HandController/hand/tileDirection.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/js/HandController/gameSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/gameSettings.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,14 +95,6 @@
       <workItem from="1706686689831" duration="7319000" />
       <workItem from="1706772898074" duration="4171000" />
       <workItem from="1707224508893" duration="9846000" />
-<<<<<<< HEAD
-      <workItem from="1707311893882" duration="11892000" />
-      <workItem from="1707486140432" duration="7033000" />
-      <workItem from="1708523199049" duration="803000" />
-      <workItem from="1709646957877" duration="1257000" />
-      <workItem from="1710259647909" duration="1254000" />
-      <workItem from="1710335628134" duration="604000" />
-=======
       <workItem from="1707311893882" duration="12001000" />
       <workItem from="1707486365551" duration="3790000" />
       <workItem from="1707915235347" duration="8362000" />
@@ -114,8 +104,6 @@
       <workItem from="1709735127478" duration="8481000" />
       <workItem from="1709796887151" duration="4566000" />
       <workItem from="1710256031839" duration="5079000" />
-      <workItem from="1710335490575" duration="10822000" />
->>>>>>> e29006f1a36b1bc54f2990bc559588a8673b88e7
     </task>
     <servers />
   </component>
