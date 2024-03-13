@@ -1,6 +1,7 @@
 package Clustering;
 
 import ImageService.Tiles.MatchedTile;
+import NetworkService.Tuple;
 
 import java.util.ArrayList;
 
@@ -15,11 +16,15 @@ public class ClusterDetector {
 
         int i1, i2;
         double minDist;
+        int nbPoints = points.size();
+        double[] distances = new double[nbPoints - 1];
+        Clusters[] data = new Clusters[nbPoints -1];
 
-        while(clusters.size() > 5){
+        for(int k = 0; k < nbPoints -1; ++k){
             minDist = -1;
             i1 = 0;
             i2 = 0;
+
             for(int i = 0; i < clusters.size(); i++){
                 for(int y = i + 1; y < clusters.size(); y++){
                     double dist = dMin(clusters.get(i), clusters.get(y));
@@ -31,17 +36,42 @@ public class ClusterDetector {
                 }
             }
 
+            distances[k] = minDist;
             clusters.concat(i1, i2);
+            data[k] = (Clusters) clusters.clone();
         }
 
-        return clusters;
+
+        var jumpInfo = getMaxJump(distances);
+
+        if (jumpInfo.obj1 == -1){
+            return clusters;
+        }
+
+        return data[jumpInfo.obj1];
+    }
+
+    private Tuple<Integer, Double> getMaxJump(double[] distances){
+        double maxJump = -1;
+        int index = -1;
+
+        for(int i = 0; i < distances.length - 1; ++i){
+            double jump = distances[i + 1] - distances[i];
+
+            if(maxJump < jump) {
+                maxJump = jump;
+                index = i;
+            }
+        }
+
+        return new Tuple(index, maxJump);
     }
 
     private double dMin(Cluster l1, Cluster l2){
         double minDist = -1;
 
         for(int i = 0; i < l1.size(); ++i){
-            for(int y = 0 ;y < l2.size(); ++y){
+            for(int y = 0; y < l2.size(); ++y){
                 double dist = getDistanceBetween(l1.get(i), l2.get(y));
                 if(minDist != -1 && dist >= minDist) continue;
 

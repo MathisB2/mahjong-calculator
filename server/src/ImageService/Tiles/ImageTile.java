@@ -30,9 +30,12 @@ public class ImageTile extends ClusterPoint {
     public Mat getImg() {
         return img;
     }
+
     @Override
     public String toString() {
-        return this.toJSONObject().toString();
+        return "ImageTile{" +
+                "name='" + name + '\'' +
+                '}';
     }
 
     @Override

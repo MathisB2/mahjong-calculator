@@ -16,7 +16,6 @@ public class ScoreService {
             JSONObject jsonHand = new JSONObject(message);
             MahjongHand hand = new MahjongHand(jsonHand);
 
-            System.out.println(message);
             return settlement.getScoreOf(hand).toString();
         });
     }

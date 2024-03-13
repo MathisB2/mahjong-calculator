@@ -17,14 +17,15 @@ public class Mahjong extends AdditionScoreRule<MahjongHand> {
         var suite = new Suite();
         var pair = new Pair();
         boolean canBePair = true;
+        int validSlots = 0;
 
         for(var set : hand.getSets()){
             boolean isPair = canBePair && pair.isVerified(set);
 
             if(isPair) canBePair = false;
-            if(!(flush.isVerified(set) || suite.isVerified(set) || isPair)) return false;
+            if(flush.isVerified(set) || suite.isVerified(set) || isPair) ++validSlots;
         }
 
-        return true;
+        return validSlots >= 5;
     }
 }

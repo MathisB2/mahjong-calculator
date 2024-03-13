@@ -1,8 +1,10 @@
 package Tiles;
 
 public class SeasonTile extends BonusTile{
-    SeasonTile() {
+    String direction;
+    SeasonTile(String direction) {
         super(-1);
+        this.direction = direction;
     }
 
 }

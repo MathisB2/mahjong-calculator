@@ -11,6 +11,7 @@ public class Cluster extends ArrayList<ClusterPoint> {
         }
     }
 
+
     public JSONArray toJSONObject() {
         JSONArray obj = new JSONArray();
 
@@ -19,5 +20,14 @@ public class Cluster extends ArrayList<ClusterPoint> {
         }
 
         return obj;
+    }
+
+    @Override
+    public Object clone() {
+        Cluster cluster = new Cluster();
+        for(var point : this){
+            cluster.add((ClusterPoint) point.clone());
+        }
+        return cluster;
     }
 }

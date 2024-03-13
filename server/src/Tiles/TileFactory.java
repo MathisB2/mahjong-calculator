@@ -13,8 +13,8 @@ public class TileFactory {
             case "dot": return new DotTile(jsonTile.getInt("value"));
             case "dragon": return new DragonTile(jsonTile.getString("value"));
             case "wind": return new WindTile(jsonTile.getString("name"));
-            case "flower": return new FlowerTile();
-            default: return new SeasonTile();
+            case "flower": return new FlowerTile(jsonTile.getString("direction"));
+            default: return new SeasonTile(jsonTile.getString("direction"));
         }
     }
 }

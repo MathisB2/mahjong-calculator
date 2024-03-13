@@ -1,8 +1,10 @@
 package Tiles;
 
 public class FlowerTile extends BonusTile{
-    FlowerTile() {
+    String wind;
+    FlowerTile(String wind) {
         super(-1);
+        this.wind = wind;
     }
 
 }

@@ -5,25 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10df1254-a638-4d6f-8e7d-6860f993f786" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/Mahjong.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/GrandHandRules/FullPairHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/GrandHandRules/FullPairHand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/HandRules/DealHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/DealHand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/HandRules/HiddenHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/HiddenHand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/HandRules/PureHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/PureHand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/HandRules/SuiteHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/SuiteHand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/HandRules/WallHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/WallHand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/MahjongSettlement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/MahjongSettlement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/SetRules/Flush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/SetRules/Flush.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/SetRules/HiddenSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/SetRules/HiddenSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/SetRules/HonorSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/SetRules/HonorSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/SetRules/Mahjong.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/SetRules/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/SetRules/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/SetRules/Suite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/SetRules/Suite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Settlement/AdditionScoreRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settlement/AdditionScoreRule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Settlement/MultiplicationScoreRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settlement/MultiplicationScoreRule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Settlement/OverriderScoreRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settlement/OverriderScoreRule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Settlement/RuleSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settlement/RuleSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clustering/Cluster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clustering/Cluster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clustering/ClusterDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clustering/ClusterDetector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clustering/Clusters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clustering/Clusters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageService/Tiles/ImageTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/Tiles/ImageTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NetworkService/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NetworkService/Tuple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/HandRules/Mahjong.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/Mahjong.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/ScoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/ScoreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tiles/FlowerTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiles/FlowerTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tiles/SeasonTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiles/SeasonTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tiles/TileFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiles/TileFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +49,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "Z:/Documents/SAE/html/client",
+    "last_opened_file_path": "Z:/Documents/SAE/main_branch/client",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -181,7 +173,8 @@
       <workItem from="1708523135211" duration="1766000" />
       <workItem from="1709646890085" duration="9315000" />
       <workItem from="1710147182648" duration="770000" />
-      <workItem from="1710255613425" duration="5424000" />
+      <workItem from="1710255613425" duration="5454000" />
+      <workItem from="1710335395561" duration="8971000" />
     </task>
     <servers />
   </component>
@@ -198,17 +191,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ScoreService/GrandHandRules/FullPairHand.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
