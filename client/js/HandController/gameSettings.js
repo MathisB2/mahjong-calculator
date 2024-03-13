@@ -81,7 +81,7 @@ class gameSettings{
 
     buildSetting(key, text){
         let setting = new SettingItem(key, text, false);
-        this.otherSettings.push(setting);
+        this.settings.push(setting);
 
         setting.buildObject(this.HTMLOtherSettingsContainer);
     }
