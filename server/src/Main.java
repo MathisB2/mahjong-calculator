@@ -12,7 +12,9 @@ public class Main {
 
         ScoreService.load();
         ImageService.load();
-        DataService.load();
-        UsersService.load();
+
+        // -- Data base connection modules (not working) -- //
+        // DataService.load();
+        // UsersService.load();
     }
 }

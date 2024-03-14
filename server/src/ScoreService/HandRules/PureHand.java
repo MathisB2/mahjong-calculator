@@ -3,6 +3,8 @@ package ScoreService.HandRules;
 import ScoreService.MahjongHand;
 import Settlement.IRule;
 import Settlement.MultiplicationScoreRule;
+import Tiles.DragonTile;
+import Tiles.WindTile;
 
 public class PureHand extends MultiplicationScoreRule<MahjongHand> {
     public PureHand(int multiplier) {
@@ -19,7 +21,9 @@ public class PureHand extends MultiplicationScoreRule<MahjongHand> {
 
         for(var set : sets){
             for(var tile : set.getTiles()){
-                if(tile.getClass() !=refTileType) return false;
+                if(!(tile.getClass() == refTileType
+                        || tile instanceof WindTile
+                        || tile instanceof DragonTile)) return false;
             }
         }
 

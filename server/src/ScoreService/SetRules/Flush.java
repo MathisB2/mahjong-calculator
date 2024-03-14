@@ -24,4 +24,8 @@ public class Flush extends AdditionScoreRule<MahjongSet> {
 
         return true;
     }
+
+    public boolean isVerifiedWithType(MahjongSet set, Class<? extends Tile> tileClass){
+        return isVerified(set) && set.getTiles().get(0).getClass() == tileClass;
+    }
 }

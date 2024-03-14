@@ -40,9 +40,19 @@ public class MahjongSettlement {
         mahjongRule.insertRule(new SuiteHand(10));
         mahjongRule.insertRule(new HiddenHand(120));
         mahjongRule.insertRule(new DealHand(100));
-        mahjongRule.insertRule(new WallHand(2));
+        mahjongRule.insertRule(new NaturalMahjong(2));
 
         mahjongHandSettlement.insertRule(mahjongRule);
+        mahjongHandSettlement.insertRule(new DragonPungRule(2));
+        mahjongHandSettlement.insertRule(new HisFlowerOrSeasonRule(2));
+        mahjongHandSettlement.insertRule(new FlowerRule(2));
+        mahjongHandSettlement.insertRule(new PungOfGameWindRule(2));
+        mahjongHandSettlement.insertRule(new PungOfPlayerWindRule(2));
+        mahjongHandSettlement.insertRule(new PureHand(2));
+        mahjongHandSettlement.insertRule(new HonorHand(2));
+
+        mahjongHandSettlement.insertRule(new NaturalHand(4));
+        mahjongHandSettlement.insertRule(new FourFlowersOrSeasonsRule(4));
     }
 
     private void loadGrandHandSettlement(){
@@ -54,10 +64,10 @@ public class MahjongSettlement {
         int score = grandHandSettlement.getScoreOf(hand);
         if(score > 0) return score;
 
-        score = mahjongHandSettlement.getScoreOf(hand);
         for(var set : hand.getSets()){
             score += mahjongSetSettlement.getScoreOf(set);
         }
+        score = mahjongHandSettlement.modifyScore(hand, score);
 
         return score;
     }

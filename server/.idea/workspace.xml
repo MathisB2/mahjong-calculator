@@ -5,17 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10df1254-a638-4d6f-8e7d-6860f993f786" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/DragonPungRule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/FlowerRule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/FourFlowersOrSeasonsRule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/HisFlowerOrSeasonRule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/HonorHand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/NaturalMahjong.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/PungOfGameWindRule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/PungOfPlayerWindRule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ScoreService/SetRules/WindSet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clustering/Cluster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clustering/Cluster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clustering/ClusterDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clustering/ClusterDetector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clustering/Clusters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clustering/Clusters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService/Tiles/ImageTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService/Tiles/ImageTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NetworkService/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NetworkService/Tuple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/HandRules/Mahjong.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/Mahjong.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScoreService/ScoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/ScoreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/HandRules/PureHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/PureHand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/HandRules/WallHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/HandRules/NaturalHand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/MahjongHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/MahjongHand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/MahjongSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/MahjongSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/MahjongSettlement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/MahjongSettlement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScoreService/SetRules/Flush.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScoreService/SetRules/Flush.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settlement/AdditionScoreRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settlement/AdditionScoreRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settlement/Settlement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settlement/Settlement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tiles/BonusTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiles/BonusTile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tiles/FlowerTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiles/FlowerTile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tiles/SeasonTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiles/SeasonTile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tiles/TileFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiles/TileFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tiles/WindTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tiles/WindTile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +62,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "Z:/Documents/SAE/main_branch/client",
+    "last_opened_file_path": "Z:/Documents/SAE/main_branch/server",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -174,7 +187,8 @@
       <workItem from="1709646890085" duration="9315000" />
       <workItem from="1710147182648" duration="770000" />
       <workItem from="1710255613425" duration="5454000" />
-      <workItem from="1710335395561" duration="8971000" />
+      <workItem from="1710335395561" duration="11175000" />
+      <workItem from="1710403261799" duration="5691000" />
     </task>
     <servers />
   </component>

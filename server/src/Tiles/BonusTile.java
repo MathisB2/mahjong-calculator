@@ -1,9 +1,16 @@
 package Tiles;
 
 public class BonusTile extends Tile{
-    public BonusTile(int value) {
-        super(value);
+    String windDirection;
+    public BonusTile(String windDirection) {
+        super(-1);
+        this.windDirection = windDirection;
     }
+
+    public String getWindDirection() {
+        return windDirection;
+    }
+
     @Override
     public boolean isHonor() {
         return false;

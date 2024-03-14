@@ -1,9 +1,6 @@
 package ScoreService;
 
-import Tiles.FlowerTile;
-import Tiles.Tile;
-import Tiles.TileFactory;
-import Tiles.WindTile;
+import Tiles.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,12 +12,14 @@ public class MahjongHand {
     private WindTile gameWind;
     ArrayList<String> settings;
     private ArrayList<FlowerTile> flowers;
+    private ArrayList<SeasonTile> seasons;
 
     public MahjongHand(JSONObject hand) throws JSONException {
         this();
 
         JSONArray jsonSets = hand.getJSONArray("slotList");
         JSONArray jsonFlowers = hand.getJSONArray("playerFlowers");
+        JSONArray jsonSeasons = hand.getJSONArray("playerSeasons");
         JSONArray jsonSettings = hand.getJSONArray("settings");
         TileFactory factory = new TileFactory();
 
@@ -30,6 +29,10 @@ public class MahjongHand {
         for(int i = 0; i < jsonFlowers.length(); ++i){
             FlowerTile flower = (FlowerTile) factory.get(jsonFlowers.getJSONObject(i));
             this.flowers.add(flower);
+        }
+        for(int i = 0; i < jsonSeasons.length(); ++i){
+            SeasonTile season = (SeasonTile) factory.get(jsonSeasons.getJSONObject(i));
+            this.seasons.add(season);
         }
 
         for (int i = 0; i < jsonSettings.length(); ++i){
@@ -86,5 +89,27 @@ public class MahjongHand {
 
     public boolean containsSetting(String settingName){
         return this.settings.contains(settingName);
+    }
+    public ArrayList<FlowerTile> getFlowers() {
+        return flowers;
+    }
+
+    public WindTile getPlayerWind() {
+        return playerWind;
+    }
+
+    public WindTile getGameWind() {
+        return gameWind;
+    }
+
+    public ArrayList<SeasonTile> getSeasons() {
+        return seasons;
+    }
+
+    public ArrayList<BonusTile> getBonuses(){
+        ArrayList<BonusTile> bonuses = (ArrayList<BonusTile>) this.seasons.clone();
+
+        bonuses.addAll(this.flowers);
+        return bonuses;
     }
 }

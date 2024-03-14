@@ -2,11 +2,11 @@ package ScoreService.HandRules;
 
 import ScoreService.MahjongHand;
 import Settlement.AdditionScoreRule;
-import Settlement.IRule;
+import Settlement.MultiplicationScoreRule;
 
-public class WallHand extends AdditionScoreRule<MahjongHand> {
-    public WallHand(int points) {
-        super(points);
+public class NaturalHand extends MultiplicationScoreRule<MahjongHand> {
+    public NaturalHand(int multiplier) {
+        super(multiplier);
     }
 
     @Override

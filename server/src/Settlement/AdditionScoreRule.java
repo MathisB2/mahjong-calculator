@@ -1,7 +1,7 @@
 package Settlement;
 
 public abstract class AdditionScoreRule<T> extends RuleSet<T> implements ScoreRule<T> {
-    int adder;
+    protected int adder;
     public AdditionScoreRule(int adder){
         this.adder = adder;
     }
