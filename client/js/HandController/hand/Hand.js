@@ -22,28 +22,31 @@ export class Hand{
 
     #initSlots(){
         this.slotList = [];
-        for(let i = 0; i < 5; ++i){
+        for(let i = 0; i < 1; ++i){
             this.#appendSlot(i);
         }
     }
 
     #appendSlot(slotId) {
         let slot = new Slot();
-
         this.htmlHand.appendChild(slot.getHtmlObject());
+        this.#setupSlotAction(slot,slotId)
+        this.slotList.push(slot);
+    }
 
+    #setupSlotAction(slot, index){
+        slot.clicked.clear();
         slot.clicked.connect(() => {
-            this.#setActiveSlot(slotId);
+            this.#setActiveSlot(index);
             slot.scrollIntoView();
             this.slotClicked.fire();
         })
 
+        slot.changed.clear();
         slot.changed.connect(() => {
-            this.#setActiveSlot(slotId);
+            this.#setActiveSlot(index);
             this.#updateSlots();
         })
-
-        this.slotList.push(slot);
     }
 
     #updateSlots(){
@@ -55,16 +58,24 @@ export class Hand{
             else ++i;
         }
         this.#appendSlot(i);
+        this.#setActiveSlot(this.activeSlotId);
         console.log(this.slotList)
     }
 
     #removeSlot(slot) {
+
         let index = this.#getSlotIndexOf(slot);
+        console.log("removed ",index)
 
         this.htmlHand.removeChild(slot.getHtmlObject());
         slot.destroy();
         this.slotList.splice(index, 1)
-        // this.#setActiveSlot(0)
+
+
+        while (index < this.slotList.length){
+            this.#setupSlotAction(this.slotList[index],index);
+            index++;
+        }
     }
 
     #getSlotIndexOf(slot){

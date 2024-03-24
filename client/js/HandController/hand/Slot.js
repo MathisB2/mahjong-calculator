@@ -10,7 +10,6 @@ export class Slot{
     #eye;
     clicked;
     changed;
-
     constructor(capacity = 4) {
         this.#tileList = [];
         this.#capacity = capacity;
