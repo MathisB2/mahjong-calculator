@@ -25,6 +25,7 @@ export class Hand{
         for(let i = 0; i < 1; ++i){
             this.#appendSlot(i);
         }
+        this.#setActiveSlot(0);
     }
 
     #appendSlot(slotId) {

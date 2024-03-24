@@ -59,7 +59,6 @@ class TileController {
 
 
     importTiles(clusters){
-        //TODO: refactor import to work with dynamic slots
         this.#reset();
         this.hand.windUpActiveSlot();
 
@@ -79,7 +78,6 @@ class TileController {
     }
 
     #reset(){
-        //TODO: update clear function to work with dynamic slot update
         this.hand.clear();
         this.drawer.restore();
     }
