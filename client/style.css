@@ -340,6 +340,7 @@ main.calculator{
 .slot{
     display: flex;
     margin: 24px;
+    transition: .4s ease-out;
 }
 
 
@@ -358,7 +359,6 @@ main.calculator{
     align-items: center;
     justify-content: center;
     user-select: none;
-
 }
 
 .slot div img{
@@ -594,6 +594,7 @@ main.calculator{
 
     background-size: cover;
     background-position: center;
+    background-color: var(--backgound);
 }
 
 

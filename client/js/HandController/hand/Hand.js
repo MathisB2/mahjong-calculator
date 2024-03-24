@@ -25,13 +25,14 @@ export class Hand{
         for(let i = 0; i < 1; ++i){
             this.#appendSlot(i);
         }
+
         this.#setActiveSlot(0);
     }
 
     #appendSlot(slotId) {
         let slot = new Slot();
         this.htmlHand.appendChild(slot.getHtmlObject());
-        this.#setupSlotAction(slot,slotId)
+        this.#setupSlotAction(slot,slotId, false)
         this.slotList.push(slot);
     }
 
@@ -50,28 +51,22 @@ export class Hand{
         })
     }
 
-    #updateSlots(){
+    #updateSlots() {
         let i = 0;
-
-        while (i < this.slotList.length){
+        while (i < this.slotList.length) {
             let slot = this.slotList[i];
-            if(slot.isEmpty()) this.#removeSlot(slot);
+            if (slot.isEmpty()) this.#removeSlot(slot);
             else ++i;
         }
         this.#appendSlot(i);
         this.#setActiveSlot(this.activeSlotId);
-        console.log(this.slotList)
     }
 
     #removeSlot(slot) {
-
         let index = this.#getSlotIndexOf(slot);
-        console.log("removed ",index)
-
-        this.htmlHand.removeChild(slot.getHtmlObject());
+        slot.removeHtml()
         slot.destroy();
         this.slotList.splice(index, 1)
-
 
         while (index < this.slotList.length){
             this.#setupSlotAction(this.slotList[index],index);

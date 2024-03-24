@@ -1,7 +1,6 @@
 import {EmptyTile} from "./EmptyTile.js";
 import {Signal} from "../../Signal/Signal.js";
 import {Eye} from "./Eye.js";
-
 export class Slot{
     #tileList;
     #htmlElement;
@@ -131,5 +130,15 @@ export class Slot{
         this.clear();
         this.clicked.clear();
         this.changed.clear();
+    }
+
+    removeHtml(){
+        // this.#htmlElement.style.height="0";
+        // this.#htmlElement.style.marginTop="0";
+        // this.#htmlElement.style.marginBottom="0";
+        // this.#htmlElement.style.transform="scaleY(0)"
+
+        this.#htmlElement.remove();
+
     }
 }
