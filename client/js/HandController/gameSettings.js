@@ -1,6 +1,5 @@
 import {NetworkController} from "../NetworkController/NetworkController.js";
 import {storageConfig, networkConfig} from "../config.js";
-import {Tile} from "./hand/Tile.js";
 import {SettingItem} from "./settingItem.js";
 import {BonusTile} from "./hand/BonusTile.js";
 import {tileDirection, tileType} from "./hand/tileDirection.js";

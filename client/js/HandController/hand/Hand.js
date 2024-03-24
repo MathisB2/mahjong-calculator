@@ -10,9 +10,6 @@ export class Hand{
     htmlHand;
 
     slotClicked;
-
-    #defaultSlotCapacity = 4;
-
     constructor(htmlHand) {
         this.tileClicked = new Signal();
         this.slotClicked = new Signal();
@@ -25,27 +22,57 @@ export class Hand{
 
     #initSlots(){
         this.slotList = [];
-        for(let i = 0; i < 7; ++i){
-            let slot = new Slot(this.#defaultSlotCapacity);
-
-            this.#appendSlot(slot, i);
-            this.slotList[i] = slot;
+        for(let i = 0; i < 5; ++i){
+            this.#appendSlot(i);
         }
-
-        this.#setActiveSlot(0);
     }
 
-    #appendSlot(slot, slotId) {
+    #appendSlot(slotId) {
+        let slot = new Slot();
+
         this.htmlHand.appendChild(slot.getHtmlObject());
 
         slot.clicked.connect(() => {
             this.#setActiveSlot(slotId);
+            slot.scrollIntoView();
             this.slotClicked.fire();
         })
 
         slot.changed.connect(() => {
             this.#setActiveSlot(slotId);
+            this.#updateSlots();
         })
+
+        this.slotList.push(slot);
+    }
+
+    #updateSlots(){
+        let i = 0;
+
+        while (i < this.slotList.length){
+            let slot = this.slotList[i];
+            if(slot.isEmpty()) this.#removeSlot(slot);
+            else ++i;
+        }
+        this.#appendSlot(i);
+        console.log(this.slotList)
+    }
+
+    #removeSlot(slot) {
+        let index = this.#getSlotIndexOf(slot);
+
+        this.htmlHand.removeChild(slot.getHtmlObject());
+        slot.destroy();
+        this.slotList.splice(index, 1)
+        // this.#setActiveSlot(0)
+    }
+
+    #getSlotIndexOf(slot){
+        for(let i = 0; i < this.slotList.length; ++i){
+            if(this.slotList[i] == slot) return i;
+        }
+
+        console.error("slot does not exist !!!!!")
     }
 
     hideCurrentSlot(hidden){
@@ -80,7 +107,6 @@ export class Hand{
         tile.getHtmlObject().addEventListener("click", (() => {
             this.tileClicked.fire(tile);
         }).bind(this));
-        // this.#updateSlots();
     }
 
     moveToNextAvailableActiveSlot(){
@@ -123,14 +149,5 @@ export class Hand{
         this.#initSlots();
     }
 
-    /*
-    #updateSlots(){
-        let slotCount = this.slotList.length;
-        let lastSlot = this.slotList[slotCount-1];
-        if(!lastSlot.isEmpty()){
-            let slot = new Slot(this.#defaultSlotCapacity);
-            console.log(slotCount)
-            this.#appendSlot(slot, slotCount);
-        }
-    }*/
+
 }

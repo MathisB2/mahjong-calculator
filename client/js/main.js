@@ -17,7 +17,6 @@ async function main() {
     startLogin().then();
     await startHeader();
 
-
     TileManager.load();
 }
 main().then();

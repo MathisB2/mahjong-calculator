@@ -43,6 +43,10 @@ export class Slot{
         this.#eye.hide(hidden);
     }
 
+    scrollIntoView(){
+        this.#htmlElement.scrollIntoView({behavior:"smooth"});
+    }
+
     insert(tile){
         if(this.isFull() || this.has(tile)) return;
 
@@ -122,5 +126,11 @@ export class Slot{
         for (const tile of this.#tileList){
             tile.remove();
         }
+    }
+
+    destroy(){
+        this.clear();
+        this.clicked.clear();
+        this.changed.clear();
     }
 }
