@@ -5,11 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fde5e0a-dc61-4d8b-91c5-05ac54431315" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/js/HandController/Tiles/CommonTile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/HandController/Tiles/DragonTile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/HandController/Tiles/TileFactory.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/HandController/Tiles/TileType.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/HandController/Tiles/TilesConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/HandController/Tiles/WindTile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/HandController/hand/Hand.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/hand/Hand.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/HandController/hand/Slot.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/hand/Slot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/ImageController/popup/Popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ImageController/popup/Popup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/TileController.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/TileController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/TileStack.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/Tiles/TileStack.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/drawer/drawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/Drawer/Drawer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/drawer/tileDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/Drawer/TileDrawer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/gameSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/gameSettings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/hand/BonusTile.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/Tiles/BonusTile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/hand/EmptyTile.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/Hand/EmptyTile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/hand/Eye.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/Hand/Eye.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/hand/Hand.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/Hand/Hand.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/hand/Slot.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/Hand/Slot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/hand/Tile.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/Tiles/Tile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/hand/tileDirection.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/Tiles/TileDirection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/HandController/settingItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/HandController/SettingItem.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +64,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;html&quot;,
-    &quot;last_opened_file_path&quot;: &quot;Z:/Documents/SAE/html/client&quot;,
+    &quot;last_opened_file_path&quot;: &quot;Z:/Documents/2A/S3/SAE/code/html/client&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -60,11 +75,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="Z:\Documents\2A\S3\SAE\code\html\client\js\HandController\Tiles" />
       <recent name="C:\Users\Mathis\Desktop\sae\html\client" />
       <recent name="C:\Users\Mathis\Desktop\sae\html\client\js\GlobalHtmlObjects\HtmlObjects" />
       <recent name="C:\Users\Mathis\Desktop\sae\html\client\js\ImageController\popup" />
       <recent name="C:\Users\Mathis\Desktop\sae\html\client\img\videos" />
-      <recent name="Z:\Documents\2A\S3\SAE\code\main\client\js\HandController" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -107,6 +122,8 @@
       <workItem from="1709735127478" duration="8481000" />
       <workItem from="1709796887151" duration="4566000" />
       <workItem from="1710256031839" duration="5079000" />
+      <workItem from="1711439710260" duration="4864000" />
+      <workItem from="1711463125669" duration="6423000" />
     </task>
     <servers />
   </component>

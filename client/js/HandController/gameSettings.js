@@ -1,8 +1,9 @@
 import {NetworkController} from "../NetworkController/NetworkController.js";
 import {storageConfig, networkConfig} from "../config.js";
-import {SettingItem} from "./settingItem.js";
-import {BonusTile} from "./hand/BonusTile.js";
-import {tileDirection, tileType} from "./hand/tileDirection.js";
+import {SettingItem} from "./SettingItem.js";
+import {BonusTile} from "./Tiles/BonusTile.js";
+import {TileDirection} from "./Tiles/TileDirection.js";
+import {TileType} from "./Tiles/TileType.js";
 
 const backButton = document.getElementById("settingsBackButton");
 const sendButton = document.getElementById("settingsSendButton");
@@ -100,11 +101,11 @@ class gameSettings{
             if (element.checked) checked = element.id;
         }
 
-        let direction = tileDirection.default;
+        let direction = TileDirection.EAST;
         if(checked != null)  direction = checked.replace("game","").toLowerCase();
 
         console.log(direction)
-        let tile = new BonusTile(tileType.wind, direction);
+        let tile = new BonusTile(TileType.wind, direction);
         return tile;
     }
 
@@ -113,10 +114,10 @@ class gameSettings{
         for (let element of this.HTMLPlayerWindInputs) {
             if (element.checked) checked = element.id;
         }
-        let direction = tileDirection.default;
+        let direction = TileDirection.EAST;
         if(checked != null)  direction = checked.replace("player","").toLowerCase();
 
-        let tile = new BonusTile(tileType.wind, direction);
+        let tile = new BonusTile(TileType.wind, direction);
         return tile;
     }
 
@@ -124,7 +125,7 @@ class gameSettings{
         let flowers = [];
         for (let element of this.HTMLPlayerFlowersInputs) {
             if (element.checked)
-                flowers.push(new BonusTile(tileType.flower, element.id.replace("flower","").toLowerCase()));
+                flowers.push(new BonusTile(TileType.flower, element.id.replace("flower","").toLowerCase()));
         }
         return flowers;
     }
@@ -133,7 +134,7 @@ class gameSettings{
         let seasons = [];
         for (let element of this.HTMLPlayerSeasonsInputs) {
             if (element.checked)
-                seasons.push(new BonusTile(tileType.season, element.id.replace("season","").toLowerCase()));
+                seasons.push(new BonusTile(TileType.season, element.id.replace("season","").toLowerCase()));
         }
         return seasons;
     }

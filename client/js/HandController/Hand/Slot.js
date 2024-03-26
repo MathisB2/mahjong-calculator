@@ -7,13 +7,16 @@ export class Slot{
     #capacity;
     #emptyTile;
     #eye;
+
     clicked;
     changed;
+
     constructor(capacity = 4) {
         this.#tileList = [];
         this.#capacity = capacity;
         this.#emptyTile = new EmptyTile();
         this.#eye = new Eye();
+
         this.clicked = new Signal();
         this.changed = new Signal();
 
@@ -25,8 +28,8 @@ export class Slot{
     #createHtmlElement(){
         let element = document.createElement("section");
         element.setAttribute("class", "slot");
-        this.#htmlElement = element;
 
+        this.#htmlElement = element;
     }
 
     #connect(){
@@ -69,7 +72,9 @@ export class Slot{
     }
 
     #update(){
+        console.log(this.#tileList)
         let emptyElement = this.#emptyTile.getHtmlObject();
+
         if(this.isFull()) {
             this.#htmlElement.removeChild(emptyElement);
             emptyElement.removeEventListener("click", this.clicked.fire.bind(this.clicked));
@@ -113,8 +118,14 @@ export class Slot{
     }
 
     toJSON(){
+        let list = [];
+
+        for(let tile of this.#tileList){
+            list.push(tile.toJSON());
+        }
+
         return {
-            tileList: this.#tileList,
+            tileList: list,
             hidden: this.#eye.isHidden()
         };
     }
@@ -133,12 +144,6 @@ export class Slot{
     }
 
     removeHtml(){
-        // this.#htmlElement.style.height="0";
-        // this.#htmlElement.style.marginTop="0";
-        // this.#htmlElement.style.marginBottom="0";
-        // this.#htmlElement.style.transform="scaleY(0)"
-
         this.#htmlElement.remove();
-
     }
 }

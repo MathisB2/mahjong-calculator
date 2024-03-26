@@ -1,8 +1,9 @@
 import {ImageManager} from "../ImageController/ImageController.js";
-import {Hand} from "./hand/Hand.js";
-import {TileDrawer} from "./drawer/tileDrawer.js";
-import {Tile} from "./hand/Tile.js";
+import {Hand} from "./Hand/Hand.js";
+import {TileDrawer} from "./Drawer/TileDrawer.js";
 import {storageConfig} from "../config.js";
+import TileFactory from "./Tiles/TileFactory.js";
+import {getTileConfig} from "./Tiles/TilesConfig.js";
 const drawer = document.querySelector("#drawer");
 const hand = document.querySelector("#hand");
 
@@ -19,13 +20,11 @@ class TileController {
             this.importTiles(JSON.parse(savedData));
         }
 
-
         this.drawer.updateBounds();
 
         this.#connectHand();
         this.#connectDrawer();
         this.#connectTrash();
-
     }
 
     #connectHand(){
@@ -66,7 +65,7 @@ class TileController {
             let tileList = cluster.tileList == null ? cluster : cluster.tileList;
 
             for (let dataTile of  tileList) {
-                let tile = new Tile(dataTile.name);
+                let tile = TileFactory.get(getTileConfig(dataTile.name));
                 if(this.drawer.isEmptyOf(dataTile.name) || !this.hand.canInsert()) continue;
 
                 this.hand.insert(tile);

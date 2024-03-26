@@ -153,6 +153,7 @@ export class Hand{
 
     clear(){
         this.htmlHand.innerHTML="";
+        this.#setActiveSlot(0);
         this.#initSlots();
     }
 
