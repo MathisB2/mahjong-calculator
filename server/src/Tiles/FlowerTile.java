@@ -1,7 +1,7 @@
 package Tiles;
 
-public class FlowerTile extends Tile{
-    FlowerTile() {
-        super(-1);
+public class FlowerTile extends BonusTile{
+    public FlowerTile(String windDirection) {
+        super(windDirection);
     }
 }

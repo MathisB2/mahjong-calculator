@@ -1,6 +1,6 @@
 package Tiles;
 
-public class CharacterTile extends Tile{
+public class CharacterTile extends CommonTile{
     CharacterTile(int value) {
         super(value);
     }

@@ -1,10 +1,6 @@
 package Clustering;
 
-import ImageService.ImageTile;
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.opencv.core.Point;
 
 import java.util.ArrayList;
 
@@ -15,6 +11,7 @@ public class Cluster extends ArrayList<ClusterPoint> {
         }
     }
 
+
     public JSONArray toJSONObject() {
         JSONArray obj = new JSONArray();
 
@@ -23,5 +20,14 @@ public class Cluster extends ArrayList<ClusterPoint> {
         }
 
         return obj;
+    }
+
+    @Override
+    public Object clone() {
+        Cluster cluster = new Cluster();
+        for(var point : this){
+            cluster.add((ClusterPoint) point.clone());
+        }
+        return cluster;
     }
 }

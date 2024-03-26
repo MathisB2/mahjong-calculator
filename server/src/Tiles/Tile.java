@@ -15,6 +15,7 @@ public abstract class Tile {
         return value == tile.value && tile.getClass() == this.getClass();
     }
 
+    public abstract boolean isHonor();
     @Override
     public String toString() {
         return "Tile{" +

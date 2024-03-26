@@ -24,4 +24,15 @@ public class Clusters extends ArrayList<Cluster> {
 
         return obj;
     }
+
+    @Override
+    public Object clone() {
+        Clusters clusters = new Clusters();
+
+        for(var cluster : this){
+            clusters.add((Cluster) cluster.clone());
+        }
+
+        return clusters;
+    }
 }

@@ -1,6 +1,6 @@
 package Tiles;
 
-public class BambooTile extends Tile{
+public class BambooTile extends CommonTile{
     BambooTile(int value) {
         super(value);
     }

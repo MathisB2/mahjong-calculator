@@ -43,7 +43,9 @@ public class MahjongSet {
     public boolean isHidden(){
         return this.hidden;
     }
-
+    public int size(){
+        return this.tiles.size();
+    }
     public void removeTile(Tile tile){
         assert this.hasTile(tile) : "can't remove non-existent tile";
         this.tiles.remove(tile);

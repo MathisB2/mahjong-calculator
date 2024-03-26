@@ -1,7 +1,7 @@
 package ImageService;
 
-import ImageService.Tiles.DataSet;
 import ImageService.Tiles.ExtractedTile;
+import ImageService.Tiles.ImageTile;
 import ImageService.Tiles.MatchedTile;
 import org.opencv.core.*;
 import org.opencv.core.Point;

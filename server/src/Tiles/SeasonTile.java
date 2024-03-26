@@ -1,7 +1,7 @@
 package Tiles;
 
-public class SeasonTile extends Tile{
-    SeasonTile() {
-        super(-1);
+public class SeasonTile extends BonusTile{
+    public SeasonTile(String windDirection) {
+        super(windDirection);
     }
 }

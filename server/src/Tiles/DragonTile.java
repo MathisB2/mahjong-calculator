@@ -6,4 +6,9 @@ public class DragonTile extends Tile{
         super(-1);
         this.color = color;
     }
+
+    @Override
+    public boolean isHonor() {
+        return true;
+    }
 }

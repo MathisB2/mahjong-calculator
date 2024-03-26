@@ -11,10 +11,10 @@ public class TileFactory {
             case "bamboo": return new BambooTile(jsonTile.getInt("value"));
             case "character": return new CharacterTile(jsonTile.getInt("value"));
             case "dot": return new DotTile(jsonTile.getInt("value"));
-            case "dragon": return new DragonTile(jsonTile.getString("value"));
-            case "wind": return new WindTile(jsonTile.getString("name"));
-            case "flower": return new FlowerTile();
-            default: return new SeasonTile();
+            case "dragon": return new DragonTile(jsonTile.getString("color"));
+            case "wind": return new WindTile(jsonTile.getString("direction"));
+            case "flower": return new FlowerTile(jsonTile.getString("direction"));
+            default: return new SeasonTile(jsonTile.getString("direction"));
         }
     }
 }

@@ -1,7 +1,6 @@
 package ImageService.Tiles;
 
 import ImageService.ImageEncoder;
-import ImageService.ImageTile;
 import org.json.JSONObject;
 import org.opencv.core.Mat;
 
