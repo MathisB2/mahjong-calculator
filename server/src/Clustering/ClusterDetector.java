@@ -17,6 +17,8 @@ public class ClusterDetector {
         int i1, i2;
         double minDist;
         int nbPoints = points.size();
+        if(nbPoints <= 1) return clusters;
+
         double[] distances = new double[nbPoints - 1];
         Clusters[] data = new Clusters[nbPoints -1];
 

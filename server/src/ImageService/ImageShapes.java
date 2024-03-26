@@ -131,6 +131,6 @@ public class ImageShapes {
         for(int i = 0; i < this.shapes.size(); ++i){
             Imgproc.drawContours(imgCloned, shapes, i, color);
         }
-//        (new TilesView()).showImage(imgCloned);
+        (new TilesView()).showImage(imgCloned);
     }
 }

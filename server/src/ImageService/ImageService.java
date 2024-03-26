@@ -33,8 +33,8 @@ public class ImageService {
 
             var matchedTiles = detector.getMatchedTilesOn(image);
 
-//            TilesView view = new TilesView();
-//            view.showMatches(matchedTiles);
+            TilesView view = new TilesView();
+            view.showMatches(matchedTiles);
 
             Clusters clusters = clusterDetector.getClustersFrom(matchedTiles);
             return clusters.toJSONObject().toString();

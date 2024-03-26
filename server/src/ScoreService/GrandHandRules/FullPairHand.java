@@ -17,7 +17,7 @@ public class FullPairHand extends OverriderScoreRule<MahjongHand> {
         Pair pairRule = new Pair();
 
         for(var set : sets){
-            if(!pairRule.isVerified(set))return false;
+            if(!pairRule.isVerified(set)) return false;
         }
 
         return true;

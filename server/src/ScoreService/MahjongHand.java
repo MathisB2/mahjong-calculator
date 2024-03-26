@@ -41,7 +41,10 @@ public class MahjongHand {
 
         for(int i = 0; i < jsonSets.length(); ++i){
             JSONObject jsonSet = jsonSets.getJSONObject(i);
-            this.addSet(new MahjongSet(jsonSet));
+            var slot = new MahjongSet(jsonSet);
+            if(slot.size() == 0) continue;
+
+            this.addSet(slot);
         }
     }
     public MahjongHand(WindTile playerWind, WindTile gameWind){
@@ -54,6 +57,7 @@ public class MahjongHand {
         this.sets = new ArrayList<>(5);
         this.settings = new ArrayList<>();
         this.flowers = new ArrayList<>();
+        this.seasons = new ArrayList<>();
     }
     public ArrayList<MahjongSet> getSets(){
         return sets;
