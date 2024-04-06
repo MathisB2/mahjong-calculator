@@ -1,5 +1,8 @@
 package ImageService;
 
+import Clustering.Cluster;
+import Clustering.ClusterPoint;
+import Clustering.Clusters;
 import ImageService.Tiles.ImageTile;
 import ImageService.Tiles.MatchedTile;
 import org.opencv.core.*;
@@ -43,6 +46,21 @@ public class TilesView {
         int width = 1600;
         this.showImage(rescaleImg(stackImages(binds), width));
     }
+
+    public void showClusters(Mat image, Clusters clusters){
+        Mat imgClusters= image.clone();
+        int count=0;
+        for (Cluster c:clusters){
+            count++;
+            for(ClusterPoint p:c){
+                Imgproc.putText(imgClusters, String.valueOf(count), new Point(p.x,p.y), Core.SORT_DESCENDING, 2, new Scalar(255, 255, 255), 8);
+                Imgproc.putText(imgClusters, String.valueOf(count), new Point(p.x,p.y), Core.SORT_DESCENDING, 2, new Scalar(0, 0, 255), 4);
+            }
+        }
+        this.showImage(imgClusters);
+    }
+
+
     public void showImage(Mat imageMat) {
         JFrame jf = new JFrame();
 
