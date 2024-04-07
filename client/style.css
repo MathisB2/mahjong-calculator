@@ -1499,3 +1499,17 @@ main.gameRules{
     text-align: center;
     color: var(--mainColor);
 }
+
+
+.close-button{
+    color: var(--textColor);
+    text-align: center;
+    --boxSize:24px;
+    width: var(--boxSize);
+    height: var(--boxSize);
+    line-height: var(--boxSize);
+    margin-left: auto;
+    font-size: 32px;
+    transform: translate(16px, -16px);
+    cursor: pointer;
+}
