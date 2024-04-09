@@ -1,6 +1,9 @@
 import {NetworkController} from "../NetworkController/NetworkController.js";
 import {storageConfig, networkConfig} from "../config.js";
-import {Tile} from "./Tile.js";
+import {SettingItem} from "./SettingItem.js";
+import {BonusTile} from "./Tiles/BonusTile.js";
+import {TileDirection} from "./Tiles/TileDirection.js";
+import {TileType} from "./Tiles/TileType.js";
 
 const backButton = document.getElementById("settingsBackButton");
 const sendButton = document.getElementById("settingsSendButton");
@@ -9,222 +12,182 @@ const gameWindInputs = document.getElementsByName("gameWind");
 const playerWindInputs = document.getElementsByName("playerWind");
 const playerFlowersInputs = document.getElementsByName("playerFlowers");
 const playerSeasonsInputs = document.getElementsByName("playerSeasons");
+const otherSettingsSection = document.getElementById("otherSettings");
 
 let settings;
 let scoreNet;
 
 class gameSettings{
-    gameWind="gameNorth";
-    playerWind="playerNorth";
-    playerFlowers=[];
-    playerSeasons=[];
-
     HTMLGameWindInputs;
     HTMLPlayerWindInputs;
     HTMLPlayerFlowersInputs;
     HTMLPlayerSeasonsInputs;
+    HTMLOtherSettingsContainer;
 
-    constructor(gameWindFormName,playerWindInputs,playerFlowersInputs,playerSeasonsInputs) {
+    settings;
+    #savedSettings
+
+    constructor(gameWindFormName,playerWindInputs,playerFlowersInputs,playerSeasonsInputs,HTMLOtherSettingsContainer) {
         this.HTMLGameWindInputs=gameWindFormName;
         this.HTMLPlayerWindInputs=playerWindInputs;
         this.HTMLPlayerFlowersInputs=playerFlowersInputs;
         this.HTMLPlayerSeasonsInputs=playerSeasonsInputs;
-        this._init();
+        this.HTMLOtherSettingsContainer = HTMLOtherSettingsContainer;
+        this.settings = []
+        this.#savedSettings = [];
+        this.loadFromStorage();
+        this.#initSettings();
     }
 
-    _init(){
-        let savedData = localStorage.getItem(storageConfig.hand)
+    loadFromStorage(){
+        let savedData = localStorage.getItem(storageConfig.settings);
         if(savedData != null) {
-            let instance = JSON.parse(savedData);
+            let settings = JSON.parse(savedData);
 
             //winds
             for (let input of this.HTMLGameWindInputs) {
-                input.checked=instance.gameWind.name == this._getType(input.id);
+                input.checked = "game"+settings.gameWind.direction == input.id.toLowerCase();
             }
             for (let input of this.HTMLPlayerWindInputs) {
-                input.checked=instance.playerWind.name == this._getType(input.id);
+                input.checked = "player"+settings.playerWind.direction == input.id.toLowerCase();
             }
-
-            //bonuses
             for (let input of this.HTMLPlayerFlowersInputs) {
                 input.checked = false;
-                let value = this._getType(input.id);
-
-                for (let flower of instance.playerFlowers) {
-                    if(flower.value == value){
+                for (let flower of settings.playerFlowers) {
+                    if("flower"+flower.direction == input.id.toLowerCase()){
                         input.checked = true;
                     }
                 }
             }
-
             for (let input of this.HTMLPlayerSeasonsInputs) {
                 input.checked = false;
-                let value = this._getType(input.id);
-
-                for (let season of instance.playerSeasons) {
-                    if(season.value == value){
+                for (let season of settings.playerSeasons) {
+                    if("season"+season.direction == input.id.toLowerCase()){
                         input.checked = true;
                     }
                 }
             }
-
         }
     }
 
-    _updateGameWind(){
-        for(let i = 0; i < this.HTMLGameWindInputs.length; i++){
-            if(this.HTMLGameWindInputs[i].checked){
-                this.gameWind = this._getType(this.HTMLGameWindInputs[i].id);
-            }
+
+
+    #initSettings(){
+        this.buildSetting("dealHand","Mahjong sur la donne");
+        this.buildSetting("wallHand","Mahjong avec les tuiles du mur");
+    }
+
+
+
+    buildSetting(key, text){
+        let setting = new SettingItem(key, text, false);
+        this.settings.push(setting);
+
+        setting.buildObject(this.HTMLOtherSettingsContainer);
+    }
+
+    #getSettingsList(){
+        let list = [];
+        for (let setting of this.settings) {
+            if(!setting.isChecked()) continue;
+            list.push(setting.toJSONObject());
         }
+        return list;
     }
 
-    _updatePlayerWind(){
-        for(let i = 0; i < this.HTMLPlayerWindInputs.length; i++){
-            if(this.HTMLPlayerWindInputs[i].checked){
-                this.playerWind = this._getType(this.HTMLPlayerWindInputs[i].id);
-            }
+    getGameWind(){
+        let checked = null;
+        for (let element of this.HTMLGameWindInputs) {
+            if (element.checked) checked = element.id;
         }
+
+        let direction = TileDirection.EAST;
+        if(checked != null)  direction = checked.replace("game","").toLowerCase();
+
+        console.log(direction)
+        let tile = new BonusTile(TileType.wind, direction);
+        return tile;
     }
 
-    _updatePlayerFlowers(){
-        this.playerFlowers=[];
-        for(let i = 0; i < this.HTMLPlayerFlowersInputs.length; i++){
-            if(this.HTMLPlayerFlowersInputs[i].checked){
-                this.playerFlowers.push(this.HTMLPlayerFlowersInputs[i].id);
-            }
+    getPlayerWind(){
+        let checked = null;
+        for (let element of this.HTMLPlayerWindInputs) {
+            if (element.checked) checked = element.id;
         }
+        let direction = TileDirection.EAST;
+        if(checked != null)  direction = checked.replace("player","").toLowerCase();
+
+        let tile = new BonusTile(TileType.wind, direction);
+        return tile;
     }
 
-    _updatePlayerSeasons(){
-        this.playerSeasons=[];
-        for(let i = 0; i < this.HTMLPlayerSeasonsInputs.length; i++){
-            if(this.HTMLPlayerSeasonsInputs[i].checked){
-                this.playerSeasons.push(this.HTMLPlayerSeasonsInputs[i].id);
-            }
+    getPlayerFlowers(){
+        let flowers = [];
+        for (let element of this.HTMLPlayerFlowersInputs) {
+            if (element.checked)
+                flowers.push(new BonusTile(TileType.flower, element.id.replace("flower","").toLowerCase()));
         }
+        return flowers;
     }
 
-    _getType(name){
-        return name.replace("game","").replace("player","").replace("flower","").replace("season","");
-    }
-
-    update(){
-        this._updateGameWind();
-        this._updatePlayerWind();
-        this._updatePlayerFlowers();
-        this._updatePlayerSeasons();
-    }
-
-
-    gameWindToTile(){
-        return this._getWindTile(this._getType(this.gameWind));
-    }
-    playerWindToTile(){
-        return this._getWindTile(this._getType(this.playerWind));
-    }
-    _getWindTile(name){
-        let t = new Tile(name);
-        t.type="wind";
-        t.value=this._bindWindtoInt(name);
-        t.img=undefined;
-        return t;
-    }
-
-    _bindWindtoInt(wind){
-        switch (wind){
-            case "North":
-                return 1;
-            case "South":
-                return 2;
-            case "East":
-                return 3;
-            default:
-                return 4;
+    getPlayerSeasons(){
+        let seasons = [];
+        for (let element of this.HTMLPlayerSeasonsInputs) {
+            if (element.checked)
+                seasons.push(new BonusTile(TileType.season, element.id.replace("season","").toLowerCase()));
         }
+        return seasons;
     }
 
-    playerFlowersToTiles(){
-        let array=[];
-        for (let flower of this.playerFlowers) {
-            array.push(this._getBonusTile("flower",parseInt(this._getType(flower))));
-        }
-        return array;
-    }
-
-    playerSeasonsToTiles(){
-        let array=[];
-        for (let season of this.playerSeasons) {
-            array.push(this._getBonusTile("season",parseInt(this._getType(season))));
-        }
-        return array;
-    }
-
-    _getBonusTile(name,value){
-        let t = new Tile(name);
-        t.type="bonus";
-        t.value=value;
-        t.img=undefined;
-        return t;
-    }
     saveToStorage(){
-        let savedData = localStorage.getItem(storageConfig.hand)
-        if(savedData != null) {
-            let instance = JSON.parse(savedData);
-
-            instance.gameWind = this.gameWindToTile();
-            instance.playerWind = this.playerWindToTile();
-
-            instance.playerFlowers = this.playerFlowersToTiles();
-            instance.playerSeasons = this.playerSeasonsToTiles();
-
-            localStorage.setItem(storageConfig.hand, JSON.stringify(instance));
-            return true;
-        }
-        return false;
-    }
-
-
-    isSet(){
-        return this.HTMLGameWindInputs!=null && this.HTMLPlayerWindInputs!=null && this.HTMLPlayerSeasonsInputs!=null && this.HTMLPlayerFlowersInputs!=null
+        localStorage.setItem(storageConfig.settings,JSON.stringify(this.toJSONObject()));
     }
 
     isValid(){
-        return this.gameWind!=null && this.playerWind!=null;
+        return this.HTMLGameWindInputs!=null && this.HTMLPlayerWindInputs!=null && this.HTMLPlayerSeasonsInputs!=null && this.HTMLPlayerFlowersInputs!=null
+    }
+
+
+    toJSONObject(){
+        let data ={};
+
+        data.gameWind = this.getGameWind();
+        data.playerWind = this.getPlayerWind();
+        data.playerFlowers = this.getPlayerFlowers();
+        data.playerSeasons = this.getPlayerSeasons();
+        data.settings = this.#getSettingsList();
+
+        return data;
     }
 }
 
 
 function onSendClick(){
-    if(settings.isSet() && settings.isValid()){
-        settings.update();
+    if(settings.isValid()){
         settings.saveToStorage();
-        let savedData = localStorage.getItem(storageConfig.hand)
-        if(savedData != null){
-            let instance = JSON.parse(savedData);
-            console.log("sending to server...");
-            console.log(savedData);
+        let hand = JSON.parse(localStorage.getItem(storageConfig.hand));
 
+        if(hand != null){
+            let json = settings.toJSONObject()
+            json.slotList = hand;
 
-                scoreNet.call(JSON.stringify(instance)).then(function (message){
-                    if(message == null){
-                        alert("Échec de la connexion avec le serveur")
-                        return;
-                    }
-                    localStorage.setItem(storageConfig.score, message);
-                    window.location.href = "score.html";
-                })
+            console.log(json);
 
-
-
+            scoreNet.call(JSON.stringify(json)).then(function (message){
+                if(message == null){
+                    alert("Échec de la connexion avec le serveur")
+                    return;
+                }
+                localStorage.setItem(storageConfig.score, message);
+                window.location.href = "score.html";
+            })
         }else{
-            alert("error");
+            alert("Impossible d'importer les tuiles");
         }
     }
 }
 
 function onBackClick(){
-    settings.update();
     settings.saveToStorage();
     window.location.href = "calculator.html";
 }
@@ -239,9 +202,8 @@ export async function startSettings(){
         && sendButton)) return;
     let network = NetworkController.getController(networkConfig.ip, networkConfig.port);
     scoreNet = network.getNetNamespace("ScoreNet");
-    settings = new gameSettings(gameWindInputs,playerWindInputs,playerFlowersInputs,playerSeasonsInputs);
+    settings = new gameSettings(gameWindInputs,playerWindInputs,playerFlowersInputs,playerSeasonsInputs,otherSettingsSection);
 
-    document.addEventListener("mouseup",settings.update.bind(settings));
     backButton.addEventListener("click", onBackClick);
     sendButton.addEventListener("click", onSendClick);
 }

@@ -1,140 +1,149 @@
-import {HtmlTag} from "../../GlobalHtmlObjects/HtmlObjects/HtmlTag.js";
-
+import {EmptyTile} from "./EmptyTile.js";
+import {Signal} from "../../Signal/Signal.js";
+import {Eye} from "./Eye.js";
 export class Slot{
-    tileList;
-    slotId;
-    hidden;
+    #tileList;
+    #htmlElement;
+    #capacity;
+    #emptyTile;
+    #eye;
 
-    constructor(id) {
-        this.tileList = [];
-        this.slotId=id;
-        this.hidden=false;
+    clicked;
+    changed;
+
+    constructor(capacity = 4) {
+        this.#tileList = [];
+        this.#capacity = capacity;
+        this.#emptyTile = new EmptyTile();
+        this.#eye = new Eye();
+
+        this.clicked = new Signal();
+        this.changed = new Signal();
+
+        this.#createHtmlElement();
+        this.#connect();
+        this.#update();
     }
 
-    drawSlot(active=false){
-        let tmp="<section class='lineHand' id='slot"+this.slotId+"'>";
+    #createHtmlElement(){
+        let element = document.createElement("section");
+        element.setAttribute("class", "slot");
 
-        for(let element of this.tileList) {
-            if(this.hidden){
-                tmp+=element.drawUnavailable(50);
-            }else{
-                tmp+=element.draw();
+        this.#htmlElement = element;
+    }
+
+    #connect(){
+        this.#eye.clicked.connect(() => {
+            this.hide(this.#eye.isHidden());
+            console.log(this.#eye.isHidden());
+        })
+    }
+
+    hide(hidden){
+        this.#htmlElement.style.opacity = (1 - .5 * hidden).toString();
+        this.#eye.hide(hidden);
+    }
+
+    scrollIntoView(){
+        this.#htmlElement.scrollIntoView({behavior:"smooth"});
+    }
+
+    insert(tile){
+        if(this.isFull() || this.has(tile)) return;
+
+        this.#tileList.push(tile);
+        this.#htmlElement.appendChild(tile.getHtmlObject());
+        this.#htmlElement.scrollIntoView({behavior: "smooth"});
+
+        this.#update();
+    }
+
+    remove(tile) {
+        for (let i = 0; i < this.#tileList.length; i++){
+            if ( this.#tileList[i] == tile) {
+                tile.clear();
+                this.#tileList.splice(i, 1);
+                this.#update();
+                return;
             }
         }
 
-        if(this.tileList.length<3 || this._isTriple()) {
-            if(active){
-                tmp += this._drawActiveAddButton()
-            }else{
-                tmp += this._drawAddButton();
-            }
+        console.error("tile does not exist into slot");
+    }
+
+    #update(){
+        console.log(this.#tileList)
+        let emptyElement = this.#emptyTile.getHtmlObject();
+
+        if(this.isFull()) {
+            this.#htmlElement.removeChild(emptyElement);
+            emptyElement.removeEventListener("click", this.clicked.fire.bind(this.clicked));
+        }
+        else {
+            this.#htmlElement.appendChild(emptyElement);
+            emptyElement.addEventListener("click", this.clicked.fire.bind(this.clicked));
         }
 
-        tmp+="<label class=\"boxContainer\" >"
+        this.#htmlElement.appendChild(this.#eye.getHtmlObject());
 
-        if(this.hidden){
-            tmp+="<input id=\"check"+this.slotId+"\" type=\"checkbox\" checked >";
-        }else{
-            tmp+="<input id=\"check"+this.slotId+"\" type=\"checkbox\" >";
+        this.changed.fire();
+    }
+
+    has(tile){
+        for(let storedTile of this.#tileList){
+            if(storedTile == tile) return true;
         }
 
-        tmp+="<span class=\"checkmarkChecked\"></span>";
-        tmp+="<span class=\"checkmarkUnchecked\"></span>";
-        tmp+="</label>";
-        tmp+="</section>";
-
-        return tmp;
-    }
-
-    addTile(tile){
-        this.tileList.push(tile);
-    }
-
-
-
-    #getAddButton(){
-        let img = new HtmlTag("img");
-        img.setAttribute("src","img/icons/addTile.svg");
-        img.setAttribute("alt","+");
-
-        let div = new HtmlTag("div");
-        div.setAttribute("id","bouton"+this.slotId);
-        div.addChild(img);
-        return div;
-    }
-    _drawAddButton(){
-        let div=this.#getAddButton();
-        div.setAttribute("class","emptyTile");
-        return div.toHtml();
-    }
-
-    _drawActiveAddButton(){
-        let div=this.#getAddButton();
-        div.setAttribute("class","activeEmptyTile");
-        return div.toHtml();
-    }
-
-    _isTriple(){
-        if(this.tileList.length!=3){
-            return false;
-        }
-        let name=this.tileList[0].name;
-
-        for(let element of this.tileList) {
-            if(element.name!=name){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    deleteTile(id){
-        let i=0;
-
-        for(let element of this.tileList) {
-            if(element.id==id){
-                this.tileList.splice(i,1);
-                return true;
-            }
-            i++;
-        }
         return false;
     }
-
-
-    find(id){
-        for (let tile of this.tileList){
-            if(id==tile.id){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    canAdd(name){
-        let triple = this._isTriple() && this.tileList[0].name == name;
-        let enoughLength = this.tileList.length < 3;
-
-        return triple || enoughLength;
-    }
-
-    copy(){
-        let s = new Slot(this.slotId);
-
-        for(let tile of this.tileList){
-            s.tileList.push(tile.copy());
-        }
-
-        return s;
-    }
-    toggleHidden(){
-        this.hidden=!this.hidden;
-        console.log(this.hidden);
-    }
-
 
     isEmpty(){
-        return this.tileList.length==0;
+        return this.#tileList.length == 0;
     }
 
+    isFull(){
+        return this.#tileList.length >= this.#capacity;
+    }
+
+    getHtmlObject(){
+        return this.#htmlElement;
+    }
+
+    enable(){
+        this.#emptyTile.setActive(true);
+    }
+
+    disable(){
+        this.#emptyTile.setActive(false);
+    }
+
+    toJSON(){
+        let list = [];
+
+        for(let tile of this.#tileList){
+            list.push(tile.toJSON());
+        }
+
+        return {
+            tileList: list,
+            hidden: this.#eye.isHidden()
+        };
+    }
+
+    clear(){
+        this.#eye.clear();
+        for (const tile of this.#tileList){
+            tile.remove();
+        }
+    }
+
+    destroy(){
+        this.clear();
+        this.clicked.clear();
+        this.changed.clear();
+    }
+
+    removeHtml(){
+        this.#htmlElement.remove();
+    }
 }

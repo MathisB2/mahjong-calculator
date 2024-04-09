@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <link href="style.css" rel="stylesheet" />
+  <link rel="icon" href="img/logo.png" />
+  <title>Mahjong Calculator</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+
+<body>
+
+<header></header>
+<main class="log">
+  <section>
+    <h1>Connexion</h1>
+    <form id="logForm">
+      <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" required>
+      <input type="password" id="password" name="password" placeholder="Mot de passe" required>
+      <button type="submit" class="gradientButtonLink" id="logButton">Connexion →</button>
+    </form>
+
+    <a href="#">S'inscrire</a>
+
+    <script>
+      let button = document.getElementById("logForm");
+      button.addEventListener("submit",submit);
+
+      function submit(event){
+        event.preventDefault();
+      }
+
+
+    </script>
+
+
+  </section>
+</main>
+
+
+
+
+<script type="module" src="js/main.js"></script>
+</body>
+
+</html>

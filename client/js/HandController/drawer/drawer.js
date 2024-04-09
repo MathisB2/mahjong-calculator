@@ -10,6 +10,8 @@ export class Drawer{
     #isDragging;
     #dragStartPos;
 
+    #transition;
+
 
     constructor(drawerPanel, minHeight=100, maxHeight=500) {
         this.handles=[];
@@ -20,11 +22,16 @@ export class Drawer{
 
         this.maxHeight=maxHeight;
         this.minHeight=minHeight;
+        this.#transition = ""
     }
 
     setHandle(handles){
         this.handles = handles;
         this.#initEvents();
+    }
+
+    setTransition(transition){
+        this.#transition = transition;
     }
 
     #initEvents(){
@@ -41,31 +48,43 @@ export class Drawer{
 
 
     #dragStart(e){
-        console.log("dragstart");
+        this.panel.style.removeProperty("transition");
         this.#isDragging = true;
-        this.#dragStartPos = e.pageY - this.#getBoundingRect().top;
+        let eventY = e.pageY || e.touches?.[0].pageY;
+        this.#dragStartPos = eventY - this.#getBoundingRect().top;
     }
 
     #dragging(e){
         if(!this.#isDragging) return;
-        let offset = this.#getBoundingRect().bottom + this.#dragStartPos - e.pageY;
-
+        let eventY = e.pageY || e.touches?.[0].pageY;
+        let offset = this.#getBoundingRect().bottom + this.#dragStartPos - eventY;
         this.#setPanelHeight(cropValue(offset, this.minHeight, this.maxHeight));
     }
 
     #dragStop(){
         if(!this.#isDragging) return;
         this.#isDragging = false;
-        console.log("dragStop");
-
+        this.roundHeight();
     }
 
     open(){
+        if(this.isOpened()) return;
+        this.panel.style.transition = this.#transition;
         this.#setPanelHeight(this.maxHeight);
     }
 
     close(){
-        this.#setPanelHeight(this.minHeight)
+        if(! this.isOpened()) return;
+        this.panel.style.transition = this.#transition;
+        this.#setPanelHeight(this.minHeight);
+    }
+
+    roundHeight(){
+        if(this.#getBoundingRect().height - this.minHeight <=64) this.close();
+    }
+
+    isOpened(){
+        return this.#getBoundingRect().height != this.minHeight;
     }
 
     #setPanelHeight(newHeight){

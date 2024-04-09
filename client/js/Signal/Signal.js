@@ -12,6 +12,7 @@ class Connection {
         this.signal.connections[this.id] = null;
     }
 }
+
 export class Signal {
     connections;
     curr_id = 0;
@@ -29,7 +30,7 @@ export class Signal {
 
     fire(...args){
         for(let key in this.connections)
-            this.connections[key](args);
+            this.connections[key](...args);
     }
 
     clear(){

@@ -3,6 +3,7 @@ package ImageService;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 
+import javax.swing.text.html.ImageView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -46,6 +47,11 @@ public class ImageShapes {
 //        (new TilesView()).showImage(clone);
 
         Core.multiply(clone, tilesMask, clone);
+
+        Mat finalMask = new Mat();
+        Core.multiply(clone,new Scalar(255,255,255),finalMask);
+        (new TilesView()).showImage(finalMask);
+
         Imgproc.findContours(clone, shapes, clone, Imgproc.CHAIN_APPROX_NONE, Imgproc.CHAIN_APPROX_SIMPLE);
     }
 
@@ -126,10 +132,10 @@ public class ImageShapes {
         return shape;
     }
     public void draw(){
-        Scalar color = new Scalar(255, 0, 0);
+        Scalar color = new Scalar(0, 0, 255);
         var imgCloned = image.clone();
         for(int i = 0; i < this.shapes.size(); ++i){
-            Imgproc.drawContours(imgCloned, shapes, i, color);
+            Imgproc.drawContours(imgCloned, shapes, i, color,5);
         }
         (new TilesView()).showImage(imgCloned);
     }

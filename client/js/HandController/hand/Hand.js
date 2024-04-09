@@ -1,151 +1,161 @@
+import {Signal} from "../../Signal/Signal.js";
 import {Slot} from "./Slot.js";
-import {Tile} from "./Tile.js";
 
 export class Hand{
     slotList;
-    activeSlot;
+
+    activeSlotId;
     currentId;
+    tileClicked;
+    htmlHand;
 
-    gameWind="gameNorth";
-    playerWind="playerNorth";
-    playerFlowers=[];
-    playerSeasons=[];
+    slotClicked;
+    constructor(htmlHand) {
+        this.tileClicked = new Signal();
+        this.slotClicked = new Signal();
 
-    constructor() {
-        this._initSlotList();
-
-        this.activeSlot=0;
-        this.currentId=0;
+        this.activeSlotId = 0;
+        this.currentId = 0;
+        this.htmlHand = htmlHand;
+        this.#initSlots();
     }
 
-    _initSlotList(){
+    #initSlots(){
         this.slotList = [];
-        for(let i=0;i<5;i++){
-            this.slotList[i]=new Slot(i);
+        for(let i = 0; i < 1; ++i){
+            this.#appendSlot(i);
+        }
+
+        this.#setActiveSlot(0);
+    }
+
+    #appendSlot(slotId) {
+        let slot = new Slot();
+        this.htmlHand.appendChild(slot.getHtmlObject());
+        this.#setupSlotAction(slot,slotId, false)
+        this.slotList.push(slot);
+    }
+
+    #setupSlotAction(slot, index){
+        slot.clicked.clear();
+        slot.clicked.connect(() => {
+            this.#setActiveSlot(index);
+            slot.scrollIntoView();
+            this.slotClicked.fire();
+        })
+
+        slot.changed.clear();
+        slot.changed.connect(() => {
+            this.#setActiveSlot(index);
+            this.#updateSlots();
+        })
+    }
+
+    #updateSlots() {
+        let i = 0;
+        while (i < this.slotList.length) {
+            let slot = this.slotList[i];
+            if (slot.isEmpty()) this.#removeSlot(slot);
+            else ++i;
+        }
+        this.#appendSlot(i);
+        this.#setActiveSlot(this.activeSlotId);
+    }
+
+    #removeSlot(slot) {
+        let index = this.#getSlotIndexOf(slot);
+        slot.removeHtml()
+        slot.destroy();
+        this.slotList.splice(index, 1)
+
+        while (index < this.slotList.length){
+            this.#setupSlotAction(this.slotList[index],index);
+            index++;
         }
     }
 
-    drawHand() {
-        h.innerHTML = "";
-        for (let i=0;i<this.slotList.length;i++) {
-            h.innerHTML += this.slotList[i].drawSlot(i===this.activeSlot);
+    #getSlotIndexOf(slot){
+        for(let i = 0; i < this.slotList.length; ++i){
+            if(this.slotList[i] == slot) return i;
         }
 
-        for (let element of this.slotList) {
-            for (let ele of element.tileList) {
-                let e = document.getElementById(ele.id);
+        console.error("slot does not exist !!!!!")
+    }
 
-                e.addEventListener("dragstart", drag);
-                e.addEventListener("dragover", allowDrop);
-                e.addEventListener("drop", drop);
-                e.addEventListener("click", onTileClick);
-            }
+    hideCurrentSlot(hidden){
+        let slot = this.slotList[this.getActiveSlotId()];
+        slot.hide(hidden);
+    }
+
+    nextSlot(){
+        let slotId = this.getActiveSlotId();
+        let relativeNextSlot = slotId + 1;
+        let nextSlot = relativeNextSlot < this.slotList.length ? relativeNextSlot : 0;
+
+        this.#setActiveSlot(nextSlot);
+    }
+
+    windUpActiveSlot(){
+        this.#setActiveSlot(0);
+    }
+
+    #setActiveSlot(slotId){
+        this.slotList[this.activeSlotId].disable();
+        this.slotList[slotId].enable();
+        this.activeSlotId = slotId;
+
+    }
+
+    insert(tile){
+        if(!this.canInsert()) return;
+        let slot = this.slotList[this.activeSlotId];
+        slot.insert(tile);
+
+        tile.getHtmlObject().addEventListener("click", (() => {
+            this.tileClicked.fire(tile);
+        }).bind(this));
+    }
+
+    moveToNextAvailableActiveSlot(){
+        for(let i = 0; i < this.slotList.length; ++i){
+            let slot = this.slotList[this.activeSlotId];
+            if(!slot.isFull())return;
+
+            this.nextSlot();
+        }
+    }
+    canInsert(){
+        let slot = this.slotList[this.activeSlotId];
+        return !slot.isFull();
+    }
+
+    remove(tile){
+        for(let slot of this.slotList){
+            if(slot.has(tile)) slot.remove(tile);
+        }
+    }
+
+    getActiveSlotId(){
+        return this.activeSlotId;
+    }
+
+
+    toJSON(){
+        let json = [];
+
+        for(let slot of this.slotList){
+            json.push(slot.toJSON());
         }
 
-        for (let i = 0; i < 5; i++) {
-            let e = document.getElementById("bouton" + i);
-            if (e) {
-                e.addEventListener("dragover", allowDrop);
-                e.addEventListener("drop", drop);
-                e.addEventListener("click", onSlotClick);
-            }
-        }
-
-        for (let i=0;i<5;i++){
-            let e=document.getElementById("check"+i);
-            if(e == null) continue;
-
-            e.addEventListener("click",toggleHidden);
-        }
-
-        drawDrawerTiles();
+        return json;
     }
 
-    addTile(name){
-        this.slotList[this.activeSlot].addTile(new Tile(name,this.currentId));
-        this.currentId++;
-    }
-
-    addTileByTile(tile){
-        this.slotList[this.activeSlot].addTile(tile);
-    }
-
-
-    removeTile(id){
-        for (let element of this.slotList){
-            element.deleteTile(id);
-        }
-    }
-
-    getTile(id){
-        for (let element of this.slotList){
-            for (let ele of element.tileList){
-                if(ele.id != id) continue
-
-                return ele;
-            }
-        }
-
-        return null;
-    }
-
-    getActiveSlot(){
-        return this.slotList[this.activeSlot];
-    }
-
-
-
-    setActive(i){
-        this.activeSlot = i;
-    }
-
-    getSlotFor(t){
-        for (let slot of this.slotList){
-            for (let tile of slot.tileList){
-                if(t.id==tile.id){
-                    return slot;
-                }
-            }
-        }
-
-        return null;
-    }
-
-
-    importDetectionResults(callback){
-        this.clear();
-        let obj = JSON.parse(callback);
-        this.activeSlot=0;
-
-        for(let cluster of obj){
-            for(let tile of cluster){
-                tile = JSON.parse(tile)
-                tile = getAvailableTileByName(tile.name);
-                if (tile == null) continue;
-
-                if(this.slotList[this.activeSlot].canAdd(tile.name)){
-                    removeTileFromDrawer(tile.id);
-
-                    this.addTileByTile(tile);
-                }
-            }
-            ++this.activeSlot;
-        }
-        this.activeSlot = 0;
-        this.drawHand();
-    }
 
     clear(){
-        delete this.slotList;
-
-        this._initSlotList();
-        this.setActive(0);
-        this.drawHand();
-
-        importTiles();
+        this.htmlHand.innerHTML="";
+        this.#setActiveSlot(0);
+        this.#initSlots();
     }
 
-    toString(){
-        return JSON.stringify(this);
-    }
+
 }

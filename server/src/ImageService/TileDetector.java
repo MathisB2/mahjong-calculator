@@ -68,6 +68,7 @@ public class TileDetector {
         imageShapes.simplify(4);
         imageShapes.keepExternalShapes();
         imageShapes.draw();
+
         var shapes = imageShapes.getShapes();
 
         for (MatOfPoint cnt : shapes) {

@@ -31,7 +31,6 @@ body {
     --textColor:#7B8190;
     --gradientSecondColor:#03C093;
     --mainGradient:linear-gradient(90deg, var(--gradientSecondColor) 0%, var(--mainColor) 100%);
-    --drawerDefaultHeight:50vh;
     --headerDefaultHeight:48px;
     --tileShadow:0 0 5px rgba(0,0,0,.4);
     --globalTileWidth: 64px;
@@ -57,6 +56,7 @@ nav{
     left: 0;
     align-items: center;
     z-index: 64;
+    box-shadow: 0 2px 8px rgba(0,0,0,.4);
 }
 
 header::after{
@@ -317,25 +317,34 @@ header::after{
 /*---------------------- calculator.html ------------------------*/
 
 
+main.calculator{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - var(--headerDefaultHeight));
+}
+
 /*liste des tuiles*/
 
 #hand{
     width: 100%;
-    height: calc(100vh - var(--headerDefaultHeight) - var(--drawerDefaultHeight));
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
     overflow-y: scroll;
 
     --tileWidth: min(calc((100vw - 48px) / 5.5), var(--globalTileWidth));
 }
 
 
-.lineHand{
+.slot{
     display: flex;
-    margin: 32px;
-    margin-right: 16px;
+    margin: 24px;
+    transition: .4s ease-out;
 }
 
 
-.lineHand div{
+.slot div{
     max-width: 280px;
     max-height: 370px;
     border-radius: calc(.16 * var(--tileWidth));
@@ -350,21 +359,20 @@ header::after{
     align-items: center;
     justify-content: center;
     user-select: none;
-
 }
 
-.lineHand div img{
+.slot div img{
     width: calc(var(--tileWidth) / 2.4);
     pointer-events: none;
 }
 
 
-.lineHand div.tile{
+.slot div.tile{
     background-size: cover;
     background-position: center;
 }
 
-.lineHand div.emptyTile{
+.slot div.emptyTile{
     background-color: var(--darkerBackground);
     border: dashed var(--secondColor) calc(var(--tileWidth) / 32);
 }
@@ -392,7 +400,7 @@ header::after{
     50%  { opacity:0.2; }
     100% { opacity:1; }
 }
-.lineHand div.activeEmptyTile{
+.slot div.activeEmptyTile{
     background-color: var(--darkerBackground);
     border: dashed var(--secondColor) calc(var(--tileWidth) / 32);
     -webkit-animation: flickerAnimation 1s infinite;
@@ -445,15 +453,14 @@ header::after{
 /* tiroir d'ajout des tuiles*/
 #drawer{
     width: 100%;
-    position: fixed;
-    left: 0;
-    bottom: 0;
     background-color: var(--darkerBackground);
-    height: var(--drawerDefaultHeight);
     box-shadow: 0 -2px 8px rgba(0,0,0,.4);
     border-top-left-radius: 32px;
     border-top-right-radius: 32px;
     user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 
@@ -525,13 +532,17 @@ header::after{
 
 .drawerButton{
     position: fixed;
-    left: 0;
     bottom: 0;
+    left: 0;
+
     display: flex;
     text-align: center;
     background-color: var(--darkerBackground);
+    padding: 8px;
+    /*background-color: red;*/
     width: 100%;
     user-select: none;
+
 
 
 }
@@ -560,6 +571,8 @@ header::after{
     grid-template-columns: repeat(auto-fill, var(--tileWidth));
     grid-gap: calc(var(--tileWidth) / 4);
     justify-content: space-between;
+    flex-grow: 1;
+    margin-bottom: 64px;
 
 }
 
@@ -581,6 +594,7 @@ header::after{
 
     background-size: cover;
     background-position: center;
+    background-color: var(--backgound);
 }
 
 
@@ -588,18 +602,39 @@ header::after{
 
 /* animation de chargement */
 
-.popUp{
+.popUpOverlay{
     position: absolute;
     top: var(--headerDefaultHeight);
     left: 0;
     width: 100%;
     height: calc(100% - var(--headerDefaultHeight));
-    background-color: var(--darkerBackground);
-    display: none;
+    padding: 32px;
+
+    background-color: rgba(43, 49, 68, 0.64);
+    backdrop-filter: blur(4px);
+
+    display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    opacity: 0;
+    transition: .2s ease-out;
+    pointer-events: none;
+
+
+
+}
+
+.popUp{
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0,0,0,.4);
+    max-width: 480px;
+    background-color: var(--darkerBackground);
+
     text-align: center;
+    padding: 32px;
+    transition: .2s ease-out;
+    transform: scale(0);
 }
 
 
@@ -611,33 +646,97 @@ header::after{
     color: var(--textColor)
 }
 
-.popUp .videoContainer{
-    width: 100%;
-    position: relative;
-    --overlayFading: 16%;
-    --overlayColor: var(--RGBdarkerBackground);
-}
 
-.popUp video{
-    /*border: solid red 2px;*/
-    width: 100%;
-    max-width: 480px;
-    pointer-events: none;
+.spinner{
+    max-width: 48px;
+    margin: 16px;
 }
 
 
 
+#loadingPopUp{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
 
-.popUp .videoOverlay{
-    position: absolute;
+#resultPopUp{
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
-    /*background-color: rgba(var(--rgbMainColor),0.5);*/
-    background: linear-gradient(0deg, rgba(var(--overlayColor),1) 0%, rgba(var(--overlayColor),0) var(--overlayFading), rgba(var(--overlayColor),0) calc(100% - var(--overlayFading)), rgba(var(--overlayColor),1) 100%);
-    opacity: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 16px;
+    --tileWidth: min(calc( (100vw - (2 * 32px) - (2 *16px)) / 5.5), var(--globalTileWidth));
 }
+
+
+#resultPopUp>canvas{
+    width: 100%;
+    margin-top: 8px;
+    border-radius: 8px;
+}
+
+#resultList{
+    flex-grow: 1;
+    overflow-y: scroll;
+    width: 100%;
+    padding-bottom: 16px;
+}
+
+
+#resultList table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 16px;
+    margin-bottom: 8px;
+}
+
+#resultList table thead th{
+    position: sticky;
+    top: 0;
+    background-color: var(--darkerBackground);
+    line-height: 16pt;
+    color: var(--secondColor);
+}
+
+#resultList table tbody tr td{
+    text-align: center;
+    /*border: 1px solid #ddd;*/
+}
+
+#resultList table tbody tr td div{
+    margin: auto;
+}
+
+#resultList table tbody tr td input{
+    accent-color: var(--secondColor);
+}
+
+
+
+#resultList table tbody tr{
+    padding-top: 16px;
+}
+
+.tileResult{
+    max-width: 280px;
+    max-height: 370px;
+    border-radius: calc(.16 * var(--tileWidth));
+    width: var(--tileWidth);
+    height: calc(37 / 28 * var(--tileWidth));
+    box-shadow: var(--tileShadow);
+    user-select: none;
+}
+
+#resultButton{
+    color: var(--mainColor);
+    font-weight: 600;
+    font-size: 16pt;
+}
+
 
 
 
@@ -679,11 +778,6 @@ main.settings section{
     margin-bottom: 32px;
 }
 
-
-#playerBonus{
-    margin-bottom: 64px;
-}
-
 main.settings section div{
     display: flex;
     justify-content: space-between;
@@ -723,6 +817,40 @@ main.settings input:checked + label img{
     outline: solid 3px var(--checkedColor);
 
 }
+
+
+.settings #otherSettings{
+    margin-bottom: 64px;
+    --checkboxSize:16px;
+}
+
+#otherSettings h2{
+    margin-bottom: 16px;
+}
+
+#otherSettings div{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+#otherSettings div input{
+    display: inline-block;
+    accent-color: var(--mainColor);
+    height: var(--checkboxSize);
+    width: var(--checkboxSize);
+
+}
+
+#otherSettings div label{
+    font-size: 14pt;
+    line-height: var(--checkboxSize);
+    margin: 0 0 0 4px;
+    width: fit-content;
+
+}
+
 
 
 
@@ -1320,4 +1448,68 @@ main.gameRules{
     text-align: justify;
     margin-bottom: 64px;
     color: var(--textColor);
+}
+
+
+/*--------------------------------- login.html ---------------------------------*/
+
+.log{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - var(--headerDefaultHeight));
+    background-color: var(--darkerBackground);
+    padding: 32px;
+}
+
+.log h1{
+    margin-bottom: 32px;
+}
+
+.log section{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.log input{
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    font-size: 12pt;
+    border-radius: 4px;
+    outline: solid var(--textColor) 2px;
+    border: none;
+}
+
+.log input:focus{
+    outline: solid var(--mainColor) 2px;
+}
+
+.log button{
+    width: 100%;
+    border: none;
+    margin-bottom: 8px;
+}
+
+.log a{
+    width: 100%;
+    text-align: center;
+    color: var(--mainColor);
+}
+
+
+.close-button{
+    color: var(--textColor);
+    text-align: center;
+    --boxSize:24px;
+    width: var(--boxSize);
+    height: var(--boxSize);
+    line-height: var(--boxSize);
+    margin-left: auto;
+    font-size: 32px;
+    transform: translate(16px, -16px);
+    cursor: pointer;
 }
